@@ -13,5 +13,8 @@ public class RecipeProgress : MonoBehaviour {
     public void ResetProgress() {
         currentProgress = 0;
     }
+    public int GetCurrentProgress() {
+        return currentProgress;
+    }
     
 }
