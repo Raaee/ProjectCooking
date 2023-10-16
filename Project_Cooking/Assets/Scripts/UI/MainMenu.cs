@@ -8,23 +8,50 @@ using DG.Tweening;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private CanvasGroup mainMenuPanel;
-    [SerializeField] [Range(1.0f, 3f)] float fadeTime = 1.5f;
+    [SerializeField] private CanvasGroup settingsPanel;
+    [SerializeField] private CanvasGroup creditsPanel;
+    private CanvasGroup currentPanel;
+    [SerializeField] [Range(1.0f, 3f)] private float fadeTime = 1.5f;
 
     private void Start()
     {
-        FadeInCanvasGroup(mainMenuPanel, fadeTime);
+        currentPanel = mainMenuPanel;
+        FadeInCanvasGroup(currentPanel);
+       
     }
 
-    public void FadeInCanvasGroup(CanvasGroup cg, float fadeInTime)
+    public void GotoSettings()
+    {
+        FadeOutCanvasGroup(currentPanel);
+        FadeInCanvasGroup(settingsPanel);
+        currentPanel = settingsPanel;
+    }
+
+    public void GoToCredits()
+    {
+        FadeOutCanvasGroup(currentPanel);
+        FadeInCanvasGroup(creditsPanel);
+        currentPanel = creditsPanel;
+    }
+
+    public void GoBackToMenu()
+    {
+        FadeOutCanvasGroup(currentPanel);
+        FadeInCanvasGroup(mainMenuPanel);
+        currentPanel = mainMenuPanel;
+    }
+
+
+    private void FadeInCanvasGroup(CanvasGroup cg)
     {
         cg.alpha = 0;
-        cg.DOFade(1, fadeInTime);
+        cg.DOFade(1, fadeTime);
     }
 
-    public void FadeOutCanvasGroup(CanvasGroup cg, float fadeOutTime)
+    private void FadeOutCanvasGroup(CanvasGroup cg)
     {
         cg.alpha = 1;
-        cg.DOFade(0, fadeOutTime);
+        cg.DOFade(0, fadeTime);
     }
 
 }
