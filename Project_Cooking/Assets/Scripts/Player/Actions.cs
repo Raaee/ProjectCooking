@@ -5,8 +5,11 @@ using UnityEngine.InputSystem;
 
 public class Actions : MonoBehaviour    {
     
-    [SerializeField] private Input input;
+    private Input input;
 
+    private void Awake() {
+        input = GetComponent<Input>();
+    }
     private void Update() {
         input.interact.performed += Interact;
         input.attack.performed += Attack;

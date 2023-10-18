@@ -5,28 +5,45 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour {
 
-    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private const int MAX_HEALTH = 3;
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private bool godMode = false;
-    private UnityEvent onDeath;
+    public UnityEvent OnDeath;
 
     private void Start() {
-        onDeath.AddListener(OnDeath);
+        OnDeath.AddListener(Death);
     }
 
     public void Heal(int amt) {
-        currentHealth += amt;
+        if ((currentHealth += amt) >= MAX_HEALTH) {
+            currentHealth = MAX_HEALTH;
+        } else {
+            currentHealth += amt;
+        }
     }
+    // this is for dev mode: ******
     public void Heal() {
-        currentHealth = maxHealth;
+        currentHealth = MAX_HEALTH;
     }
+    // ******
     public void TakeDamage(int amt) {
-        currentHealth -= amt;
+        if (godMode) {
+            Debug.Log("Damage Negated. GooseMode Active.");
+            return;
+        }
+        
+        if ((currentHealth -= amt) <= 0) {
+            currentHealth = 0;
+            OnDeath.Invoke();
+        }
+        else {
+            currentHealth -= amt;
+        }
     }
     public void Kill() {
         currentHealth = 0;
     }
-    public void OnDeath() {
+    public void Death() {
         Debug.Log("Wow you suck. Get good");
         // OnDeath event stuff
     }
