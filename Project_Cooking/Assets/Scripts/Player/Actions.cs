@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Actions : MonoBehaviour    {
     
     private Input input;
+    public UnityEvent OnItemSelect;
+    public UnityEvent OnItemDrop;
 
     private void Awake() {
         input = GetComponent<Input>();
@@ -30,12 +33,12 @@ public class Actions : MonoBehaviour    {
     public void Drop(InputAction.CallbackContext context) {
         // This is where u put what dropping does
         // Default keybind is Q [Keyboard]
-        Debug.Log("Dropped.");
+        OnItemDrop.Invoke();
     }
     public void SlotSelect(InputAction.CallbackContext context) {
         // This is where u put what slot select does
         // Default keybind is Scroll Wheel Up/Down [Mouse]
-        //  UP is 120f,  DOWN is -120f
-        Debug.Log(input.slotSelect.ReadValue<float>());
+        //  UP is 120f,  DOWN is -120f  ----> input.slotSelect.ReadValue<float>()
+        OnItemSelect.Invoke();
     }
 }
