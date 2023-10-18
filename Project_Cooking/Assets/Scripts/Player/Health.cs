@@ -10,8 +10,8 @@ public class Health : MonoBehaviour {
     [SerializeField] private bool godMode = false;
     public UnityEvent OnDeath;
 
-    private void Start() {
-        OnDeath.AddListener(Death);
+    private void Awake() {
+       
     }
 
     public void Heal(int amt) {
@@ -21,30 +21,34 @@ public class Health : MonoBehaviour {
             currentHealth += amt;
         }
     }
-    // this is for dev mode: ******
-    public void Heal() {
-        currentHealth = MAX_HEALTH;
-    }
-    // ******
+   
     public void TakeDamage(int amt) {
         if (godMode) {
-            Debug.Log("Damage Negated. GooseMode Active.");
+            Debug.Log("Damage Negated. GooseMode Activated.");
             return;
         }
         
         if ((currentHealth -= amt) <= 0) {
             currentHealth = 0;
-            OnDeath.Invoke();
+            Death();
         }
         else {
             currentHealth -= amt;
         }
     }
-    public void Kill() {
+    // this is for dev mode: ******
+    public void FullHeal()
+    {
+        currentHealth = MAX_HEALTH;
+    }
+    // ******
+    public void InstaKill() {
         currentHealth = 0;
+        Death();
     }
     public void Death() {
         Debug.Log("Wow you suck. Get good");
         // OnDeath event stuff
+        OnDeath.Invoke();
     }
 }
