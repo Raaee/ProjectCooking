@@ -213,6 +213,24 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  drop:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9332893e-02fe-4ade-b34a-bb6c6677531a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  slotSelect:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fff59524-22e8-4651-a381-82fcc31bae29
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!212 &80679962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -339,7 +357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431f33dca37db24ea02202f17c796df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 80679961}
+  OnItemSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemDrop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &80679967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1def0e068ebf9f4fa0773efcafd9cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 
+  actions: {fileID: 0}
+  inventory: 000000000100000002000000
 --- !u!114 &80679968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,9 +389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
   currentHealth: 3
   godMode: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &728136788
 MonoBehaviour:
   m_ObjectHideFlags: 0
