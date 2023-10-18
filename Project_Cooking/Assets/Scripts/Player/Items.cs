@@ -1,0 +1,22 @@
+﻿public enum Items {
+    FLOUR,
+    DOUGH,
+    BREAD,
+    TOMATO,
+    SLICED_TOMATO,
+    TOMATO_PASTE,
+    CHEESE,
+    SHREDDED_CHEESE,
+    LETTUCE,
+    CHOPPED_LETTUCE,
+    EGG,
+    MILK,
+    BATTER,
+    SANDWICH,
+    PANCAKE,
+    PIZZA,
+    SALAD,
+    CHARCOAL,
+    KNIFE,
+    NONE
+}
