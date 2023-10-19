@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 /// <summary>
@@ -44,6 +45,7 @@ public class MainMenu : MonoBehaviour
 
     private void FadeInCanvasGroup(CanvasGroup cg)
     {
+        cg.gameObject.SetActive(true);
         cg.alpha = 0;
         cg.DOFade(1, fadeTime);
     }
@@ -51,7 +53,10 @@ public class MainMenu : MonoBehaviour
     private void FadeOutCanvasGroup(CanvasGroup cg)
     {
         cg.alpha = 1;
-        cg.DOFade(0, fadeTime);
+        cg.DOFade(0, fadeTime).OnComplete(() => {
+            cg.gameObject.SetActive(false);
+        }
+        );
     }
 
 }
