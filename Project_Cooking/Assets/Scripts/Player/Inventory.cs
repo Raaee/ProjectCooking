@@ -5,14 +5,17 @@ using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour  {
 
-    [SerializeField] private Actions actions;
+    private Actions actions;
+    private Input input;
     public List<Items> inventory = new List<Items>();
     private Items currentItem = Items.NONE;
     private int invIndex = 0;
-    
+    private const float SCROLL_THRESHOLD = 120f;
+    [SerializeField] private int MAX_INV_SPACES = 3;
     private void Awake() {
         actions = GetComponent<Actions>();
-        actions.OnItemSelect.AddListener(CurrItemSelected);
+        input = GetComponent<Input>();
+        actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
     }
 
@@ -29,22 +32,30 @@ public class Inventory : MonoBehaviour  {
     public void CurrItemDropped() {
         RemoveItem(currentItem);
     }
-    public void CurrItemSelected() {
-        if (GetComponent<Input>().slotSelect.ReadValue<float>() >= 120f) {
-            if ((invIndex + 1) > (inventory.Count - 1)) {
+    public void CurrItemSelectedFromScroll() {
+        // Scroll UP:
+        if (input.slotSelect.ReadValue<float>() >= SCROLL_THRESHOLD) {
+            invIndex++;
+            if (invIndex >= MAX_INV_SPACES) {
                 invIndex = 0;
-            } else {
-                invIndex++;
-            }
-        } else {
-            if ((invIndex - 1) < 0) {
-                invIndex = (inventory.Count - 1);
-            }
-            else {
-                invIndex--;
             }
         }
+
+        // Scroll DOWN:
+        if (input.slotSelect.ReadValue<float>() < SCROLL_THRESHOLD) {
+            invIndex--;
+            if (invIndex < 0) {
+                invIndex = MAX_INV_SPACES - 1;
+            }
+        }
+
         currentItem = inventory[invIndex];
         Debug.Log("Item Selected: " + currentItem); 
+    }
+    public Items GetCurrentItem() {
+        return currentItem;
+    }
+    public int GetCurrentItemIndex() {
+        return invIndex;
     }
 }
