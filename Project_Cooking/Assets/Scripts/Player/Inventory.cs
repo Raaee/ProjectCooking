@@ -7,11 +7,11 @@ public class Inventory : MonoBehaviour  {
 
     private Actions actions;
     private Input input;
+    [SerializeField] private int MAX_INV_SPACES = 3;
     public List<Items> inventory = new List<Items>();
     private Items currentItem = Items.NONE;
     private int invIndex = 0;
     private const float SCROLL_THRESHOLD = 120f;
-    [SerializeField] private int MAX_INV_SPACES = 3;
     private void Awake() {
         actions = GetComponent<Actions>();
         input = GetComponent<Input>();
@@ -20,7 +20,12 @@ public class Inventory : MonoBehaviour  {
     }
 
     public void AddItem(Items item) {
+        if (inventory.Count >= MAX_INV_SPACES) {
+            Debug.Log("Inventory is full.");
+            return;
+        }
         inventory.Add(item);
+        Debug.Log("Item added to inventory: " + item);
     }
     public void RemoveItem(Items item) {
         inventory[invIndex] = Items.NONE;
