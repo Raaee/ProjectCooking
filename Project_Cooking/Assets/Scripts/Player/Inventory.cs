@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour  {
     public List<Items> inventory = new List<Items>();
     private Items currentItem = Items.NONE;
     private int invIndex = 0;
+    private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
     private void Awake() {
         actions = GetComponent<Actions>();
@@ -20,12 +21,21 @@ public class Inventory : MonoBehaviour  {
     }
 
     public void AddItem(Items item) {
-        if (inventory.Count >= MAX_INV_SPACES) {
+        if (!CheckForSpace()) {
             Debug.Log("Inventory is full.");
             return;
         }
-        inventory.Add(item);
+        inventory[invSlotAvailable] = item;
         Debug.Log("Item added to inventory: " + item);
+    }
+    public bool CheckForSpace() {
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            if (inventory[i] == Items.NONE) {
+                invSlotAvailable = i;
+                return true;
+            }
+        }
+        return false;
     }
     public void RemoveItem(Items item) {
         inventory[invIndex] = Items.NONE;

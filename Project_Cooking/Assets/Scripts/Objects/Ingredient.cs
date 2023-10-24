@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour, IInteractable {
+public class Ingredient : Interactable {
 
     [SerializeField] private Items item;
     [SerializeField] private bool canInteract;
     [SerializeField] private bool isItem;
+    private Inventory inventory;
 
-    public bool CanInteract() {
+    private void Awake() {
+        inventory = FindObjectOfType<Inventory>();
+    }
+    public override bool CanInteract() {
         return canInteract;
     }
-    public bool IsItem() {
+    public override bool IsItem() {
         return isItem;
     }
-    public void Interact() {
-        Debug.Log(item);        
+    public override void Interact() {
+        inventory.AddItem(item);
+       // this.gameObject.SetActive(false);
     }
     public void SetItemType(Items itemType) {
         item = itemType;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InteractionDetector : MonoBehaviour {
 
-    public List<IInteractable> interactablesInRange = new List<IInteractable>();
+    public List<Interactable> interactablesInRange = new List<Interactable>();
     private Actions actions;
     private Inventory inventory;
 
@@ -21,24 +21,18 @@ public class InteractionDetector : MonoBehaviour {
             if (!interactable.CanInteract()) {
                 interactablesInRange.Remove(interactable);
             }
-            
-            if (interactable.IsItem()) {
-                Debug.Log("interactable: " + interactable);
-                // I need interactable object to be put into the inventory if it is an item.
-            }
-            
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        var interactable = collision.GetComponent<IInteractable>();
+        var interactable = collision.GetComponent<Interactable>();
 
         if (interactable != null && interactable.CanInteract()) {
             interactablesInRange.Add(interactable);
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
-        var interactable = collision.GetComponent<IInteractable>();
+        var interactable = collision.GetComponent<Interactable>();
         
         if (interactablesInRange.Contains(interactable)) {
             interactablesInRange.Remove(interactable);
