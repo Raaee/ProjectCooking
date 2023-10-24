@@ -9,8 +9,11 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] [Range(5f, 50f)] private float movementSpeed = 15f;
-
+    [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
     private Transform currentTarget;
+
+   
+
     private bool isChasing = false; //might need to change to switch/state machine to add features like dash and dodging 
 
 
@@ -25,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         if (!navMeshAgent)
             Debug.LogWarning("THIS GAMEOBJECT REQUIRES A NavMeshAgent");
 
-        var playerObj = FindObjectOfType<PlayerAnimControl>(); 
+        var playerObj = FindObjectOfType<Movement>(); 
         if(!playerObj)
             Debug.LogWarning("Is there a player object in this scene to chase??");
         currentTarget = playerObj.gameObject.transform;
@@ -51,12 +54,18 @@ public class EnemyMovement : MonoBehaviour
     public void ChaseTarget()
     {
         isChasing = true;
+        navMeshAgent.speed = movementSpeed;
     }
 
 
-    public void Stop()
+    public void StopChasing()
     {
         isChasing = false;
+    }
+
+    public void AggroChase()
+    {
+        navMeshAgent.speed = movementSpeed * aggroSpeedMultipler;
     }
 
     private void SetupMovementData()
