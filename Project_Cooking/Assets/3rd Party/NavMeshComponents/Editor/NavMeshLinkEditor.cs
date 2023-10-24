@@ -39,12 +39,12 @@ namespace NavMeshPlus.Editors.Components
             s_SelectedID = 0;
             s_SelectedPoint = -1;
 
-            NavMeshVisualizationSettings.showNavigation++;
+          //  NavMeshVisualizationSettings.showNavigation++;
         }
 
         void OnDisable()
         {
-            NavMeshVisualizationSettings.showNavigation--;
+           // NavMeshVisualizationSettings.showNavigation--;
         }
 
         static Matrix4x4 UnscaledLocalToWorldMatrix(Transform t)
@@ -163,7 +163,7 @@ namespace NavMeshPlus.Editors.Components
 
         [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
         static void RenderBoxGizmoNotSelected(NavMeshLink navLink, GizmoType gizmoType)
-        {
+        {/*
             if (NavMeshVisualizationSettings.showNavigation > 0)
             {
                 var color = s_HandleColor;
@@ -183,6 +183,7 @@ namespace NavMeshPlus.Editors.Components
             }
 
             Gizmos.DrawIcon(navLink.transform.position, "NavMeshLink Icon", true);
+            */
         }
 
         public void OnSceneGUI()

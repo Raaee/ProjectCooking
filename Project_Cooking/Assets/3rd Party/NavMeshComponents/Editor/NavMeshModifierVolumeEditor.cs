@@ -35,12 +35,12 @@ namespace NavMeshPlus.Editors.Components
             m_Center = serializedObject.FindProperty("m_Center");
             m_Size = serializedObject.FindProperty("m_Size");
 
-            NavMeshVisualizationSettings.showNavigation++;
+           // NavMeshVisualizationSettings.showNavigation++;
         }
 
         void OnDisable()
         {
-            NavMeshVisualizationSettings.showNavigation--;
+           // NavMeshVisualizationSettings.showNavigation--;
         }
 
         Bounds GetBounds()
@@ -91,6 +91,7 @@ namespace NavMeshPlus.Editors.Components
         [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
         static void RenderBoxGizmoNotSelected(NavMeshModifierVolume navModifier, GizmoType gizmoType)
         {
+            /*
             if (NavMeshVisualizationSettings.showNavigation > 0)
             {
                 var color = navModifier.enabled ? s_HandleColor : s_HandleColorDisabled;
@@ -107,6 +108,7 @@ namespace NavMeshPlus.Editors.Components
             }
 
             Gizmos.DrawIcon(navModifier.transform.position, "NavMeshModifierVolume Icon", true);
+            */
         }
 
         void OnSceneGUI()

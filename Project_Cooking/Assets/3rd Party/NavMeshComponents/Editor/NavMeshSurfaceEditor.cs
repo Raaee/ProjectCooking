@@ -77,12 +77,12 @@ namespace NavMeshPlus.Editors.Components
 #if NAVMESHCOMPONENTS_SHOW_NAVMESHDATA_REF
             m_NavMeshData = serializedObject.FindProperty("m_NavMeshData");
 #endif
-            NavMeshVisualizationSettings.showNavigation++;
+            //NavMeshVisualizationSettings.showNavigation++;
         }
 
         void OnDisable()
         {
-            NavMeshVisualizationSettings.showNavigation--;
+           // NavMeshVisualizationSettings.showNavigation--;
         }
 
         Bounds GetBounds()
@@ -310,11 +310,12 @@ namespace NavMeshPlus.Editors.Components
 
         [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
         static void RenderBoxGizmoNotSelected(NavMeshSurface navSurface, GizmoType gizmoType)
-        {
+        {/*
             if (NavMeshVisualizationSettings.showNavigation > 0)
                 RenderBoxGizmo(navSurface, gizmoType, false);
             else
                 Gizmos.DrawIcon(navSurface.transform.position, "NavMeshSurface Icon", true);
+            */
         }
 
         static void RenderBoxGizmo(NavMeshSurface navSurface, GizmoType gizmoType, bool selected)
