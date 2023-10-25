@@ -18,6 +18,12 @@ public class Inventory : MonoBehaviour  {
         input = GetComponent<Input>();
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
+        CreateStartingInv();
+    }
+    public void CreateStartingInv() {
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            inventory[i] = Items.NONE;
+        }
     }
 
     public void AddItem(Items item) {

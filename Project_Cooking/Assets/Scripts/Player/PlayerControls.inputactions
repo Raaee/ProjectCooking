@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "InteractHeld",
+                    "type": "Button",
+                    "id": "98af6ef8-02d7-48ee-b580-66ae42bc5f53",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -243,7 +252,7 @@
                     "name": "",
                     "id": "b2b1e0f0-c4d1-4603-8260-0379a11064c7",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Tap(pressPoint=0.3)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
@@ -293,6 +302,17 @@
                     "action": "SlotSelect",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "04073c20-a9b4-43f8-9dd9-9a86924eeb9f",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractHeld",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

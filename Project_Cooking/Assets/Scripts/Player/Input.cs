@@ -8,6 +8,7 @@ public class Input : MonoBehaviour  {
     public PlayerControls playerControls;
     public InputAction move;
     public InputAction interact;
+    public InputAction interactHeld;
     public InputAction attack;
     public InputAction drop;
     public InputAction slotSelect;
@@ -22,6 +23,9 @@ public class Input : MonoBehaviour  {
         interact = playerControls.Player.Interact;
         EnableInteract();
 
+        interactHeld = playerControls.Player.InteractHeld;
+        EnableInteractHeld();
+
         attack = playerControls.Player.Attack;
         EnableAttack();
 
@@ -34,9 +38,16 @@ public class Input : MonoBehaviour  {
     private void OnDisable() {
         DisableMovement();
         DisableInteract();
+        DisableInteractHeld();
         DisableAttack();
         DisableDrop();
         DisableSlotSelect();
+    }
+    public void EnableInteractHeld() {
+        interactHeld.Enable();
+    }
+    public void DisableInteractHeld() {
+        interactHeld.Disable();
     }
     public void EnableDrop() {
         drop.Enable();
