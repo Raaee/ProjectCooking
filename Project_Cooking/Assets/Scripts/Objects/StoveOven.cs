@@ -8,13 +8,13 @@ public class StoveOven : Interactable, IWorkstation {
     [SerializeField] protected Slider progressBar;
     protected bool isCharging;
 
-    public override void Interact() {
-        actions.OnInteractHeld_Started.AddListener(Charge);
-        actions.OnInteractHeld_Started.AddListener(StartProgressCharge);
-        actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
+    public  void Interact() {
+       // actions.OnInteractHeld_Started.AddListener(Charge);
+       // actions.OnInteractHeld_Started.AddListener(StartProgressCharge);
+       // actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
     }
     public void StartProgressCharge() {
-        StartCoroutine(ChargeBarRoutine());
+       // StartCoroutine(ChargeBarRoutine());
     }
     public void Charge() {
         isCharging = true;

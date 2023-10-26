@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour  {
 
+    public static Inventory instance { get; private set; }
+   
     private Actions actions;
     private Input input;
     [SerializeField] private int MAX_INV_SPACES = 3;
@@ -13,18 +15,16 @@ public class Inventory : MonoBehaviour  {
     private int invIndex = 0;
     private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
+
+
     private void Awake() {
+        Init();
         actions = GetComponent<Actions>();
         input = GetComponent<Input>();
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
-        CreateStartingInv();
     }
-    public void CreateStartingInv() {
-        for (int i = 0; i < MAX_INV_SPACES; i++) {
-            inventory[i] = Items.NONE;
-        }
-    }
+   
 
     public void AddItem(Items item) {
         if (!CheckForSpace()) {
@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour  {
         }
         return false;
     }
-    public void RemoveItem(Items item) {
+    public void RemoveItem() {
         inventory[invIndex] = Items.NONE;
         Debug.Log("**** ITEM DROPPED: " + currentItem);
     }
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour  {
         inventory.Clear();
     }
     public void CurrItemDropped() {
-        RemoveItem(currentItem);
+        RemoveItem();
     }
     public void CurrItemSelectedFromScroll() {
         // Scroll UP:
@@ -78,5 +78,21 @@ public class Inventory : MonoBehaviour  {
     }
     public int GetCurrentItemIndex() {
         return invIndex;
+    }
+    private void Init()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        for (int i = 0; i < MAX_INV_SPACES; i++)
+        {
+            inventory[i] = Items.NONE;
+        }
     }
 }
