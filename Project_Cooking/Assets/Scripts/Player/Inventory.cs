@@ -89,7 +89,6 @@ public class Inventory : MonoBehaviour  {
         {
             instance = this;
         }
-
         for (int i = 0; i < MAX_INV_SPACES; i++)
         {
             inventory[i] = Items.NONE;

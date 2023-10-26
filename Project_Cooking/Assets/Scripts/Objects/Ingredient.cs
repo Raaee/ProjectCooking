@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour, Interactable  {//stove. chopper, mixer, ingredients, cookbook 
+public class Ingredient : MonoBehaviour, IInteractable  {//stove. chopper, mixer, ingredients, cookbook 
 
     [SerializeField] private Items item;
 

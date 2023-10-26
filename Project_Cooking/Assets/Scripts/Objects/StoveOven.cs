@@ -2,39 +2,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoveOven : Interactable, IWorkstation {
+public class StoveOven : Workstation {
+    public override void OnInteractionComplete() {
+        // Use singleton Inventory.instance to do inventory stuff
 
-    [SerializeField] protected float interactProgress = 0f;
-    [SerializeField] protected Slider progressBar;
-    protected bool isCharging;
+        /*
+         * Inventory stuff is:
+         * - if inventory has THE combination of ingredients when interaction is complete,
+         * will remove those items and give the inventory the item that is created from the combination of the items.
+         * - else if the correct combination is not given, will remove items and give charcoal item.
+         */
 
-    public  void Interact() {
-       // actions.OnInteractHeld_Started.AddListener(Charge);
-       // actions.OnInteractHeld_Started.AddListener(StartProgressCharge);
-       // actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
+        // This override method will be on all children of the workstation.
+
+        Debug.Log("Inventory Stuff");
     }
-    public void StartProgressCharge() {
-       // StartCoroutine(ChargeBarRoutine());
-    }
-    public void Charge() {
-        isCharging = true;
-    }
-    public void UnCharge() {
-        isCharging = false;
-    }
-    public IEnumerator ChargeBarRoutine() {
-        Debug.LogWarning(progressBar.value);
-        while (isCharging) {
-            progressBar.value += 1.0f * Time.deltaTime;
-            yield return null;
-        }
-        while (!isCharging) {
-            progressBar.value -= 1.0f * Time.deltaTime;
-            yield return null;
-        }
-        // this keeps filling exponentially. i need it to be linear but brain cannot brain.
-    }    
-    // interact held started > increment progress charge
-    // if interact cancelled and progress charge != full, decrement charge
-    // else  if interact performed, charge = full
 }

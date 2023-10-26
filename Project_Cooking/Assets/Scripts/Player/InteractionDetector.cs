@@ -1,53 +1,47 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-
-
 public class InteractionDetector : MonoBehaviour {
 
-    public List<Interactable> interactablesInRange = new List<Interactable>();
-    public List<IWorkstation> workStationsInRange = new List<IWorkstation>();
+    public List<Workstation> workStationsInRange = new List<Workstation>();
+    public List<IInteractable> interactablesInRange = new List<IInteractable>();
     private Actions actions;
 
     private void Awake() {
         actions = GetComponent<Actions>();
         actions.OnInteract.AddListener(Interacted);
-        actions.OnInteractHeld_Started.AddListener(Worked);
     }
     public void Interacted() {
         if (interactablesInRange.Count > 0) {
-            var interactable = interactablesInRange[0];
+            IInteractable interactable = interactablesInRange[0];
             interactable.Interact();
         }
-    }
-    public void Worked() {
         if (workStationsInRange.Count > 0) {
-            var workstation = workStationsInRange[0];
-            workstation.Interact();
-            Debug.Log("workstation");
+            Workstation workstation = workStationsInRange[0];
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision) {
-        var interactable = collision.GetComponent<Interactable>();
-        var workstation = collision.GetComponent<IWorkstation>();
+        IInteractable interactable = collision.GetComponent<IInteractable>();
+        Workstation workstation = collision.GetComponent<Workstation>();
 
         if (interactable != null) {
             interactablesInRange.Add(interactable);
         }
         if (workstation != null) {
             workStationsInRange.Add(workstation);
+            workstation.AddListener();
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
-        var interactable = collision.GetComponent<Interactable>();
-        var workstation = collision.GetComponent<IWorkstation>();
+        IInteractable interactable = collision.GetComponent<IInteractable>();
+        Workstation workstation = collision.GetComponent<Workstation>();
 
         if (interactablesInRange.Contains(interactable)) {
             interactablesInRange.Remove(interactable);
         }
         if (workStationsInRange.Contains(workstation)) {
             workStationsInRange.Remove(workstation);
+            workstation.RemoveListener();
         }
     }
 }
