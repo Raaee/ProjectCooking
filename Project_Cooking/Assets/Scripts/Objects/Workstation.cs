@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 public abstract class Workstation : MonoBehaviour {
@@ -9,16 +10,19 @@ public abstract class Workstation : MonoBehaviour {
     [Header("DEBUG")]
     [SerializeField] protected InteractProgressState progressState;
     [SerializeField] protected bool isCharging;
+    private const float  PROGRESS_RATE = 1.0f;
+
+    public abstract void OnInteractionComplete();
 
     private void Awake() {
         progressState = InteractProgressState.IDLE;
         actions = FindObjectOfType<Actions>();
         actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
     }
-    public void RemoveListener() {
+    public void RemoveChargeListener() {
         actions.OnInteractHeld_Started.RemoveListener(Charge);
     }
-    public void AddListener() {
+    public void AddChargeListener() {
         actions.OnInteractHeld_Started.AddListener(Charge);
     }
     public void Charge() {
@@ -28,32 +32,46 @@ public abstract class Workstation : MonoBehaviour {
         isCharging = false;
     }
     private void Update() {
-        // Progress Bar State Machine:
-        switch (progressState) {
+        ProgressBarStateMachine();
+    }
+
+    private void ProgressBarStateMachine()
+    {
+        switch (progressState)
+        {
             case InteractProgressState.IDLE:
                 progressBar.value = progressBar.minValue;
-                if (isCharging) {
+                if (isCharging)
+                {
                     progressState = InteractProgressState.INCREASING;
                 }
                 break;
             case InteractProgressState.INCREASING:
-                if (progressBar.value >= progressBar.maxValue) {
+                if (progressBar.value >= progressBar.maxValue)
+                {
                     progressState = InteractProgressState.FULL;
-                } 
-                if (!isCharging) {
+                }
+                if (!isCharging)
+                {
                     progressState = InteractProgressState.DECREASING;
-                } else {
-                    progressBar.value += 1.0f * Time.deltaTime;
+                }
+                else
+                {
+                    progressBar.value += PROGRESS_RATE * Time.deltaTime;
                 }
                 break;
             case InteractProgressState.DECREASING:
-                if (progressBar.value <= progressBar.minValue) {
+                if (progressBar.value <= progressBar.minValue)
+                {
                     progressState = InteractProgressState.IDLE;
                 }
-                if (isCharging) {
+                if (isCharging)
+                {
                     progressState = InteractProgressState.INCREASING;
-                } else {
-                    progressBar.value -= 1.0f * Time.deltaTime;
+                }
+                else
+                {
+                    progressBar.value -= PROGRESS_RATE * Time.deltaTime;
                 }
                 break;
             case InteractProgressState.FULL:
@@ -63,8 +81,10 @@ public abstract class Workstation : MonoBehaviour {
                 break;
         }
     }
-    public abstract void OnInteractionComplete();
+
+  
 }
+
 public enum InteractProgressState { 
     IDLE,
     INCREASING,
@@ -72,3 +92,9 @@ public enum InteractProgressState {
     FULL
 }
 
+/* Pete cool and amazing coding logic 
+ * the 2 input actions we want are isKeyPressed, and the key released
+ * We only want to check/start isKeyPressed only when the player is interacting/vincinity of the workstation
+ * 
+ * already implemented is a working state machine 
+ */

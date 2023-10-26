@@ -33,31 +33,31 @@ public class Actions : MonoBehaviour    {
     public void Interact(InputAction.CallbackContext context) {
         // This is where u put what interacting does
         // Default keybind is E [Keyboard]
-        Debug.Log("Pressed");
+       // Debug.Log("Pressed");
         OnInteract.Invoke();        
     }
     public void InteractHeld_Started(InputAction.CallbackContext context) {
         // Default keybind is E [Keyboard]
        
-        Debug.Log("Held Started");
+       // Debug.Log("Held Started");
         OnInteractHeld_Started.Invoke();
     }
     public void InteractHeld_Cancelled(InputAction.CallbackContext context) {
         // Default keybind is E [Keyboard]
         
-        Debug.Log("Held Cancelled");
+       // Debug.Log("Held Cancelled");
         OnInteractHeld_Cancelled.Invoke();
     }
     public void InteractHeld_Performed(InputAction.CallbackContext context) {
         // Default keybind is E [Keyboard]
 
-        Debug.Log("Held Performed");
+       // Debug.Log("Held Performed");
         OnInteractHeld_Performed.Invoke();
     }
     public void Attack(InputAction.CallbackContext context) {
         // This is where u put what attacking does
         // Default keybind is Left Button [Mouse]
-        Debug.Log("Attack!");
+      
     }
     public void Drop(InputAction.CallbackContext context) {
         // This is where u put what dropping does

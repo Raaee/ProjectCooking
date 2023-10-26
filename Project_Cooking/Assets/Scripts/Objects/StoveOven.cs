@@ -15,6 +15,6 @@ public class StoveOven : Workstation {
 
         // This override method will be on all children of the workstation.
 
-        Debug.Log("Inventory Stuff");
+       // Debug.Log("Inventory Stuff");
     }
 }
