@@ -4,17 +4,23 @@ using UnityEngine.UI;
 
 public class StoveOven : Workstation {
     public override void OnInteractionComplete() {
-        // Use singleton Inventory.instance to do inventory stuff
 
-        /*
-         * Inventory stuff is:
-         * - if inventory has THE combination of ingredients when interaction is complete,
-         * will remove those items and give the inventory the item that is created from the combination of the items.
-         * - else if the correct combination is not given, will remove items and give charcoal item.
-         */
+        //play stove oven sound 
+        // play feedback 
 
-        // This override method will be on all children of the workstation.
+        //if player has [dough, tomato paste, shreded cheese] in any order in inventory 
+            //remove items from inventory 
+            //place into inventory pizza
+        //else
+            //REMOVE ITEMS FROM IVENTORY
+            //place into inventory charcoal 
 
-       // Debug.Log("Inventory Stuff");
+
+        //if player has the correect ingredients (in any order) 
+            //remove items from inventory 
+            //place into inventory pizza
+        //else
+            //REMOVE ITEMS FROM IVENTORY
+            //place into inventory charcoal 
     }
 }

@@ -10,7 +10,7 @@ public abstract class Workstation : MonoBehaviour {
     [Header("DEBUG")]
     [SerializeField] protected InteractProgressState progressState;
     [SerializeField] protected bool isCharging;
-    private const float  PROGRESS_RATE = 1.0f;
+    private const float PROGRESS_RATE = 1.0f;
 
     public abstract void OnInteractionComplete();
 

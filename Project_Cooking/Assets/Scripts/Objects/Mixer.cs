@@ -2,15 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mixer {
-
-    [SerializeField] protected float interactProgress = 0f;
-    [SerializeField] protected Slider progressBar;
-
-    public void Interact() {
-        Debug.Log("Mixer is done working.");
-    }
-    public void OnInteractionComplete() {
-
+public class Mixer : Workstation
+{
+    public override void OnInteractionComplete()
+    {
+        //if player has the correect ingredients (in any order) 
+            //remove items from inventory 
+            //place into inventory the result
+        //else
+            //REMOVE ITEMS FROM IVENTORY
+            //place into inventory charcoal 
     }
 }
