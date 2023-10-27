@@ -48,7 +48,9 @@ public class Inventory : MonoBehaviour  {
         Debug.Log("**** ITEM DROPPED: " + currentItem);
     }
     public void ClearInventory() {
-        inventory.Clear();
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            inventory[i] = Items.NONE;
+        }
     }
     public void CurrItemDropped() {
         RemoveItem();
@@ -89,9 +91,6 @@ public class Inventory : MonoBehaviour  {
         {
             instance = this;
         }
-        for (int i = 0; i < MAX_INV_SPACES; i++)
-        {
-            inventory[i] = Items.NONE;
-        }
+        ClearInventory();
     }
 }

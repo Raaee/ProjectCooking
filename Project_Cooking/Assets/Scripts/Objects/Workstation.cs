@@ -7,6 +7,7 @@ public abstract class Workstation : MonoBehaviour {
     [SerializeField] protected List<WorkstationRecipe> workstationRecipesSO;
     [SerializeField] protected Slider progressBar;
     private Actions actions;
+    protected bool hasAllIngredients = true;
 
     [Header("DEBUG")]
     [SerializeField] protected InteractProgressState progressState;
