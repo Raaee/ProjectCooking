@@ -17,6 +17,5 @@
     PIZZA,
     SALAD,
     CHARCOAL,
-    KNIFE,
     NONE
 }

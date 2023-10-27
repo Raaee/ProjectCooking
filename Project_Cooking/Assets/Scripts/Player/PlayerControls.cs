@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractHeld"",
+                    ""type"": ""Button"",
+                    ""id"": ""98af6ef8-02d7-48ee-b580-66ae42bc5f53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -265,7 +274,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b2b1e0f0-c4d1-4603-8260-0379a11064c7"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap(pressPoint=0.3)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
@@ -315,6 +324,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""SlotSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04073c20-a9b4-43f8-9dd9-9a86924eeb9f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold(duration=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""InteractHeld"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -905,6 +925,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_SlotSelect = m_Player.FindAction("SlotSelect", throwIfNotFound: true);
+        m_Player_InteractHeld = m_Player.FindAction("InteractHeld", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -983,6 +1004,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_SlotSelect;
+    private readonly InputAction m_Player_InteractHeld;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -992,6 +1014,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputAction @SlotSelect => m_Wrapper.m_Player_SlotSelect;
+        public InputAction @InteractHeld => m_Wrapper.m_Player_InteractHeld;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1016,6 +1039,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SlotSelect.started += instance.OnSlotSelect;
             @SlotSelect.performed += instance.OnSlotSelect;
             @SlotSelect.canceled += instance.OnSlotSelect;
+            @InteractHeld.started += instance.OnInteractHeld;
+            @InteractHeld.performed += instance.OnInteractHeld;
+            @InteractHeld.canceled += instance.OnInteractHeld;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1035,6 +1061,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SlotSelect.started -= instance.OnSlotSelect;
             @SlotSelect.performed -= instance.OnSlotSelect;
             @SlotSelect.canceled -= instance.OnSlotSelect;
+            @InteractHeld.started -= instance.OnInteractHeld;
+            @InteractHeld.performed -= instance.OnInteractHeld;
+            @InteractHeld.canceled -= instance.OnInteractHeld;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1222,6 +1251,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnSlotSelect(InputAction.CallbackContext context);
+        void OnInteractHeld(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
