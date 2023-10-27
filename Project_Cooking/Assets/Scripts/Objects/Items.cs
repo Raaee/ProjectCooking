@@ -1,4 +1,5 @@
 ﻿public enum Items {
+    NONE,
     FLOUR,
     DOUGH,
     BREAD,
@@ -16,6 +17,5 @@
     PANCAKE,
     PIZZA,
     SALAD,
-    CHARCOAL,
-    NONE
+    CHARCOAL
 }
