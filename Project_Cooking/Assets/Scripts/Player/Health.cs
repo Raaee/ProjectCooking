@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,14 +25,15 @@ public class Health : MonoBehaviour {
             Debug.Log("Damage Negated. GooseMode Activated.");
             return;
         }
-        
-        if ((currentHealth -= amt) <= 0) {
+
+        currentHealth -= amt;
+        Flash();
+
+        if (currentHealth <= 0) {
             currentHealth = 0;
             Death();
         }
-        else {
-            currentHealth -= amt;
-        }
+       
     }
     // this is for dev mode: ******
     public void FullHeal()
@@ -48,4 +50,20 @@ public class Health : MonoBehaviour {
         // OnDeath event stuff
         OnDeath.Invoke();
     }
+
+    public void Flash()
+    {
+        Material mat = GetComponent<Renderer>().material;
+
+        if(mat)
+        {
+            mat.DOFloat(1f, "_HitEffectBlend", .1f).SetEase(Ease.InOutBack).SetLoops(4, LoopType.Yoyo).OnComplete(() =>
+            {
+                mat.SetFloat("_HitEffectBlend", 0f);
+            });
+        }
+
+    }
+
+  
 }
