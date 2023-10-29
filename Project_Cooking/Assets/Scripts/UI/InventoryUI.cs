@@ -10,12 +10,15 @@ public class InventoryUI : MonoBehaviour {
 
     [SerializeField] private Color defaultBackgroundColor;
     [SerializeField] private Color selectedBackgroundColor;
+
+    public _AllIngredientsSO allIngredientsSO;
     private int index = 0;
     private void Awake()
     {
         if (!inventory)
             Debug.LogError("NO INVENTORY IN SCENE");
         inventory.OnCurrentItemChanged.AddListener(UpdateSelected);
+        inventory.OnInventoryChange.AddListener(UpdateInventoryUI);
     }
     private void Start()
     {
@@ -24,8 +27,24 @@ public class InventoryUI : MonoBehaviour {
 
     public void UpdateInventoryUI()
     {
-        // get the item type at this slot
-        //
+        
+        for (int i = 0; i < inventory.GetMaxInvSpace(); i++)
+        {
+            Items item = inventory.inventoryList[i];
+            //try to find it in the master ingredeintso list 
+            foreach (var ingredientSO in allIngredientsSO.ingredientSos)
+            {
+                if (item == ingredientSO.item)
+                {
+                    uiSlots[i].ItemImagePlaceholder.sprite = ingredientSO.normalSprite;
+                    return; 
+                }
+            }
+
+            //if the item is NONE or we didnt make a ingredient SO for it yet 
+            uiSlots[i].ItemImagePlaceholder.sprite = null;
+           
+        }
     }
     public void UpdateSelected() 
     {

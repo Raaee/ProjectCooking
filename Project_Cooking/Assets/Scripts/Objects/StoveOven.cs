@@ -32,7 +32,7 @@ public class StoveOven : Workstation {
     }
     public void CheckIfInventoryHasAll() {
         for(int i = 0; i < workstationRecipesSO[0].workstationInput.Count; i++) {
-            if (!Inventory.instance.inventory.Contains(workstationRecipesSO[0].workstationInput[i].item)) {
+            if (!Inventory.instance.inventoryList.Contains(workstationRecipesSO[0].workstationInput[i].item)) {
                 hasAllIngredients = false;
             }
         }

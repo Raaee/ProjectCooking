@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour  {
 
     [Header("REFERENCES")]
     public UnityEvent OnCurrentItemChanged;
+    public UnityEvent OnInventoryChange;
 
     private void Awake() {
         Init();
@@ -41,6 +42,7 @@ public class Inventory : MonoBehaviour  {
 
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
+        OnInventoryChange.Invoke();
     }
    
 
@@ -51,6 +53,7 @@ public class Inventory : MonoBehaviour  {
         }
         inventoryList[invSlotAvailable] = item;
         Debug.Log("Item added to inventory: " + item);
+        OnInventoryChange.Invoke();
     }
     public bool CheckForSpace() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {
@@ -64,10 +67,12 @@ public class Inventory : MonoBehaviour  {
     public void RemoveItem() {
         inventoryList[invIndex] = Items.NONE;
         Debug.Log("**** ITEM DROPPED: " + currentItem);
+        OnInventoryChange.Invoke();
+
     }
     public void ClearInventory() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {
-            inventory[i] = Items.NONE;
+            inventoryList[i] = Items.NONE;
         }
     }
     public void CurrItemDropped() {

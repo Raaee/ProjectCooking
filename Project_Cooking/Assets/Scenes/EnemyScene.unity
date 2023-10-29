@@ -1328,6 +1328,9 @@ MonoBehaviour:
   OnCurrentItemChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnInventoryChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &728136787
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,6 +3654,7 @@ MonoBehaviour:
   - {fileID: 625795804}
   defaultBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   selectedBackgroundColor: {r: 0.62091255, g: 0.754717, b: 0.61587757, a: 1}
+  allIngredientsSO: {fileID: 11400000, guid: e739f6159b4304741a0a42ef0941e1b4, type: 2}
 --- !u!1 &2083631171
 GameObject:
   m_ObjectHideFlags: 0
