@@ -10,7 +10,7 @@ public class Health : MonoBehaviour {
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private bool godMode = false;
     public UnityEvent OnDeath;
-
+    public UnityEvent OnHurt;
 
     public void Heal(int amt) {
         if ((currentHealth += amt) >= MAX_HEALTH) {
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour {
 
         currentHealth -= amt;
         Flash();
-
+        OnHurt.Invoke();
         if (currentHealth <= 0) {
             currentHealth = 0;
             Death();
@@ -46,7 +46,7 @@ public class Health : MonoBehaviour {
         Death();
     }
     private void Death() {
-        Debug.Log("Wow you suck. Get good");
+    
         // OnDeath event stuff
         OnDeath.Invoke();
     }
