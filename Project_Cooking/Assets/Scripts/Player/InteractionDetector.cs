@@ -1,17 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using System;
+/// <summary>
+///the worst code ever made, will continue to give me PTSD - Peterson N. 10/29/2023
+/// </summary>
 public class InteractionDetector : MonoBehaviour {
 
     public List<Workstation> workStationsInRange = new List<Workstation>();
     public List<IInteractable> interactablesInRange = new List<IInteractable>();
     private Actions actions;
     private Workstation currentWorkstation = null;
+   
 
     private void Awake() {
         actions = GetComponent<Actions>();
-        actions.OnInteract.AddListener(OnInteract);
+        actions.OnInteract.AddListener(OnInteract_InteractionDetect);
+       
     }
+
 
     private void Update()
     {
@@ -21,12 +28,11 @@ public class InteractionDetector : MonoBehaviour {
         }
     
     }
-    private void OnInteract() {
-
-
-
+    private void OnInteract_InteractionDetect() {
+ 
         if (interactablesInRange.Count > 0) {
             IInteractable interactable = interactablesInRange[0];
+           
             interactable.Interact();
         }
         if (workStationsInRange.Count > 0) {

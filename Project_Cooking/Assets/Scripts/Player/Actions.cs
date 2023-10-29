@@ -16,7 +16,6 @@ public class Actions : MonoBehaviour    {
     public UnityEvent OnInteractHeld_Started;
     public UnityEvent OnInteractHeld_Cancelled;
     public UnityEvent OnInteractHeld_Performed;
-
     private void Awake() {
         input = GetComponent<Input>();
     }
@@ -33,8 +32,11 @@ public class Actions : MonoBehaviour    {
     public void Interact(InputAction.CallbackContext context) {
         // This is where u put what interacting does
         // Default keybind is E [Keyboard]
-       // Debug.Log("Pressed");
-        OnInteract.Invoke();        
+        // Debug.Log("Pressed");
+       
+        OnInteract.Invoke();
+
+       
     }
     public void InteractHeld_Started(InputAction.CallbackContext context) {
         // Default keybind is E [Keyboard]

@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour  {
     private int invIndex = 0;
     private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
+  
 
 
     [Header("REFERENCES")]
@@ -47,15 +48,16 @@ public class Inventory : MonoBehaviour  {
    
 
     public void AddItem(Items item) {
-        if (!CheckForSpace()) {
+        if (!HasSpace()) {
             Debug.Log("Inventory is full.");
             return;
         }
         inventoryList[invSlotAvailable] = item;
-        Debug.Log("Item added to inventory: " + item);
+      
+        
         OnInventoryChange.Invoke();
     }
-    public bool CheckForSpace() {
+    public bool HasSpace() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {
             if (inventoryList[i] == Items.NONE) {
                 invSlotAvailable = i;
