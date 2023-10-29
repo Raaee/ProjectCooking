@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cbbf563adea37941b49fb8f865900cf, type: 3}
+  m_Name: SaladRecipe_Mixer
+  m_EditorClassIdentifier: 
+  workstationInput:
+  - {fileID: 11400000, guid: eb55d1219e68a8443a541f38d0f3e19f, type: 2}
+  - {fileID: 11400000, guid: 7417b0a00da7a9f46a1f76d0f4f78e9b, type: 2}
+  workstationOutput: {fileID: 11400000, guid: 09220fe4b0e330a4db80fb7dea0d5a48, type: 2}

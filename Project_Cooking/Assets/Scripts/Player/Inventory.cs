@@ -66,7 +66,9 @@ public class Inventory : MonoBehaviour  {
         Debug.Log("**** ITEM DROPPED: " + currentItem);
     }
     public void ClearInventory() {
-        inventoryList.Clear();
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            inventory[i] = Items.NONE;
+        }
     }
     public void CurrItemDropped() {
         RemoveItem();
