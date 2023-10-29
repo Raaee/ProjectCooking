@@ -6,18 +6,41 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour {
 
     [SerializeField] private Inventory inventory;
-    private Items currentItem;
-    private List<Image> images = new List<Image>();
-    private int currItemIndex = 0;
-    public void UpdateSelected() {
-        currItemIndex = inventory.GetCurrentItemIndex();
-        ShowItemSelected();
+    [SerializeField] public List<UISlotData> uiSlots;
+
+    [SerializeField] private Color defaultBackgroundColor;
+    [SerializeField] private Color selectedBackgroundColor;
+    private int index = 0;
+    private void Awake()
+    {
+        if (!inventory)
+            Debug.LogError("NO INVENTORY IN SCENE");
+        inventory.OnCurrentItemChanged.AddListener(UpdateSelected);
     }
-    public void ShowItemSelected() {
+    private void Start()
+    {
         DisableAllHighlighted();
-        images[currItemIndex].enabled = true;
     }
-    private void DisableAllHighlighted() {
-        // this is to disable all the highlighted slots for when the player changes current item with scroll
+
+    public void UpdateInventoryUI()
+    {
+        // get the item type at this slot
+        //
+    }
+    public void UpdateSelected() 
+    {
+        index = inventory.GetCurrentItemIndex();
+        DisableAllHighlighted();
+        uiSlots[index].ImageBackground.color = selectedBackgroundColor;
+        uiSlots[index].ArrowSelect.gameObject.SetActive(true);
+    }
+  
+    private void DisableAllHighlighted() 
+    { 
+        for(int i = 0; i < inventory.GetMaxInvSpace(); i++)
+        {
+            uiSlots[i].ImageBackground.color = defaultBackgroundColor;
+            uiSlots[i].ArrowSelect.gameObject.SetActive(false);
+        }
     }
 }
