@@ -22,12 +22,12 @@ public class Health : MonoBehaviour {
    
     public void TakeDamage(int amt) {
         if (godMode) {
-            Debug.Log("Damage Negated. GooseMode Activated.");
+         
             return;
         }
 
         currentHealth -= amt;
-        Flash();
+     
         OnHurt.Invoke();
         if (currentHealth <= 0) {
             currentHealth = 0;
@@ -35,12 +35,12 @@ public class Health : MonoBehaviour {
         }
        
     }
-    // this is for dev mode: ******
-    public void FullHeal()
+
+    public void ToggleGodMode()
     {
-        currentHealth = MAX_HEALTH;
+        godMode = !godMode;
     }
-    // ******
+   
     public void InstaKill() {
         currentHealth = 0;
         Death();
