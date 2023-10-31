@@ -19,7 +19,7 @@ public class StoveOven : Workstation {
         Inventory.instance.ClearInventory();
 
         if (hasAllIngredients) {
-            Inventory.instance.AddItem(workstationRecipesSO[0].workstationOutput.item);
+            Inventory.instance.AddItem(currentRecipe.workstationOutput.item);
         } else {
             Inventory.instance.AddItem(Items.CHARCOAL);
         }
@@ -31,8 +31,9 @@ public class StoveOven : Workstation {
         //place into inventory charcoal 
     }
     public void CheckIfInventoryHasAll() {
-        for(int i = 0; i < workstationRecipesSO[0].workstationInput.Count; i++) {
-            if (!Inventory.instance.inventory.Contains(workstationRecipesSO[0].workstationInput[i].item)) {
+        for(int i = 0; i < Inventory.instance.inventory.Count; i++) {
+            Debug.Log(currentRecipe.workstationInput[i].item);
+            if (!Inventory.instance.inventory.Contains(currentRecipe.workstationInput[i].item)) {
                 hasAllIngredients = false;
             }
         }

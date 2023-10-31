@@ -8,6 +8,7 @@ public abstract class Workstation : MonoBehaviour {
     [SerializeField] protected Slider progressBar;
     private Actions actions;
     protected bool hasAllIngredients = true;
+    protected WorkstationRecipe currentRecipe;
 
     [Header("DEBUG")]
     [SerializeField] protected InteractProgressState progressState;
@@ -20,6 +21,16 @@ public abstract class Workstation : MonoBehaviour {
         progressState = InteractProgressState.IDLE;
         actions = FindObjectOfType<Actions>();
         actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
+        SelectRandomRecipe();
+    }
+    private void Update() {
+        ProgressBarStateMachine();
+    }
+    public void SelectRandomRecipe() {
+        System.Random random = new System.Random();
+        int ranIndex = random.Next(0, workstationRecipesSO.Count);
+        currentRecipe = workstationRecipesSO[ranIndex];
+        Debug.Log(currentRecipe.workstationOutput.displayName);
     }
     public void RemoveChargeListener() {
         actions.OnInteractHeld_Started.RemoveListener(Charge);
@@ -33,10 +44,6 @@ public abstract class Workstation : MonoBehaviour {
     public void UnCharge() {
         isCharging = false;
     }
-    private void Update() {
-        ProgressBarStateMachine();
-    }
-
     private void ProgressBarStateMachine()
     {
         switch (progressState)
