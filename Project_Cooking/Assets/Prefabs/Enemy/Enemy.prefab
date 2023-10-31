@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 3735389359239968381}
   - component: {fileID: 1320014873897396913}
   - component: {fileID: 4438131534821836428}
+  - component: {fileID: 330244465279798701}
+  - component: {fileID: 6782630392302578691}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -74,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a6351c23f134144ba820d25335143b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 15
-  aggroSpeedMultipler: 1.372
+  movementSpeed: 11.3
+  aggroSpeedMultipler: 1.296
 --- !u!114 &184274246093717925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +189,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4692059, y: 2.8450513}
   m_EdgeRadius: 0
+--- !u!114 &330244465279798701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076171101915919661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 1
+  godMode: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHurt:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6782630392302578691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076171101915919661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea080678cb8f6de499c8ba08762589f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodDropPrefab: {fileID: 1487424979715607307, guid: 29d7b7ab9132a514cb00620148376967, type: 3}
 --- !u!1 &4672900325156435934
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +249,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6401555559691803010}

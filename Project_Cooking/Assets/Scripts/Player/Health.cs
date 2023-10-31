@@ -31,7 +31,7 @@ public class Health : MonoBehaviour {
         OnHurt.Invoke();
         if (currentHealth <= 0) {
             currentHealth = 0;
-            Death();
+            Die();
         }
        
     }
@@ -43,9 +43,9 @@ public class Health : MonoBehaviour {
    
     public void InstaKill() {
         currentHealth = 0;
-        Death();
+        Die();
     }
-    private void Death() {
+    private void Die() {
     
         // OnDeath event stuff
         OnDeath.Invoke();
