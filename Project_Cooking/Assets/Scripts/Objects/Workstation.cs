@@ -40,7 +40,7 @@ public abstract class Workstation : MonoBehaviour {
     }
     public void CheckIfInventoryHasAll() {
         foreach (WorkstationRecipe recipe in workstationRecipesSO) {
-            if (recipe.workstationInput.All(IngredientSO => Inventory.instance.inventory.Contains(IngredientSO.item))) {
+            if (recipe.workstationInput.All(IngredientSO => Inventory.instance.inventoryList.Contains(IngredientSO.item))) {
                 outputIngredient = recipe.workstationOutput.item;
                 hasAllIngredients = true;
             }
