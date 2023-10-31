@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public abstract class Workstation : MonoBehaviour {
 
+    [SerializeField] protected List<WorkstationRecipe> workstationRecipesSO;
     [SerializeField] protected Slider progressBar;
     private Actions actions;
+    protected bool hasAllIngredients = true;
 
     [Header("DEBUG")]
     [SerializeField] protected InteractProgressState progressState;

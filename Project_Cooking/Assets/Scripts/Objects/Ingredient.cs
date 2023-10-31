@@ -13,7 +13,7 @@ public class Ingredient : MonoBehaviour, IInteractable  {//stove. chopper, mixer
     public void Interact() {
         //add the item type to inventory
         Inventory.instance.AddItem(item);
-
+      
         //this.gameObject.SetActive(false); 
 
     }

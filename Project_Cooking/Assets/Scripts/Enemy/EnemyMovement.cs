@@ -57,6 +57,10 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.speed = movementSpeed;
     }
 
+    public void ToggleMovement() //for dev mode
+    {
+        isChasing = !isChasing;
+    }
 
     public void StopChasing()
     {

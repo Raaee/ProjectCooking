@@ -7,36 +7,59 @@ public class Inventory : MonoBehaviour  {
 
     public static Inventory instance { get; private set; }
    
-    private Actions actions;
-    private Input input;
+   
+
+   
     [SerializeField] private int MAX_INV_SPACES = 3;
-    public List<Items> inventory = new List<Items>();
+    public List<Items> inventoryList = new List<Items>();
     private Items currentItem = Items.NONE;
     private int invIndex = 0;
     private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
+  
 
+
+    [Header("REFERENCES")]
+    [SerializeField] private Actions actions;
+    [SerializeField] private Input input;
+
+
+    [Header("REFERENCES")]
+    public UnityEvent OnCurrentItemChanged;
+    public UnityEvent OnInventoryChange;
 
     private void Awake() {
         Init();
-        actions = GetComponent<Actions>();
-        input = GetComponent<Input>();
+
+        if (!actions)
+        {
+            actions = FindObjectOfType<Actions>();
+        }
+
+        if (!input)
+        {
+            input = FindObjectOfType<Input>();
+        }
+
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
+        OnInventoryChange.Invoke();
     }
    
 
     public void AddItem(Items item) {
-        if (!CheckForSpace()) {
+        if (!HasSpace()) {
             Debug.Log("Inventory is full.");
             return;
         }
-        inventory[invSlotAvailable] = item;
-        Debug.Log("Item added to inventory: " + item);
+        inventoryList[invSlotAvailable] = item;
+      
+        
+        OnInventoryChange.Invoke();
     }
-    public bool CheckForSpace() {
+    public bool HasSpace() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {
-            if (inventory[i] == Items.NONE) {
+            if (inventoryList[i] == Items.NONE) {
                 invSlotAvailable = i;
                 return true;
             }
@@ -44,11 +67,15 @@ public class Inventory : MonoBehaviour  {
         return false;
     }
     public void RemoveItem() {
-        inventory[invIndex] = Items.NONE;
+        inventoryList[invIndex] = Items.NONE;
         Debug.Log("**** ITEM DROPPED: " + currentItem);
+        OnInventoryChange.Invoke();
+
     }
     public void ClearInventory() {
-        inventory.Clear();
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            inventoryList[i] = Items.NONE;
+        }
     }
     public void CurrItemDropped() {
         RemoveItem();
@@ -70,14 +97,18 @@ public class Inventory : MonoBehaviour  {
             }
         }
 
-        currentItem = inventory[invIndex];
-        Debug.Log("Item Selected: " + currentItem); 
+        currentItem = inventoryList[invIndex];
+        OnCurrentItemChanged.Invoke();
     }
     public Items GetCurrentItem() {
         return currentItem;
     }
     public int GetCurrentItemIndex() {
         return invIndex;
+    }
+    public int GetMaxInvSpace()
+    {
+        return MAX_INV_SPACES;
     }
     private void Init()
     {
@@ -89,9 +120,11 @@ public class Inventory : MonoBehaviour  {
         {
             instance = this;
         }
+
+       
         for (int i = 0; i < MAX_INV_SPACES; i++)
         {
-            inventory[i] = Items.NONE;
+            inventoryList.Add(Items.NONE);
         }
     }
 }

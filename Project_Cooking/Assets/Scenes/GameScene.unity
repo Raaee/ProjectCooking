@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_INV_SPACES: 3
-  inventory: 
+  inventory: 020000000600000008000000
 --- !u!114 &80679968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209418068aa16d54d92afec7e7b3fca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workstationRecipesSO:
+  - {fileID: 11400000, guid: d75567c32e3b9e44194edee8fcabd0d8, type: 2}
   progressBar: {fileID: 1334020308}
   progressState: 0
   isCharging: 0

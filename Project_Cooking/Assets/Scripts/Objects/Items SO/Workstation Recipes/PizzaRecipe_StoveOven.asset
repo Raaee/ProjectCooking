@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cbbf563adea37941b49fb8f865900cf, type: 3}
+  m_Name: PizzaRecipe_StoveOven
+  m_EditorClassIdentifier: 
+  workstationInput:
+  - {fileID: 11400000, guid: 42c26227a14aedc429191905fb861565, type: 2}
+  - {fileID: 11400000, guid: c56589b7ff6889e4db06799ecf2cd215, type: 2}
+  - {fileID: 11400000, guid: 923c33e84135d014d8814ad3d2b03b60, type: 2}
+  workstationOutput: {fileID: 11400000, guid: 804b3febe6674fb49a608149df506ec0, type: 2}

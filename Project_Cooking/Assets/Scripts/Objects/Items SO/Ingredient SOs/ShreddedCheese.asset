@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35672d186adaf7947ba5f0931780aeab, type: 3}
+  m_Name: ShreddedCheese
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  normalSprite: {fileID: -1022552942, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
+  highlightedSprite: {fileID: 789844515, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
+  displayName: Shredded Cheese
+  item: 8
