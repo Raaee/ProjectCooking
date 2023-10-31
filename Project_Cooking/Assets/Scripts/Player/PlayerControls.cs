@@ -274,7 +274,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b2b1e0f0-c4d1-4603-8260-0379a11064c7"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Tap(pressPoint=0.3)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",

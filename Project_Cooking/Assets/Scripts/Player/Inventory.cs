@@ -16,7 +16,6 @@ public class Inventory : MonoBehaviour  {
     private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
 
-
     private void Awake() {
         Init();
         actions = GetComponent<Actions>();
@@ -24,8 +23,6 @@ public class Inventory : MonoBehaviour  {
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
     }
-   
-
     public void AddItem(Items item) {
         if (!CheckForSpace()) {
             Debug.Log("Inventory is full.");

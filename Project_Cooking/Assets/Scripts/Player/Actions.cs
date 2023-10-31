@@ -33,13 +33,13 @@ public class Actions : MonoBehaviour    {
     public void Interact(InputAction.CallbackContext context) {
         // This is where u put what interacting does
         // Default keybind is E [Keyboard]
-       // Debug.Log("Pressed");
+        // Debug.Log("Pressed");
         OnInteract.Invoke();        
     }
     public void InteractHeld_Started(InputAction.CallbackContext context) {
         // Default keybind is E [Keyboard]
-       
-       // Debug.Log("Held Started");
+
+        // Debug.Log("Held Started");
         OnInteractHeld_Started.Invoke();
     }
     public void InteractHeld_Cancelled(InputAction.CallbackContext context) {
