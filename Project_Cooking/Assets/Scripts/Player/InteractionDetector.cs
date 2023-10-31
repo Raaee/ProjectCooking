@@ -13,9 +13,9 @@ public class InteractionDetector : MonoBehaviour {
 
     private void Awake() {
         actions = GetComponent<Actions>();
-        actions.OnInteract.AddListener(OnInteract);
+        actions.OnInteract.AddListener(OnInteract_InteractionDetect);
     }   
-    private void OnInteract() {
+    private void OnInteract_InteractionDetect() {
 
         if (interactablesInRange.Count > 0) {
             IInteractable interactable = interactablesInRange[0];
