@@ -16,7 +16,6 @@ public class Actions : MonoBehaviour    {
     public UnityEvent OnInteractHeld_Started;
     public UnityEvent OnInteractHeld_Cancelled;
     public UnityEvent OnInteractHeld_Performed;
-
     private void Awake() {
         input = GetComponent<Input>();
     }

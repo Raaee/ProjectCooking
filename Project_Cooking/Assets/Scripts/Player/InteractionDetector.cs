@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using System;
+/// <summary>
+///the worst code ever made, will continue to give me PTSD - Peterson N. 10/29/2023
+/// </summary>
 public class InteractionDetector : MonoBehaviour {
 
     public List<Workstation> workStationsInRange = new List<Workstation>();
@@ -15,6 +19,7 @@ public class InteractionDetector : MonoBehaviour {
 
         if (interactablesInRange.Count > 0) {
             IInteractable interactable = interactablesInRange[0];
+           
             interactable.Interact();
         }
     }
