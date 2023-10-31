@@ -7,35 +7,38 @@ public class StoveOven : Workstation {
 
         //play stove oven sound 
         //play feedback 
-
-
-        //if player has [dough, tomato paste, shreded cheese] in any order in inventory 
-        //remove items from inventory 
-        //place into inventory pizza
-        //else
-        //REMOVE ITEMS FROM IVENTORY
-        //place into inventory charcoal
-        CheckIfInventoryHasAll();
+        CheckIfInventoryHasAll2();
         Inventory.instance.ClearInventory();
 
         if (hasAllIngredients) {
-            Inventory.instance.AddItem(currentRecipe.workstationOutput.item);
+            //  Inventory.instance.AddItem(currentRecipe.workstationOutput.item);
+            Debug.Log("Correct Output Here");
         } else {
             Inventory.instance.AddItem(Items.CHARCOAL);
         }
-        //if player has the correect ingredients (in any order) 
-        //remove items from inventory 
-        //place into inventory pizza
-        //else
-        //REMOVE ITEMS FROM IVENTORY
-        //place into inventory charcoal 
+        hasAllIngredients = false;
     }
     public void CheckIfInventoryHasAll() {
         for(int i = 0; i < Inventory.instance.inventory.Count; i++) {
-            Debug.Log(currentRecipe.workstationInput[i].item);
             if (!Inventory.instance.inventory.Contains(currentRecipe.workstationInput[i].item)) {
                 hasAllIngredients = false;
             }
+        }
+    }
+
+    // WIP:
+    public void CheckIfInventoryHasAll2() {
+        for (int i = 0; i < workstationRecipesSO.Count; i++) {
+            for (int n = 0; n < workstationRecipesSO[i].workstationInput.Count; n++) {
+                if (!Inventory.instance.inventory.Contains(workstationRecipesSO[i].workstationInput[n].item)) {
+                    hasAllIngredients = false;
+                }
+                Debug.LogWarning(workstationRecipesSO[i].workstationInput[n].item);
+            }
+            Debug.LogError(hasAllIngredients);
+
+            if (hasAllIngredients)
+                return;
         }
     }
 }

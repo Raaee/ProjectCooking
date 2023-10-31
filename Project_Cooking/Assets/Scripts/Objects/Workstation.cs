@@ -14,14 +14,15 @@ public abstract class Workstation : MonoBehaviour {
     [SerializeField] protected InteractProgressState progressState;
     [SerializeField] protected bool isCharging;
     private const float PROGRESS_RATE = 1.0f;
-
+    public WorkstationRecipe specificRecipe;
+    public bool trueRandomRecipe = true;
     public abstract void OnInteractionComplete();
 
     private void Awake() {
         progressState = InteractProgressState.IDLE;
         actions = FindObjectOfType<Actions>();
         actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
-        SelectRandomRecipe();
+       // SelectRandomRecipe();
     }
     private void Update() {
         ProgressBarStateMachine();
@@ -29,7 +30,12 @@ public abstract class Workstation : MonoBehaviour {
     public void SelectRandomRecipe() {
         System.Random random = new System.Random();
         int ranIndex = random.Next(0, workstationRecipesSO.Count);
-        currentRecipe = workstationRecipesSO[ranIndex];
+
+        if (trueRandomRecipe)
+            currentRecipe = workstationRecipesSO[ranIndex];
+        else
+            currentRecipe = specificRecipe;
+
         Debug.Log(currentRecipe.workstationOutput.displayName);
     }
     public void RemoveChargeListener() {

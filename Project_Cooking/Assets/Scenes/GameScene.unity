@@ -1590,10 +1590,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workstationRecipesSO:
   - {fileID: 11400000, guid: d75567c32e3b9e44194edee8fcabd0d8, type: 2}
-  - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
+  - {fileID: 11400000, guid: 22073a66eadb0f74586d240f97b059f3, type: 2}
+  - {fileID: 11400000, guid: c7efea275a487fd4c88976ac537c7427, type: 2}
   progressBar: {fileID: 1334020308}
   progressState: 0
   isCharging: 0
+  specificRecipe: {fileID: 0}
+  trueRandomRecipe: 1
 --- !u!1 &1313186091
 GameObject:
   m_ObjectHideFlags: 0
