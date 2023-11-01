@@ -7,9 +7,6 @@ public class Inventory : MonoBehaviour  {
 
     public static Inventory instance { get; private set; }
    
-   
-
-   
     [SerializeField] private int MAX_INV_SPACES = 3;
     public List<Items> inventoryList = new List<Items>();
     private Items currentItem = Items.NONE;
@@ -17,12 +14,9 @@ public class Inventory : MonoBehaviour  {
     private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
   
-
-
     [Header("REFERENCES")]
     [SerializeField] private Actions actions;
     [SerializeField] private Input input;
-
 
     [Header("REFERENCES")]
     public UnityEvent OnCurrentItemChanged;
@@ -45,11 +39,9 @@ public class Inventory : MonoBehaviour  {
         actions.OnItemDrop.AddListener(CurrItemDropped);
         OnInventoryChange.Invoke();
     }
-   
-
     public void AddItem(Items item) {
         if (!HasSpace()) {
-            Debug.Log("Inventory is full.");
+            Debug.LogWarning("Inventory is full\nATTEMPTED TO ADD:" + item);
             return;
         }
         inventoryList[invSlotAvailable] = item;
@@ -70,7 +62,23 @@ public class Inventory : MonoBehaviour  {
         inventoryList[invIndex] = Items.NONE;
         Debug.Log("**** ITEM DROPPED: " + currentItem);
         OnInventoryChange.Invoke();
-
+    }
+    public void RemoveItem(Items item) {
+        int index = inventoryList.IndexOf(item);
+        if (index == -1) {
+            Debug.Log("Item not found in inventory.");
+        }
+        else {
+            inventoryList[index] = Items.NONE;
+        }
+    }
+    public bool IsEmpty() {
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            if (inventoryList[i] != Items.NONE) {
+                return false;
+            }
+        }
+        return true;
     }
     public void ClearInventory() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {

@@ -7,6 +7,5 @@ public class IngredientSO : ScriptableObject {
     public Sprite normalSprite;
     public Sprite highlightedSprite;
     public string displayName;
-    public Items item;
-    
+    public Items item;    
 }
