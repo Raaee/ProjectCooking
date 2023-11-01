@@ -48,7 +48,7 @@ public class DevMode
     [MenuItem("Dev Mode/Spawn Random Enemy")]
     public static void SpawnRandomEnemy()
     {
-        Debug.Log("plop, heres an enemy");
+     
         //find player and get its position 
         var player = GameObject.FindGameObjectWithTag("Player");
         if (!player)
@@ -75,6 +75,6 @@ public class DevMode
     [MenuItem("Dev Mode/Toggle Enemy movement")]
     public static void ToggleEnemyMovement()
     {
-        Debug.Log("Red light, green light! ");      
+        Debug.Log("Not implemented yet raeus. sucka ");      
     }
 }
