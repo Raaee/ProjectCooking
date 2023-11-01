@@ -26,14 +26,19 @@ public abstract class Workstation : MonoBehaviour {
         ProgressBarStateMachine();
     }
     public void OutputFromInteraction() {
-        CheckIfInventoryHasAll();
-        Inventory.instance.ClearInventory();
+        if (Inventory.instance.IsEmpty()) {
+            Debug.LogWarning("Your inventory is empty.");
+        } else {
+            CheckIfInventoryHasAll();
+            Inventory.instance.ClearInventory();
+        }
 
         if (hasAllIngredients) {
             Inventory.instance.AddItem(outputIngredient);
         }
         else {
             Inventory.instance.AddItem(Items.CHARCOAL);
+            Debug.LogError("Charcoal");
         }
 
         hasAllIngredients = false;

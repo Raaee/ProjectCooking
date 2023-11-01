@@ -19,7 +19,6 @@ public class InteractionDetector : MonoBehaviour {
 
         if (interactablesInRange.Count > 0) {
             IInteractable interactable = interactablesInRange[0];
-           
             interactable.Interact();
         }
     }

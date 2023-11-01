@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour  {
     }
     public void AddItem(Items item) {
         if (!HasSpace()) {
-            Debug.Log("Inventory is full.");
+            Debug.LogWarning("Inventory is full\nATTEMPTED TO ADD:" + item);
             return;
         }
         inventoryList[invSlotAvailable] = item;
@@ -62,7 +62,23 @@ public class Inventory : MonoBehaviour  {
         inventoryList[invIndex] = Items.NONE;
         Debug.Log("**** ITEM DROPPED: " + currentItem);
         OnInventoryChange.Invoke();
-
+    }
+    public void RemoveItem(Items item) {
+        int index = inventoryList.IndexOf(item);
+        if (index == -1) {
+            Debug.Log("Item not found in inventory.");
+        }
+        else {
+            inventoryList[index] = Items.NONE;
+        }
+    }
+    public bool IsEmpty() {
+        for (int i = 0; i < MAX_INV_SPACES; i++) {
+            if (inventoryList[i] != Items.NONE) {
+                return false;
+            }
+        }
+        return true;
     }
     public void ClearInventory() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {
