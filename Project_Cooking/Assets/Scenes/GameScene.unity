@@ -692,7 +692,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_INV_SPACES: 3
-  inventory: 000000000000000000000000
+  inventoryList: 
+  actions: {fileID: 0}
+  input: {fileID: 0}
+  OnCurrentItemChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInventoryChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &80679968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +716,9 @@ MonoBehaviour:
   currentHealth: 3
   godMode: 0
   OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHurt:
     m_PersistentCalls:
       m_Calls: []
 --- !u!70 &80679970
