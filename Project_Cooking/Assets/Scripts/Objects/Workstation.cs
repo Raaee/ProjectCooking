@@ -26,28 +26,23 @@ public abstract class Workstation : MonoBehaviour {
         ProgressBarStateMachine();
     }
     public void OutputFromInteraction() {
+        outputIngredient = Items.CHARCOAL;
+
         if (Inventory.instance.IsEmpty()) {
             Debug.LogWarning("Your inventory is empty.");
-        } else {
-            CheckIfInventoryHasAll();
-            Inventory.instance.ClearInventory();
+            return;
+            //This is for when the player interacts with a workstation while their inventory is empty:
+            //This is to prevent the production of coal farming.
         }
 
-        if (hasAllIngredients) {
-            Inventory.instance.AddItem(outputIngredient);
-        }
-        else {
-            Inventory.instance.AddItem(Items.CHARCOAL);
-            Debug.LogError("Charcoal");
-        }
-
-        hasAllIngredients = false;
+        CheckIfInventoryHasAll();
+        Inventory.instance.ClearInventory();
+        Inventory.instance.AddItem(outputIngredient);
     }
     public void CheckIfInventoryHasAll() {
         foreach (WorkstationRecipe recipe in workstationRecipesSO) {
             if (recipe.workstationInput.All(IngredientSO => Inventory.instance.inventoryList.Contains(IngredientSO.item))) {
                 outputIngredient = recipe.workstationOutput.item;
-                hasAllIngredients = true;
             }
         }
     }
