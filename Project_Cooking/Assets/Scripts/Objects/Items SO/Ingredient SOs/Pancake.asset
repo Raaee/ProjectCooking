@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pancake
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: 0}
-  highlightedSprite: {fileID: 0}
+  normalSprite: {fileID: -1157599698, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  highlightedSprite: {fileID: -2043515035, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Pancake
   item: 15

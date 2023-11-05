@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Salad
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: 1459053973, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
-  highlightedSprite: {fileID: 959232878, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
+  normalSprite: {fileID: 1937277732, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  highlightedSprite: {fileID: -1981400661, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Salad
   item: 17
