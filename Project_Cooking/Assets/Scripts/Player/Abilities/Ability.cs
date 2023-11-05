@@ -12,15 +12,21 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected int bloodCost;
     protected bool isPerformingAbility = false;
 
+
+
     //references 
     protected ProgressBar bloodProgressBar;
 
     public abstract void PerformAbility();
-
+    public abstract void OnAbilityEnd();
     public virtual void Awake()
     {
         bloodProgressBar = FindAnyObjectByType<ProgressBar>();
         if (!bloodProgressBar)
             Debug.LogError("Raeus broke the game in Ability class (cant find progress bar component)");
+    }
+    private void Update()
+    {
+        
     }
 }

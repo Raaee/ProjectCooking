@@ -9,10 +9,12 @@ public class SpeedAbility : Ability
 {
 
     private float timer = 0f;
-
+    [SerializeField][Range(1.01f, 4f)] private float speedMultiplier = 2f;
+    [SerializeField] private Movement playerMovement;
     public override void Awake()
     {
         base.Awake();
+        playerMovement = GetComponent<Movement>();
     }
     public override void PerformAbility()
     {
@@ -27,9 +29,7 @@ public class SpeedAbility : Ability
             return;
         }
 
-
         bloodProgressBar.Decrease(bloodCost);    
-
 
         //movement and attack speed increases for a set amount of time 
         isPerformingAbility = true;
@@ -55,11 +55,17 @@ public class SpeedAbility : Ability
 
     private void IncreaseSpeed()
     {
-
+        playerMovement.SpeedMode(speedMultiplier);
     }
 
     private void NormalSpeed()
     {
+        playerMovement.NormalSpeed();
 
+    }
+
+    public override void OnAbilityEnd()
+    {
+        throw new NotImplementedException();
     }
 }
