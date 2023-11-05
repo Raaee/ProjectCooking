@@ -842,6 +842,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAX_INV_SPACES: 3
   inventoryList: 
+  allIngredients:
+  - {fileID: 2465260756126829935, guid: af9ce219187169d49aaefe187b14a5ec, type: 3}
+  - {fileID: 2465260756126829935, guid: 4d425f744afb1a548bad21525526b1c2, type: 3}
+  - {fileID: 6085534217791716471, guid: 192617d5cc969f540b407ffaa90cdbcc, type: 3}
+  - {fileID: 2465260756126829935, guid: 46995c6f0f491f24aa88d510d2b3e1a8, type: 3}
+  - {fileID: 2465260756126829935, guid: 5527dd36a3bda2c4ebc8af7714362564, type: 3}
+  - {fileID: 6085534217791716471, guid: 2f5a74b86156d7a4cb3c449d9654f370, type: 3}
+  - {fileID: 2465260756126829935, guid: 67846aba7dd87384b9a6f7e1c681e9ca, type: 3}
+  - {fileID: 2465260756126829935, guid: f3f6a31006b23a649be226b4b77f0158, type: 3}
+  - {fileID: 2445797824960488353, guid: 83513a77e18125c4988eb9d0fe438c36, type: 3}
+  - {fileID: 2445797824960488353, guid: a201899c969ca5a4a8eec5d04d37f1b7, type: 3}
+  - {fileID: 2465260756126829935, guid: cdd3941bc4c62404e943c788f8ac31e8, type: 3}
+  - {fileID: 2465260756126829935, guid: 3582cca0c700db140872e9b410286a73, type: 3}
+  - {fileID: 2465260756126829935, guid: 11397549bbee0094ba3bacb69957d158, type: 3}
+  - {fileID: 2465260756126829935, guid: a267465ac1bba1d4e9335b17c142b63c, type: 3}
+  - {fileID: 2465260756126829935, guid: 8bc07e9121a941e46be97e41a1f7985d, type: 3}
+  - {fileID: 2465260756126829935, guid: 4bc732e82bbe518459a441e8a115cc9b, type: 3}
+  - {fileID: 2465260756126829935, guid: 577574854636e0249b1e26119b0ffcb5, type: 3}
+  - {fileID: 2465260756126829935, guid: 48f4da2af46068247b4d7eb6d5f58e1a, type: 3}
   actions: {fileID: 80679966}
   input: {fileID: 80679961}
   OnCurrentItemChanged:
