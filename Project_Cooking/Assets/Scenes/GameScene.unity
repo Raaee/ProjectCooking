@@ -421,9 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 80679961}
   rb: {fileID: 80679960}
-  topSpeed: 10
-  accelerationRate: 50
-  decelerationRate: 250
+  moveSpeed: 10
 --- !u!114 &80679966
 MonoBehaviour:
   m_ObjectHideFlags: 0
