@@ -34,7 +34,7 @@ public class AutomaticPickup : MonoBehaviour
         else
         {
             if (progressBar)
-                progressBar.increase(3);
+                progressBar.Increase(3);
             Destroy(this.gameObject);
 
         }

@@ -8,10 +8,13 @@ public class Movement : MonoBehaviour   {
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private float moveSpeed = 30f;
-    //[SerializeField] private float accelerationRate = 16.0f;
-    //[SerializeField] private float decelerationRate = 20f;
+    private float currentSpeed = 0f;
     private Vector2 moveDirection = Vector2.zero;
 
+    private void Start()
+    {
+        SaveNormalSpeed();
+    }
     private void Update() {
         moveDirection = input.move.ReadValue<Vector2>();
     }
@@ -21,6 +24,20 @@ public class Movement : MonoBehaviour   {
         } else {
             rb.velocity = Vector2.zero;
         }
+    }
+
+    private void SaveNormalSpeed()
+    {
+        currentSpeed = moveSpeed;
+    }
+
+    public void SpeedMode(float speedMultiplier)
+    {
+        moveSpeed *= speedMultiplier;
+    }
+    public void NormalSpeed()
+    {
+        moveSpeed = currentSpeed;
     }
 
 }
