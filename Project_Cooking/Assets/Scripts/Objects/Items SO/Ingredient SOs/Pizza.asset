@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pizza
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: 1243970326, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
-  highlightedSprite: {fileID: 1734543667, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
+  normalSprite: {fileID: 1710593021, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  highlightedSprite: {fileID: 566109144, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Pizza
   item: 16

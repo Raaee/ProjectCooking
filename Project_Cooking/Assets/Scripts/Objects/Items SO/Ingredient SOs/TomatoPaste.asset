@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TomatoPaste
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: 1501911438, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
-  highlightedSprite: {fileID: -1872791500, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
+  normalSprite: {fileID: -1583422997, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  highlightedSprite: {fileID: 1874344207, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Tomato Paste
   item: 6

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Charcoal
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: 0}
-  highlightedSprite: {fileID: 0}
+  normalSprite: {fileID: -42303115, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  highlightedSprite: {fileID: -1886941885, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Charcoal
   item: 18

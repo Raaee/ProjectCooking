@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShreddedCheese
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: -1022552942, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
-  highlightedSprite: {fileID: 789844515, guid: 8c1ba686bd6536f43aa6f7e031ae56e6, type: 3}
+  normalSprite: {fileID: -1560342826, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  highlightedSprite: {fileID: 636467932, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Shredded Cheese
   item: 8
