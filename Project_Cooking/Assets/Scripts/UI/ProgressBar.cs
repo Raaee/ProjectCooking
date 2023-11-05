@@ -28,8 +28,17 @@ public class ProgressBar : MonoBehaviour
         mask.fillAmount = fillAmt;
     }
 
-    public void increase(int amtToAdd)
+    public void Increase(int amtToAdd)
     {
         current += amtToAdd;
+    }
+
+    public int GetCurrentBarAmt()
+    {
+        return current;
+    }
+    public void Decrease(int amt)
+    {
+        current -= amt;
     }
 }

@@ -37,10 +37,15 @@ public class Movement : MonoBehaviour   {
             if (Vector2.Dot(rb.velocity, decelerationVector) < -5f) {
                 rb.velocity = Vector2.zero;
             }
-        }
-        
+        }        
 
-        
     }
+
+    private void SaveNormalSpeed()
+    {
+
+    }
+
+
 
 }
