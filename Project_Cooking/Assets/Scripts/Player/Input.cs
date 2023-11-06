@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Input : MonoBehaviour  {
 
+    [Header("Player Inputs")]
     public PlayerControls playerControls;
     public InputAction move;
     public InputAction interact;
@@ -13,6 +14,10 @@ public class Input : MonoBehaviour  {
     public InputAction drop;
     public InputAction slotSelect;
 
+    [Header("Ability Inputs")]
+    public InputAction speedAbilityIA;
+    public InputAction healAbilityIA;
+    public InputAction screechAbilityIA;
     private void Awake() {
         playerControls = new PlayerControls();
     }
@@ -34,6 +39,15 @@ public class Input : MonoBehaviour  {
 
         slotSelect = playerControls.Player.SlotSelect;
         EnableSlotSelect();
+
+        speedAbilityIA = playerControls.Player.SpeedAbility;
+        EnableSpeedAbility();
+
+        healAbilityIA = playerControls.Player.HealAbility;
+        EnableHealAbility();
+
+        screechAbilityIA = playerControls.Player.ScreechAbility;
+        EnableScreechAbility();
     }
     private void OnDisable() {
         DisableMovement();
@@ -42,6 +56,9 @@ public class Input : MonoBehaviour  {
         DisableAttack();
         DisableDrop();
         DisableSlotSelect();
+        DisableSpeedAbility();
+        DisableHealAbility();
+        DisableScreechAbility();
     }
     public void EnableInteractHeld() {
         interactHeld.Enable();
@@ -78,5 +95,23 @@ public class Input : MonoBehaviour  {
     }
     public void DisableMovement() {
         move.Disable();
+    }
+    public void DisableSpeedAbility() {
+        speedAbilityIA.Disable();
+    }
+    public void DisableHealAbility() {
+        healAbilityIA.Disable();
+    }
+    public void DisableScreechAbility() {
+        screechAbilityIA.Disable();
+    }
+    public void EnableSpeedAbility() {
+        speedAbilityIA.Enable();
+    }
+    public void EnableHealAbility() {
+        healAbilityIA.Enable();
+    }
+    public void EnableScreechAbility() {
+        screechAbilityIA.Enable();
     }
 }

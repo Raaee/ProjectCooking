@@ -15,7 +15,12 @@ public class Actions : MonoBehaviour    {
     public UnityEvent OnInteract;
     public UnityEvent OnInteractHeld_Started;
     public UnityEvent OnInteractHeld_Cancelled;
-    public UnityEvent OnInteractHeld_Performed;
+
+    [Header("Ability Events")]
+    public UnityEvent OnSpeed;
+    public UnityEvent OnHeal;
+    public UnityEvent OnScreech;
+
     private void Awake() {
         input = GetComponent<Input>();
     }
@@ -23,12 +28,13 @@ public class Actions : MonoBehaviour    {
         input.interact.performed += Interact;
         input.interactHeld.started += InteractHeld_Started;
         input.interactHeld.canceled += InteractHeld_Cancelled;
-        input.interactHeld.performed += InteractHeld_Performed;
         input.attack.performed += Attack;
         input.drop.performed += Drop;
         input.slotSelect.performed += SlotSelect;
+        input.speedAbilityIA.performed += ActivateSpeedAbility;
+        input.healAbilityIA.performed += ActivateHealAbility;
+        input.screechAbilityIA.performed += ActivateScreechAbility;
     }
-
     public void Interact(InputAction.CallbackContext context) {
         // This is where u put what interacting does
         // Default keybind is E [Keyboard]
@@ -47,16 +53,19 @@ public class Actions : MonoBehaviour    {
        // Debug.Log("Held Cancelled");
         OnInteractHeld_Cancelled.Invoke();
     }
-    public void InteractHeld_Performed(InputAction.CallbackContext context) {
-        // Default keybind is E [Keyboard]
-
-       // Debug.Log("Held Performed");
-        OnInteractHeld_Performed.Invoke();
-    }
     public void Attack(InputAction.CallbackContext context) {
         // This is where u put what attacking does
         // Default keybind is Left Button [Mouse]
-      
+  
+    }
+    public void ActivateSpeedAbility(InputAction.CallbackContext context) {
+        OnSpeed.Invoke();
+    }
+    public void ActivateHealAbility(InputAction.CallbackContext context) {
+        OnHeal.Invoke();
+    }
+    public void ActivateScreechAbility(InputAction.CallbackContext context) {
+        OnScreech.Invoke();
     }
     public void Drop(InputAction.CallbackContext context) {
         // This is where u put what dropping does

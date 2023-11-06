@@ -5,67 +5,35 @@ using UnityEngine;
 /// <summary>
 /// vampire chef go brrrr
 /// </summary>
-public class SpeedAbility : Ability
-{
+public class SpeedAbility : Ability {
+    // Default keybind: E [Keyboard]
 
-    private float timer = 0f;
-    [SerializeField][Range(1.01f, 4f)] private float speedMultiplier = 2f;
-    [SerializeField] private Movement playerMovement;
-    public override void Awake()
-    {
+    [SerializeField] [Range(1.01f, 4f)] private float speedMultiplier = 2f;
+    private Movement playerMovement;
+    public override void Awake()    {
         base.Awake();
         playerMovement = GetComponent<Movement>();
+        actions.OnSpeed.AddListener(PerformAbility);
     }
-    public override void PerformAbility()
-    {
-        //check if amount avaible 
-        if (isPerformingAbility == true)
-            return;
-
-
-        if (bloodProgressBar.GetCurrentBarAmt() < bloodCost)
-        {
-            Debug.Log("Not Enough blood for speed ability");
-            return;
-        }
-
-        bloodProgressBar.Decrease(bloodCost);    
-
-        //movement and attack speed increases for a set amount of time 
-        isPerformingAbility = true;
-        IncreaseSpeed();
-    }
-
-   
-    private void Update()
-    {
-        if(isPerformingAbility)
-        {
-            timer += Time.deltaTime;
-        }
-       
-
-        if (timer >= abilityDuration)
-        {
-            timer = 0f;
-            isPerformingAbility = false;
-            NormalSpeed();
-        }
-    }
-
-    private void IncreaseSpeed()
-    {
+    private void IncreaseSpeed()    {
         playerMovement.SpeedMode(speedMultiplier);
     }
 
-    private void NormalSpeed()
-    {
+    private void NormalSpeed()  {
         playerMovement.NormalSpeed();
+    }
+    public override void OnAbilityStart() {
+        Debug.Log("ZOOOMM!");
+        IncreaseSpeed();
+    }
+    public override void OnAbilityEnd() {
+            NormalSpeed();
 
     }
-
-    public override void OnAbilityEnd()
-    {
-        throw new NotImplementedException();
+    public override void OnNotEnoughBlood() {
+        Debug.Log("Not Enough blood for SPEED");
+    }
+    public override void OnCantPerform() {
+        Debug.Log("Catch your breath first");
     }
 }
