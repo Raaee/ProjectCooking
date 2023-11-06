@@ -8,10 +8,9 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] private Inventory inventory;
     [SerializeField] public List<UISlotData> uiSlots;
 
-    [SerializeField] private Color defaultBackgroundColor;
-    [SerializeField] private Color selectedBackgroundColor;
-
     public _AllIngredientsSO allIngredientsSO;
+
+    public List<Sprite> uiSlotSelectionSprites; //0 is empty, 1 is highlighted. "BuT PeTe tHaTs hArdCodIng" - Raeus
     private int index = 0;
     private void Awake()
     {
@@ -24,6 +23,7 @@ public class InventoryUI : MonoBehaviour {
     {
        
         DisableAllHighlighted();
+        DisableAllImagePlaceholder();
     }
 
     public void UpdateInventoryUI()
@@ -36,9 +36,13 @@ public class InventoryUI : MonoBehaviour {
             //try to find it in the master ingredeintso list 
             foreach (var ingredientSO in allIngredientsSO.ingredientSos)
             {
+                if(item == Items.NONE)
+                {
+                    //skip to the end
+                    break;
+                }
                 if (item == ingredientSO.item)
                 {
-                   
                     uiSlots[i].ItemImagePlaceholder.gameObject.SetActive(true);
                     uiSlots[i].ItemImagePlaceholder.sprite = ingredientSO.normalSprite;
                     found = true;
@@ -49,42 +53,43 @@ public class InventoryUI : MonoBehaviour {
             //if the item is NONE or we didnt make a ingredient SO for it yet 
             if (!found)
             {
+              
                 uiSlots[i].ItemImagePlaceholder.sprite = null;
                 uiSlots[i].ItemImagePlaceholder.gameObject.SetActive(false);
             }
             
-         
-
-
         }
     }
     public void UpdateSelected() 
     {
-        index = inventory.GetCurrentItemIndex();
-       
+        index = inventory.GetCurrentItemIndex();    
         var itemAtIndex = inventory.GetCurrentItem();
         DisableAllHighlighted();
 
-        if (itemAtIndex == Items.NONE)
-        {
-            uiSlots[index].ItemImagePlaceholder.gameObject.SetActive(false);
-        }
-        else
-            uiSlots[index].ItemImagePlaceholder.gameObject.SetActive(true);
+        uiSlots[index].ImageBackground.sprite = uiSlotSelectionSprites[1];
 
 
-       
-        uiSlots[index].ImageBackground.color = selectedBackgroundColor;
-        uiSlots[index].ArrowSelect.gameObject.SetActive(true);
-      
     }
   
     private void DisableAllHighlighted() 
-    { 
-        for(int i = 0; i < inventory.GetMaxInvSpace(); i++)
+    {
+        
+        foreach (var uiSlot in uiSlots)
         {
-            uiSlots[i].ImageBackground.color = defaultBackgroundColor;
-            uiSlots[i].ArrowSelect.gameObject.SetActive(false);
+            uiSlot.ImageBackground.sprite = uiSlotSelectionSprites[0];
+          
         }
+     
+    }
+
+    private void DisableAllImagePlaceholder()
+    {
+
+        foreach (var uiSlot in uiSlots)
+        {
+            uiSlot.ItemImagePlaceholder.gameObject.SetActive(false);
+           
+        }
+
     }
 }
