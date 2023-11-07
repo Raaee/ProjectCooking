@@ -8,8 +8,8 @@ using UnityEngine;
 public class HeartsUI : MonoBehaviour
 {
     public List<GameObject> heartSlots;
-    private int index = 0;
-    private int max = 0;
+   // private int index = 0;
+    //private int max = 0;
     [SerializeField] private Health health;
     private void Awake()
     {

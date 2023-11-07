@@ -7,5 +7,5 @@ public class UISlotData : MonoBehaviour
 {
     public Image ImageBackground;
     public Image ItemImagePlaceholder;
-    public Image ArrowSelect;
+    
 }

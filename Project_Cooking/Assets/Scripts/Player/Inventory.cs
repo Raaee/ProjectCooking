@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour {
 
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
-        OnInventoryChange.Invoke();
+       
     }
     public bool AddItem(Items item) {
         if (!HasSpace()) {
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour {
             return false;
         }
         inventoryList[invSlotAvailable] = item;
-        
+        Debug.Log("How many times was I called? in add item");
         OnInventoryChange.Invoke();
         return true;
     }
