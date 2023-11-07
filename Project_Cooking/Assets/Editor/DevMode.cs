@@ -77,4 +77,20 @@ public class DevMode
     {
         Debug.Log("Not implemented yet raeus. sucka ");      
     }
+
+    [MenuItem("Dev Mode/BAT MODE!!")]
+    public static void ToggleBatMode()
+    {
+        PlayerAnimation playerAnim = GameObject.FindObjectOfType<PlayerAnimation>();
+        if (!playerAnim)
+            return;
+
+        bool isInBatMode = playerAnim.GetIsInBatMode();
+        isInBatMode = !isInBatMode;
+
+        if (isInBatMode)
+            playerAnim.EnableBatMode();
+        else
+            playerAnim.EnablePlayerMode();
+    }
 }
