@@ -622,12 +622,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1463851054, guid: 5001b096f2e2e444793c9d7bf9e1048a, type: 3}
+  m_Sprite: {fileID: 771979491, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.31, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -732,6 +732,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dedc02b7f2ac824599bc7a9c4ee85c0, type: 2}
   - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
   progressBar: {fileID: 7409549010394928752}
+  workstationSO: {fileID: 11400000, guid: 585f8da34bad3f04ea6058aa31f09de6, type: 2}
   progressState: 0
   isCharging: 0
 --- !u!1 &7100843447342894962
