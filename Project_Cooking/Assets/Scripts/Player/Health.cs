@@ -13,13 +13,13 @@ public class Health : MonoBehaviour {
     public UnityEvent OnHurt;
 
     public void Heal(int amt) {
-        if ((currentHealth += amt) >= MAX_HEALTH) {
+        if ((currentHealth + amt) >= MAX_HEALTH) {
             currentHealth = MAX_HEALTH;
         } else {
             currentHealth += amt;
         }
     }
-   
+
     public void TakeDamage(int amt) {
         if (godMode) {
          

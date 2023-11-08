@@ -80,6 +80,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpeedAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ac82f6c-9234-469c-8885-c95abcfecd7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HealAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""59b5a865-cca1-469b-856e-07b97429f333"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScreechAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""4517cee3-6ee8-4262-abc1-4395b9b1ba17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +360,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""InteractHeld"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3685b5e3-af22-4576-a1cc-0dba986c0445"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SpeedAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1741a799-d6ed-48ce-8b2a-327c0466407e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""HealAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58202aef-d931-4bd2-840b-e27cdc4595ca"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ScreechAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -926,6 +986,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_SlotSelect = m_Player.FindAction("SlotSelect", throwIfNotFound: true);
         m_Player_InteractHeld = m_Player.FindAction("InteractHeld", throwIfNotFound: true);
+        m_Player_SpeedAbility = m_Player.FindAction("SpeedAbility", throwIfNotFound: true);
+        m_Player_HealAbility = m_Player.FindAction("HealAbility", throwIfNotFound: true);
+        m_Player_ScreechAbility = m_Player.FindAction("ScreechAbility", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1005,6 +1068,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_SlotSelect;
     private readonly InputAction m_Player_InteractHeld;
+    private readonly InputAction m_Player_SpeedAbility;
+    private readonly InputAction m_Player_HealAbility;
+    private readonly InputAction m_Player_ScreechAbility;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1015,6 +1081,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputAction @SlotSelect => m_Wrapper.m_Player_SlotSelect;
         public InputAction @InteractHeld => m_Wrapper.m_Player_InteractHeld;
+        public InputAction @SpeedAbility => m_Wrapper.m_Player_SpeedAbility;
+        public InputAction @HealAbility => m_Wrapper.m_Player_HealAbility;
+        public InputAction @ScreechAbility => m_Wrapper.m_Player_ScreechAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1042,6 +1111,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @InteractHeld.started += instance.OnInteractHeld;
             @InteractHeld.performed += instance.OnInteractHeld;
             @InteractHeld.canceled += instance.OnInteractHeld;
+            @SpeedAbility.started += instance.OnSpeedAbility;
+            @SpeedAbility.performed += instance.OnSpeedAbility;
+            @SpeedAbility.canceled += instance.OnSpeedAbility;
+            @HealAbility.started += instance.OnHealAbility;
+            @HealAbility.performed += instance.OnHealAbility;
+            @HealAbility.canceled += instance.OnHealAbility;
+            @ScreechAbility.started += instance.OnScreechAbility;
+            @ScreechAbility.performed += instance.OnScreechAbility;
+            @ScreechAbility.canceled += instance.OnScreechAbility;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1064,6 +1142,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @InteractHeld.started -= instance.OnInteractHeld;
             @InteractHeld.performed -= instance.OnInteractHeld;
             @InteractHeld.canceled -= instance.OnInteractHeld;
+            @SpeedAbility.started -= instance.OnSpeedAbility;
+            @SpeedAbility.performed -= instance.OnSpeedAbility;
+            @SpeedAbility.canceled -= instance.OnSpeedAbility;
+            @HealAbility.started -= instance.OnHealAbility;
+            @HealAbility.performed -= instance.OnHealAbility;
+            @HealAbility.canceled -= instance.OnHealAbility;
+            @ScreechAbility.started -= instance.OnScreechAbility;
+            @ScreechAbility.performed -= instance.OnScreechAbility;
+            @ScreechAbility.canceled -= instance.OnScreechAbility;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1252,6 +1339,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDrop(InputAction.CallbackContext context);
         void OnSlotSelect(InputAction.CallbackContext context);
         void OnInteractHeld(InputAction.CallbackContext context);
+        void OnSpeedAbility(InputAction.CallbackContext context);
+        void OnHealAbility(InputAction.CallbackContext context);
+        void OnScreechAbility(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

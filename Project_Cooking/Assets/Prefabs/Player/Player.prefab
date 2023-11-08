@@ -263,7 +263,10 @@ GameObject:
   - component: {fileID: 1041550740908115910}
   - component: {fileID: 6600655934972054533}
   - component: {fileID: 5542488216278401094}
-  - component: {fileID: 1641923975772206309}
+  - component: {fileID: 6731924629831750404}
+  - component: {fileID: 3124256479969830151}
+  - component: {fileID: 1243901471745361668}
+  - component: {fileID: 2465164869444739385}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -350,6 +353,33 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: fff59524-22e8-4651-a381-82fcc31bae29
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  speedAbilityIA:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c4a537dd-f5ae-4712-aca9-3a03d8b2d137
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  healAbilityIA:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3aa51ad7-6ad4-4b0d-ae44-3854d7fd796b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  screechAbilityIA:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 819fbaa6-624d-45c8-8cf4-f6a71d8e9954
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -454,7 +484,13 @@ MonoBehaviour:
   OnInteractHeld_Cancelled:
     m_PersistentCalls:
       m_Calls: []
-  OnInteractHeld_Performed:
+  OnSpeed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnScreech:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1041550740908115910
@@ -547,7 +583,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a922edaaf723244a0f593e7c6356e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 4675877112990584163}
-  batAnimator: {fileID: 8329753685734433399}
-  playerSpriteRenderer: {fileID: 1562153208718111144}
-  batSpriteRenderer: {fileID: 7622504542739130275}
+  spriteShaderRenderer: {fileID: 1562153208718111144}
+--- !u!114 &3124256479969830151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83773f7718965b24081021ceeec28d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityDuration: 0
+  bloodCost: 0
+  speedMultiplier: 2
+--- !u!114 &1243901471745361668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5749a10860c869646983214e77ab8e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityDuration: 0
+  bloodCost: 0
+  playerHealth: {fileID: 0}
+--- !u!114 &2465164869444739385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fc5f8a16c10e94d93b26bf8c5887ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

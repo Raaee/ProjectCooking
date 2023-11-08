@@ -7,18 +7,21 @@ public abstract class Workstation : MonoBehaviour {
 
     [SerializeField] protected List<WorkstationRecipe> workstationRecipesSO;
     [SerializeField] protected Slider progressBar;
+    [SerializeField] protected WorkstationSO workstationSO;
     private Actions actions;
     protected bool hasAllIngredients = true;
     protected Items outputIngredient;
+    protected SpriteRenderer sr;
 
     [Header("DEBUG")]
     [SerializeField] protected InteractProgressState progressState;
     [SerializeField] protected bool isCharging;
     private const float PROGRESS_RATE = 1.0f;
     public abstract void OnInteractionComplete();
-
+    
     private void Awake() {
         progressState = InteractProgressState.IDLE;
+        sr = GetComponentInChildren<SpriteRenderer>();
         actions = FindObjectOfType<Actions>();
         actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
     }
@@ -99,6 +102,12 @@ public abstract class Workstation : MonoBehaviour {
     }
     public void UnCharge() {
         isCharging = false;
+    }
+    public void HighlightSprite() {
+        sr.sprite = workstationSO.highlightedSprite;
+    }
+    public void NormalSprite() {
+        sr.sprite = workstationSO.normalSprite;
     }
 }
 

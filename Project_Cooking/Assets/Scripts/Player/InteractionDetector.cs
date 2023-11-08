@@ -28,10 +28,12 @@ public class InteractionDetector : MonoBehaviour {
 
         if (interactable != null) {
             interactablesInRange.Add(interactable);
+            interactable.HighlightSprite();
         }
         if (workstation != null) {
             workStationsInRange.Add(workstation);
             workstation.AddChargeListener();
+            workstation.HighlightSprite();
         }
     }
     private void OnTriggerExit2D(Collider2D collision) {
@@ -40,10 +42,12 @@ public class InteractionDetector : MonoBehaviour {
 
         if (interactablesInRange.Contains(interactable)) {
             interactablesInRange.Remove(interactable);
+            interactable.NormalSprite();
         }
         if (workStationsInRange.Contains(workstation)) {
             workStationsInRange.Remove(workstation);
             workstation.RemoveChargeListener();
+            workstation.NormalSprite();
         }
     }
 }

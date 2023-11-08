@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22073a66eadb0f74586d240f97b059f3, type: 2}
   - {fileID: 11400000, guid: c7efea275a487fd4c88976ac537c7427, type: 2}
   progressBar: {fileID: 1179415187067402883}
+  workstationSO: {fileID: 11400000, guid: 681d844938c98184aa49b3641863744a, type: 2}
   progressState: 0
   isCharging: 0
 --- !u!1 &3323165608003616738
@@ -719,12 +720,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 254070421, guid: 5001b096f2e2e444793c9d7bf9e1048a, type: 3}
+  m_Sprite: {fileID: -198084540, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.31, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

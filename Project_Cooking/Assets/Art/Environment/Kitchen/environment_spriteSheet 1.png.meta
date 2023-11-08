@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5001b096f2e2e444793c9d7bf9e1048a
+guid: a4af0580194c27c4fbb5e997011e02c4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: environment_spriteSheet_0
+      name: environment_spriteSheet 1_0
       rect:
         serializedVersion: 2
         x: 62
@@ -131,20 +131,104 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05029320e35989446b06219e8cf83264
-      internalID: -97253208
+      spriteID: 08e5af7d38d386c478298ba0da308e2e
+      internalID: 695446285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_2
+      name: environment_stoveOven_left_HL
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 115
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19be10e05beac52478e0a419a593189d
+      internalID: -262801319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_chopper_left_HL
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 115
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b708df28e50b18745ba6df74e60e9eb6
+      internalID: -2065317866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_mixer1_HL_left
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 115
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3caf184ffbd5048968c25a6c155908
+      internalID: 408249611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_mixer2_HL_left
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 115
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52cf84b9c4de8104a8af7f8a1bca31c5
+      internalID: 2095111766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_spriteSheet 1_5
       rect:
         serializedVersion: 2
         x: 4
@@ -152,20 +236,20 @@ TextureImporter:
         width: 25
         height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d33ac2c9e2316e449fd0799efc4aa83
-      internalID: 482025927
+      spriteID: f6ff4745cd7b206409ac4a3e4c1548aa
+      internalID: 984724675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_3
+      name: environment_spriteSheet 1_6
       rect:
         serializedVersion: 2
         x: 31
@@ -173,20 +257,20 @@ TextureImporter:
         width: 25
         height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d844950d493dcf04ba58e1553e6a5672
-      internalID: -427372183
+      spriteID: 5040ce306ca694940b4883d17557d448
+      internalID: -1747478088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_4
+      name: environment_spriteSheet 1_7
       rect:
         serializedVersion: 2
         x: 63
@@ -194,20 +278,20 @@ TextureImporter:
         width: 15
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcfb66a09d7ccde418912d2722391a2f
-      internalID: -1038581089
+      spriteID: 59164e7f6f525274d9c6dd5f70947636
+      internalID: 1864781161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_5
+      name: environment_spriteSheet 1_8
       rect:
         serializedVersion: 2
         x: 84
@@ -215,20 +299,20 @@ TextureImporter:
         width: 47
         height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80bd3ad59ab01c340861a004c9b21e8b
-      internalID: 1109024117
+      spriteID: 2cc1bcb20542383458c14663dca3bc9f
+      internalID: -2114515562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_6
+      name: environment_spriteSheet 1_9
       rect:
         serializedVersion: 2
         x: 4
@@ -236,20 +320,20 @@ TextureImporter:
         width: 25
         height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b0524d14c7169c40b655a9d954209ea
-      internalID: 972256532
+      spriteID: 3d1b9b8837c7b2d4490bdc11c86a9813
+      internalID: -42189076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_7
+      name: environment_spriteSheet 1_10
       rect:
         serializedVersion: 2
         x: 32
@@ -257,20 +341,20 @@ TextureImporter:
         width: 25
         height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81ab25398dd2f5b4d8bf14cabb0adf95
-      internalID: -539914958
+      spriteID: 7d683ba447d9a354898f46a6159c9c16
+      internalID: 1011543262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_8
+      name: environment_spriteSheet 1_11
       rect:
         serializedVersion: 2
         x: 62
@@ -278,20 +362,104 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d739d6047425bd144807ab0dc54565bd
-      internalID: -693333818
+      spriteID: 2c29288db1afee74f99a79f0ee9d2007
+      internalID: 1585193540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_9
+      name: environment_stoveOven_HL
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 77
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffcc53b67241d924cb0a14722464a311
+      internalID: 1171973082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_chopper_HL
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 78
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60c1ed85c9ef6044887e301b5e01aff
+      internalID: 1135795254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_mixer1_HL
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 78
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a12f557b7a09df94988342127b7eeabf
+      internalID: -867416913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_mixer2_HL
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 78
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69ec7903bc02b964ea70b34b6e4a996c
+      internalID: 2046852629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_spriteSheet 1_16
       rect:
         serializedVersion: 2
         x: 63
@@ -299,104 +467,104 @@ TextureImporter:
         width: 15
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ab9053396c1b434bb38fdaf5cee1259
-      internalID: -601139879
+      spriteID: ff8493e8ae40bfd42857bc67871dbe7f
+      internalID: 534203619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stoveOven_environment_left
+      name: environment_stoveOven_left
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 35
-        width: 29
-        height: 31
+        width: 31
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37c140fdd75933541ac505ee74348967
-      internalID: -158882720
+      spriteID: e44e8827b26520f498f6c5f67738b3cd
+      internalID: -1071503865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chopper_environment_left
+      name: environment_chopper_left
       rect:
         serializedVersion: 2
-        x: 36
+        x: 35
         y: 37
-        width: 25
-        height: 28
+        width: 27
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ab53727a6478c9449aaeb129fe0394c
-      internalID: 1348770112
+      spriteID: ca717df78b3e352428466d81d1da2b61
+      internalID: 1007597347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mixer1_environment_left
+      name: environment_mixer1_left
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 37
-        width: 25
-        height: 31
+        width: 27
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1a78efc721b7db4785428ec32b14063
-      internalID: -1341267199
+      spriteID: 804507c4129143d489ee489cf17fc4c0
+      internalID: 1755530070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mixer2_environment_left
+      name: environment_mixer2_left
       rect:
         serializedVersion: 2
-        x: 92
+        x: 91
         y: 37
-        width: 25
-        height: 31
+        width: 27
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e4aa3b9beb0034498950a0c8d2c7557
-      internalID: 1520644912
+      spriteID: e2ac9af6a90d84e4cb18f53446087c04
+      internalID: -700540156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: environment_spriteSheet_14
+      name: environment_spriteSheet 1_21
       rect:
         serializedVersion: 2
         x: 122
@@ -404,98 +572,98 @@ TextureImporter:
         width: 24
         height: 45
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d801c7fcd28f5f4bb209ca8f2eba0db
-      internalID: 401780098
+      spriteID: 9cbaa6b7c8b90db40a31d7b2661db51f
+      internalID: 462076647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stoveOven_environment
+      name: environment_stoveOven
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 1
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f1e5b1f6c4f9b41ba21eac85745428
+      internalID: -198084540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environment_chopper
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 2
         width: 29
-        height: 31
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d98bc6d9ecd2a743b6e77b700a9cab3
-      internalID: 254070421
+      spriteID: 416486c9516aa51429ea2dd1d813b1c5
+      internalID: 1356377486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chopper_environment
+      name: environment_mixer1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 64
         y: 2
-        width: 27
-        height: 29
+        width: 24
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad5cbf596d83dcd4b970002b643041f7
-      internalID: 1208414821
+      spriteID: 1ca6a6b219b76e1439630a540d13030f
+      internalID: 771979491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mixer1_environment
+      name: environment_mixer2
       rect:
         serializedVersion: 2
-        x: 65
+        x: 89
         y: 2
-        width: 22
-        height: 32
+        width: 24
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00744059e3193b446b86ce7de79f3ad4
-      internalID: 1463851054
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mixer2_environment
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 2
-        width: 22
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4459529396d21714cae11ed813c6d697
-      internalID: -228977440
+      spriteID: f323ea4bed269db40b55d1ae1c6af94b
+      internalID: -489108700
       vertices: []
       indices: 
       edges: []
@@ -511,25 +679,33 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      chopper_environment: 1208414821
-      chopper_environment_left: 1348770112
-      environment_spriteSheet_0: -97253208
-      environment_spriteSheet_1: 1519630367
-      environment_spriteSheet_14: 401780098
-      environment_spriteSheet_2: 482025927
-      environment_spriteSheet_3: -427372183
-      environment_spriteSheet_4: -1038581089
-      environment_spriteSheet_5: 1109024117
-      environment_spriteSheet_6: 972256532
-      environment_spriteSheet_7: -539914958
-      environment_spriteSheet_8: -693333818
-      environment_spriteSheet_9: -601139879
-      mixer1_environment: 1463851054
-      mixer1_environment_left: -1341267199
-      mixer2_environment: -228977440
-      mixer2_environment_left: 1520644912
-      stoveOven_environment: 254070421
-      stoveOven_environment_left: -158882720
+      environment_chopper: 771979491
+      environment_chopper_HL: 1135795254
+      environment_chopper_left: 1755530070
+      environment_chopper_left_HL: -2065317866
+      environment_mixer1: -489108700
+      environment_mixer1_HL: -867416913
+      environment_mixer1_HL_left: 408249611
+      environment_mixer1_left: -700540156
+      environment_mixer2: -198084540
+      environment_mixer2_HL: 2046852629
+      environment_mixer2_HL_left: 2095111766
+      environment_mixer2_left: -700540156
+      environment_spriteSheet 1_0: 695446285
+      environment_spriteSheet 1_10: 1011543262
+      environment_spriteSheet 1_11: 1585193540
+      environment_spriteSheet 1_16: 534203619
+      environment_spriteSheet 1_21: -1669838662
+      environment_spriteSheet 1_22: -1071503865
+      environment_spriteSheet 1_5: 984724675
+      environment_spriteSheet 1_6: -1747478088
+      environment_spriteSheet 1_7: 1864781161
+      environment_spriteSheet 1_8: -2114515562
+      environment_spriteSheet 1_9: -42189076
+      environment_stoveOven: 1356377486
+      environment_stoveOven_HL: 1171973082
+      environment_stoveOven_left: 1007597347
+      environment_stoveOven_left_HL: -262801319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
