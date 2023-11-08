@@ -9,7 +9,7 @@ public class ChaseES : EnemyState
     private EnemyMovement enemyMovement;
 
     private Transform playerTransform;
-    private const float AGGRO_DETECT_RADIUS = 10f;
+    private const float AGGRO_DETECT_RADIUS = 5f;
     public override void Awake()
     {
         base.Awake();

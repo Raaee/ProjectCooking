@@ -7,36 +7,35 @@ public class AutomaticPickup : MonoBehaviour
     private Transform playerTransform;
    private float speed = 3f;
     private ProgressBar progressBar;
+
+  [SerializeField]  private Rigidbody2D rb2d;
+    private bool hasTarget = false;
+   
     private void Awake()
     {
         //look for player!
-        playerTransform = FindObjectOfType<InteractionDetector>().gameObject.transform;
-        if(!playerTransform)
-        {
-            Debug.Log("couldnt find a player on scene");
-        }
+     
         progressBar = FindObjectOfType<ProgressBar>();
+        rb2d.GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float dist = Vector2.Distance(transform.position, playerTransform.position);
-        if (dist > 1f)
-            transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, Time.deltaTime * (speed / 2));
-        else if (dist < 1f && dist > 0.125f)
-            transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, Time.deltaTime * (speed));
-        else
-        {
-            if (progressBar)
-                progressBar.Increase(3);
-            Destroy(this.gameObject);
+        if (!hasTarget)
+            return;
 
-        }
+        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        rb2d.velocity = new Vector2(direction.x, direction.y ) * speed;
+
+        if (Vector2.Distance(playerTransform.position, transform.position) < 0.5f)
+            Destroy(this.gameObject);
+    }
+
+    public void SetTargetPosition(Transform newTransform)
+    {
+        playerTransform = newTransform;
+        hasTarget = true;
     }
 }

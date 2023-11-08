@@ -33,5 +33,6 @@ public class AggroChaseES : EnemyState
 
         yield return new WaitForSeconds(cooldownTime);
         enemyStateHandler.ChangeState(chaseState);
+        Debug.Log("goignig back to chase state");
     }
 }
