@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /// <summary>
 /// TODO: add affects before they dissapear
 /// //make hearts amount be dynamic based on heart component 
@@ -8,20 +9,38 @@ using UnityEngine;
 public class HeartsUI : MonoBehaviour
 {
     public List<GameObject> heartSlots;
-   // private int index = 0;
-    //private int max = 0;
+   
     [SerializeField] private Health health;
+    [SerializeField] private Sprite emptyHeart; //kinda like raeus's heart! 
+    [SerializeField] private Sprite fullHeart;
+    private int heartPointer;
+    
     private void Awake()
     {
         health.OnHurt.AddListener(RemoveHeart);
+        health.OnHeal.AddListener(FillUpHeart);
+    }
+    private void Start()
+    {
+        heartPointer = Health.MAX_HEALTH - 1;
     }
 
     public void RemoveHeart()
     {
-        if (heartSlots.Count <= 0)
+        if (heartPointer < 0)
             return;
+        //take the "last" heart and change the sprite, have a pointer to it 
+        heartSlots[heartPointer].GetComponent<Image>().sprite = emptyHeart;
+        heartPointer--;
+    }
 
-        heartSlots[heartSlots.Count - 1].gameObject.SetActive(false);
-        heartSlots.Remove(heartSlots[heartSlots.Count - 1]);
+    public void FillUpHeart()
+    {
+       
+        if (heartPointer >= Health.MAX_HEALTH - 1)
+            return;
+        heartPointer++;
+
+        heartSlots[heartPointer].GetComponent<Image>().sprite = fullHeart;
     }
 }

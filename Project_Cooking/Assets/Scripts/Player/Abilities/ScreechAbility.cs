@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScreechAbility : Ability {
     // Default keybind: F [Keyboard]
 
-    [SerializeField] private float enemyStunDuration = 5f;
+   // [SerializeField] private float enemyStunDuration = 5f;
 
     public override void Awake() {
         base.Awake();

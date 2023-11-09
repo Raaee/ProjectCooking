@@ -8,32 +8,30 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] [Range(5f, 50f)] private float movementSpeed = 15f;
+    [SerializeField] [Range(0.5f, 2f)] private float movementSpeed = .75f;
     [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
     private Transform currentTarget;
 
-   
+    private Rigidbody2D rb2d;
 
     private bool isChasing = false; //might need to change to switch/state machine to add features like dash and dodging 
 
 
 
-    private NavMeshAgent navMeshAgent;
+    private Vector3 moveDirection;
+    private float originalSpeed;
     private const float ACCELERATION = 250f;
     private const float ANGULAR_SPEED = 250f;
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        if (!navMeshAgent)
-            Debug.LogWarning("THIS GAMEOBJECT REQUIRES A NavMeshAgent");
+        rb2d = GetComponent<Rigidbody2D>();
 
         var playerObj = FindObjectOfType<Movement>(); 
         if(!playerObj)
             Debug.LogWarning("Is there a player object in this scene to chase??");
         currentTarget = playerObj.gameObject.transform;
-
-        SetupMovementData();
+        originalSpeed = movementSpeed;
     }
 
    
@@ -45,16 +43,40 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
+        AngleTowardsTarget();
+
+    }
+
+    private void FixedUpdate()
+    {
+        MoveTowardsTarget();
+    }
+
+    private void MoveTowardsTarget()
+    {
+        if (!currentTarget)
+            return;
+        rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;
+
+    }
 
 
-        navMeshAgent.SetDestination(currentTarget.position);
+    private void AngleTowardsTarget()
+    {
+        if (!currentTarget)
+            return;
 
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb2d.rotation = angle;
+        moveDirection = direction;
     }
 
     public void ChaseTarget()
     {
+        movementSpeed = originalSpeed;
         isChasing = true;
-        navMeshAgent.speed = movementSpeed;
+      
     }
 
     public void ToggleMovement() //for dev mode
@@ -69,19 +91,11 @@ public class EnemyMovement : MonoBehaviour
 
     public void AggroChase()
     {
-        navMeshAgent.speed = movementSpeed * aggroSpeedMultipler;
+        movementSpeed = movementSpeed + aggroSpeedMultipler;
+        Debug.Log("aggro chase!");
     }
 
-    private void SetupMovementData()
-    {
-
-        navMeshAgent.speed = movementSpeed;
-        navMeshAgent.acceleration = ACCELERATION;
-        navMeshAgent.angularSpeed = ANGULAR_SPEED;
-        navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.MedQualityObstacleAvoidance;
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-    }
+   
     public void SetMovementSpeed( float newMovementSpeed)
     {
         movementSpeed = newMovementSpeed;

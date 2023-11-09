@@ -10,18 +10,24 @@ public class Movement : MonoBehaviour   {
     [SerializeField] private float moveSpeed = 30f;
     private float currentSpeed = 0f;
     private Vector2 moveDirection = Vector2.zero;
-   [SerializeField] private PlayerAnimation playerAnim; 
+   [SerializeField] private PlayerAnimation playerAnim;
+    private bool isFrozen = false; //like raeus's heart!
+   [SerializeField] private Health health;
   
     private void Start()
     {
         SaveNormalSpeed();
-
+        health.OnDeath.AddListener(FreezePlayer);
         playerAnim.PlayAnimation(PlayerAnimation.IDLE);
     }
     private void Update() {
+        if (isFrozen)
+            return;
         moveDirection = input.move.ReadValue<Vector2>();
     }
     private void FixedUpdate() {
+       
+
         if (moveDirection != Vector2.zero) {
             rb.velocity = moveDirection * moveSpeed * moveSpeed * Time.fixedDeltaTime;
             HandleAnimationFromDirection(rb.velocity);
@@ -31,6 +37,16 @@ public class Movement : MonoBehaviour   {
         }
     }
 
+    public void FreezePlayer()
+    {
+        rb.velocity = Vector2.zero;
+        isFrozen = true;
+    }
+
+    public void UnFreezePlayer()
+    {
+        isFrozen = false;
+    }
     private void HandleAnimationFromDirection(Vector2 playerDirection)
     {
         if(!playerAnim.GetIsInBatMode())

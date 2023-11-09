@@ -6,18 +6,19 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour {
 
-    [SerializeField] private const int MAX_HEALTH = 3;
+     public const int MAX_HEALTH = 3;
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private bool godMode = false;
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;
-
+    public UnityEvent OnHeal;
     public void Heal(int amt) {
-        if ((currentHealth + amt) >= MAX_HEALTH) {
+
+        currentHealth += amt;
+        OnHeal.Invoke();
+        if (currentHealth  > MAX_HEALTH) {
             currentHealth = MAX_HEALTH;
-        } else {
-            currentHealth += amt;
-        }
+        } 
     }
 
     public void TakeDamage(int amt) {

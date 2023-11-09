@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2434089446821443912}
   - component: {fileID: 3056636538508634473}
+  - component: {fileID: 6700596118906824325}
+  - component: {fileID: 1060983285603369094}
   m_Layer: 0
   m_Name: Blood Drop
-  m_TagString: Untagged
+  m_TagString: BloodDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +47,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d73a6c2c01c27a45918d9da45a96c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb2d: {fileID: 6700596118906824325}
+--- !u!50 &6700596118906824325
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487424979715607307}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1060983285603369094
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487424979715607307}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08
 --- !u!1 &3488178149074864951
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5777303777992843872}
   - component: {fileID: 5021116753123247652}
+  - component: {fileID: 8266189706464372092}
   m_Layer: 0
   m_Name: Blood drop model
   m_TagString: Untagged
@@ -118,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1363226360, guid: b4962ca16650f174ea45c15ddcf3e1d0, type: 3}
+  m_Sprite: {fileID: -836505803, guid: d63605805224e9d488ef6932fad6907e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,3 +195,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8266189706464372092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488178149074864951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57d3290d399c5244a9594ddd428cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprites:
+  - {fileID: -836505803, guid: d63605805224e9d488ef6932fad6907e, type: 3}
+  - {fileID: 1601662216, guid: d63605805224e9d488ef6932fad6907e, type: 3}
+  highLightedSprites:
+  - {fileID: -17016957, guid: d63605805224e9d488ef6932fad6907e, type: 3}
+  - {fileID: -789638021, guid: d63605805224e9d488ef6932fad6907e, type: 3}
