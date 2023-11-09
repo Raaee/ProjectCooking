@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Workstation
   - Item
+  - BloodDrop
   layers:
   - Default
   - TransparentFX

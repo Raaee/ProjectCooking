@@ -8,7 +8,7 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] [Range(1f, 5f)] private float movementSpeed = 15f;
+    [SerializeField] [Range(0.5f, 2f)] private float movementSpeed = .75f;
     [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
     private Transform currentTarget;
 

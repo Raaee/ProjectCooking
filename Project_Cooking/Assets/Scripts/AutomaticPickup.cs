@@ -13,7 +13,6 @@ public class AutomaticPickup : MonoBehaviour
    
     private void Awake()
     {
-        //look for player!
      
         progressBar = FindObjectOfType<ProgressBar>();
         rb2d.GetComponent<Rigidbody2D>();
@@ -30,12 +29,17 @@ public class AutomaticPickup : MonoBehaviour
         rb2d.velocity = new Vector2(direction.x, direction.y ) * speed;
 
         if (Vector2.Distance(playerTransform.position, transform.position) < 0.5f)
+        {
+            progressBar.Increase(4);
             Destroy(this.gameObject);
+
+        }
     }
 
     public void SetTargetPosition(Transform newTransform)
     {
         playerTransform = newTransform;
         hasTarget = true;
+        GetComponentInChildren<BloodDropSpriteData>().highlightSprites();
     }
 }

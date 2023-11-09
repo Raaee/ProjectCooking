@@ -359,7 +359,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   speedAbilityIA:
-    m_Name: 
+    m_Name: Speed Ability IA
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: c4a537dd-f5ae-4712-aca9-3a03d8b2d137
@@ -368,7 +368,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   healAbilityIA:
-    m_Name: 
+    m_Name: Heal Ability IA
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 3aa51ad7-6ad4-4b0d-ae44-3854d7fd796b
@@ -377,7 +377,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   screechAbilityIA:
-    m_Name: 
+    m_Name: Screech Ability IA
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 819fbaa6-624d-45c8-8cf4-f6a71d8e9954
@@ -393,7 +393,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3772686613067466981}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -456,8 +456,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 8339333650797754487}
   rb: {fileID: 2162978251192788212}
-  moveSpeed: 10
+  moveSpeed: 12
   playerAnim: {fileID: 1641923975772206309}
+  health: {fileID: 1041550740908115910}
 --- !u!114 &3225166101096814257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +513,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
     m_PersistentCalls:
       m_Calls: []
 --- !u!61 &6600655934972054533
@@ -584,9 +588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83773f7718965b24081021ceeec28d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDuration: 0
+  abilityDuration: 2
   bloodCost: 0
-  speedMultiplier: 2
+  speedMultiplier: 1.404
 --- !u!114 &1243901471745361668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749a10860c869646983214e77ab8e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDuration: 0
+  abilityDuration: 2
   bloodCost: 0
   healAmount: 1
 --- !u!114 &2465164869444739385
@@ -614,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fc5f8a16c10e94d93b26bf8c5887ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDuration: 0
+  abilityDuration: 2
   bloodCost: 0
   enemyStunDuration: 5
 --- !u!114 &1641923975772206309
@@ -629,10 +633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a922edaaf723244a0f593e7c6356e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
-  batAnimator: {fileID: 0}
-  playerSpriteRenderer: {fileID: 0}
-  batSpriteRenderer: {fileID: 0}
+  playerAnimator: {fileID: 4675877112990584163}
+  batAnimator: {fileID: 8329753685734433399}
+  playerSpriteRenderer: {fileID: 1562153208718111144}
+  batSpriteRenderer: {fileID: 7622504542739130275}
 --- !u!1 &5581091271079475160
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +648,7 @@ GameObject:
   - component: {fileID: 6145365135260229393}
   - component: {fileID: 2081440925982931482}
   - component: {fileID: 5177874897641668486}
+  - component: {fileID: 9109657715869447872}
   m_Layer: 0
   m_Name: Blood drop magnet
   m_TagString: Untagged
@@ -700,7 +705,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.03, y: 0.18}
   serializedVersion: 2
-  m_Radius: 0.71
+  m_Radius: 1
 --- !u!114 &5177874897641668486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,3 +718,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81df29342a050e54c81c71a9805e75df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &9109657715869447872
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581091271079475160}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
