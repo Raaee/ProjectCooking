@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour {
     public void RemoveItem() {
         InstantiateItem(inventoryList[invIndex]);
         inventoryList[invIndex] = Items.NONE;
-        Debug.Log("**** ITEM DROPPED: " + currentItem);
+      
         OnInventoryChange.Invoke();
     }
     public void InstantiateItem(Items item) {
@@ -72,18 +72,10 @@ public class Inventory : MonoBehaviour {
         if (!go)
             return;
         else
-            Instantiate(go, FindObjectOfType<Input>().transform.position, Quaternion.identity);
+            Instantiate(go, input.transform.position, Quaternion.identity);
     }
     //This is if u want to specify the item to remove:
-    public void RemoveItem(Items item) {
-        int index = inventoryList.IndexOf(item);
-        if (index == -1) {
-            Debug.Log("Item not found in inventory.");
-        }
-        else {
-            inventoryList[index] = Items.NONE;  
-        }
-    }    
+  
     public bool IsEmpty() {
         for (int i = 0; i < MAX_INV_SPACES; i++) {
             if (inventoryList[i] != Items.NONE) {

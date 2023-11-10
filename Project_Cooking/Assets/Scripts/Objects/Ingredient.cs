@@ -12,9 +12,6 @@ public class Ingredient : MonoBehaviour, IInteractable  {
         Items item = ingredientSO.item;
     }
     public void Interact() {
-        //add the item type to inventory
-        //SDebug.Log("Interact called ?");
-      
 
         bool itemAdded = Inventory.instance.AddItem(item);
         if (itemAdded) {

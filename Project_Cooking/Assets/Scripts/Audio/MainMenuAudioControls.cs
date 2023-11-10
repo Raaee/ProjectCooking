@@ -5,15 +5,15 @@ using UnityEngine;
 public class MainMenuAudioControls : MonoBehaviour
 {
     private int playerAudioAmt = 0;
-
+    private const int MAX_AUDIO_AMOUNT = 100;
     // Start is called before the first frame update
     void Start()
     {
         try
         {
 
-            ES3.Save("playerAudioAmt", 100);
-            playerAudioAmt = ES3.Load<int>("myInt", 100);
+            ES3.Save("playerAudioAmt", MAX_AUDIO_AMOUNT);
+            playerAudioAmt = ES3.Load<int>("myInt", MAX_AUDIO_AMOUNT);
 
         }
         catch (System.IO.IOException)
@@ -26,9 +26,5 @@ public class MainMenuAudioControls : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
