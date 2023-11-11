@@ -10,6 +10,7 @@ public class InteractionDetector : MonoBehaviour {
     public List<Workstation> workStationsInRange = new List<Workstation>();
     public List<IInteractable> interactablesInRange = new List<IInteractable>();
     private Actions actions;
+    private const int ZERO = 0; //mind your business raeus, i wanted to see how it looks 
 
     private void Awake() {
         actions = GetComponent<Actions>();
@@ -17,8 +18,8 @@ public class InteractionDetector : MonoBehaviour {
     }   
     private void OnInteract_InteractionDetect() {
 
-        if (interactablesInRange.Count > 0) {
-            IInteractable interactable = interactablesInRange[0];
+        if (interactablesInRange.Count > ZERO) {
+            IInteractable interactable = interactablesInRange[ZERO];
             interactable.Interact();
         }
     }

@@ -23,13 +23,11 @@ public class ChaseES : EnemyState
     }
     public override void OnStateEnter()
     {
-        //oh nice, time to stalk the player 
         enemyMovement.ChaseTarget();
     }
 
     public override void OnStateExit()
     {
-       //dang funs over 
     }
 
     public override void OnStateUpdate()

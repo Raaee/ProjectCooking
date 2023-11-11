@@ -28,7 +28,7 @@ public abstract class Workstation : MonoBehaviour {
     private void Update() {
         ProgressBarStateMachine();
     }
-    public void OutputFromInteraction() {
+    public void AddOutputFromInteraction() {
         outputIngredient = Items.CHARCOAL;
 
         if (Inventory.instance.IsEmpty()) {
@@ -117,10 +117,3 @@ public enum InteractProgressState {
     DECREASING,
     FULL
 }
-
-/* Pete cool and amazing coding logic 
- * the 2 input actions we want are isKeyPressed, and the key released
- * We only want to check/start isKeyPressed only when the player is interacting/vincinity of the workstation
- * 
- * already implemented is a working state machine 
- */

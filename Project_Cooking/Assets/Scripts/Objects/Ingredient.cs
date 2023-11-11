@@ -5,14 +5,14 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour, IInteractable  {
 
     [SerializeField] private IngredientSO ingredientSO;
-    [SerializeField] private Items item;
+    private Items item;
     private SpriteRenderer sr;
     private void Awake() {
         sr = GetComponent<SpriteRenderer>();
+        Items item = ingredientSO.item;
     }
     public void Interact() {
-        //add the item type to inventory
-        Debug.Log("Interact called ?");
+
         bool itemAdded = Inventory.instance.AddItem(item);
         if (itemAdded) {
             Destroy(this.gameObject);

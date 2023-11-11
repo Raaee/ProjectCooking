@@ -20,18 +20,16 @@ public class IdleES : EnemyState
 
     public override void OnStateEnter()
     {
-        //not much to do, we chilling and idling
         enemyMovement.StopChasing();
     }
 
     public override void OnStateExit()
     {
-        //not much to do, we chilling
+      
     }
 
     public override void OnStateUpdate()
     {
-        //check if the player is within range
         float distance = Vector2.Distance(playerTransform.position, transform.position);
         if(distance < PLAYER_DETECT_RADIUS)
         {
