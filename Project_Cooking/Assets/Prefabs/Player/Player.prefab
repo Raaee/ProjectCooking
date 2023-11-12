@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 1243901471745361668}
   - component: {fileID: 2465164869444739385}
   - component: {fileID: 1641923975772206309}
+  - component: {fileID: 5472659391050540092}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -456,7 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 8339333650797754487}
   rb: {fileID: 2162978251192788212}
-  moveSpeed: 12
+  moveSpeed: 9
   playerAnim: {fileID: 1641923975772206309}
   health: {fileID: 1041550740908115910}
 --- !u!114 &3225166101096814257
@@ -471,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431f33dca37db24ea02202f17c796df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentArea: 2
   OnItemSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -484,6 +486,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnInteractHeld_Cancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack_Started:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack_Cancelled:
     m_PersistentCalls:
       m_Calls: []
   OnSpeed:
@@ -620,7 +628,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityDuration: 2
   bloodCost: 0
-  enemyStunDuration: 5
 --- !u!114 &1641923975772206309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +644,21 @@ MonoBehaviour:
   batAnimator: {fileID: 8329753685734433399}
   playerSpriteRenderer: {fileID: 1562153208718111144}
   batSpriteRenderer: {fileID: 7622504542739130275}
+--- !u!114 &5472659391050540092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368b9acc17d54d1479dfd9c3a347bbe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacking: 0
+  knifePrefab: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
+  attackSpeed: 5
 --- !u!1 &5581091271079475160
 GameObject:
   m_ObjectHideFlags: 0

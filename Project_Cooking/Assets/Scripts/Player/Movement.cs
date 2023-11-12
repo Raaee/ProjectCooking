@@ -79,5 +79,8 @@ public class Movement : MonoBehaviour   {
     {
         moveSpeed = currentSpeed;
     }
+    public Vector2 GetMovementDirection() {
+        return moveDirection;
+    }
 
 }

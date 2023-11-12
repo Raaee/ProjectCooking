@@ -19,6 +19,8 @@ public class Actions : MonoBehaviour    {
     public UnityEvent OnInteractHeld_Cancelled;
 
     [Header("Ability Events")]
+    public UnityEvent OnAttack_Started;
+    public UnityEvent OnAttack_Cancelled;
     public UnityEvent OnSpeed;
     public UnityEvent OnHeal;
     public UnityEvent OnScreech;
@@ -30,12 +32,16 @@ public class Actions : MonoBehaviour    {
         input.interact.performed += Interact;
         input.interactHeld.started += InteractHeld_Started;
         input.interactHeld.canceled += InteractHeld_Cancelled;
-        input.attack.performed += Attack;
         input.drop.performed += Drop;
         input.slotSelect.performed += SlotSelect;
+        
+        // abilities:
         input.speedAbilityIA.performed += ActivateSpeedAbility;
         input.healAbilityIA.performed += ActivateHealAbility;
         input.screechAbilityIA.performed += ActivateScreechAbility;
+        input.attack.started += Attack_Started;
+        input.attack.canceled += Attack_Cancelled;
+        
         InputChange();
     }
 
@@ -76,10 +82,15 @@ public class Actions : MonoBehaviour    {
        // Debug.Log("Held Cancelled");
         OnInteractHeld_Cancelled.Invoke();
     }
-    public void Attack(InputAction.CallbackContext context) {
+    public void Attack_Started(InputAction.CallbackContext context) {
         // This is where u put what attacking does
         // Default keybind is Left Button [Mouse]
-  
+        OnAttack_Started.Invoke();
+    }
+    public void Attack_Cancelled(InputAction.CallbackContext context) {
+        // This is where u put what attacking does
+        // Default keybind is Left Button [Mouse]
+        OnAttack_Cancelled.Invoke();
     }
     public void ActivateSpeedAbility(InputAction.CallbackContext context) {
         OnSpeed.Invoke();

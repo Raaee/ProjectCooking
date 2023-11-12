@@ -129,7 +129,7 @@ TextureImporter:
         x: 8
         y: 5
         width: 30
-        height: 4
+        height: 6
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,9 +147,9 @@ TextureImporter:
       name: knife_SS_1
       rect:
         serializedVersion: 2
-        x: 59
+        x: 56
         y: 5
-        width: 27
+        width: 30
         height: 6
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -168,9 +168,9 @@ TextureImporter:
       name: knife_SS_2
       rect:
         serializedVersion: 2
-        x: 112
+        x: 104
         y: 5
-        width: 22
+        width: 30
         height: 6
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -189,9 +189,9 @@ TextureImporter:
       name: knife_SS_3
       rect:
         serializedVersion: 2
-        x: 155
+        x: 152
         y: 5
-        width: 27
+        width: 30
         height: 6
       alignment: 7
       pivot: {x: 0.5, y: 0}

@@ -61,38 +61,31 @@ public class Input : MonoBehaviour  {
         DisableScreechAbility();
     }
     //---------------AREA INPUTS ---------------------
-    public void EnableKitchenInputs()
-    {
+    public void EnableKitchenInputs()   {
         EnableInteract();
         EnableInteractHeld();
         EnableDrop();
         EnableSlotSelect();
     }
-    public void DisableKitchenInputs()
-    {
+    public void DisableKitchenInputs()  {
         DisableInteract();
         DisableInteractHeld();
         DisableDrop();
         DisableSlotSelect();
     }
-
-    public void EnableDungeonInputs()
-    {
+    public void EnableDungeonInputs()   {
         EnableAttack();
         EnableHealAbility();
         EnableSpeedAbility();
         EnableScreechAbility();
-
     }
 
-    public void DisableDungeonInputs()
-    {
+    public void DisableDungeonInputs()  {
         DisableAttack();
         DisableHealAbility();
         DisableSpeedAbility();
         DisableScreechAbility();
     }
-
     public void EnableInteractHeld() {
         interactHeld.Enable();
     }
