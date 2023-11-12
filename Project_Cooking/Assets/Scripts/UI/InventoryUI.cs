@@ -62,8 +62,10 @@ public class InventoryUI : MonoBehaviour {
     }
     public void UpdateSelected() 
     {
+       
         index = inventory.GetCurrentItemIndex();    
         var itemAtIndex = inventory.GetCurrentItem();
+     
         DisableAllHighlighted();
 
         uiSlots[index].ImageBackground.sprite = uiSlotSelectionSprites[1];

@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour {
             return false;
         }
         inventoryList[invSlotAvailable] = item;
-        Debug.Log("How many times was I called? in add item");
+      
         OnInventoryChange.Invoke();
         return true;
     }
@@ -66,13 +66,16 @@ public class Inventory : MonoBehaviour {
         OnInventoryChange.Invoke();
     }
     public void InstantiateItem(Items item) {
+
+       
         GameObject go = null;
-        go = allIngredients.Find((go) => go.GetComponent<Ingredient>().GetItemType() == item);
+        go = allIngredients.Find((tempGO) => tempGO.GetComponent<Ingredient>().GetItemType() == item); //RAE CURSED THE CODE
 
         if (!go)
             return;
         else
             Instantiate(go, input.transform.position, Quaternion.identity);
+      
     }
     //This is if u want to specify the item to remove:
   

@@ -17,9 +17,9 @@ public abstract class Ability : MonoBehaviour
     //references 
     protected ProgressBar bloodProgressBar;
     public virtual void Awake() {
-        bloodProgressBar = FindAnyObjectByType<ProgressBar>();
-        if (!bloodProgressBar)
-            Debug.LogError("Raeus broke the game in Ability class (cant find progress bar component)");
+        //bloodProgressBar = FindAnyObjectByType<ProgressBar>();
+       /* if (!bloodProgressBar)
+            Debug.LogError("Raeus broke the game in Ability class (cant find progress bar component)");*/
         actions = GetComponent<Actions>();
     }
     private void Update() {
@@ -34,6 +34,7 @@ public abstract class Ability : MonoBehaviour
         }
     }
     public void PerformAbility() {
+       
         //check if amount avaible 
         if (isPerformingAbility == true) {
             OnCantPerform();

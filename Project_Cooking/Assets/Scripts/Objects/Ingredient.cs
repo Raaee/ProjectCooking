@@ -9,10 +9,9 @@ public class Ingredient : MonoBehaviour, IInteractable  {
     private SpriteRenderer sr;
     private void Awake() {
         sr = GetComponent<SpriteRenderer>();
-        Items item = ingredientSO.item;
+         item = ingredientSO.item;    
     }
     public void Interact() {
-
         bool itemAdded = Inventory.instance.AddItem(item);
         if (itemAdded) {
             Destroy(this.gameObject);
@@ -26,6 +25,7 @@ public class Ingredient : MonoBehaviour, IInteractable  {
     }
 
     public Items GetItemType() {
-        return item;
+      
+        return ingredientSO.item;
     }
 }

@@ -8,7 +8,9 @@ using UnityEngine.InputSystem;
 /// This class speaks to the input when an action is performed.
 /// </summary>
 public class Actions : MonoBehaviour    {
-    
+
+    [SerializeField] private Current_Area currentArea = Current_Area.LIMBO; 
+
     private Input input;
     public UnityEvent OnItemSelect;
     public UnityEvent OnItemDrop;
@@ -34,7 +36,28 @@ public class Actions : MonoBehaviour    {
         input.speedAbilityIA.performed += ActivateSpeedAbility;
         input.healAbilityIA.performed += ActivateHealAbility;
         input.screechAbilityIA.performed += ActivateScreechAbility;
+        InputChange();
     }
+
+    public void InputChange()
+    {
+       switch(currentArea)
+        {
+            case Current_Area.LIMBO:
+                input.DisableKitchenInputs();
+                input.DisableDungeonInputs();
+                break;
+            case Current_Area.KITCHEN:
+                input.EnableKitchenInputs();
+                input.DisableDungeonInputs();
+                break;
+            case Current_Area.DUNGEON:
+                input.EnableDungeonInputs();
+                input.DisableKitchenInputs();
+                break;
+        }
+    }
+
     public void Interact(InputAction.CallbackContext context) {
         // This is where u put what interacting does
         // Default keybind is E [Keyboard]
@@ -78,4 +101,11 @@ public class Actions : MonoBehaviour    {
         //  UP is 120f,  DOWN is -120f  ----> input.slotSelect.ReadValue<float>()
         OnItemSelect.Invoke();
     }
+}
+
+public enum Current_Area
+{
+    LIMBO,
+    KITCHEN, 
+    DUNGEON
 }

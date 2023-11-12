@@ -30,7 +30,7 @@ public class AutomaticPickup : MonoBehaviour
 
         if (Vector2.Distance(playerTransform.position, transform.position) < 0.5f)
         {
-            progressBar.Increase(4);
+           // progressBar.Increase(4);
             Destroy(this.gameObject);
 
         }

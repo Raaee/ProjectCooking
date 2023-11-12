@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
-        fill.color = fillColor;
+      //  fill.color = fillColor;
     }
     private void Update()
     {
@@ -25,7 +25,7 @@ public class ProgressBar : MonoBehaviour
     private void GetCurrentFill()
     {
         float fillAmt = (float)current / (float)max;
-        mask.fillAmount = fillAmt;
+       // mask.fillAmount = fillAmt;
     }
 
     public void Increase(int amtToAdd)
