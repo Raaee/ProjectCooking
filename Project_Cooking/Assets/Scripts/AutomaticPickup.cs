@@ -12,8 +12,7 @@ public class AutomaticPickup : MonoBehaviour
     private bool hasTarget = false;
    
     private void Awake()
-    {
-     
+    {   
         progressBar = FindObjectOfType<ProgressBar>();
         rb2d.GetComponent<Rigidbody2D>();
     }
@@ -30,7 +29,7 @@ public class AutomaticPickup : MonoBehaviour
 
         if (Vector2.Distance(playerTransform.position, transform.position) < 0.5f)
         {
-           // progressBar.Increase(4);
+            progressBar.Increase(4);
             Destroy(this.gameObject);
 
         }
