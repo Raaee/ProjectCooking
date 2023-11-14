@@ -597,7 +597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 0
+  bloodCost: 1
+  bloodProgressBar: {fileID: 0}
   speedMultiplier: 1.404
 --- !u!114 &1243901471745361668
 MonoBehaviour:
@@ -612,7 +613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 0
+  bloodCost: 1
+  bloodProgressBar: {fileID: 0}
   healAmount: 1
 --- !u!114 &2465164869444739385
 MonoBehaviour:
@@ -627,7 +629,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 0
+  bloodCost: 1
+  bloodProgressBar: {fileID: 0}
 --- !u!114 &1641923975772206309
 MonoBehaviour:
   m_ObjectHideFlags: 0
