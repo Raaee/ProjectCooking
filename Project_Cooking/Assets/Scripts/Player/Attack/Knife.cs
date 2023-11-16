@@ -20,7 +20,8 @@ public class Knife : MonoBehaviour  {
         MoveKnife();
         timer += Time.deltaTime;
         if (timer >= maxLifeTime) {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            timer = 0;
         }
     }
     public void MoveKnife() {
