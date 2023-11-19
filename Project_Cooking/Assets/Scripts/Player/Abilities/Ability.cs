@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,10 @@ public abstract class Ability : MonoBehaviour
     protected bool isPerformingAbility = false;
     protected Actions actions;
 
-    //references 
-   [SerializeField] protected ProgressBar bloodProgressBar;
+    [Header("ABILITY GLOBAL REFERENCES")] 
+    [SerializeField] protected ProgressBar bloodProgressBar;
+    [Header("AUDIO")]
+    [SerializeField] private FMODUnity.EventReference abilityAudioRef;
     public virtual void Awake() {
         
         if (!bloodProgressBar)
@@ -55,7 +58,15 @@ public abstract class Ability : MonoBehaviour
         //movement and attack speed increases for a set amount of time 
         isPerformingAbility = true;
         OnAbilityStart();
+        PlayAbilityOneShot();
     }
+
+    protected void PlayAbilityOneShot()
+    {
+        if(!abilityAudioRef.IsNull)
+            FMODUnity.RuntimeManager.PlayOneShot(abilityAudioRef, transform.position);
+    }
+
     public abstract void OnCantPerform();
     public abstract void OnNotEnoughBlood();
     public abstract void OnAbilityStart();
