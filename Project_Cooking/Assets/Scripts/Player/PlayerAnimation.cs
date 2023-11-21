@@ -65,6 +65,18 @@ public class PlayerAnimation : MonoBehaviour
         isInBatMode = false;
     }
 
+    public void ToggleBatMode()
+    {
+
+        bool _isInBatMode = GetIsInBatMode();
+        _isInBatMode = !_isInBatMode;
+
+        if (_isInBatMode)
+            EnableBatMode();
+        else
+            EnablePlayerMode();
+    }
+
     public bool GetIsInBatMode()
     {
         return isInBatMode;
