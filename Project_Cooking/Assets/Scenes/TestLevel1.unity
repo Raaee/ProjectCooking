@@ -208,6 +208,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.782
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.782
+      objectReference: {fileID: 0}
     - target: {fileID: 9166239399103059157, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1443,6 +1455,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1702876153}
     m_Modifications:
+    - target: {fileID: 2904774261420093496, guid: 390a23a3dd2fe484f915eb3d6ac9bad7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6100318462399589883, guid: 390a23a3dd2fe484f915eb3d6ac9bad7, type: 3}
       propertyPath: m_Name
       value: Chopper
@@ -1628,6 +1644,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1702876153}
     m_Modifications:
+    - target: {fileID: 1564298067116943310, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.396
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564298067116943310, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564298067116943310, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.396
+      objectReference: {fileID: 0}
     - target: {fileID: 4801755157067387933, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 /// <summary>
 /// The enemy component that works with the movement for the enemy 
 /// </summary>
 public class EnemyMovement : MonoBehaviour
 {
+    
     [SerializeField] [Range(0.5f, 2f)] private float movementSpeed = .75f;
     [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
     private Transform currentTarget;
@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb2d;
 
     private bool isChasing = false; //might need to change to switch/state machine to add features like dash and dodging 
-
+    private bool isDashing = false;
 
 
     private Vector3 moveDirection;
@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     private const float ACCELERATION = 250f;
     private const float ANGULAR_SPEED = 250f;
 
+    [SerializeField] private SlimeEnemyAnimation slimeEnemyAnim;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -44,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         AngleTowardsTarget();
-
+        Debug.Log(rb2d.velocity);
     }
 
     private void FixedUpdate()
@@ -57,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
         if (!currentTarget)
             return;
         rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;
-
+        slimeEnemyAnim.SetWalkingState(true);
     }
 
 
@@ -67,8 +68,6 @@ public class EnemyMovement : MonoBehaviour
             return;
 
         Vector3 direction = (currentTarget.position - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb2d.rotation = angle;
         moveDirection = direction;
     }
 
@@ -99,6 +98,19 @@ public class EnemyMovement : MonoBehaviour
     public void SetMovementSpeed( float newMovementSpeed)
     {
         movementSpeed = newMovementSpeed;
+    }
+
+    public IEnumerator Dash(Vector2 dashDirection, float dashSpeed, float dashDuration)
+    {
+        Debug.Log("tried to dash dir " + dashDirection + " dshspeed: " + dashSpeed + " dashDur: " + dashDuration);
+        isDashing = true;
+        AggroChase();
+       // rb2d.velocity = new Vector2(dashDirection.x * dashSpeed*50f, dashDirection.y * dashSpeed*50f);
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+        isChasing = true;
+        Debug.Log("finshed dash");
+        ChaseTarget();
     }
 
 }

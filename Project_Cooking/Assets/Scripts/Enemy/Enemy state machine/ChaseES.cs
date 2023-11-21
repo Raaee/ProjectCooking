@@ -5,11 +5,11 @@ using UnityEngine;
 public class ChaseES : EnemyState
 {
     [SerializeField] EnemyState aggroChaseState;
-
+    [SerializeField] EnemyState chargeState;
     private EnemyMovement enemyMovement;
 
     private Transform playerTransform;
-    private const float AGGRO_DETECT_RADIUS = 5f;
+    private const float AGGRO_DETECT_RADIUS = 2.5f;
     public override void Awake()
     {
         base.Awake();
@@ -35,7 +35,7 @@ public class ChaseES : EnemyState
         float distance = Vector2.Distance(playerTransform.position, transform.position);
         if (distance < AGGRO_DETECT_RADIUS)
         {
-            enemyStateHandler.ChangeState(aggroChaseState);
+            enemyStateHandler.ChangeState(chargeState);
         }
     }
 
