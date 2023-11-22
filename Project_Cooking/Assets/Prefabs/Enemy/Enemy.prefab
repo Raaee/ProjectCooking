@@ -59,6 +59,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.669
   aggroSpeedMultipler: 1.555
+  chargeDelay: 1
+  dashDuration: 0.75
+  dashSpeed: 10
   slimeEnemyAnim: {fileID: 7195350933115724439}
 --- !u!114 &184274246093717925
 MonoBehaviour:
@@ -221,7 +224,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -260,12 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dbe52d83e3fdb4093190d24b106761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 2.5
-  dashSpeed: 15.6
-  dashDuration: 2.81
-  dashCooldown: 0.75
-  slimeEnemyAnimation: {fileID: 7195350933115724439}
   enemyMovement: {fileID: 6747381288458995447}
+  chaseState: {fileID: 1357052003572865992}
 --- !u!1 &4672900325156435934
 GameObject:
   m_ObjectHideFlags: 0

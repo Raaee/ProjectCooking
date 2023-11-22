@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class ChargeES : EnemyState
 {
-    [Header("Dash Settings")]
-    [SerializeField] private float delayTime = 2.5f;
-    [SerializeField] private float dashSpeed = 15f;
-    [SerializeField] private float dashDuration = 0.75f;
-    [SerializeField] private float dashCooldown = 0.75f;
-
-
-
+  
     [Header("References")]
-    [SerializeField] private SlimeEnemyAnimation slimeEnemyAnimation;
+    
    
     [SerializeField] private EnemyMovement enemyMovement;
-     private Transform playerTransform;
 
-
+    [SerializeField] private EnemyState chaseState;
+   
 
     public override void Awake()
     {
         base.Awake();
-        playerTransform = FindObjectOfType<Movement>().gameObject.transform;
+      
     }
     public override void OnStateEnter()
     {
-        //stop moving 
-        enemyMovement.StopChasing();
-        //switch to idle anim
-        slimeEnemyAnimation.SetWalkingState(false);
-        //do charging ienume
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
-        StartCoroutine(enemyMovement.Dash(direction, dashSpeed, dashDuration));
+        
+        StartCoroutine(ChargeSystem());
     }
 
     public override void OnStateExit()
@@ -44,15 +32,14 @@ public class ChargeES : EnemyState
     {
     }
 
-    private void Charge()
+ 
+    private IEnumerator ChargeSystem()
     {
-       
-       
+        enemyMovement.StopChasing();
+        yield return enemyMovement.ChargeAtPlayer();
+        yield return new WaitForSeconds(0.25f);
+        enemyStateHandler.ChangeState(chaseState);
+
     }
-    //charge IENUM 
-        //wait x seconds
-        //direction to player
-        //dash in that area 
-        //wait x seconds 
-        //go to new state (idle?)
+
 }
