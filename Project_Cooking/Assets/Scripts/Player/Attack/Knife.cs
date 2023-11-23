@@ -27,34 +27,61 @@ public class Knife : MonoBehaviour  {
         rb.velocity = moveDirection * projectileSpeed * Time.fixedDeltaTime;
     }
     public void SetMoveDirection() {
-        switch (attackDirection) {
+        switch (attackDirection)
+        {
+            case AttackDirection.UP:
+                moveDirection = new Vector2(0f, 120f);
+                break;
+            case AttackDirection.UP_RIGHT:
+                moveDirection = (Vector2.up + Vector2.right).normalized * 120f;
+                break;
             case AttackDirection.RIGHT:
                 moveDirection = new Vector2(120f, 0f);
                 break;
-            case AttackDirection.LEFT:
-                moveDirection = new Vector2(-120f, 0f);
-                break;
-            case AttackDirection.UP:
-                moveDirection = new Vector2(0f, 120f);
+            case AttackDirection.DOWN_RIGHT:
+                moveDirection = (Vector2.down + Vector2.right).normalized * 120f;
                 break;
             case AttackDirection.DOWN:
                 moveDirection = new Vector2(0f, -120f);
                 break;
-        }
-    }
-    private void ChangeRotationOnDirection() {
-        switch(attackDirection) {
-            case AttackDirection.RIGHT:
-                knifeObject.transform.Rotate(new Vector3(0f, 0f, 0f));                
+            case AttackDirection.DOWN_LEFT:
+                moveDirection = (Vector2.down + Vector2.left).normalized * 120f;
                 break;
             case AttackDirection.LEFT:
-                knifeObject.transform.Rotate(new Vector3(180f, 0f, 180f));
+                moveDirection = new Vector2(-120f, 0f);
                 break;
+            case AttackDirection.UP_LEFT:
+                moveDirection = (Vector2.up + Vector2.left).normalized * 120f;
+                break;
+        }
+    }
+    private void ChangeRotationOnDirection()
+    {
+        switch (attackDirection)
+        {
             case AttackDirection.UP:
-                knifeObject.transform.Rotate(new Vector3(0f, 0f, 90f));
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 90f));
+                break;
+            case AttackDirection.UP_RIGHT:
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 45f));
+                break;
+            case AttackDirection.RIGHT:
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+                break;
+            case AttackDirection.DOWN_RIGHT:
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -45f));
                 break;
             case AttackDirection.DOWN:
-                knifeObject.transform.Rotate(new Vector3(180f, 0f, 90f));
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -90f));
+                break;
+            case AttackDirection.DOWN_LEFT:
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -135f));
+                break;
+            case AttackDirection.LEFT:
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 180f));
+                break;
+            case AttackDirection.UP_LEFT:
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 135f));
                 break;
         }
     }
@@ -62,10 +89,4 @@ public class Knife : MonoBehaviour  {
         attackDirection = newAttackDirection;
     }
     
-}
-public enum AttackDirection {
-    RIGHT, 
-    LEFT,
-    UP,
-    DOWN
 }

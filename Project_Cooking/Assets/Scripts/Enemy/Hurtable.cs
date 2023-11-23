@@ -5,8 +5,9 @@ using UnityEngine;
 //drag and drop component that hurts the player using its tag
 public class Hurtable : MonoBehaviour
 {
-    private const string PLAYER_TAG = "Player";
-    private const int damageAmt = 1;
+   
+    [SerializeField] private Game_Tag whoGetsHurt = Game_Tag.Player;
+    [SerializeField] private int damageAmt = 1;
      private float knockbackForce = 250f;
    
 
@@ -27,7 +28,7 @@ public class Hurtable : MonoBehaviour
     {
        
 
-        if (!collision.CompareTag(PLAYER_TAG)) 
+        if (!collision.CompareTag(whoGetsHurt.ToString())) 
             return;
 
         Health health = collision.gameObject.GetComponent<Health>();
@@ -54,4 +55,12 @@ public class Hurtable : MonoBehaviour
         rb2d.AddForce(knockback, ForceMode2D.Impulse);
         Debug.Log("apply knockback " + knockback + "to  " + collision.gameObject.name);
     }
+}
+
+
+public enum Game_Tag
+{
+    NONE,
+    Player,
+    Enemy
 }

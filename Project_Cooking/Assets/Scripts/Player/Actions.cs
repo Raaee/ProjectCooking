@@ -20,6 +20,7 @@ public class Actions : MonoBehaviour    {
 
     [Header("Ability Events")]
     public UnityEvent OnAttack_Started;
+    public UnityEvent<InputAction.CallbackContext> OnAttack_Started_Context;
     public UnityEvent OnAttack_Cancelled;
     public UnityEvent OnSpeed;
     public UnityEvent OnHeal;
@@ -86,6 +87,7 @@ public class Actions : MonoBehaviour    {
         // This is where u put what attacking does
         // Default keybind is Left Button [Mouse]
         OnAttack_Started.Invoke();
+        OnAttack_Started_Context.Invoke(context);
     }
     public void Attack_Cancelled(InputAction.CallbackContext context) {
         // This is where u put what attacking does

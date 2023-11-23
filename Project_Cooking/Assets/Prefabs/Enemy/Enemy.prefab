@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 3351918630373279088}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93704af8f3298d41be00517f8815d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whoGetsHurt: 1
+  damageAmt: 1
 --- !u!61 &4438131534821836428
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 1
   godMode: 0
   OnDeath:
     m_PersistentCalls:
