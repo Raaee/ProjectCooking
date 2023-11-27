@@ -7,4 +7,5 @@ public class WorkstationRecipe : ScriptableObject {
 
     public List<IngredientSO> workstationInput;
     public IngredientSO workstationOutput;
+    public List<IngredientSO> recipeSteps;
 }

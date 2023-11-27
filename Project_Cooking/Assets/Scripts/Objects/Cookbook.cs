@@ -5,24 +5,24 @@ using UnityEngine;
 public class Cookbook : MonoBehaviour, IInteractable {
 
     public List<WorkstationRecipe> allRecipes = new List<WorkstationRecipe>();
-    public List<WorkstationRecipe> recipesAlreadyCompleted = new List<WorkstationRecipe>();
     public WorkstationRecipe levelRecipe;
 
+    [Header("VISUAL")]
+    [SerializeField] private Sprite cookbookSprite;
+    [SerializeField] private Sprite highlightedCookbookSprite;
+    private SpriteRenderer sr;
+
     private void Awake() {
+        sr = GetComponent<SpriteRenderer>();
         PickRandomRecipe();
     }
 
     public void PickRandomRecipe() {
-       // var ran = new Random();
         int ranNum;
+        ranNum = Random.Range(0, allRecipes.Count);
 
-        do {
-           ranNum = Random.Range(0, allRecipes.Count);
-
-        } while (!recipesAlreadyCompleted.Contains(allRecipes[ranNum]));
-        
         levelRecipe = allRecipes[ranNum];
-        recipesAlreadyCompleted.Add(levelRecipe);
+        allRecipes.Remove(levelRecipe);
     }
 
     public void Interact() {
@@ -30,7 +30,9 @@ public class Cookbook : MonoBehaviour, IInteractable {
     }
     
     public void HighlightSprite() {
+        sr.sprite = highlightedCookbookSprite;
     }
     public void NormalSprite() {
+        sr.sprite = cookbookSprite;
     }
 }

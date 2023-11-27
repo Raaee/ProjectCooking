@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7417b0a00da7a9f46a1f76d0f4f78e9b, type: 2}
   - {fileID: 11400000, guid: 716948a6fb1cdea4f8616ce2d84fa295, type: 2}
   workstationOutput: {fileID: 11400000, guid: 09220fe4b0e330a4db80fb7dea0d5a48, type: 2}
+  recipeSteps: []

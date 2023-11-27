@@ -208,6 +208,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.782
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.782
+      objectReference: {fileID: 0}
     - target: {fileID: 9166239399103059157, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1487,6 +1499,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dedc02b7f2ac824599bc7a9c4ee85c0, type: 2}
   - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
   levelRecipe: {fileID: 0}
+  cookbookSprite: {fileID: 0}
+  highlightedCookbookSprite: {fileID: 0}
 --- !u!212 &1806879586
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1681,6 +1695,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1702876153}
     m_Modifications:
+    - target: {fileID: 1564298067116943310, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.396
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564298067116943310, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564298067116943310, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.396
+      objectReference: {fileID: 0}
     - target: {fileID: 4801755157067387933, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
