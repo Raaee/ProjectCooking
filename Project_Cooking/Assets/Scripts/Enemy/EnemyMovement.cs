@@ -2,51 +2,40 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 /// <summary>
 /// The enemy component that works with the movement for the enemy 
 /// </summary>
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("MOVEMENT STATS")]
     [SerializeField] [Range(0.5f, 2f)] private float movementSpeed = .75f;
     [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
+
     private Transform currentTarget;
-
     private Rigidbody2D rb2d;
-
     private bool isChasing = false; //might need to change to switch/state machine to add features like dash and dodging 
-
-
-
+    private bool isCharging = false;
     private Vector3 moveDirection;
     private float originalSpeed;
-    private const float ACCELERATION = 250f;
-    private const float ANGULAR_SPEED = 250f;
+
+    [Header("CHARGE STATS")]
+    [SerializeField] private float chargeDelay = 1f;
+    [SerializeField] private float dashDuration = 1f;
+    [SerializeField] private float dashSpeed = 1f;
+
+    [Header("REFERENCES")]
+    [SerializeField] private SlimeEnemyAnimation slimeEnemyAnim;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
 
-        var playerObj = FindObjectOfType<Movement>(); 
-        if(!playerObj)
+        var playerObj = FindObjectOfType<Movement>();
+        if (!playerObj)
             Debug.LogWarning("Is there a player object in this scene to chase??");
         currentTarget = playerObj.gameObject.transform;
         originalSpeed = movementSpeed;
     }
-
-   
-   
-    // Update is called once per frame
-    void Update()
-    {
-        if (isChasing == false)
-        {
-            return;
-        }
-        AngleTowardsTarget();
-
-    }
-
     private void FixedUpdate()
     {
         MoveTowardsTarget();
@@ -54,36 +43,31 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsTarget()
     {
+
         if (!currentTarget)
             return;
-        rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;
+        if (isCharging)
+            return;
+        if (!isChasing)
+            return;
 
+        UpdateDirectionToPlayer();
+
+        rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;
+        slimeEnemyAnim.SetWalkingState(true);
     }
 
-
-    private void AngleTowardsTarget()
+    private void UpdateDirectionToPlayer()
     {
-        if (!currentTarget)
-            return;
-
-        Vector3 direction = (currentTarget.position - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb2d.rotation = angle;
-        moveDirection = direction;
+        moveDirection = (currentTarget.position - transform.position).normalized;
     }
 
     public void ChaseTarget()
     {
         movementSpeed = originalSpeed;
-        isChasing = true;
-      
+        isChasing = true;      
     }
-
-    public void ToggleMovement() //for dev mode
-    {
-        isChasing = !isChasing;
-    }
-
+ 
     public void StopChasing()
     {
         isChasing = false;
@@ -95,10 +79,17 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("aggro chase!");
     }
 
-   
-    public void SetMovementSpeed( float newMovementSpeed)
+    public IEnumerator ChargeAtPlayer()
     {
-        movementSpeed = newMovementSpeed;
+
+        isCharging = true;
+        yield return new WaitForSeconds(chargeDelay);
+        UpdateDirectionToPlayer();
+        slimeEnemyAnim.AttackAnimation();
+        rb2d.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
+        yield return new WaitForSeconds(dashDuration);
+        isCharging = false;
+    
     }
 
 }

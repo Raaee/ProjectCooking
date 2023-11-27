@@ -10,10 +10,12 @@ public class SpeedAbility : Ability {
 
     [SerializeField] [Range(1.01f, 4f)] private float speedMultiplier = 2f;
     private Movement playerMovement;
+    [SerializeField] private GameObject trailEffectGO;
     public override void Awake()    {
         base.Awake();
         playerMovement = GetComponent<Movement>();
         actions.OnSpeed.AddListener(PerformAbility);
+        trailEffectGO.SetActive(false);
     }
     private void IncreaseSpeed()    {
         playerMovement.SpeedMode(speedMultiplier);
@@ -25,9 +27,11 @@ public class SpeedAbility : Ability {
     public override void OnAbilityStart() {
         Debug.Log("ZOOOMM!");
         IncreaseSpeed();
+        trailEffectGO.SetActive(true);
     }
     public override void OnAbilityEnd() {
             NormalSpeed();
+        trailEffectGO.SetActive(false);
 
     }
     public override void OnNotEnoughBlood() {

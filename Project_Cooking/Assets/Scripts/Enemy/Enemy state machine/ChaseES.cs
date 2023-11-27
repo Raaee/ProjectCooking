@@ -5,11 +5,11 @@ using UnityEngine;
 public class ChaseES : EnemyState
 {
     [SerializeField] EnemyState aggroChaseState;
-
+    [SerializeField] EnemyState chargeState;
     private EnemyMovement enemyMovement;
 
     private Transform playerTransform;
-    private const float AGGRO_DETECT_RADIUS = 5f;
+    private const float CHARGE_DETECT_RADIUS = 1f;
     public override void Awake()
     {
         base.Awake();
@@ -33,10 +33,20 @@ public class ChaseES : EnemyState
     public override void OnStateUpdate()
     {
         float distance = Vector2.Distance(playerTransform.position, transform.position);
-        if (distance < AGGRO_DETECT_RADIUS)
+        if (distance < CHARGE_DETECT_RADIUS)
         {
-            enemyStateHandler.ChangeState(aggroChaseState);
+            enemyStateHandler.ChangeState(chargeState);
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+      
+        var tempColor = Color.yellow;
+        tempColor.a = 0.125f;
+        Gizmos.color = tempColor;
+        Gizmos.DrawSphere(transform.position, CHARGE_DETECT_RADIUS);
     }
 
 }

@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour {
 
-     public const int MAX_HEALTH = 3;
-    [SerializeField] private int currentHealth = 3;
+   public const int MAX_HEALTH = 3;
+   private int currentHealth = 3;
     [SerializeField] private bool godMode = false;
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;

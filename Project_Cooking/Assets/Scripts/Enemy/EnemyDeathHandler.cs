@@ -13,6 +13,12 @@ public class EnemyDeathHandler : MonoBehaviour
     {
         enemyHealth = GetComponent<Health>();
         enemyHealth.OnDeath.AddListener(OnEnemyDeath);
+        enemyHealth.OnHurt.AddListener(OnEnemyHurt);
+    }
+    public void OnEnemyHurt()
+    {
+      
+
     }
 
     public void OnEnemyDeath()
