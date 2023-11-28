@@ -291,6 +291,7 @@ Transform:
   - {fileID: 7169953070724726291}
   - {fileID: 1205553275629133691}
   - {fileID: 6145365135260229393}
+  - {fileID: 1097680827391106658}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8339333650797754487
@@ -599,6 +600,13 @@ MonoBehaviour:
   abilityDuration: 2
   bloodCost: 1
   bloodProgressBar: {fileID: 0}
+  abilityAudioRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   speedMultiplier: 1.404
 --- !u!114 &1243901471745361668
 MonoBehaviour:
@@ -615,6 +623,13 @@ MonoBehaviour:
   abilityDuration: 2
   bloodCost: 1
   bloodProgressBar: {fileID: 0}
+  abilityAudioRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   healAmount: 1
 --- !u!114 &2465164869444739385
 MonoBehaviour:
@@ -628,9 +643,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fc5f8a16c10e94d93b26bf8c5887ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDuration: 2
+  abilityDuration: 3
   bloodCost: 1
   bloodProgressBar: {fileID: 0}
+  abilityAudioRef:
+    Guid:
+      Data1: 161656890
+      Data2: 1099713216
+      Data3: 442094767
+      Data4: -571181595
+    Path: event:/Player/Bat Ability/Bat Transform
+  playerAnim: {fileID: 1641923975772206309}
+  screechAudio:
+    Guid:
+      Data1: 1358767747
+      Data2: 1186799753
+      Data3: -339371342
+      Data4: 1880969127
+    Path: event:/Player/Bat Ability/Bat Shriek
 --- !u!114 &1641923975772206309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +692,58 @@ MonoBehaviour:
   attacking: 0
   knifePrefab: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
   attackSpeed: 5
+--- !u!1 &5573760815043832673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097680827391106658}
+  - component: {fileID: 1401555346208146629}
+  m_Layer: 0
+  m_Name: Player Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1097680827391106658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573760815043832673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5704899173799534248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1401555346208146629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573760815043832673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf82a4cc44e2f494e9c31c03dafd6ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHurtAudio:
+    Guid:
+      Data1: 2033256656
+      Data2: 1102228415
+      Data3: -1832879949
+      Data4: -1011056429
+    Path: event:/Player/PlayerHurt
+  playerHealth: {fileID: 1041550740908115910}
 --- !u!1 &5581091271079475160
 GameObject:
   m_ObjectHideFlags: 0

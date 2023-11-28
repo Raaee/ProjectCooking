@@ -85,12 +85,6 @@ public class DevMode
         if (!playerAnim)
             return;
 
-        bool isInBatMode = playerAnim.GetIsInBatMode();
-        isInBatMode = !isInBatMode;
-
-        if (isInBatMode)
-            playerAnim.EnableBatMode();
-        else
-            playerAnim.EnablePlayerMode();
+        playerAnim.ToggleBatMode();
     }
 }
