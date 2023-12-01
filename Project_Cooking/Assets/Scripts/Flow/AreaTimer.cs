@@ -9,17 +9,18 @@ public class AreaTimer : MonoBehaviour {
 
     void Start() {
         currentArea = Current_Area.DUNGEON;
-        timer = 0f;
+        timeToSwitchInSeconds += 1;
+        timer = timeToSwitchInSeconds;
     }
 
     void Update() {
         if (!pauseTimer) {
-            if (timer < timeToSwitchInSeconds) {
-                timer += Time.deltaTime;
+            if (timer > 0f) {
+                timer -= Time.deltaTime;
             }
-            if (timer >= timeToSwitchInSeconds) {
+            if (timer <= 0) {
                 DetermineCurrentArea();
-                timer = 0;
+                timer = timeToSwitchInSeconds;
                 Debug.Log("Switched to: " + currentArea);
             }
         }

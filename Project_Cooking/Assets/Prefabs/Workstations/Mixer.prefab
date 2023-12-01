@@ -25,16 +25,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116858591477291154}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8775027002519420777}
+  m_Father: {fileID: 7589780309076906245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78, y: -30}
+  m_AnchoredPosition: {x: 70.600006, y: 209.00005}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8910094404789551242
@@ -429,6 +429,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8775027002519420777}
+  - {fileID: 3977513220766048819}
   m_Father: {fileID: 6516851393735666929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.854}
   m_AnchorMin: {x: 0, y: 0}
@@ -529,7 +530,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4605789424770391387}
-  - {fileID: 3977513220766048819}
   m_Father: {fileID: 7589780309076906245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -732,6 +732,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dedc02b7f2ac824599bc7a9c4ee85c0, type: 2}
   - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
   progressBar: {fileID: 7409549010394928752}
+  progBarCanvas: {fileID: 5282972929879530553}
   workstationSO: {fileID: 11400000, guid: 585f8da34bad3f04ea6058aa31f09de6, type: 2}
   progressState: 0
   isCharging: 0

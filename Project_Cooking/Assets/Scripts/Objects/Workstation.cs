@@ -7,6 +7,7 @@ public abstract class Workstation : MonoBehaviour {
 
     [SerializeField] protected List<WorkstationRecipe> workstationRecipesSO;
     [SerializeField] protected Slider progressBar;
+    [SerializeField] protected GameObject progBarCanvas;
     [SerializeField] protected WorkstationSO workstationSO;
     private Actions actions;
     protected bool hasAllIngredients = true;
@@ -24,6 +25,7 @@ public abstract class Workstation : MonoBehaviour {
         sr = GetComponentInChildren<SpriteRenderer>();
         actions = FindObjectOfType<Actions>();
         actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
+        progBarCanvas.SetActive(false);
     }
     private void Update() {
         ProgressBarStateMachine();
@@ -105,9 +107,11 @@ public abstract class Workstation : MonoBehaviour {
     }
     public void HighlightSprite() {
         sr.sprite = workstationSO.highlightedSprite;
+        progBarCanvas.SetActive(true);
     }
     public void NormalSprite() {
         sr.sprite = workstationSO.normalSprite;
+        progBarCanvas.SetActive(false);
     }
 }
 
