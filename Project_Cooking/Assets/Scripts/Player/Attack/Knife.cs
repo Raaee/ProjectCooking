@@ -72,16 +72,16 @@ public class Knife : MonoBehaviour  {
                 knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -45f));
                 break;
             case AttackDirection.DOWN:
-                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -90f));
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, -90f));
                 break;
             case AttackDirection.DOWN_LEFT:
-                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -135f));
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, -45f));
                 break;
             case AttackDirection.LEFT:
-                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 180f));
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
                 break;
             case AttackDirection.UP_LEFT:
-                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 135f));
+                knifeObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 45f));
                 break;
         }
     }
