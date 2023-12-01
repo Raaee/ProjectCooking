@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour   {
+
     public List<GameObject> baseIngredients = new List<GameObject>();
     [SerializeField] private GameObject upperCornerFLoor;
     [SerializeField] private GameObject lowerCornerFLoor;
-    void Start()    {
+    void Start() {
         SpawnAllBaseIngredients();
     }
     public void SpawnAllBaseIngredients() {
@@ -19,4 +20,5 @@ public class LevelManager : MonoBehaviour   {
         }        
         
     }
+    
 }
