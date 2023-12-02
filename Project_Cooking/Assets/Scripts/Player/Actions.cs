@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 public class Actions : MonoBehaviour    {
 
     [SerializeField] private AreaTimer areaTimer;
-
+    [SerializeField] private Current_Area currentArea;
     private Input input;
     public UnityEvent OnItemSelect;
     public UnityEvent OnItemDrop;
@@ -48,7 +48,7 @@ public class Actions : MonoBehaviour    {
 
     public void InputChange()
     {
-       switch(areaTimer.GetCurrentArea())
+       switch(currentArea)
         {
             case Current_Area.LIMBO:
                 input.DisableKitchenInputs();

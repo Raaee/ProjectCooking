@@ -1,40 +1,58 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class AreaTimer : MonoBehaviour {
 
-    [SerializeField] private Current_Area currentArea = Current_Area.LIMBO;
-    [SerializeField] float timeToSwitchInSeconds = 15f;
-    public float timer = 0f;
-    public bool pauseTimer = false;
+    [SerializeField] private float kitchenTimeLength = 15f; //should probs be the same?
+    [SerializeField] private float dungeonTimeLength = 15f;
+    //no limbo time, that is made by the player
+    private float roundOverTime;
 
-    void Start() {
-        currentArea = Current_Area.DUNGEON;
-        timeToSwitchInSeconds += 1;
-        timer = timeToSwitchInSeconds;
-    }
+    [Header("DEBUG")]
+    [SerializeField] private float timer = 0f;
+    [SerializeField] private bool isTimerPaused = false;
 
-    void Update() {
-        if (!pauseTimer) {
-            if (timer > 0f) {
-                timer -= Time.deltaTime;
-            }
-            if (timer <= 0) {
-                DetermineCurrentArea();
-                timer = timeToSwitchInSeconds;
-                Debug.Log("Switched to: " + currentArea);
-            }
-        }
-    }
-    public void DetermineCurrentArea() {
-        if (currentArea == Current_Area.DUNGEON) {
-            currentArea = Current_Area.KITCHEN;
-        }
-        else {
-            currentArea = Current_Area.DUNGEON;
-        }
+    public UnityEvent OnRoundOver; 
+
+    void Start() 
+    {
+        timer = kitchenTimeLength;
     }
 
-    public Current_Area GetCurrentArea() {
-        return currentArea;
+    void Update() 
+    {
+        if (isTimerPaused) return;
+
+        timer -= Time.deltaTime;
+
+        if(timer < 0f)
+        {
+            OnRoundOver.Invoke();
+            isTimerPaused = true;
+            
+        }
+
     }
+
+
+    public void ResetAreaTime(Current_Area currentArea)
+    {
+        switch(currentArea)
+        {
+            case Current_Area.KITCHEN:
+                timer = kitchenTimeLength;
+                break;
+            case Current_Area.DUNGEON:
+                timer = dungeonTimeLength;
+                break;
+        }
+        isTimerPaused = false;
+    }
+
+    public float GetCurrentTime()
+    {
+        return timer;
+    }
+
 }

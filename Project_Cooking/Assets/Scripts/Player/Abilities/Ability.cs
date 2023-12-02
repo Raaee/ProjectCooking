@@ -14,6 +14,7 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected int bloodCost;
     protected bool isPerformingAbility = false;
     protected Actions actions;
+    public Sprite abilitySprite;
 
     [Header("ABILITY GLOBAL REFERENCES")] 
     [SerializeField] protected ProgressBar bloodProgressBar;
@@ -59,6 +60,11 @@ public abstract class Ability : MonoBehaviour
         isPerformingAbility = true;
         OnAbilityStart();
         PlayAbilityOneShot();
+    }
+
+    public int GetBloodCost()
+    {
+        return bloodCost;
     }
 
     protected void PlayAbilityOneShot()

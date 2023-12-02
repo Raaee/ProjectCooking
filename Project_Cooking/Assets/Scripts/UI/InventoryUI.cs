@@ -12,6 +12,10 @@ public class InventoryUI : MonoBehaviour {
 
     public List<Sprite> uiSlotSelectionSprites; //0 is empty, 1 is highlighted. "BuT PeTe tHaTs hArdCodIng" - Raeus
     private int index = 0;
+
+    [Header("Set up inventory ui on start")]
+    public bool setUP = true; //check to make sure this is false in the ability icosn
+
     private void Awake()
     {
         if (!inventory)
@@ -21,9 +25,8 @@ public class InventoryUI : MonoBehaviour {
     }
     private void Start()
     {
-       
-        DisableAllHighlighted();
-        DisableAllImagePlaceholder();
+
+        InitIventoryUI();
     }
 
     public void UpdateInventoryUI()
@@ -71,6 +74,12 @@ public class InventoryUI : MonoBehaviour {
         uiSlots[index].ImageBackground.sprite = uiSlotSelectionSprites[1];
 
 
+    }
+    private void InitIventoryUI()
+    {
+        if (!setUP) return; 
+        DisableAllHighlighted();
+        DisableAllImagePlaceholder();
     }
   
     private void DisableAllHighlighted() 

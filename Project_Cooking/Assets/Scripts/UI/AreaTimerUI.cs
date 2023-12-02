@@ -11,7 +11,7 @@ public class AreaTimerUI : MonoBehaviour {
     [SerializeField] private int timeToChangeColor = 5;
 
     private void Update() {
-        if (areaTimer.timer > (timeToChangeColor + 1)) {
+        if (areaTimer.GetCurrentTime() > (timeToChangeColor + 1)) {
             areaTimerText.color = colorNormal;
         }
         else {
@@ -20,7 +20,7 @@ public class AreaTimerUI : MonoBehaviour {
         UpdateTimer();
     }
     public void UpdateTimer() {
-        float seconds = Mathf.FloorToInt(areaTimer.timer % 60);
+        float seconds = Mathf.FloorToInt(areaTimer.GetCurrentTime() % 60);
         areaTimerText.text = string.Format("{0:00}:{1:00}", 0, seconds);
     }
 
