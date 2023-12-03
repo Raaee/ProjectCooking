@@ -13,5 +13,16 @@ MonoBehaviour:
   m_Name: Salad
   m_EditorClassIdentifier: 
   recipeSteps:
-  - recipeAction: 0
-    recipeIngredients: []
+  - recipeAction: 2
+    amountOfChopAction: 1
+    recipeIngredients:
+    - {fileID: 11400000, guid: 99d5095403ccd9a4bb062944801a5df3, type: 2}
+  - recipeAction: 2
+    amountOfChopAction: 1
+    recipeIngredients:
+    - {fileID: 11400000, guid: 41598dc739df00944a3ce0d6828af91c, type: 2}
+  - recipeAction: 1
+    amountOfChopAction: 1
+    recipeIngredients:
+    - {fileID: 11400000, guid: eb55d1219e68a8443a541f38d0f3e19f, type: 2}
+    - {fileID: 11400000, guid: 7417b0a00da7a9f46a1f76d0f4f78e9b, type: 2}
