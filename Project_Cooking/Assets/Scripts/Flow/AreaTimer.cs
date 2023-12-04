@@ -9,7 +9,7 @@ public class AreaTimer : MonoBehaviour {
 
     void Start() {
         currentArea = Current_Area.DUNGEON;
-        timeToSwitchInSeconds += 1;
+        timeToSwitchInSeconds += 0.5f;
         timer = timeToSwitchInSeconds;
     }
 
