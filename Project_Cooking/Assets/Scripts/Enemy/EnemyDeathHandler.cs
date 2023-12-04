@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDeathHandler : MonoBehaviour
@@ -17,13 +15,13 @@ public class EnemyDeathHandler : MonoBehaviour
     }
     public void OnEnemyHurt()
     {
-      
+
 
     }
 
     public void OnEnemyDeath()
     {
-     
+
         //enemmy death sound 
         //visual feedbacl
         //spawn x amount of droplets around me
@@ -32,7 +30,7 @@ public class EnemyDeathHandler : MonoBehaviour
             float radius = 0.33f;
 
             Vector2 point = GenerateRandomPointOnEdge(transform.position, radius);
-          
+
             var bloodDrop = Instantiate(bloodDropPrefab, point, Quaternion.identity);
         }
         //disapear into void (refactor would be send back to the object pooling )

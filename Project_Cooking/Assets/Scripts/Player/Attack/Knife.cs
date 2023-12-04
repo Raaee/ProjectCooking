@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Knife : MonoBehaviour  {
+public class Knife : MonoBehaviour
+{
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject knifeObject;
@@ -12,21 +11,26 @@ public class Knife : MonoBehaviour  {
     [SerializeField] private AttackDirection attackDirection = AttackDirection.RIGHT;
     private Vector2 moveDirection;
 
-    private void Start() {
+    private void Start()
+    {
         ChangeRotationOnDirection();
         SetMoveDirection();
     }
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         MoveKnife();
         timer += Time.deltaTime;
-        if (timer >= maxLifeTime) {
+        if (timer >= maxLifeTime)
+        {
             Destroy(this.gameObject);
         }
     }
-    public void MoveKnife() {
+    public void MoveKnife()
+    {
         rb.velocity = moveDirection * projectileSpeed * Time.fixedDeltaTime;
     }
-    public void SetMoveDirection() {
+    public void SetMoveDirection()
+    {
         switch (attackDirection)
         {
             case AttackDirection.UP:
@@ -85,8 +89,9 @@ public class Knife : MonoBehaviour  {
                 break;
         }
     }
-    public void SetAttackDirection(AttackDirection newAttackDirection) {
+    public void SetAttackDirection(AttackDirection newAttackDirection)
+    {
         attackDirection = newAttackDirection;
     }
-    
+
 }

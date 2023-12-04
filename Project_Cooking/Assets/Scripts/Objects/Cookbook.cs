@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cookbook : MonoBehaviour, IInteractable {
+public class Cookbook : MonoBehaviour, IInteractable
+{
 
     public List<WorkstationRecipe> allRecipes = new List<WorkstationRecipe>();
     public WorkstationRecipe levelRecipe;
@@ -12,12 +12,14 @@ public class Cookbook : MonoBehaviour, IInteractable {
     [SerializeField] private Sprite highlightedCookbookSprite;
     private SpriteRenderer sr;
 
-    private void Awake() {
+    private void Awake()
+    {
         sr = GetComponent<SpriteRenderer>();
         PickRandomRecipe();
     }
 
-    public void PickRandomRecipe() {
+    public void PickRandomRecipe()
+    {
         int ranNum;
         ranNum = Random.Range(0, allRecipes.Count);
 
@@ -25,14 +27,17 @@ public class Cookbook : MonoBehaviour, IInteractable {
         allRecipes.Remove(levelRecipe);
     }
 
-    public void Interact() {
+    public void Interact()
+    {
         Debug.Log("Cookbook interact");
     }
-    
-    public void HighlightSprite() {
+
+    public void HighlightSprite()
+    {
         sr.sprite = highlightedCookbookSprite;
     }
-    public void NormalSprite() {
+    public void NormalSprite()
+    {
         sr.sprite = cookbookSprite;
     }
 }

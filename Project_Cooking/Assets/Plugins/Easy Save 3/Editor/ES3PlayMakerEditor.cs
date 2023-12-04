@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace ES3PlayMaker
 {
-    #region Base Actions
+#region Base Actions
 
     public abstract class BaseEditor : CustomActionEditor
     {

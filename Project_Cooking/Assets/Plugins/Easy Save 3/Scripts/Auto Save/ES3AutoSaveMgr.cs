@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
 #if UNITY_VISUAL_SCRIPTING
 [Unity.VisualScripting.IncludeInSettings(true)]
@@ -11,7 +10,7 @@ using System.Linq;
 #endif
 public class ES3AutoSaveMgr : MonoBehaviour
 {
-	public static ES3AutoSaveMgr _current = null;
+    public static ES3AutoSaveMgr _current = null;
     public static ES3AutoSaveMgr Current
     {
         get
@@ -42,17 +41,17 @@ public class ES3AutoSaveMgr : MonoBehaviour
     }
 
     public enum LoadEvent { None, Awake, Start }
-	public enum SaveEvent { None, OnApplicationQuit, OnApplicationPause }
+    public enum SaveEvent { None, OnApplicationQuit, OnApplicationPause }
 
-	public string key = System.Guid.NewGuid().ToString();
-	public SaveEvent saveEvent = SaveEvent.OnApplicationQuit;
-	public LoadEvent loadEvent = LoadEvent.Awake;
-	public ES3SerializableSettings settings = new ES3SerializableSettings("AutoSave.es3", ES3.Location.Cache);
+    public string key = System.Guid.NewGuid().ToString();
+    public SaveEvent saveEvent = SaveEvent.OnApplicationQuit;
+    public LoadEvent loadEvent = LoadEvent.Awake;
+    public ES3SerializableSettings settings = new ES3SerializableSettings("AutoSave.es3", ES3.Location.Cache);
 
-	public HashSet<ES3AutoSave> autoSaves = new HashSet<ES3AutoSave>();
+    public HashSet<ES3AutoSave> autoSaves = new HashSet<ES3AutoSave>();
 
     public void Save()
-	{
+    {
         if (autoSaves == null || autoSaves.Count == 0)
             return;
 
@@ -77,12 +76,12 @@ public class ES3AutoSaveMgr : MonoBehaviour
             ES3.Save<GameObject[]>(key, gameObjects.OrderBy(x => GetDepth(x.transform)).ToArray(), settings);
         }
 
-        if(settings.location == ES3.Location.Cache && ES3.FileExists(settings))
+        if (settings.location == ES3.Location.Cache && ES3.FileExists(settings))
             ES3.StoreCachedFile(settings);
-	}
+    }
 
-	public void Load()
-	{
+    public void Load()
+    {
         try
         {
             // If we're using caching and we've not already cached this file, cache it.
@@ -92,13 +91,13 @@ public class ES3AutoSaveMgr : MonoBehaviour
         catch { }
 
         ES3.Load<GameObject[]>(key, new GameObject[0], settings);
-	}
+    }
 
-	void Start()
-	{
-		if(loadEvent == LoadEvent.Start)
-			Load();
-	}
+    void Start()
+    {
+        if (loadEvent == LoadEvent.Start)
+            Load();
+    }
 
     public void Awake()
     {
@@ -109,31 +108,31 @@ public class ES3AutoSaveMgr : MonoBehaviour
     }
 
     void OnApplicationQuit()
-	{
-		if(saveEvent == SaveEvent.OnApplicationQuit)
-			Save();
-	}
+    {
+        if (saveEvent == SaveEvent.OnApplicationQuit)
+            Save();
+    }
 
-	void OnApplicationPause(bool paused)
-	{
-		if(	(saveEvent == SaveEvent.OnApplicationPause || 
-			(Application.isMobilePlatform && saveEvent == SaveEvent.OnApplicationQuit)) && paused)
-			Save();
-	}
+    void OnApplicationPause(bool paused)
+    {
+        if ((saveEvent == SaveEvent.OnApplicationPause ||
+            (Application.isMobilePlatform && saveEvent == SaveEvent.OnApplicationQuit)) && paused)
+            Save();
+    }
 
-	/* Register an ES3AutoSave with the ES3AutoSaveMgr, if there is one */
-	public static void AddAutoSave(ES3AutoSave autoSave)
-	{
-		if(ES3AutoSaveMgr.Current != null)
-			ES3AutoSaveMgr.Current.autoSaves.Add(autoSave);
-	}
+    /* Register an ES3AutoSave with the ES3AutoSaveMgr, if there is one */
+    public static void AddAutoSave(ES3AutoSave autoSave)
+    {
+        if (ES3AutoSaveMgr.Current != null)
+            ES3AutoSaveMgr.Current.autoSaves.Add(autoSave);
+    }
 
-	/* Remove an ES3AutoSave from the ES3AutoSaveMgr, for example if it's GameObject has been destroyed */
-	public static void RemoveAutoSave(ES3AutoSave autoSave)
-	{
-		if(ES3AutoSaveMgr.Current != null)
-			ES3AutoSaveMgr.Current.autoSaves.Remove(autoSave);
-	}
+    /* Remove an ES3AutoSave from the ES3AutoSaveMgr, for example if it's GameObject has been destroyed */
+    public static void RemoveAutoSave(ES3AutoSave autoSave)
+    {
+        if (ES3AutoSaveMgr.Current != null)
+            ES3AutoSaveMgr.Current.autoSaves.Remove(autoSave);
+    }
 
     /* Gathers all of the ES3AutoSave Components in the scene and registers them with the manager */
     public void GetAutoSaves()

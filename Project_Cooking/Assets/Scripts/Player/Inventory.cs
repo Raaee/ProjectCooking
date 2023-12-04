@@ -1,9 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
 
     public static Inventory instance { get; private set; }
 
@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour {
     private int invIndex = 0;
     private int invSlotAvailable = 0;
     private const float SCROLL_THRESHOLD = 120f;
-  
+
     [Header("REFERENCES")]
     [SerializeField] private Actions actions;
     [SerializeField] private Input input;
@@ -23,7 +23,8 @@ public class Inventory : MonoBehaviour {
     public UnityEvent OnCurrentItemChanged;
     public UnityEvent OnInventoryChange;
 
-    private void Awake() {
+    private void Awake()
+    {
         Init();
 
         if (!actions)
@@ -38,36 +39,43 @@ public class Inventory : MonoBehaviour {
 
         actions.OnItemSelect.AddListener(CurrItemSelectedFromScroll);
         actions.OnItemDrop.AddListener(CurrItemDropped);
-       
+
     }
-    public bool AddItem(Items item) {
-        if (!HasSpace()) {
+    public bool AddItem(Items item)
+    {
+        if (!HasSpace())
+        {
             Debug.LogWarning("Inventory is full\nATTEMPTED TO ADD:" + item);
             return false;
         }
         inventoryList[invSlotAvailable] = item;
-      
+
         OnInventoryChange.Invoke();
         return true;
     }
-    public bool HasSpace() {
-        for (int i = 0; i < MAX_INV_SPACES; i++) {
-            if (inventoryList[i] == Items.NONE) {
+    public bool HasSpace()
+    {
+        for (int i = 0; i < MAX_INV_SPACES; i++)
+        {
+            if (inventoryList[i] == Items.NONE)
+            {
                 invSlotAvailable = i;
                 return true;
             }
         }
         return false;
     }
-    public void RemoveItem() {
+    public void RemoveItem()
+    {
         InstantiateItem(inventoryList[invIndex]);
         inventoryList[invIndex] = Items.NONE;
-      
+
         OnInventoryChange.Invoke();
     }
-    public void InstantiateItem(Items item) {
+    public void InstantiateItem(Items item)
+    {
 
-       
+
         GameObject go = null;
         go = allIngredients.Find((tempGO) => tempGO.GetComponent<Ingredient>().GetItemType() == item); //RAE CURSED THE CODE
 
@@ -75,39 +83,50 @@ public class Inventory : MonoBehaviour {
             return;
         else
             Instantiate(go, input.transform.position, Quaternion.identity);
-      
+
     }
     //This is if u want to specify the item to remove:
-  
-    public bool IsEmpty() {
-        for (int i = 0; i < MAX_INV_SPACES; i++) {
-            if (inventoryList[i] != Items.NONE) {
+
+    public bool IsEmpty()
+    {
+        for (int i = 0; i < MAX_INV_SPACES; i++)
+        {
+            if (inventoryList[i] != Items.NONE)
+            {
                 return false;
             }
         }
         return true;
     }
-    public void ClearInventory() {
-        for (int i = 0; i < MAX_INV_SPACES; i++) {
+    public void ClearInventory()
+    {
+        for (int i = 0; i < MAX_INV_SPACES; i++)
+        {
             inventoryList[i] = Items.NONE;
         }
     }
-    public void CurrItemDropped() {
+    public void CurrItemDropped()
+    {
         RemoveItem();
     }
-    public void CurrItemSelectedFromScroll() {
+    public void CurrItemSelectedFromScroll()
+    {
         // Scroll UP:
-        if (input.slotSelect.ReadValue<float>() < SCROLL_THRESHOLD) {
+        if (input.slotSelect.ReadValue<float>() < SCROLL_THRESHOLD)
+        {
             invIndex++;
-            if (invIndex >= MAX_INV_SPACES) {
+            if (invIndex >= MAX_INV_SPACES)
+            {
                 invIndex = 0;
             }
         }
 
         // Scroll DOWN:
-        if (input.slotSelect.ReadValue<float>() >= SCROLL_THRESHOLD) {
+        if (input.slotSelect.ReadValue<float>() >= SCROLL_THRESHOLD)
+        {
             invIndex--;
-            if (invIndex < 0) {
+            if (invIndex < 0)
+            {
                 invIndex = MAX_INV_SPACES - 1;
             }
         }
@@ -115,10 +134,12 @@ public class Inventory : MonoBehaviour {
         currentItem = inventoryList[invIndex];
         OnCurrentItemChanged.Invoke();
     }
-    public Items GetCurrentItem() {
+    public Items GetCurrentItem()
+    {
         return currentItem;
     }
-    public int GetCurrentItemIndex() {
+    public int GetCurrentItemIndex()
+    {
         return invIndex;
     }
     public int GetMaxInvSpace()
@@ -136,7 +157,7 @@ public class Inventory : MonoBehaviour {
             instance = this;
         }
 
-       
+
         for (int i = 0; i < MAX_INV_SPACES; i++)
         {
             inventoryList.Add(Items.NONE);

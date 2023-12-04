@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 /// <summary>
 /// A script to help make game design easier. Kinda like a cheat mode system in the editor
 /// </summary>
-public class DevMode 
+public class DevMode
 {
     private const string peteSpittingBars = "Damage is negated. Goose Mode Activated. Problems mitigated, Answers be created. \n Chaos is abated, Power's reinstated. Raeus be fustrasted, danger is evaded ";
     /*
@@ -21,9 +19,9 @@ public class DevMode
     {
         Debug.Log("Commiting War Crimes... Raeus approved");
         var enemies = GameObject.FindObjectsOfType<EnemyStateHandler>();
-        foreach(EnemyStateHandler enemy in enemies)
+        foreach (EnemyStateHandler enemy in enemies)
         {
-           var enemyHealth = enemy.gameObject.GetComponent<Health>();
+            var enemyHealth = enemy.gameObject.GetComponent<Health>();
             enemyHealth.InstaKill();
         }
 
@@ -33,9 +31,9 @@ public class DevMode
     [MenuItem("Dev Mode/Toggle Goose Mode")]
     public static void ToggleInvincibility()
     {
-       
-       var player = GameObject.FindGameObjectWithTag("Player");
-        if(!player)
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (!player)
         {
             Debug.Log("dont think theres a player in this scene bub");
             return;
@@ -48,7 +46,7 @@ public class DevMode
     [MenuItem("Dev Mode/Spawn Random Enemy")]
     public static void SpawnRandomEnemy()
     {
-     
+
         //find player and get its position 
         var player = GameObject.FindGameObjectWithTag("Player");
         if (!player)
@@ -66,16 +64,16 @@ public class DevMode
             Debug.Log("dont think theres a enemyMaanager in this scene bub");
             return;
         }
-       float radius = 10f;
-       Vector3 randomPoint = Random.onUnitSphere * radius;
-       enemyManager.SpawnEnemyAtPoint(randomPoint);
+        float radius = 10f;
+        Vector3 randomPoint = Random.onUnitSphere * radius;
+        enemyManager.SpawnEnemyAtPoint(randomPoint);
 
     }
 
     [MenuItem("Dev Mode/Toggle Enemy movement")]
     public static void ToggleEnemyMovement()
     {
-        Debug.Log("Not implemented yet raeus. sucka ");      
+        Debug.Log("Not implemented yet raeus. sucka ");
     }
 
     [MenuItem("Dev Mode/BAT MODE!!")]

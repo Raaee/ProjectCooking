@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour {
+public class InventoryUI : MonoBehaviour
+{
 
     [SerializeField] private Inventory inventory;
     [SerializeField] public List<UISlotData> uiSlots;
@@ -12,6 +11,10 @@ public class InventoryUI : MonoBehaviour {
 
     public List<Sprite> uiSlotSelectionSprites; //0 is empty, 1 is highlighted. "BuT PeTe tHaTs hArdCodIng" - Raeus
     private int index = 0;
+
+    [Header("Set up inventory ui on start")]
+    public bool setUP = true; //check to make sure this is false in the ability icosn
+
     private void Awake()
     {
         if (!inventory)
@@ -21,14 +24,13 @@ public class InventoryUI : MonoBehaviour {
     }
     private void Start()
     {
-       
-        DisableAllHighlighted();
-        DisableAllImagePlaceholder();
+
+        InitIventoryUI();
     }
 
     public void UpdateInventoryUI()
     {
-        
+
         for (int i = 0; i < inventory.GetMaxInvSpace(); i++)
         {
             Items item = inventory.inventoryList[i];
@@ -36,7 +38,7 @@ public class InventoryUI : MonoBehaviour {
             //try to find it in the master ingredeintso list 
             foreach (var ingredientSO in allIngredientsSO.ingredientSos)
             {
-                if(item == Items.NONE)
+                if (item == Items.NONE)
                 {
                     //skip to the end
                     break;
@@ -53,35 +55,41 @@ public class InventoryUI : MonoBehaviour {
             //if the item is NONE or we didnt make a ingredient SO for it yet 
             if (!found)
             {
-              
+
                 uiSlots[i].ItemImagePlaceholder.sprite = null;
                 uiSlots[i].ItemImagePlaceholder.gameObject.SetActive(false);
             }
-            
+
         }
     }
-    public void UpdateSelected() 
+    public void UpdateSelected()
     {
-       
-        index = inventory.GetCurrentItemIndex();    
+
+        index = inventory.GetCurrentItemIndex();
         var itemAtIndex = inventory.GetCurrentItem();
-     
+
         DisableAllHighlighted();
 
         uiSlots[index].ImageBackground.sprite = uiSlotSelectionSprites[1];
 
 
     }
-  
-    private void DisableAllHighlighted() 
+    private void InitIventoryUI()
     {
-        
+        if (!setUP) return;
+        DisableAllHighlighted();
+        DisableAllImagePlaceholder();
+    }
+
+    private void DisableAllHighlighted()
+    {
+
         foreach (var uiSlot in uiSlots)
         {
             uiSlot.ImageBackground.sprite = uiSlotSelectionSprites[0];
-          
+
         }
-     
+
     }
 
     private void DisableAllImagePlaceholder()
@@ -90,7 +98,7 @@ public class InventoryUI : MonoBehaviour {
         foreach (var uiSlot in uiSlots)
         {
             uiSlot.ItemImagePlaceholder.gameObject.SetActive(false);
-           
+
         }
 
     }
