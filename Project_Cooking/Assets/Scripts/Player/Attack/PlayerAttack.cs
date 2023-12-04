@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour   {
+public class PlayerAttack : MonoBehaviour
+{
 
     private Actions actions;
     private Movement movement;
@@ -12,27 +11,31 @@ public class PlayerAttack : MonoBehaviour   {
     [SerializeField] private float attackSpeed = 2f;
     private Vector2 moveDir;
     private float timer = 0f;
-    private void Awake() {
+    private void Awake()
+    {
         actions = GetComponent<Actions>();
         movement = GetComponent<Movement>();
         actions.OnAttack_Started_Context.AddListener(StartAttack);
         actions.OnAttack_Cancelled.AddListener(StopAttack);
         attackSpeed = 1f / attackSpeed;
     }
-    private void Update() {
-        if (!attacking) {
+    private void Update()
+    {
+        if (!attacking)
+        {
             return;
         }
         timer += Time.deltaTime;
         if (timer >= attackSpeed)
         {
-           // SpawnKnife();
+            // SpawnKnife();
             timer = 0f;
         }
-       
+
     }
-    public void SpawnKnife(Vector2 dir) {
-      
+    public void SpawnKnife(Vector2 dir)
+    {
+
 
         var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
         go.GetComponent<Knife>().SetAttackDirection(GetEightDirection(dir));
@@ -41,29 +44,31 @@ public class PlayerAttack : MonoBehaviour   {
     }
 
 
-    public void StartAttack(InputAction.CallbackContext context) {
+    public void StartAttack(InputAction.CallbackContext context)
+    {
         attacking = true;
         if (context.control.IsPressed()) // Check if the button is pressed
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector2 objectPosition = Camera.main.WorldToScreenPoint(transform.position);
-           
+
 
             // Calculate normalized direction
             Vector2 direction = (mousePosition - objectPosition).normalized;
 
-         
+
             SpawnKnife(direction);
         }
     }
-    public void StopAttack() {
+    public void StopAttack()
+    {
         attacking = false;
     }
 
     private AttackDirection GetEightDirection(Vector2 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
- 
+
 
         angle = (angle + 360) % 360; // Ensure positive angle
         // Map angle to 8-direction enum

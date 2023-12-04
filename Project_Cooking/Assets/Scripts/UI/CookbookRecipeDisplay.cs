@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ public class CookbookRecipeDisplay : MonoBehaviour
 
         //we are deleting the last (5 - amtOfRecipeSteps) panels
         int panelsToHide = 5 - amtOfRecipeSteps;
-        for(int i = 4; i > panelsToHide; i--)
+        for (int i = 4; i > panelsToHide; i--)
         {
             recipeStepUIDataList[i].gameObject.SetActive(false);
         }
@@ -34,7 +33,7 @@ public class CookbookRecipeDisplay : MonoBehaviour
 
         //iterate through the recipe step ingredients and assign it to the images in recipestepuidatalist
         int amtOfRecipes = recipeStep.recipeIngredients.Count;
-        for (int i = 0; i < 3; i++ )
+        for (int i = 0; i < 3; i++)
         {
             if (i >= amtOfRecipes)
             {
@@ -44,14 +43,14 @@ public class CookbookRecipeDisplay : MonoBehaviour
             {
                 recipeStepUIData.recipeIngredientsImages[i].sprite = recipeStep.recipeIngredients[i].normalSprite;
             }
-              
+
         }
 
     }
 
     private Sprite AssignSpriteFromRecipeAction(RecipeAction action)
     {
-        switch(action)
+        switch (action)
         {
             case RecipeAction.MIX:
                 return mixSprite;

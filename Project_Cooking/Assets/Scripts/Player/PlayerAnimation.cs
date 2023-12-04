@@ -1,9 +1,7 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour  
+public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator batAnimator;
@@ -88,7 +86,7 @@ public class PlayerAnimation : MonoBehaviour
     /// </summary>
     public void Flash()
     {
-         Material mat = playerSpriteRenderer.material;
+        Material mat = playerSpriteRenderer.material;
 
         if (!mat) return;
         int amtOfFlashes = 4;

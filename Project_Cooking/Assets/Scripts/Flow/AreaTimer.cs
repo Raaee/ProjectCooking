@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class AreaTimer : MonoBehaviour {
+public class AreaTimer : MonoBehaviour
+{
 
     [SerializeField] private float kitchenTimeLength = 15f; //should probs be the same?
     [SerializeField] private float dungeonTimeLength = 15f;
@@ -13,24 +13,24 @@ public class AreaTimer : MonoBehaviour {
     [SerializeField] private float timer = 0f;
     [SerializeField] private bool isTimerPaused = false;
 
-    public UnityEvent OnRoundOver; 
+    public UnityEvent OnRoundOver;
 
-    void Start() 
+    void Start()
     {
         timer = kitchenTimeLength;
     }
 
-    void Update() 
+    void Update()
     {
         if (isTimerPaused) return;
 
         timer -= Time.deltaTime;
 
-        if(timer < 0f)
+        if (timer < 0f)
         {
             OnRoundOver.Invoke();
             isTimerPaused = true;
-            
+
         }
 
     }
@@ -38,7 +38,7 @@ public class AreaTimer : MonoBehaviour {
 
     public void ResetAreaTime(Current_Area currentArea)
     {
-        switch(currentArea)
+        switch (currentArea)
         {
             case Current_Area.KITCHEN:
                 timer = kitchenTimeLength;

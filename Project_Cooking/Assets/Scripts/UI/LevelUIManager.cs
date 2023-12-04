@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelUIManager : MonoBehaviour {
+public class LevelUIManager : MonoBehaviour
+{
 
     [SerializeField] private AreaTimer areaTimer;
     [SerializeField] private GameObject inventoryUI_GO;
@@ -10,11 +9,13 @@ public class LevelUIManager : MonoBehaviour {
     [SerializeField] private GameObject healthUI_GO;
     [SerializeField] private GameObject abilitiesUI_GO;
 
-    void Update()   {
-        
+    void Update()
+    {
+
     }
-    public void UpdateAreaUI() {
-       
+    public void UpdateAreaUI()
+    {
+
     }
-   
+
 }

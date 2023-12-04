@@ -1,31 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour, IInteractable  {
+public class Ingredient : MonoBehaviour, IInteractable
+{
 
     [SerializeField] private IngredientSO ingredientSO;
     private Items item;
     private SpriteRenderer sr;
-    private void Awake() {
+    private void Awake()
+    {
         sr = GetComponent<SpriteRenderer>();
-         item = ingredientSO.item;    
+        item = ingredientSO.item;
     }
-    public void Interact() {
+    public void Interact()
+    {
         bool itemAdded = Inventory.instance.AddItem(item);
-        if (itemAdded) {
+        if (itemAdded)
+        {
             Destroy(this.gameObject);
         }
     }
-    public void HighlightSprite() {
+    public void HighlightSprite()
+    {
         sr.sprite = ingredientSO.highlightedSprite;
     }
-    public void NormalSprite() {
+    public void NormalSprite()
+    {
         sr.sprite = ingredientSO.normalSprite;
     }
 
-    public Items GetItemType() {
-      
+    public Items GetItemType()
+    {
+
         return ingredientSO.item;
     }
 }

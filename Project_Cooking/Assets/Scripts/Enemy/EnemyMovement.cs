@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// The enemy component that works with the movement for the enemy 
@@ -65,9 +64,9 @@ public class EnemyMovement : MonoBehaviour
     public void ChaseTarget()
     {
         movementSpeed = originalSpeed;
-        isChasing = true;      
+        isChasing = true;
     }
- 
+
     public void StopChasing()
     {
         isChasing = false;
@@ -89,7 +88,7 @@ public class EnemyMovement : MonoBehaviour
         rb2d.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isCharging = false;
-    
+
     }
 
 }

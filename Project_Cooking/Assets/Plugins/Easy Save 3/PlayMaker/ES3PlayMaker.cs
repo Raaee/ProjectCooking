@@ -23,7 +23,7 @@ public class FsmES3Spreadsheet : ScriptableObject
 namespace ES3PlayMaker
 {
 
-    #region Base Classes
+#region Base Classes
 
     public abstract class ActionBase : FsmStateAction
     {
@@ -206,9 +206,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region Save Actions
+#region Save Actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Saves the value to a file with the given key.")]
@@ -374,9 +374,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region Load Actions
+#region Load Actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Loads a value from a file with the given key.")]
@@ -595,9 +595,9 @@ namespace ES3PlayMaker
     }
 
 
-    #endregion
+#endregion
 
-    #region Exists Actions
+#region Exists Actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Checks whether a key exists in a file.")]
@@ -689,9 +689,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region Delete Actions
+#region Delete Actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Deletes a key from a file.")]
@@ -747,9 +747,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region Backup Actions
+#region Backup Actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Creates a backup of a file which can be restored using the Restore Backup action.")]
@@ -790,9 +790,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region Key, File and Directory Methods
+#region Key, File and Directory Methods
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Renames a file.")]
@@ -947,9 +947,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region ES3Spreadsheet Actions
+#region ES3Spreadsheet Actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Creates a new empty ES3Spreadsheet.")]
@@ -1057,9 +1057,9 @@ namespace ES3PlayMaker
             es3Spreadsheet.Load(filePath.Value, GetSettings());
         }
     }
-    #endregion
+#endregion
 
-    #region ES3File Actions
+#region ES3File Actions
 
     [ActionCategory("Deprecated Easy Save 3 actions")]
     [Tooltip("Creates a new ES3File, and optionally loads a file from storage into it.")]
@@ -1310,9 +1310,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region ES3Cloud Actions
+#region ES3Cloud Actions
 
 #if !DISABLE_WEB
     public abstract class ES3CloudAction : SettingsAction
@@ -1573,9 +1573,9 @@ namespace ES3PlayMaker
     }
 
 #endif
-    #endregion
+#endregion
 
-    #region ES3AutoSave actions
+#region ES3AutoSave actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Triggers Auto Save's Save method.")]
@@ -1599,9 +1599,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region ES3Cache actions
+#region ES3Cache actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Caches a locally-stored file into memory.")]
@@ -1639,9 +1639,9 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
-    #region Misc actions
+#region Misc actions
 
     [ActionCategory("Easy Save 3")]
     [Tooltip("Gets the Streaming Assets path (see https://docs.unity3d.com/Manual/StreamingAssets.html), and optionally appends onto it. It is strongly recommended to use Easy Save's default of Persistent Data Path instead as this works on all platforms.")]
@@ -1668,7 +1668,7 @@ namespace ES3PlayMaker
         }
     }
 
-    #endregion
+#endregion
 
     public class PMDataWrapper
     {

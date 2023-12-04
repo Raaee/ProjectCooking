@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,7 +5,8 @@ using UnityEngine.InputSystem;
 /// This is the class that will be used to call the action methods when pressing buttons.
 /// This class speaks to the input when an action is performed.
 /// </summary>
-public class Actions : MonoBehaviour    {
+public class Actions : MonoBehaviour
+{
 
     [SerializeField] private AreaTimer areaTimer;
     [SerializeField] private Current_Area currentArea;
@@ -26,29 +25,31 @@ public class Actions : MonoBehaviour    {
     public UnityEvent OnHeal;
     public UnityEvent OnScreech;
 
-    private void Awake() {
+    private void Awake()
+    {
         input = GetComponent<Input>();
     }
-    private void Update() {
+    private void Update()
+    {
         input.interact.performed += Interact;
         input.interactHeld.started += InteractHeld_Started;
         input.interactHeld.canceled += InteractHeld_Cancelled;
         input.drop.performed += Drop;
         input.slotSelect.performed += SlotSelect;
-        
+
         // abilities:
         input.speedAbilityIA.performed += ActivateSpeedAbility;
         input.healAbilityIA.performed += ActivateHealAbility;
         input.screechAbilityIA.performed += ActivateScreechAbility;
         input.attack.started += Attack_Started;
         input.attack.canceled += Attack_Cancelled;
-        
+
         InputChange();
     }
 
     public void InputChange()
     {
-       switch(currentArea)
+        switch (currentArea)
         {
             case Current_Area.LIMBO:
                 input.DisableKitchenInputs();
@@ -65,50 +66,60 @@ public class Actions : MonoBehaviour    {
         }
     }
 
-    public void Interact(InputAction.CallbackContext context) {
+    public void Interact(InputAction.CallbackContext context)
+    {
         // This is where u put what interacting does
         // Default keybind is E [Keyboard]
         // Debug.Log("Pressed");
-        OnInteract.Invoke();        
+        OnInteract.Invoke();
     }
-    public void InteractHeld_Started(InputAction.CallbackContext context) {
+    public void InteractHeld_Started(InputAction.CallbackContext context)
+    {
         // Default keybind is E [Keyboard]
 
         // Debug.Log("Held Started");
         OnInteractHeld_Started.Invoke();
     }
-    public void InteractHeld_Cancelled(InputAction.CallbackContext context) {
+    public void InteractHeld_Cancelled(InputAction.CallbackContext context)
+    {
         // Default keybind is E [Keyboard]
-        
-       // Debug.Log("Held Cancelled");
+
+        // Debug.Log("Held Cancelled");
         OnInteractHeld_Cancelled.Invoke();
     }
-    public void Attack_Started(InputAction.CallbackContext context) {
+    public void Attack_Started(InputAction.CallbackContext context)
+    {
         // This is where u put what attacking does
         // Default keybind is Left Button [Mouse]
         OnAttack_Started.Invoke();
         OnAttack_Started_Context.Invoke(context);
     }
-    public void Attack_Cancelled(InputAction.CallbackContext context) {
+    public void Attack_Cancelled(InputAction.CallbackContext context)
+    {
         // This is where u put what attacking does
         // Default keybind is Left Button [Mouse]
         OnAttack_Cancelled.Invoke();
     }
-    public void ActivateSpeedAbility(InputAction.CallbackContext context) {
+    public void ActivateSpeedAbility(InputAction.CallbackContext context)
+    {
         OnSpeed.Invoke();
     }
-    public void ActivateHealAbility(InputAction.CallbackContext context) {
+    public void ActivateHealAbility(InputAction.CallbackContext context)
+    {
         OnHeal.Invoke();
     }
-    public void ActivateScreechAbility(InputAction.CallbackContext context) {
+    public void ActivateScreechAbility(InputAction.CallbackContext context)
+    {
         OnScreech.Invoke();
     }
-    public void Drop(InputAction.CallbackContext context) {
+    public void Drop(InputAction.CallbackContext context)
+    {
         // This is where u put what dropping does
         // Default keybind is Q [Keyboard]
         OnItemDrop.Invoke();
     }
-    public void SlotSelect(InputAction.CallbackContext context) {
+    public void SlotSelect(InputAction.CallbackContext context)
+    {
         // This is where u put what slot select does
         // Default keybind is Scroll Wheel Up/Down [Mouse]
         //  UP is 120f,  DOWN is -120f  ----> input.slotSelect.ReadValue<float>()
@@ -119,6 +130,6 @@ public class Actions : MonoBehaviour    {
 public enum Current_Area
 {
     LIMBO,
-    KITCHEN, 
+    KITCHEN,
     DUNGEON
 }

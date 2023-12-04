@@ -1,10 +1,9 @@
-using UnityEngine;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace ES3Internal
 {
@@ -26,7 +25,7 @@ namespace ES3Internal
         [NonSerialized]
 #endif
         public List<UnityEngine.Object> excludeObjects = new List<UnityEngine.Object>();
-        
+
         private static System.Random rng;
 
         [HideInInspector]
@@ -42,7 +41,7 @@ namespace ES3Internal
                 if (_current == null /*|| (_current.gameObject.scene.buildIndex != -1 && _current.gameObject.scene != SceneManager.GetActiveScene())*/)
                 {
                     ES3ReferenceMgrBase mgr = GetManagerFromScene(SceneManager.GetActiveScene());
-                    if(mgr != null)
+                    if (mgr != null)
                         mgrs.Add(_current = mgr);
                 }
                 return _current;
@@ -188,7 +187,7 @@ namespace ES3Internal
             return -1;
         }
 
-        internal UnityEngine.Object Get(long id, Type type, bool suppressWarnings=false)
+        internal UnityEngine.Object Get(long id, Type type, bool suppressWarnings = false)
         {
             if (!mgrs.Contains(this))
                 mgrs.Add(this);
@@ -217,11 +216,11 @@ namespace ES3Internal
                     return globalRef;
             }
 
-            if(type != null)
+            if (type != null)
                 ES3Debug.LogWarning("Reference for " + type + " with ID " + id + " could not be found in Easy Save's reference manager. If you are loading objects dynamically (i.e. objects created at runtime), this warning is expected and can be ignored.", this);
             else
                 ES3Debug.LogWarning("Reference with ID " + id + " could not be found in Easy Save's reference manager. If you are loading objects dynamically (i.e. objects created at runtime), this warning is expected and can be ignored.", this);
-            
+
             return null;
         }
 
@@ -314,7 +313,7 @@ namespace ES3Internal
             lock (_lock)
             {
                 idRef[id] = obj;
-                if(obj != null)
+                if (obj != null)
                     refId[obj] = id;
             }
             return id;
@@ -512,10 +511,10 @@ namespace ES3Internal
                 if (type == typeof(Animator) || obj is Transform || type == typeof(CanvasRenderer) || type == typeof(Mesh) || type == typeof(AudioClip) || type == typeof(Rigidbody) || obj is HorizontalOrVerticalLayoutGroup)
                     return;
 
-                if(obj is Texture)
+                if (obj is Texture)
                 {
                     // This ensures that Sprites which are children of the Texture are also added. In the Editor you would otherwise need to expand the Texture to add the Sprite.
-                    foreach(var dependency in UnityEditor.AssetDatabase.LoadAllAssetsAtPath(UnityEditor.AssetDatabase.GetAssetPath(obj)))
+                    foreach (var dependency in UnityEditor.AssetDatabase.LoadAllAssetsAtPath(UnityEditor.AssetDatabase.GetAssetPath(obj)))
                         if (dependency != obj)
                             dependencies.Add(dependency);
                 }

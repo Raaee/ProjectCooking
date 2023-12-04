@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum RecipeAction 
+public enum RecipeAction
 {
-    NONE, 
-    MIX, 
-    CHOP, 
+    NONE,
+    MIX,
+    CHOP,
     BAKE,
     RAEIFY
 }

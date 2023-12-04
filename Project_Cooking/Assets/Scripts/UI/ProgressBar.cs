@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +10,8 @@ public class ProgressBar : MonoBehaviour
     public List<Image> nodes;
     [SerializeField] private Sprite unlitSprite;
     [SerializeField] private Sprite litSprite;
-
-
+    private int maxLitNodeCount = 0; //helper var for audio
+    [SerializeField] private FMODUnity.EventReference passingNodeAudio;
 
 
     private void Start()
@@ -27,15 +26,22 @@ public class ProgressBar : MonoBehaviour
     {
         float fillAmt = (float)current / (float)max;
         mask.fillAmount = fillAmt;
-       
+
     }
-   
+
 
     // Call this method with the desired percentage and the total number of nodes
-    private void UpdateNodesVisuals(float percentage, int totalNodes)
-    {    
+    private void UpdateNodesVisuals(float percentage)
+    {
         int litNodeCount = CalculateLitNodeCount(percentage);
-       
+
+        if (litNodeCount > maxLitNodeCount)
+        {
+            PlayPassingNodeAudio();
+            maxLitNodeCount = litNodeCount;
+        }
+
+
         // Update the sprites based on the calculated lit node count
         for (int i = 0; i < nodes.Count; i++)
         {
@@ -59,7 +65,7 @@ public class ProgressBar : MonoBehaviour
         if (current > max)
             current = max;
         float fillAmt = (float)current / (float)max;
-        UpdateNodesVisuals(fillAmt, nodes.Count);
+        UpdateNodesVisuals(fillAmt);
     }
 
     public int GetCurrentBarAmt()
@@ -69,5 +75,10 @@ public class ProgressBar : MonoBehaviour
     public void Decrease(int amt)
     {
         current -= amt;
+    }
+
+    private void PlayPassingNodeAudio()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(passingNodeAudio, transform.position);
     }
 }

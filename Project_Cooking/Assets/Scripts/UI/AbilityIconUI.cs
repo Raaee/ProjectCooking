@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityIconUI : MonoBehaviour
@@ -14,7 +11,7 @@ public class AbilityIconUI : MonoBehaviour
     private CanvasGroup canvasGroup;
     private void Awake()
     {
-       // uiSlot = GetComponent<UISlotData>();
+        // uiSlot = GetComponent<UISlotData>();
         canvasGroup = GetComponent<CanvasGroup>();
         AssignAbilityReferences();
     }
@@ -34,7 +31,7 @@ public class AbilityIconUI : MonoBehaviour
 
     private void AssignAbilityReferences()
     {
-        switch(abilityEnum)
+        switch (abilityEnum)
         {
             case AbilityEnum.SPEED:
                 ability = FindObjectOfType<SpeedAbility>();
