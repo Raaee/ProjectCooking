@@ -13,7 +13,7 @@ namespace AllIn1SpriteShader
         private void Start()
         {
             Renderer renderer = GetComponent<Renderer>();
-            if(renderer != null)
+            if (renderer != null)
             {
                 propertyBlock = new MaterialPropertyBlock();
                 propertyBlock.SetFloat(randomSeedProperty, Random.Range(0f, 100f));

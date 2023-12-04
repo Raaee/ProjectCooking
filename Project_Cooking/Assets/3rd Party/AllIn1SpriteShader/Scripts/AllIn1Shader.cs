@@ -27,7 +27,7 @@ namespace AllIn1SpriteShader
 
         private Material currMaterial, prevMaterial;
         private bool matAssigned = false, destroyed = false;
-        private enum AfterSetAction { Clear, CopyMaterial, Reset};
+        private enum AfterSetAction { Clear, CopyMaterial, Reset };
 
         [Range(1f, 20f)] public float normalStrength = 5f;
         [Range(0f, 3f)] public int normalSmoothing = 1;
@@ -37,7 +37,7 @@ namespace AllIn1SpriteShader
         private static float timeLastReload = -1f;
         private void Start()
         {
-            if(timeLastReload < 0) timeLastReload = Time.time;
+            if (timeLastReload < 0) timeLastReload = Time.time;
         }
 
         private void Update()
@@ -109,7 +109,7 @@ namespace AllIn1SpriteShader
                 {
                     rendererExists = true;
                     int renderingQueue = 3000;
-                    if(action == AfterSetAction.CopyMaterial) renderingQueue = GetComponent<Renderer>().sharedMaterial.renderQueue;
+                    if (action == AfterSetAction.CopyMaterial) renderingQueue = GetComponent<Renderer>().sharedMaterial.renderQueue;
                     prevMaterial = new Material(GetComponent<Renderer>().sharedMaterial);
                     currMaterial = new Material(allIn1Shader);
                     currMaterial.renderQueue = renderingQueue;
@@ -125,7 +125,7 @@ namespace AllIn1SpriteShader
                     {
                         rendererExists = true;
                         int renderingQueue = 3000;
-                        if(action == AfterSetAction.CopyMaterial) renderingQueue = img.material.renderQueue;
+                        if (action == AfterSetAction.CopyMaterial) renderingQueue = img.material.renderQueue;
                         prevMaterial = new Material(img.material);
                         currMaterial = new Material(allIn1Shader);
                         currMaterial.renderQueue = renderingQueue;

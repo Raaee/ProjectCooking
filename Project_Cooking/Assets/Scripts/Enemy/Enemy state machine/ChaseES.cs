@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChaseES : EnemyState
@@ -14,7 +12,7 @@ public class ChaseES : EnemyState
     {
         base.Awake();
         enemyMovement = GetComponent<EnemyMovement>();
-       //TODO: duplicate code, might be better to put it in the enemystatehandler
+        //TODO: duplicate code, might be better to put it in the enemystatehandler
         var playerObj = FindAnyObjectByType<Movement>();
         if (!playerObj)
             Debug.LogWarning("Is there a player object in this scene?");
@@ -42,7 +40,7 @@ public class ChaseES : EnemyState
     void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
-      
+
         var tempColor = Color.yellow;
         tempColor.a = 0.125f;
         Gizmos.color = tempColor;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenuAudioControls : MonoBehaviour
@@ -26,5 +24,5 @@ public class MainMenuAudioControls : MonoBehaviour
         }
     }
 
-   
+
 }

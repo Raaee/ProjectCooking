@@ -48,6 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 6700596118906824325}
+  bloodPickupAudio:
+    Guid:
+      Data1: 110278112
+      Data2: 1140578042
+      Data3: -258614104
+      Data4: 185738347
+    Path: event:/Gameplay/Pick up blood drop
 --- !u!50 &6700596118906824325
 Rigidbody2D:
   serializedVersion: 4

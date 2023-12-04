@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 //drag and drop component that hurts the player using its tag
 public class Hurtable : MonoBehaviour
 {
-   
+
     [SerializeField] private Game_Tag whoGetsHurt = Game_Tag.Player;
     [SerializeField] private int damageAmt = 1;
-     private float knockbackForce = 250f;
-   
+    private float knockbackForce = 250f;
+
 
     private void Awake()
     {
@@ -22,13 +19,13 @@ public class Hurtable : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
 
-        if (!collision.CompareTag(whoGetsHurt.ToString())) 
+
+        if (!collision.CompareTag(whoGetsHurt.ToString()))
             return;
 
         Health health = collision.gameObject.GetComponent<Health>();
@@ -38,8 +35,8 @@ public class Hurtable : MonoBehaviour
 
         health.TakeDamage(damageAmt);
 
-      //  ApplyKnockback(collision);
-       
+        //  ApplyKnockback(collision);
+
 
     }
 
@@ -49,7 +46,7 @@ public class Hurtable : MonoBehaviour
         if (!rb2d)
             return;
 
-       
+
         Vector2 direction = (collision.transform.position - transform.position).normalized;
         Vector2 knockback = knockbackForce * direction;
         rb2d.AddForce(knockback, ForceMode2D.Impulse);

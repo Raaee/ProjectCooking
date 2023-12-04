@@ -1,26 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChargeES : EnemyState
 {
-  
+
     [Header("References")]
-    
-   
+
+
     [SerializeField] private EnemyMovement enemyMovement;
 
     [SerializeField] private EnemyState chaseState;
-   
+
 
     public override void Awake()
     {
         base.Awake();
-      
+
     }
     public override void OnStateEnter()
     {
-        
+
         StartCoroutine(ChargeSystem());
     }
 
@@ -32,7 +31,7 @@ public class ChargeES : EnemyState
     {
     }
 
- 
+
     private IEnumerator ChargeSystem()
     {
         enemyMovement.StopChasing();

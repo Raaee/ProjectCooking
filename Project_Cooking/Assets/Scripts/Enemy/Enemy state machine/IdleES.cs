@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// basically the the "frozen" state
 /// </summary>
 public class IdleES : EnemyState
 {
-  
+
     private Transform playerTransform;
     private const float PLAYER_DETECT_RADIUS = 25f;
     private EnemyMovement enemyMovement;
@@ -25,13 +23,13 @@ public class IdleES : EnemyState
 
     public override void OnStateExit()
     {
-      
+
     }
 
     public override void OnStateUpdate()
     {
         float distance = Vector2.Distance(playerTransform.position, transform.position);
-        if(distance < PLAYER_DETECT_RADIUS)
+        if (distance < PLAYER_DETECT_RADIUS)
         {
             enemyStateHandler.ChangeState(chaseState);
         }

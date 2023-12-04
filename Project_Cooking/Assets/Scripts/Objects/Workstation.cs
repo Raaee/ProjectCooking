@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
-public abstract class Workstation : MonoBehaviour {
+public abstract class Workstation : MonoBehaviour
+{
 
     [SerializeField] protected List<WorkstationRecipe> workstationRecipesSO;
     [SerializeField] protected Slider progressBar;
@@ -19,21 +19,25 @@ public abstract class Workstation : MonoBehaviour {
     [SerializeField] protected bool isCharging;
     private const float PROGRESS_RATE = 1.0f;
     public abstract void OnInteractionComplete();
-    
-    private void Awake() {
+
+    private void Awake()
+    {
         progressState = InteractProgressState.IDLE;
         sr = GetComponentInChildren<SpriteRenderer>();
         actions = FindObjectOfType<Actions>();
         actions.OnInteractHeld_Cancelled.AddListener(UnCharge);
         progBarCanvas.SetActive(false);
     }
-    private void Update() {
+    private void Update()
+    {
         ProgressBarStateMachine();
     }
-    public void AddOutputFromInteraction() {
+    public void AddOutputFromInteraction()
+    {
         outputIngredient = Items.CHARCOAL;
 
-        if (Inventory.instance.IsEmpty()) {
+        if (Inventory.instance.IsEmpty())
+        {
             Debug.LogWarning("Your inventory is empty.");
             return;
             //This is for when the player interacts with a workstation while their inventory is empty:
@@ -44,9 +48,12 @@ public abstract class Workstation : MonoBehaviour {
         Inventory.instance.ClearInventory();
         Inventory.instance.AddItem(outputIngredient);
     }
-    public void CheckIfInventoryHasAll() {
-        foreach (WorkstationRecipe recipe in workstationRecipesSO) {
-            if (recipe.workstationInput.All(IngredientSO => Inventory.instance.inventoryList.Contains(IngredientSO.item))) {
+    public void CheckIfInventoryHasAll()
+    {
+        foreach (WorkstationRecipe recipe in workstationRecipesSO)
+        {
+            if (recipe.workstationInput.All(IngredientSO => Inventory.instance.inventoryList.Contains(IngredientSO.item)))
+            {
                 outputIngredient = recipe.workstationOutput.item;
             }
         }
@@ -57,31 +64,38 @@ public abstract class Workstation : MonoBehaviour {
         {
             case InteractProgressState.IDLE:
                 progressBar.value = progressBar.minValue;
-                if (isCharging) {
+                if (isCharging)
+                {
                     progressState = InteractProgressState.INCREASING;
                 }
                 break;
 
             case InteractProgressState.INCREASING:
-                if (progressBar.value >= progressBar.maxValue)  {
+                if (progressBar.value >= progressBar.maxValue)
+                {
                     progressState = InteractProgressState.FULL;
                 }
-                if (!isCharging)    {
+                if (!isCharging)
+                {
                     progressState = InteractProgressState.DECREASING;
                 }
-                else {
+                else
+                {
                     progressBar.value += PROGRESS_RATE * Time.deltaTime;
                 }
                 break;
 
             case InteractProgressState.DECREASING:
-                if (progressBar.value <= progressBar.minValue)  {
+                if (progressBar.value <= progressBar.minValue)
+                {
                     progressState = InteractProgressState.IDLE;
                 }
-                if (isCharging) {
+                if (isCharging)
+                {
                     progressState = InteractProgressState.INCREASING;
                 }
-                else {
+                else
+                {
                     progressBar.value -= PROGRESS_RATE * Time.deltaTime;
                 }
                 break;
@@ -93,29 +107,36 @@ public abstract class Workstation : MonoBehaviour {
                 break;
         }
     }
-    public void RemoveChargeListener() {
+    public void RemoveChargeListener()
+    {
         actions.OnInteractHeld_Started.RemoveListener(Charge);
     }
-    public void AddChargeListener() {
+    public void AddChargeListener()
+    {
         actions.OnInteractHeld_Started.AddListener(Charge);
     }
-    public void Charge() {
+    public void Charge()
+    {
         isCharging = true;
     }
-    public void UnCharge() {
+    public void UnCharge()
+    {
         isCharging = false;
     }
-    public void HighlightSprite() {
+    public void HighlightSprite()
+    {
         sr.sprite = workstationSO.highlightedSprite;
         progBarCanvas.SetActive(true);
     }
-    public void NormalSprite() {
+    public void NormalSprite()
+    {
         sr.sprite = workstationSO.normalSprite;
         progBarCanvas.SetActive(false);
     }
 }
 
-public enum InteractProgressState { 
+public enum InteractProgressState
+{
     IDLE,
     INCREASING,
     DECREASING,

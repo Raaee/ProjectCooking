@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Workstation")]
-public class WorkstationSO : ScriptableObject {
+public class WorkstationSO : ScriptableObject
+{
 
     public GameObject prefab;
     public Sprite normalSprite;

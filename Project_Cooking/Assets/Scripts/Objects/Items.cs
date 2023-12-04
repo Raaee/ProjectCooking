@@ -1,4 +1,5 @@
-﻿public enum Items {
+﻿public enum Items
+{
     NONE,
     FLOUR,
     DOUGH,

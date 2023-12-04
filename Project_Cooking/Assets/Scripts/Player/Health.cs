@@ -1,53 +1,59 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
 
-   public const int MAX_HEALTH = 3;
-   private int currentHealth = 3;
+    public const int MAX_HEALTH = 3;
+    private int currentHealth = 3;
     [SerializeField] private bool godMode = false;
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;
     public UnityEvent OnHeal;
-    public void Heal(int amt) {
+    public void Heal(int amt)
+    {
 
         currentHealth += amt;
         OnHeal.Invoke();
-        if (currentHealth  > MAX_HEALTH) {
+        if (currentHealth > MAX_HEALTH)
+        {
             currentHealth = MAX_HEALTH;
-        } 
+        }
     }
 
-    public void TakeDamage(int amt) {
-        if (godMode) {
-         
+    public void TakeDamage(int amt)
+    {
+        if (godMode)
+        {
+
             return;
         }
 
         currentHealth -= amt;
-     
+
         OnHurt.Invoke();
-        if (currentHealth <= 0) {
+        if (currentHealth <= 0)
+        {
             currentHealth = 0;
             Die();
         }
-       
+
     }
 
     public void ToggleGodMode()
     {
         godMode = !godMode;
     }
-   
-    public void InstaKill() {
+
+    public void InstaKill()
+    {
         currentHealth = 0;
         Die();
     }
-    private void Die() {
-    
+    private void Die()
+    {
+
         // OnDeath event stuff
         OnDeath.Invoke();
     }
@@ -56,7 +62,7 @@ public class Health : MonoBehaviour {
     {
         Material mat = GetComponent<Renderer>().material;
 
-        if(mat)
+        if (mat)
         {
             mat.DOFloat(1f, "_HitEffectBlend", .1f).SetEase(Ease.InOutBack).SetLoops(4, LoopType.Yoyo).OnComplete(() =>
             {
@@ -66,5 +72,5 @@ public class Health : MonoBehaviour {
 
     }
 
-  
+
 }

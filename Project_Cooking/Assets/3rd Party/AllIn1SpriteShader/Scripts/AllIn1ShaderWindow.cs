@@ -13,7 +13,7 @@ namespace AllIn1SpriteShader
         {
             GetWindow<AllIn1ShaderWindow>("All In 1 Shader Window");
         }
-        
+
         public static readonly string materialsSavesPath = "Assets/AllIn1SpriteShader/Materials";
         public static readonly string renderImagesSavesPath = "Assets/AllIn1SpriteShader/Textures";
         public static readonly string normalMapSavesPath = "Assets/AllIn1SpriteShader/Textures/NormalMaps";
@@ -58,7 +58,7 @@ namespace AllIn1SpriteShader
         private TextureSizes textureSizes = TextureSizes._128;
         [SerializeField] private Gradient gradient = new Gradient();
         private FilterMode gradientFiltering = FilterMode.Bilinear;
-    
+
         private enum ImageType
         {
             ShowImage,
@@ -84,7 +84,7 @@ namespace AllIn1SpriteShader
                 ShowAssetImageOptionsToggle();
 
                 DefaultAssetShader();
-            
+
                 DrawLine(Color.grey, 1, 3);
                 GUILayout.Label("Material Save Path", bigLabel);
                 GUILayout.Space(20);
@@ -109,7 +109,7 @@ namespace AllIn1SpriteShader
 
                 DrawLine(Color.grey, 1, 3);
                 NormalMapCreator();
-            
+
                 DrawLine(Color.grey, 1, 3);
                 GradientCreator();
 
@@ -121,36 +121,36 @@ namespace AllIn1SpriteShader
 
         private void ShowImageAndSetImageEditorPref()
         {
-            if(!EditorPrefs.HasKey("allIn1ImageConfig"))
+            if (!EditorPrefs.HasKey("allIn1ImageConfig"))
             {
-                EditorPrefs.SetInt("allIn1ImageConfig", (int) ImageType.ShowImage);
+                EditorPrefs.SetInt("allIn1ImageConfig", (int)ImageType.ShowImage);
             }
 
-            imageType = (ImageType) EditorPrefs.GetInt("allIn1ImageConfig");
-            if(imageType == ImageType.HideEverywhere) return;
+            imageType = (ImageType)EditorPrefs.GetInt("allIn1ImageConfig");
+            if (imageType == ImageType.HideEverywhere) return;
             Texture2D imageInspector = null;
-            switch(imageType)
+            switch (imageType)
             {
                 case ImageType.ShowImage:
-                {
-                    imageInspector =
-                        (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
-                            typeof(Texture2D));
-                    break;
-                }
+                    {
+                        imageInspector =
+                            (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
+                                typeof(Texture2D));
+                        break;
+                    }
                 case ImageType.HideInComponent:
                     imageInspector =
-                        (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
+                        (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
                             typeof(Texture2D));
                     break;
             }
 
-            if(imageInspector)
+            if (imageInspector)
             {
                 //Label title image to the right
                 Rect rect = EditorGUILayout.GetControlRect(false, 5, titleStyle);
                 GUILayout.Label(imageInspector, titleStyle, GUILayout.Height(50));
-            
+
                 //Centered title image
                 //Rect rect = EditorGUILayout.GetControlRect(GUILayout.Height(50));
                 //GUI.DrawTexture(rect, imageInspector, ScaleMode.ScaleToFit, true);
@@ -163,9 +163,9 @@ namespace AllIn1SpriteShader
             GUILayout.Label("Asset Image Display Options", bigLabel);
             GUILayout.Space(20);
 
-            int previousImageType = (int) imageType;
-            imageType = (ImageType) EditorGUILayout.EnumPopup(imageType, GUILayout.MaxWidth(200));
-            if((int) imageType != previousImageType) EditorPrefs.SetInt("allIn1ImageConfig", (int) imageType);
+            int previousImageType = (int)imageType;
+            imageType = (ImageType)EditorGUILayout.EnumPopup(imageType, GUILayout.MaxWidth(200));
+            if ((int)imageType != previousImageType) EditorPrefs.SetInt("allIn1ImageConfig", (int)imageType);
 
             DrawLine(Color.grey, 1, 3);
         }
@@ -271,12 +271,12 @@ namespace AllIn1SpriteShader
                     }
 
                     Texture2D normalToSave = CreateNormalMap(targetNormalImage, normalStrength, normalSmoothing);
-                    
+
                     string prefSavedPath = PlayerPrefs.GetString("All1ShaderNormals") + "/";
                     string path = prefSavedPath + "NormalMap.png";
-                    if(System.IO.File.Exists(path)) path = GetNewValidPath(path);
+                    if (System.IO.File.Exists(path)) path = GetNewValidPath(path);
                     string texName = path.Replace(prefSavedPath, "");
-                    
+
                     path = EditorUtility.SaveFilePanel("Save texture as PNG", prefSavedPath, texName, "png");
                     if (path.Length != 0)
                     {
@@ -369,7 +369,7 @@ namespace AllIn1SpriteShader
                 if (GUILayout.Button("Save Gradient Texture"))
                 {
                     string path = prefSavedPath + "ColorGradient.png";
-                    if(System.IO.File.Exists(path)) path = GetNewValidPath(path);
+                    if (System.IO.File.Exists(path)) path = GetNewValidPath(path);
                     string texName = path.Replace(prefSavedPath, "");
 
                     path = EditorUtility.SaveFilePanel("Save texture as PNG", prefSavedPath, texName, "png");
@@ -412,14 +412,14 @@ namespace AllIn1SpriteShader
             }
             return false;
         }
-        
+
         private string GetNewValidPath(string path, int i = 1)
         {
             int number = i;
             path = path.Replace(".png", "");
             string newPath = path + "_" + number.ToString();
             string fullPath = newPath + ".png";
-            if(System.IO.File.Exists(fullPath))
+            if (System.IO.File.Exists(fullPath))
             {
                 number++;
                 fullPath = GetNewValidPath(path, number);

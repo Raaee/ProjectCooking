@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 /// <summary>
 /// The overall Main menu script. might be refactored into a singleton
 /// </summary>
@@ -18,7 +15,7 @@ public class MainMenu : MonoBehaviour
     {
         currentPanel = mainMenuPanel;
         FadeInCanvasGroup(currentPanel);
-       
+
     }
 
     public void GotoSettings()
@@ -53,7 +50,8 @@ public class MainMenu : MonoBehaviour
     private void FadeOutCanvasGroup(CanvasGroup cg)
     {
         cg.alpha = 1;
-        cg.DOFade(0, fadeTime).OnComplete(() => {
+        cg.DOFade(0, fadeTime).OnComplete(() =>
+        {
             cg.gameObject.SetActive(false);
         }
         );

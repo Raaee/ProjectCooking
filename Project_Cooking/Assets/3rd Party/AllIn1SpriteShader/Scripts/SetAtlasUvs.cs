@@ -57,19 +57,19 @@ namespace AllIn1SpriteShader
                 r.y /= sprite.texture.height;
                 r.height /= sprite.texture.height;
 
-                if(useMaterialInstanceIfPossible && Application.isPlaying)
+                if (useMaterialInstanceIfPossible && Application.isPlaying)
                 {
                     render.material.SetFloat(minXuv, r.xMin);
                     render.material.SetFloat(maxXuv, r.xMax);
                     render.material.SetFloat(minYuv, r.yMin);
-                    render.material.SetFloat(maxYuv, r.yMax);   
+                    render.material.SetFloat(maxYuv, r.yMax);
                 }
                 else
                 {
                     render.sharedMaterial.SetFloat(minXuv, r.xMin);
                     render.sharedMaterial.SetFloat(maxXuv, r.xMax);
                     render.sharedMaterial.SetFloat(minYuv, r.yMin);
-                    render.sharedMaterial.SetFloat(maxYuv, r.yMax);   
+                    render.sharedMaterial.SetFloat(maxYuv, r.yMax);
                 }
             }
             else
@@ -93,7 +93,7 @@ namespace AllIn1SpriteShader
 
             if (!isUI)
             {
-                if(useMaterialInstanceIfPossible && Application.isPlaying)
+                if (useMaterialInstanceIfPossible && Application.isPlaying)
                 {
                     render.material.SetFloat(minXuv, 0f);
                     render.material.SetFloat(maxXuv, 1f);
@@ -105,7 +105,7 @@ namespace AllIn1SpriteShader
                     render.sharedMaterial.SetFloat(minXuv, 0f);
                     render.sharedMaterial.SetFloat(maxXuv, 1f);
                     render.sharedMaterial.SetFloat(minYuv, 0f);
-                    render.sharedMaterial.SetFloat(maxYuv, 1f);   
+                    render.sharedMaterial.SetFloat(maxYuv, 1f);
                 }
             }
             else
@@ -129,9 +129,9 @@ namespace AllIn1SpriteShader
             {
                 if (spriteRender.sprite == null)
                 {
-                    #if UNITY_EDITOR
+#if UNITY_EDITOR
                     EditorUtility.DisplayDialog("No sprite found", "The object: " + gameObject.name + ",has Sprite Renderer but no sprite", "Ok");
-                    #endif
+#endif
                     DestroyImmediate(this);
                     return false;
                 }
@@ -145,16 +145,16 @@ namespace AllIn1SpriteShader
                     uiImage = GetComponent<Image>();
                     if (uiImage != null)
                     {
-                        #if UNITY_EDITOR
+#if UNITY_EDITOR
                         Debug.Log("You added the SetAtlasUv component to: " + gameObject.name + " that has a UI Image\n " +
                         "This SetAtlasUV component will only work properly on UI Images if each Image has a DIFFERENT material instance (See Documentation Sprite Atlases section for more info)");
-                        #endif
+#endif
                     }
                     else
                     {
-                        #if UNITY_EDITOR
+#if UNITY_EDITOR
                         EditorUtility.DisplayDialog("No Renderer or UI Graphic found", "This SetAtlasUV component will now get destroyed", "Ok");
-                        #endif
+#endif
                         DestroyImmediate(this);
                         return false;
                     }
@@ -165,9 +165,9 @@ namespace AllIn1SpriteShader
 
             if (spriteRender == null && uiImage == null)
             {
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 EditorUtility.DisplayDialog("No Renderer or UI Graphic found", "This SetAtlasUV component will now get destroyed", "Ok");
-                #endif
+#endif
                 DestroyImmediate(this);
                 return false;
             }

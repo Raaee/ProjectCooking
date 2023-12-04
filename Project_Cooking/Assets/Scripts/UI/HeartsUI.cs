@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,12 +8,12 @@ using UnityEngine.UI;
 public class HeartsUI : MonoBehaviour
 {
     public List<GameObject> heartSlots;
-   
+
     [SerializeField] private Health health;
     [SerializeField] private Sprite emptyHeart; //kinda like raeus's heart! 
     [SerializeField] private Sprite fullHeart;
     private int heartPointer;
-    
+
     private void Awake()
     {
         health.OnHurt.AddListener(RemoveHeart);
@@ -36,7 +35,7 @@ public class HeartsUI : MonoBehaviour
 
     public void FillUpHeart()
     {
-       
+
         if (heartPointer >= Health.MAX_HEALTH - 1)
             return;
         heartPointer++;

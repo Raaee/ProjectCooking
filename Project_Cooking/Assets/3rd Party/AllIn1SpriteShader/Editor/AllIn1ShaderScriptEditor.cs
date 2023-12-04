@@ -11,7 +11,7 @@ namespace AllIn1SpriteShader
         private bool showUrpWarning = false;
         private double warningTime = 0f;
         private SerializedProperty m_NormalStrength, m_NormalSmoothing;
-    
+
         private enum ImageType
         {
             ShowImage,
@@ -133,9 +133,9 @@ namespace AllIn1SpriteShader
                             }
                         }
                     }
-                    else if(!isUrp && myScript.shaderTypes == AllIn1Shader.ShaderTypes.Urp2dRenderer)
+                    else if (!isUrp && myScript.shaderTypes == AllIn1Shader.ShaderTypes.Urp2dRenderer)
                     {
-                        myScript.shaderTypes = (AllIn1Shader.ShaderTypes) previousShaderType;
+                        myScript.shaderTypes = (AllIn1Shader.ShaderTypes)previousShaderType;
                         showUrpWarning = true;
                         warningTime = EditorApplication.timeSinceStartup + 5;
                     }
@@ -195,10 +195,10 @@ namespace AllIn1SpriteShader
 
             EditorGUILayout.Space();
             DrawLine(Color.grey, 1, 3);
-            
-            if(GUILayout.Button("Remove Component"))
+
+            if (GUILayout.Button("Remove Component"))
             {
-                for(int i = targets.Length - 1; i >= 0; i--)
+                for (int i = targets.Length - 1; i >= 0; i--)
                 {
                     DestroyImmediate(targets[i] as AllIn1Shader);
                     (targets[i] as AllIn1Shader).SetSceneDirty();
@@ -220,30 +220,30 @@ namespace AllIn1SpriteShader
 
         private void ChooseAndDiplayAssetImage()
         {
-            if(!EditorPrefs.HasKey("allIn1ImageConfig"))
+            if (!EditorPrefs.HasKey("allIn1ImageConfig"))
             {
-                EditorPrefs.SetInt("allIn1ImageConfig", (int) ImageType.ShowImage);
+                EditorPrefs.SetInt("allIn1ImageConfig", (int)ImageType.ShowImage);
             }
 
-            imageType = (ImageType) EditorPrefs.GetInt("allIn1ImageConfig");
+            imageType = (ImageType)EditorPrefs.GetInt("allIn1ImageConfig");
             Texture2D imageInspector = null;
-            switch(imageType)
+            switch (imageType)
             {
                 case ImageType.ShowImage:
-                {
-                    imageInspector =
-                        (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
-                            typeof(Texture2D));
-                    break;
-                }
+                    {
+                        imageInspector =
+                            (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
+                                typeof(Texture2D));
+                        break;
+                    }
                 case ImageType.HideInComponent:
                     imageInspector =
-                        (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
+                        (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/AllIn1SpriteShader/Textures/CustomEditorImage.png",
                             typeof(Texture2D));
                     break;
             }
 
-            if(imageInspector && imageType != ImageType.HideInComponent && imageType != ImageType.HideEverywhere && imageInspector)
+            if (imageInspector && imageType != ImageType.HideInComponent && imageType != ImageType.HideEverywhere && imageInspector)
             {
                 Rect rect = EditorGUILayout.GetControlRect(GUILayout.Height(40));
                 GUI.DrawTexture(rect, imageInspector, ScaleMode.ScaleToFit, true);
