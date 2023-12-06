@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7866946006384803970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ac1a13d8ae10c479591d80dbb9d64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max: 50
+  max: 100
+  bloodDropValue: 3
   mask: {fileID: 327349634629207737}
   nodes:
   - {fileID: 5939810758786373562}
@@ -1243,6 +1244,7 @@ MonoBehaviour:
       Data3: 568084377
       Data4: -372416602
     Path: event:/Gameplay UI/Pass Node
+  cookbook: {fileID: 0}
 --- !u!1 &2767010796031415530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,9 +1635,9 @@ RectTransform:
   - {fileID: 5599158260471445359}
   m_Father: {fileID: 7866946006384803970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1655.6644, y: -255.135}
   m_SizeDelta: {x: 532.3699, y: 510.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5623802571330456821
@@ -2520,9 +2522,9 @@ RectTransform:
   - {fileID: 3884329685071558596}
   m_Father: {fileID: 7866946006384803970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 613.5548, y: -255.135}
   m_SizeDelta: {x: 532.3699, y: 510.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8577239945067841695
@@ -2729,9 +2731,9 @@ RectTransform:
   - {fileID: 8526166217581102829}
   m_Father: {fileID: 7866946006384803970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 266.18494, y: -255.135}
   m_SizeDelta: {x: 532.3699, y: 510.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3035648991627264701
@@ -2939,7 +2941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 42, y: 19}
+  m_AnchoredPosition: {x: 18, y: 19}
   m_SizeDelta: {x: 440, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!225 &4643295668231820573
@@ -3001,7 +3003,7 @@ MonoBehaviour:
   uiSlotSelectionSprites:
   - {fileID: -165442315, guid: 3741bda3c5496944781c486b465e0ac7, type: 3}
   - {fileID: -816359178, guid: 3741bda3c5496944781c486b465e0ac7, type: 3}
-  setUP: 0
+  setUP: 1
 --- !u!1 &4866970261591533387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,9 +3041,9 @@ RectTransform:
   - {fileID: 9083551171252842850}
   m_Father: {fileID: 7866946006384803970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.9247, y: -255.135}
   m_SizeDelta: {x: 532.3699, y: 510.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7663706940063002916
@@ -3727,7 +3729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f24b627440e1334c9d8b1fdbfb61a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityEnum: 2
+  abilityEnum: 3
   bloodProgress: {fileID: 7335098079845978156}
 --- !u!225 &1445343746478545236
 CanvasGroup:
@@ -4458,9 +4460,9 @@ RectTransform:
   - {fileID: 4751125543687357111}
   m_Father: {fileID: 7866946006384803970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1308.2946, y: -255.135}
   m_SizeDelta: {x: 532.3699, y: 510.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8720313216821850102
@@ -4546,7 +4548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f24b627440e1334c9d8b1fdbfb61a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityEnum: 3
+  abilityEnum: 2
   bloodProgress: {fileID: 7335098079845978156}
 --- !u!225 &7643253696922426258
 CanvasGroup:
@@ -4744,7 +4746,7 @@ Canvas:
   m_GameObject: {fileID: 8235784953567587114}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4756,7 +4758,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1344791457112799289
 MonoBehaviour:
@@ -4986,7 +4988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -74.5, y: -43.8}
+  m_AnchoredPosition: {x: -74.5, y: -43.800003}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6446162183446705271

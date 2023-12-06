@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public bool attacking = false;
     [SerializeField] private GameObject knifePrefab;
     [SerializeField] private float attackSpeed = 2f;
+    private float normalAttackSpeed;
     private Vector2 moveDir;
     private float timer = 0f;
     private void Awake()
@@ -18,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
         actions.OnAttack_Started_Context.AddListener(StartAttack);
         actions.OnAttack_Cancelled.AddListener(StopAttack);
         attackSpeed = 1f / attackSpeed;
+        normalAttackSpeed = attackSpeed;
     }
     private void Update()
     {
@@ -89,7 +91,12 @@ public class PlayerAttack : MonoBehaviour
         else
             return AttackDirection.RIGHT;
     }
-
+    public void IncreaseAttackSpeed(float multiplier) {
+        attackSpeed /= multiplier;
+    }
+    public void NormalAttackSpeed() {
+        attackSpeed = normalAttackSpeed;
+    }
 }
 public enum AttackDirection
 {

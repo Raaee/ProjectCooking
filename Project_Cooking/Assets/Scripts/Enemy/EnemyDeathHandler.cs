@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyDeathHandler : MonoBehaviour
 {
     private Health enemyHealth;
     [SerializeField] private GameObject bloodDropPrefab;
-    private int amtOfBloodDrops = 4;
-
+    [SerializeField] private int amtOfBloodDrops = 3;
 
     private void Awake()
     {

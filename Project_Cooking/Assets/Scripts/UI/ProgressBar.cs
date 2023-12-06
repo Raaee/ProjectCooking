@@ -5,6 +5,7 @@ public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private int max;
     private int current = 0;
+    [SerializeField] private int bloodDropValue = 1;
     [SerializeField] private Image mask;
     [Header("Node sprite stuff")]
     public List<Image> nodes;
@@ -59,9 +60,9 @@ public class ProgressBar : MonoBehaviour
         return 0;
     }
 
-    public void Increase(int amtToAdd)
+    public void Increase()
     {
-        current += amtToAdd;
+        current += bloodDropValue;
 
         if (current > max)
             current = max;

@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 1
+  bloodCost: 10
   abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 1
+  bloodCost: 20
   abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 3
-  bloodCost: 1
+  bloodCost: 30
   abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:

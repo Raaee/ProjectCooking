@@ -17,19 +17,20 @@ public class AreaTimer : MonoBehaviour
 
     void Start()
     {
-        timer = kitchenTimeLength;
+        timer = dungeonTimeLength;
     }
 
     void Update()
     {
         if (isTimerPaused) return;
-
+        else
         timer -= Time.deltaTime;
 
-        if (timer < 0f)
+        if (timer <= 0f)
         {
             OnRoundOver.Invoke();
-            isTimerPaused = true;
+            Debug.Log("timer done!");
+           // isTimerPaused = true;
         }
 
     }

@@ -9,22 +9,26 @@ public class SpeedAbility : Ability
 
     [SerializeField] [Range(1.01f, 4f)] private float speedMultiplier = 2f;
     private Movement playerMovement;
+    private PlayerAttack playerAttack;
     [SerializeField] private GameObject trailEffectGO;
     public override void Awake()
     {
         base.Awake();
         playerMovement = GetComponent<Movement>();
+        playerAttack = GetComponent<PlayerAttack>();
         actions.OnSpeed.AddListener(PerformAbility);
         trailEffectGO.SetActive(false);
     }
     private void IncreaseSpeed()
     {
         playerMovement.SpeedMode(speedMultiplier);
+        playerAttack.IncreaseAttackSpeed(speedMultiplier);
     }
 
     private void NormalSpeed()
     {
         playerMovement.NormalSpeed();
+        playerAttack.NormalAttackSpeed();
     }
     public override void OnAbilityStart()
     {
