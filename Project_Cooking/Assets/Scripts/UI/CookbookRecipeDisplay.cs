@@ -11,17 +11,16 @@ public class CookbookRecipeDisplay : MonoBehaviour
     private const int MAX_AMT_PANELS = 5;
     private void Start()
     {
-        DisplayAllRecipeSteps(4);
+        //DisplayAllRecipeSteps(4);
     }
 
-    private void DisplayAllRecipeSteps(int playerUnlocked)//how many steps/nodes the player unlocked, should start at 1 not 0
+    public void DisplayAllRecipeSteps(int playerUnlocked)//how many steps/nodes the player unlocked, should start at 1 not 0
     {
         
         //only show the correct amount of recipeStepUIDatas, change the i in the bottom iterator 
         int maxAmtOfRecipeSteps = recipeSO.recipeSteps.Count;
         if (playerUnlocked > maxAmtOfRecipeSteps)
             playerUnlocked = maxAmtOfRecipeSteps;
-
 
         //we are hiding the last x panels
         int panelsToHide = MAX_AMT_PANELS - playerUnlocked;
