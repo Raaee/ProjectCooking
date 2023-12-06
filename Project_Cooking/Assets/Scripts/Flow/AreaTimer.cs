@@ -30,7 +30,6 @@ public class AreaTimer : MonoBehaviour
         {
             OnRoundOver.Invoke();
             isTimerPaused = true;
-
         }
 
     }

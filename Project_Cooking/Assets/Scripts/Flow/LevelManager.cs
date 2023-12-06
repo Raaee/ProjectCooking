@@ -3,13 +3,26 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private AreaTimer areaTimer;
+    [SerializeField] private Current_Area currentArea;
 
+    [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
     [SerializeField] private GameObject upperCornerFLoor;
     [SerializeField] private GameObject lowerCornerFLoor;
     void Start()
     {
+        currentArea = Current_Area.DUNGEON;
         SpawnAllBaseIngredients();
+        areaTimer.OnRoundOver.AddListener(ChangeArea);
+    }
+    public void ChangeArea() {
+        if (currentArea == Current_Area.DUNGEON) {
+            currentArea = Current_Area.KITCHEN;
+        } else {
+            currentArea = Current_Area.DUNGEON;
+        }
+        areaTimer.ResetAreaTime(currentArea);
     }
     public void SpawnAllBaseIngredients()
     {
@@ -23,5 +36,12 @@ public class LevelManager : MonoBehaviour
         }
 
     }
-
+    public Current_Area GetCurrentArea() {
+        return currentArea;
+    }
+}
+public enum Current_Area {
+    LIMBO,
+    KITCHEN,
+    DUNGEON
 }

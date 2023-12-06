@@ -8,4 +8,5 @@ public class WorkstationSO : ScriptableObject
     public Sprite normalSprite;
     public Sprite highlightedSprite;
     public string displayName;
+
 }
