@@ -12,7 +12,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private Sprite litSprite;
     private int maxLitNodeCount = 0; //helper var for audio
     [SerializeField] private FMODUnity.EventReference passingNodeAudio;
-
+    [SerializeField] private Cookbook cookbook;
 
     private void Start()
     {
@@ -39,6 +39,7 @@ public class ProgressBar : MonoBehaviour
         {
             PlayPassingNodeAudio();
             maxLitNodeCount = litNodeCount;
+            cookbook.IncrementNodesUnlocked();
         }
 
 

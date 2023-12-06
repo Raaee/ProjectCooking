@@ -240,6 +240,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &359183489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6211281338474103904, guid: 8fc329fc2295b6b4ca4fe3ff64b88999, type: 3}
+  m_PrefabInstance: {fileID: 4453295825194960744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1743192107db24bac0b35271beb5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &391854511 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4553503818169092141, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
@@ -2257,6 +2268,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7484406751478988330, guid: 040691afac9ee0b43b7f97254f6bd68a, type: 3}
   m_PrefabInstance: {fileID: 1970524915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2110065714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1590264557949215473, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
+  m_PrefabInstance: {fileID: 8026139346880349577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9a61c7bfd705741a9aa16157aface7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4453295825194960744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2265,6 +2287,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6211281338474103904, guid: 8fc329fc2295b6b4ca4fe3ff64b88999, type: 3}
+      propertyPath: recipeDisplay
+      value: 
+      objectReference: {fileID: 2110065714}
     - target: {fileID: 7596170964559973884, guid: 8fc329fc2295b6b4ca4fe3ff64b88999, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.723
@@ -2699,6 +2725,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7335098079845978156, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
+      propertyPath: cookbook
+      value: 
+      objectReference: {fileID: 359183489}
     - target: {fileID: 7339831806370051493, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

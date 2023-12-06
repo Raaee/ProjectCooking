@@ -175,9 +175,9 @@ MonoBehaviour:
   - {fileID: 7663706940063002916}
   - {fileID: 8720313216821850102}
   - {fileID: 5623802571330456821}
-  chopSprite: {fileID: 1356377486, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
-  mixSprite: {fileID: 771979491, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
-  stovenSprite: {fileID: -198084540, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
+  chopSprite: {fileID: -1758999145, guid: 9dd37b199f15b8b46b1f9f0f9299275d, type: 3}
+  mixSprite: {fileID: -1658018924, guid: 9dd37b199f15b8b46b1f9f0f9299275d, type: 3}
+  stovenSprite: {fileID: -176165763, guid: 9dd37b199f15b8b46b1f9f0f9299275d, type: 3}
 --- !u!1 &376403690996652899
 GameObject:
   m_ObjectHideFlags: 0

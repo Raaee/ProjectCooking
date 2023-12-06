@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1743192107db24bac0b35271beb5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipeDisplay: {fileID: 0}
   allRecipes:
-  - {fileID: 11400000, guid: d75567c32e3b9e44194edee8fcabd0d8, type: 2}
-  - {fileID: 11400000, guid: 22073a66eadb0f74586d240f97b059f3, type: 2}
-  - {fileID: 11400000, guid: 0dedc02b7f2ac824599bc7a9c4ee85c0, type: 2}
-  - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
+  - {fileID: 11400000, guid: 9223d4927cc768448a41a3b3fbfecbc0, type: 2}
+  - {fileID: 11400000, guid: ae96af9aec4d9734faef5ee4799cec22, type: 2}
+  - {fileID: 11400000, guid: bbfb7edba33b19e4f91455e49642b167, type: 2}
   levelRecipe: {fileID: 0}
   cookbookSprite: {fileID: 1104412746, guid: 9677d0b83acbe97499e3b00b357247bc, type: 3}
   highlightedCookbookSprite: {fileID: 661892693, guid: 9677d0b83acbe97499e3b00b357247bc, type: 3}

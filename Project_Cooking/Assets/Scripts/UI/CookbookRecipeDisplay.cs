@@ -11,7 +11,7 @@ public class CookbookRecipeDisplay : MonoBehaviour
     private const int MAX_AMT_PANELS = 5;
     private void Start()
     {
-        //DisplayAllRecipeSteps(4);
+        //DisplayAllRecipeSteps(0);
     }
 
     public void DisplayAllRecipeSteps(int playerUnlocked)//how many steps/nodes the player unlocked, should start at 1 not 0
@@ -36,6 +36,7 @@ public class CookbookRecipeDisplay : MonoBehaviour
         for (int i = 0; i < maxAmtOfRecipeSteps; i++)
         {
             DisplayRecipeStep(recipeSO.recipeSteps[i], recipeStepUIDataList[i]);
+            recipeStepUIDataList[i].gameObject.SetActive(true);
         }
     }
 
@@ -74,5 +75,8 @@ public class CookbookRecipeDisplay : MonoBehaviour
                 break;
         }
         return null;
+    }
+    public void SetRecipeSO(RecipeSO newRecipe) {
+        recipeSO = newRecipe;
     }
 }

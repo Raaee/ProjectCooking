@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class Cookbook : MonoBehaviour, IInteractable
 {
-
-    public List<WorkstationRecipe> allRecipes = new List<WorkstationRecipe>();
-    public WorkstationRecipe levelRecipe;
+    [SerializeField] private CookbookRecipeDisplay recipeDisplay;
+    public List<RecipeSO> allRecipes = new List<RecipeSO>();
+    public RecipeSO levelRecipe;
+    public int nodesUnlocked = 0;
 
     [Header("VISUAL")]
     [SerializeField] private Sprite cookbookSprite;
@@ -16,6 +17,7 @@ public class Cookbook : MonoBehaviour, IInteractable
     {
         sr = GetComponent<SpriteRenderer>();
         PickRandomRecipe();
+        recipeDisplay.SetRecipeSO(levelRecipe);
     }
 
     public void PickRandomRecipe()
@@ -24,12 +26,20 @@ public class Cookbook : MonoBehaviour, IInteractable
         ranNum = Random.Range(0, allRecipes.Count);
 
         levelRecipe = allRecipes[ranNum];
-        allRecipes.Remove(levelRecipe);
+      //  allRecipes.Remove(levelRecipe);
     }
 
-    public void Interact()
-    {
+    public void Interact()  {
+
         Debug.Log("Cookbook interact");
+        recipeDisplay.DisplayAllRecipeSteps(nodesUnlocked);
+        /*
+         * - cookbook determines the level's recipe
+         * which is passed into the display
+         * - when node is lit in progressBar, cookbook receives next recipe step (display number increases)
+         * - cookbook calls display from interact()
+         * 
+         */
     }
 
     public void HighlightSprite()
@@ -39,5 +49,9 @@ public class Cookbook : MonoBehaviour, IInteractable
     public void NormalSprite()
     {
         sr.sprite = cookbookSprite;
+    }
+    public void IncrementNodesUnlocked() {
+        Debug.Log("Incremented");
+        nodesUnlocked += 1;
     }
 }
