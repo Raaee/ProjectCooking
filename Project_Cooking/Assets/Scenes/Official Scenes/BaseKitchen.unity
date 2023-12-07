@@ -1756,7 +1756,6 @@ MonoBehaviour:
   areaTimer: {fileID: 391854511}
   currentArea: 0
   enemyManager: {fileID: 465342811}
-  playerHealth: {fileID: 80679968}
   baseIngredients:
   - {fileID: 2465260756126829935, guid: 46995c6f0f491f24aa88d510d2b3e1a8, type: 3}
   - {fileID: 2465260756126829935, guid: f3f6a31006b23a649be226b4b77f0158, type: 3}
@@ -2596,6 +2595,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1041550740908115910, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: invicibilityTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1243901471745361668, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
       propertyPath: bloodProgressBar
       value: 

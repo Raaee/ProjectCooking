@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AreaTimer areaTimer;
     [SerializeField] private Current_Area currentArea;
     [SerializeField] private EnemyManager enemyManager;
-    [SerializeField] private Health playerHealth;
+   
 
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     }
     public void StartRound() {
         ChangeArea();
-        playerHealth.EnableInvincibility();
+       
     }
 
     [ProButton]

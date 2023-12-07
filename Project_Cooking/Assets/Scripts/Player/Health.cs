@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,24 +10,11 @@ public class Health : MonoBehaviour
     private int currentHealth = 3;
     [SerializeField] private float invicibilityTime = 1f;
     [SerializeField] private bool godMode = false;
-    [SerializeField] private bool invicible = false;
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;
     public UnityEvent OnHeal;
-    private float invicibilityTimer = 0f;
 
-    private void Update() {
-        if (!invicible) return;
 
-        godMode = true;
-        invicibilityTimer += Time.deltaTime;
-
-        if (invicibilityTimer >= invicibilityTime) {
-            invicibilityTimer = 0f;
-            godMode = false;
-            invicible = false;
-        }
-    }
     public void Heal(int amt)
     {
 
@@ -49,11 +37,14 @@ public class Health : MonoBehaviour
         {
             currentHealth = 0;
             Die();
+            return;
         }
-
+        StartCoroutine(InvincibleAfterEffect());
     }
-    public void EnableInvincibility() {
-        invicible = true;
+    private IEnumerator InvincibleAfterEffect() {
+        godMode = true;
+        yield return new WaitForSeconds(invicibilityTime);
+        godMode = false;
     }
 
     public void ToggleGodMode()
