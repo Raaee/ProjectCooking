@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83773f7718965b24081021ceeec28d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDuration: 2
+  abilityDuration: 3.5
   bloodCost: 10
   abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
@@ -613,7 +613,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  speedMultiplier: 1.404
+  speedMultiplier: 1.5
   trailEffectGO: {fileID: 7135583798575977466}
 --- !u!114 &1243901471745361668
 MonoBehaviour:
@@ -700,7 +700,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacking: 0
   knifePrefab: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
-  attackSpeed: 5
 --- !u!1 &5573760815043832673
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,54 +1,30 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour
-{
+public class PlayerAttack : MonoBehaviour   {
 
     private Actions actions;
     private Movement movement;
+    private Vector2 moveDir;
+
     public bool attacking = false;
     [SerializeField] private GameObject knifePrefab;
-    [SerializeField] private float attackSpeed = 2f;
-    private float timer;
-    private float normalAttackSpeed;
     private float attackSpeedMultiplier;
-    private Vector2 moveDir;
     private bool speedMode = false;
+
     private void Awake()
     {
         actions = GetComponent<Actions>();
         movement = GetComponent<Movement>();
         actions.OnAttack_Started_Context.AddListener(StartAttack);
-
         actions.OnAttack_Cancelled.AddListener(StopAttack);
-        attackSpeed = 1f / attackSpeed;
-        normalAttackSpeed = attackSpeed;
     }
-    private void Update()
-    {
-        if (!attacking)
-        {
-            return;
-        }
-        timer += Time.deltaTime;
-        if (timer >= attackSpeed)
-        {
-            // SpawnKnife();
-            timer = 0f;
-        }
-    }
-    public void SpawnKnife(Vector2 dir)
-    {
-
-
+    public void SpawnKnife(Vector2 dir) {
         var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
-        go.GetComponent<Knife>().SetAttackDirection(GetEightDirection(dir));
         if (speedMode) {
             go.GetComponent<Knife>().IncreaseProjSpeed(attackSpeedMultiplier);
-        } else {
-            go.GetComponent<Knife>().NormalSpeed();
-
         }
+        go.GetComponent<Knife>().SetAttackDirection(GetEightDirection(dir));
         //get direction from mouse and this object
 
     }
