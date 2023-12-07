@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour   {
 
     private Actions actions;
-    private Movement movement;
-    private Vector2 moveDir;
-
     public bool attacking = false;
     [SerializeField] private GameObject knifePrefab;
     private float attackSpeedMultiplier;
@@ -15,7 +12,6 @@ public class PlayerAttack : MonoBehaviour   {
     private void Awake()
     {
         actions = GetComponent<Actions>();
-        movement = GetComponent<Movement>();
         actions.OnAttack_Started_Context.AddListener(StartAttack);
         actions.OnAttack_Cancelled.AddListener(StopAttack);
     }
