@@ -157,8 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3684689159803412820}
   knifeObject: {fileID: 4037755872715771669}
-  maxLifeTime: 0.7
-  projectileSpeed: 1.3
+  maxLifeTime: 0.8
+  projectileSpeed: 1.2
   attackDirection: 1
 --- !u!61 &762197383505771186
 BoxCollider2D:

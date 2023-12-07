@@ -3853,6 +3853,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1590264557949215473, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
+      propertyPath: recipeStepUIDataList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590264557949215473, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
+      propertyPath: recipeStepUIDataList.Array.data[5]
+      value: 
+      objectReference: {fileID: 14606553}
     - target: {fileID: 2727202499523686995, guid: afba6c800bae21d449a7e2a076df5011, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

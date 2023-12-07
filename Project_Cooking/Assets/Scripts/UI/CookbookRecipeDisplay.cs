@@ -8,32 +8,36 @@ public class CookbookRecipeDisplay : MonoBehaviour
     public Sprite chopSprite;
     public Sprite mixSprite;
     public Sprite stovenSprite;
-    private const int MAX_AMT_PANELS = 5;
+    private bool cookbookIsOpened = false;
+
+
     private void Start()
     {
-        //DisplayAllRecipeSteps(0);
+        CloseCookbook();
     }
 
-    public void DisplayAllRecipeSteps(int playerUnlocked)//how many steps/nodes the player unlocked, should start at 1 not 0
+    public void OpenCookbook(int playerUnlocked)
     {
-        
-        //only show the correct amount of recipeStepUIDatas, change the i in the bottom iterator 
-        int maxAmtOfRecipeSteps = recipeSO.recipeSteps.Count;
-        if (playerUnlocked > maxAmtOfRecipeSteps)
-            playerUnlocked = maxAmtOfRecipeSteps;
+        DisplayCurrentRecipeSteps(playerUnlocked);
+        cookbookIsOpened = true;
+    }
 
-        //we are hiding the last x panels
-        int panelsToHide = MAX_AMT_PANELS - playerUnlocked;
-        int tempPanelCOunt = 1;
-        for (int i = 4; i >= 0; i--)
-        {
-            recipeStepUIDataList[i].gameObject.SetActive(false);
-            tempPanelCOunt++;
-            if (tempPanelCOunt > panelsToHide)
-                break;
-        }
-
-        for (int i = 0; i < maxAmtOfRecipeSteps; i++)
+    public void CloseCookbook()
+    {
+        CloseAllPanels();
+        cookbookIsOpened = false;
+    }
+    private void DisplayCurrentRecipeSteps(int playerUnlocked)//0 is an option
+    {
+        //if 0, show nothing
+        CloseAllPanels();
+        if (playerUnlocked == 0)
+            return;
+        int maxRecipeSteps = recipeSO.recipeSteps.Count;
+        if (playerUnlocked > maxRecipeSteps)
+            playerUnlocked = maxRecipeSteps;
+      
+        for (int i = 0; i < playerUnlocked; i++)
         {
             DisplayRecipeStep(recipeSO.recipeSteps[i], recipeStepUIDataList[i]);
             recipeStepUIDataList[i].gameObject.SetActive(true);
@@ -42,6 +46,9 @@ public class CookbookRecipeDisplay : MonoBehaviour
 
     public void DisplayRecipeStep(RecipeStep recipeStep, RecipeStepUIData recipeStepUIData)
     {
+        //turn on the specific recipe step panel 
+        recipeStepUIData.gameObject.SetActive(true);
+
         // assign the action image as the workstation
         recipeStepUIData.actionImage.sprite = AssignSpriteFromRecipeAction(recipeStep.recipeAction);
 
@@ -57,6 +64,13 @@ public class CookbookRecipeDisplay : MonoBehaviour
             {
                 recipeStepUIData.recipeIngredientsImages[i].sprite = recipeStep.recipeIngredients[i].normalSprite;
             }
+        }
+    }
+    private void CloseAllPanels()
+    {
+        foreach (var i in recipeStepUIDataList)
+        {
+            i.gameObject.SetActive(false);
         }
     }
 
@@ -78,5 +92,10 @@ public class CookbookRecipeDisplay : MonoBehaviour
     }
     public void SetRecipeSO(RecipeSO newRecipe) {
         recipeSO = newRecipe;
+    }
+
+    public bool IsCookbookOpen()
+    {
+        return cookbookIsOpened;
     }
 }

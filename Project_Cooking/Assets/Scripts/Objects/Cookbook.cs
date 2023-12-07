@@ -31,8 +31,12 @@ public class Cookbook : MonoBehaviour, IInteractable
 
     public void Interact()  {
 
-        Debug.Log("Cookbook interact");
-        recipeDisplay.DisplayAllRecipeSteps(nodesUnlocked);
+
+        //recipeDisplay.DisplayAllRecipeSteps(nodesUnlocked);
+        if (!recipeDisplay.IsCookbookOpen())
+            recipeDisplay.OpenCookbook(nodesUnlocked);
+        else
+            recipeDisplay.CloseCookbook();
         /*
          * - cookbook determines the level's recipe
          * which is passed into the display
