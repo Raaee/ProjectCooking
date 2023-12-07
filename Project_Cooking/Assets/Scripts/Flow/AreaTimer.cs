@@ -32,7 +32,7 @@ public class AreaTimer : MonoBehaviour
         {
             OnRoundOver.Invoke();
             Debug.Log("timer done!");
-            isTimerPaused = true;
+          //  isTimerPaused = true;
         }
 
     }
