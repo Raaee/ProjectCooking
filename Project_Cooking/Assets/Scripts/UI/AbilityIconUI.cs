@@ -19,7 +19,7 @@ public class AbilityIconUI : MonoBehaviour
 
     private void Update()
     {
-        if (bloodProgress.GetCurrentBarAmt() < ability.GetBloodCost())
+        if (bloodProgress.GetcurrentBloodBarAmt() < ability.GetBloodCost())
         {
             canvasGroup.alpha = 0.1f;
         }

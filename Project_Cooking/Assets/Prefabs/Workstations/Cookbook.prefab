@@ -103,7 +103,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9223d4927cc768448a41a3b3fbfecbc0, type: 2}
   - {fileID: 11400000, guid: ae96af9aec4d9734faef5ee4799cec22, type: 2}
   - {fileID: 11400000, guid: bbfb7edba33b19e4f91455e49642b167, type: 2}
+  - {fileID: 11400000, guid: 7cb8d303600b6864fb0d2b63c1e10ed0, type: 2}
   levelRecipe: {fileID: 0}
+  nodesUnlocked: 0
   cookbookSprite: {fileID: 1104412746, guid: 9677d0b83acbe97499e3b00b357247bc, type: 3}
   highlightedCookbookSprite: {fileID: 661892693, guid: 9677d0b83acbe97499e3b00b357247bc, type: 3}
 --- !u!61 &8142196099548980625

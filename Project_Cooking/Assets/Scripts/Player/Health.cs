@@ -7,10 +7,26 @@ public class Health : MonoBehaviour
 
     public const int MAX_HEALTH = 3;
     private int currentHealth = 3;
+    [SerializeField] private float invicibilityTime = 1f;
     [SerializeField] private bool godMode = false;
+    [SerializeField] private bool invicible = false;
     public UnityEvent OnDeath;
     public UnityEvent OnHurt;
     public UnityEvent OnHeal;
+    private float invicibilityTimer = 0f;
+
+    private void Update() {
+        if (!invicible) return;
+
+        godMode = true;
+        invicibilityTimer += Time.deltaTime;
+
+        if (invicibilityTimer >= invicibilityTime) {
+            invicibilityTimer = 0f;
+            godMode = false;
+            invicible = false;
+        }
+    }
     public void Heal(int amt)
     {
 
@@ -24,11 +40,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int amt)
     {
-        if (godMode)
-        {
-
-            return;
-        }
+        if (godMode) return;
 
         currentHealth -= amt;
 
@@ -39,6 +51,9 @@ public class Health : MonoBehaviour
             Die();
         }
 
+    }
+    public void EnableInvincibility() {
+        invicible = true;
     }
 
     public void ToggleGodMode()
