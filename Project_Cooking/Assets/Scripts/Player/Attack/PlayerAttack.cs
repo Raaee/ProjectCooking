@@ -9,15 +9,18 @@ public class PlayerAttack : MonoBehaviour
     private ObjectPooler knifeObjPooler;
     public bool attacking = false;
     [SerializeField] private float attackSpeed = 2f;
+    private float timer;
     private float normalAttackSpeed;
+    [SerializeField] private GameObject knifePrefab;
+    private float attackSpeedMultiplier;
     private Vector2 moveDir;
-    private float timer = 0f;
+    private bool speedMode = false;
     private void Awake()
     {
         actions = GetComponent<Actions>();
         movement = GetComponent<Movement>();
         knifeObjPooler = GetComponent<ObjectPooler>();
-        actions.OnAttack_Started.AddListener(StartAttack);
+        //actions.OnAttack_Started_Context.AddListener(StartAttack);
         actions.OnAttack_Cancelled.AddListener(StopAttack);
         attackSpeed = 1f / attackSpeed;
         normalAttackSpeed = attackSpeed;
@@ -55,7 +58,6 @@ public class PlayerAttack : MonoBehaviour
         else {
             return (moveDir.x > 0f) ? AttackDirection.RIGHT : ((moveDir.x < 0f) ? AttackDirection.LEFT : AttackDirection.DOWN);
         }
-
     }
     public void SpawnKnife(Vector2 dir)
     {
@@ -63,11 +65,15 @@ public class PlayerAttack : MonoBehaviour
 
         var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
         go.GetComponent<Knife>().SetAttackDirection(GetEightDirection(dir));
+        if (speedMode) {
+            go.GetComponent<Knife>().IncreaseProjSpeed(attackSpeedMultiplier);
+        } else {
+            go.GetComponent<Knife>().NormalSpeed();
+
+        }
         //get direction from mouse and this object
 
     }
-
-
     public void StartAttack(InputAction.CallbackContext context)
     {
         attacking = true;
@@ -114,10 +120,11 @@ public class PlayerAttack : MonoBehaviour
             return AttackDirection.RIGHT;
     }
     public void IncreaseAttackSpeed(float multiplier) {
-        attackSpeed /= multiplier;
+        speedMode = true;
+        attackSpeedMultiplier = multiplier;
     }
     public void NormalAttackSpeed() {
-        attackSpeed = normalAttackSpeed;
+        speedMode = false;
     }
 }
 public enum AttackDirection

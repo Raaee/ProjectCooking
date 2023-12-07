@@ -95,6 +95,12 @@ public class Knife : MonoBehaviour
     {
         attackDirection = newAttackDirection;
     }
- 
+    
+    public void IncreaseProjSpeed(float multiplier) {
+        projectileSpeed *= multiplier;
+    }
+    public void NormalSpeed() {
+        projectileSpeed = normalProjSpeed;
+    }
 
 }
