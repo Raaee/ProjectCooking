@@ -1,5 +1,7 @@
+using com.cyborgAssets.inspectorButtonPro;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> baseIngredients = new List<GameObject>();
     [SerializeField] private GameObject upperCornerFLoor;
     [SerializeField] private GameObject lowerCornerFLoor;
+    [HideInInspector] public UnityEvent<Current_Area> OnAreaChange;
 
     void Start()    {
         currentArea = Current_Area.LIMBO;
@@ -18,14 +21,17 @@ public class LevelManager : MonoBehaviour
         SpawnAllBaseIngredients();
         areaTimer.OnRoundOver.AddListener(ChangeArea);
     }
+
+    [ProButton]
     public void ChangeArea() {
         if (currentArea == Current_Area.DUNGEON) {
             currentArea = Current_Area.KITCHEN;
         } else {
             currentArea = Current_Area.DUNGEON;
-            enemyManager.OnDungeonArea.Invoke();
+            enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);
+        OnAreaChange?.Invoke(currentArea);
     }
     public void SpawnAllBaseIngredients()
     {

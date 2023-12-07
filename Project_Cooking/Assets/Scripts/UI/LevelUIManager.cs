@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class LevelUIManager : MonoBehaviour {
 
@@ -16,39 +17,62 @@ public class LevelUIManager : MonoBehaviour {
 
     private void Start() {
         levelManager = GetComponent<LevelManager>();
+        levelManager.OnAreaChange.AddListener(UpdateAreaUI);
+        levelManager.OnAreaChange.AddListener(UpdateFloor);
     }
-    void Update()   {
-        UpdateAreaUI();
-        UpdateFloor();
-    }
-    public void UpdateAreaUI()  {
-        switch(levelManager.GetCurrentArea()) {
+   
+    public void UpdateAreaUI(Current_Area newCurrentAreA)  {
+        switch(newCurrentAreA) {
             case Current_Area.LIMBO:
-                SetActiveDungeonUI(false);
-                SetActiveKitchenUI(false);
+                DisableAllUI();
                 break;
-            case Current_Area.DUNGEON:
-                SetActiveDungeonUI(true);
-                SetActiveKitchenUI(false);
+            case Current_Area.DUNGEON:            
+                SetUpDungeonUI();
                 break;
             case Current_Area.KITCHEN:
-                SetActiveDungeonUI(false);
-                SetActiveKitchenUI(true);
+                SetUpKitchenUI();
                 break;
         }
     }
-    public void SetActiveDungeonUI(bool active) {
-        foreach (GameObject go in dungeonUI) {
-            go.SetActive(active);
+
+    private void DisableAllUI()
+    {
+        foreach (GameObject go in dungeonUI)
+        {
+            go.SetActive(false);
+        }
+        foreach (GameObject go in kitchenUI)
+        {
+            go.SetActive(false);
         }
     }
-    public void SetActiveKitchenUI(bool active) {
-        foreach (GameObject go in kitchenUI) {
-            go.SetActive(active);
+
+    private void SetUpDungeonUI()
+    {
+        foreach (GameObject go in dungeonUI)
+        {
+            go.SetActive(true);
+        }
+        foreach (GameObject go in kitchenUI)
+        {
+            go.SetActive(false);
         }
     }
-    public void UpdateFloor() {
-        if (levelManager.GetCurrentArea() == Current_Area.DUNGEON) {
+
+    private void SetUpKitchenUI()
+    {
+        foreach (GameObject go in dungeonUI)
+        {
+            go.SetActive(false);
+        }
+        foreach (GameObject go in kitchenUI)
+        {
+            go.SetActive(true);
+        }
+    }
+
+    public void UpdateFloor(Current_Area newCurrentAreA) {
+        if (newCurrentAreA == Current_Area.DUNGEON) {
             floor.GetComponent<SpriteRenderer>().color = dungeonFloorColor;
         } else {
             floor.GetComponent<SpriteRenderer>().color = kitchenFloorColor;

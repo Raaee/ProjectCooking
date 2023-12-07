@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     public UnityEvent OnDungeonArea;
 
     private void Start() {
-        OnDungeonArea.AddListener(SpawnAllEnemies);
+       
     }
 
     public GameObject SpawnEnemyAtPoint(Vector2 placement)  {
@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
     public void SpawnAllEnemies() {
         StartCoroutine(SpawnEnemies());
     }
-    public IEnumerator SpawnEnemies() {
+    private IEnumerator SpawnEnemies() {
         Debug.Log("Spawning Enemies!");
 
         yield return new WaitForSeconds(beforeSpawnDelay);
