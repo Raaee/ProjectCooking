@@ -26,10 +26,10 @@ public class AutomaticPickup : MonoBehaviour
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         rb2d.velocity = new Vector2(direction.x, direction.y) * speed;
 
-        if (Vector2.Distance(playerTransform.position, transform.position) < 0.5f)
+        if (Vector2.Distance(playerTransform.position, transform.position) < 0.1f)
         {
             FMODUnity.RuntimeManager.PlayOneShot(bloodPickupAudio, transform.position);
-            progressBar.Increase(4);
+            progressBar.Increase();
             Destroy(this.gameObject);
 
         }

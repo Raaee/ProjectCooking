@@ -85,7 +85,6 @@ public class Inventory : MonoBehaviour
             Instantiate(go, input.transform.position, Quaternion.identity);
 
     }
-    //This is if u want to specify the item to remove:
 
     public bool IsEmpty()
     {

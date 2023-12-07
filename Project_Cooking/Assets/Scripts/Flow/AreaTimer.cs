@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using com.cyborgAssets.inspectorButtonPro;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class AreaTimer : MonoBehaviour
@@ -17,25 +18,26 @@ public class AreaTimer : MonoBehaviour
 
     void Start()
     {
-        timer = kitchenTimeLength;
+        timer = dungeonTimeLength;
     }
 
     void Update()
     {
-        if (isTimerPaused) return;
+        if 
+            (isTimerPaused) return;
+        else
+            timer -= Time.deltaTime;
 
-        timer -= Time.deltaTime;
-
-        if (timer < 0f)
+        if (timer <= 0f)
         {
             OnRoundOver.Invoke();
+            Debug.Log("timer done!");
             isTimerPaused = true;
-
         }
 
     }
 
-
+   
     public void ResetAreaTime(Current_Area currentArea)
     {
         switch (currentArea)

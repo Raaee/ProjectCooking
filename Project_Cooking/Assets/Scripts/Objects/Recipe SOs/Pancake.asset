@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502db729451d7554da9494ab44b6bf4f, type: 3}
+  m_Name: Pancake
+  m_EditorClassIdentifier: 
+  recipeSteps:
+  - recipeAction: 1
+    amountOfChopAction: 0
+    recipeIngredients:
+    - {fileID: 11400000, guid: e9f352cb4fc65a84d8b700df4104dbeb, type: 2}
+    - {fileID: 11400000, guid: 8b295e1b1ff464845973407ad5f9156a, type: 2}
+    - {fileID: 11400000, guid: bd01ed0d77eacc24e9f35a8fda5254af, type: 2}
+  - recipeAction: 3
+    amountOfChopAction: 0
+    recipeIngredients:
+    - {fileID: 11400000, guid: 7cb6685e16ef38544930274f01d427c8, type: 2}

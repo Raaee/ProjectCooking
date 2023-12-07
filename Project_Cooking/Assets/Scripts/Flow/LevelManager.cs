@@ -1,15 +1,37 @@
+using com.cyborgAssets.inspectorButtonPro;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private AreaTimer areaTimer;
+    [SerializeField] private Current_Area currentArea;
+    [SerializeField] private EnemyManager enemyManager;
 
+    [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
     [SerializeField] private GameObject upperCornerFLoor;
     [SerializeField] private GameObject lowerCornerFLoor;
-    void Start()
-    {
+    [HideInInspector] public UnityEvent<Current_Area> OnAreaChange;
+
+    void Start()    {
+        currentArea = Current_Area.LIMBO;
+        ChangeArea();
         SpawnAllBaseIngredients();
+        areaTimer.OnRoundOver.AddListener(ChangeArea);
+    }
+
+    [ProButton]
+    public void ChangeArea() {
+        if (currentArea == Current_Area.DUNGEON) {
+            currentArea = Current_Area.KITCHEN;
+        } else {
+            currentArea = Current_Area.DUNGEON;
+            enemyManager.SpawnAllEnemies();
+        }
+        areaTimer.ResetAreaTime(currentArea);
+        OnAreaChange?.Invoke(currentArea);
     }
     public void SpawnAllBaseIngredients()
     {
@@ -23,5 +45,12 @@ public class LevelManager : MonoBehaviour
         }
 
     }
-
+    public Current_Area GetCurrentArea() {
+        return currentArea;
+    }
+}
+public enum Current_Area {
+    LIMBO,
+    KITCHEN,
+    DUNGEON
 }

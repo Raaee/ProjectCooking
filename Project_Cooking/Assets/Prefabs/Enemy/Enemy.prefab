@@ -59,9 +59,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.669
   aggroSpeedMultipler: 1.555
-  chargeDelay: 1
+  chargeDelay: 1.8
   dashDuration: 0.75
-  dashSpeed: 10
+  dashSpeed: 8.5
   slimeEnemyAnim: {fileID: 7195350933115724439}
 --- !u!114 &184274246093717925
 MonoBehaviour:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d370e4753c57974d837f6daa1dd892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 3
+  cooldownTime: 5
   chaseState: {fileID: 84315332059349936}
 --- !u!114 &1320014873897396913
 MonoBehaviour:
@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodDropPrefab: {fileID: 1487424979715607307, guid: 29d7b7ab9132a514cb00620148376967, type: 3}
+  amtOfBloodDrops: 3
 --- !u!50 &3307204206136906551
 Rigidbody2D:
   serializedVersion: 4
@@ -339,7 +340,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 519dafacd208bb64c83d5124be03b09d, type: 3}
+  m_Sprite: {fileID: 892054996, guid: 4b6791419b6252e46a6fd7bf92787ee9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -358,14 +359,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6401555559691803010}
     m_Modifications:
-    - target: {fileID: 318864632927518539, guid: 2f2e1e4e118136f4692bc52c7504db8d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 318864632927518539, guid: 2f2e1e4e118136f4692bc52c7504db8d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 318864632927518539, guid: 2f2e1e4e118136f4692bc52c7504db8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -408,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1778107543508776003, guid: 2f2e1e4e118136f4692bc52c7504db8d, type: 3}
       propertyPath: m_Name
-      value: TestSlimeModel
+      value: SlimeModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

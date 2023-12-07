@@ -51,10 +51,7 @@ public class AbilityIconUI : MonoBehaviour
 
     }
 
-    public Sprite GetAbilitySprite()
-    {
-        return ability.abilitySprite;
-    }
+  
 
 }
 

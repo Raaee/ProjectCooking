@@ -5,6 +5,7 @@ public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private int max;
     private int current = 0;
+    [SerializeField] private int bloodDropValue = 1;
     [SerializeField] private Image mask;
     [Header("Node sprite stuff")]
     public List<Image> nodes;
@@ -12,7 +13,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private Sprite litSprite;
     private int maxLitNodeCount = 0; //helper var for audio
     [SerializeField] private FMODUnity.EventReference passingNodeAudio;
-
+    [SerializeField] private Cookbook cookbook;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class ProgressBar : MonoBehaviour
         {
             PlayPassingNodeAudio();
             maxLitNodeCount = litNodeCount;
+            cookbook.IncrementNodesUnlocked();
         }
 
 
@@ -58,9 +60,9 @@ public class ProgressBar : MonoBehaviour
         return 0;
     }
 
-    public void Increase(int amtToAdd)
+    public void Increase()
     {
-        current += amtToAdd;
+        current += bloodDropValue;
 
         if (current > max)
             current = max;

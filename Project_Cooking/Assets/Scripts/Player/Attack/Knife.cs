@@ -5,8 +5,9 @@ public class Knife : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject knifeObject;
-    [SerializeField] private float maxLifeTime = 1f;
+    [SerializeField] private float maxLifeTime = 1.5f;
     [SerializeField] private float projectileSpeed = 1f;
+    private float normalProjSpeed;
     private float timer = 0f;
     [SerializeField] private AttackDirection attackDirection = AttackDirection.RIGHT;
     private Vector2 moveDirection;
@@ -15,6 +16,7 @@ public class Knife : MonoBehaviour
     {
         ChangeRotationOnDirection();
         SetMoveDirection();
+        normalProjSpeed = projectileSpeed;
     }
     private void FixedUpdate()
     {
@@ -93,5 +95,6 @@ public class Knife : MonoBehaviour
     {
         attackDirection = newAttackDirection;
     }
+ 
 
 }

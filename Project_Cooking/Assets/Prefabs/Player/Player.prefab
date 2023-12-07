@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431f33dca37db24ea02202f17c796df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaTimer: {fileID: 0}
+  levelManager: {fileID: 0}
   OnItemSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -601,7 +601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 1
+  bloodCost: 10
+  abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
     Guid:
@@ -625,7 +626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 2
-  bloodCost: 1
+  bloodCost: 20
+  abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
     Guid:
@@ -648,7 +650,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDuration: 3
-  bloodCost: 1
+  bloodCost: 30
+  abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
     Guid:

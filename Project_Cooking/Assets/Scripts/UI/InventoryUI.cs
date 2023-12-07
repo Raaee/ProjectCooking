@@ -45,8 +45,9 @@ public class InventoryUI : MonoBehaviour
                 }
                 if (item == ingredientSO.item)
                 {
-                    uiSlots[i].ItemImagePlaceholder.gameObject.SetActive(true);
                     uiSlots[i].ItemImagePlaceholder.sprite = ingredientSO.normalSprite;
+                    uiSlots[i].ItemImagePlaceholder.gameObject.SetActive(true);
+                    uiSlots[i].ItemImagePlaceholder.enabled = true;
                     found = true;
                     break;
                 }
@@ -79,6 +80,7 @@ public class InventoryUI : MonoBehaviour
         if (!setUP) return;
         DisableAllHighlighted();
         DisableAllImagePlaceholder();
+        uiSlots[0].ImageBackground.sprite = uiSlotSelectionSprites[1]; // first slot should start highlighted
     }
 
     private void DisableAllHighlighted()
@@ -87,7 +89,6 @@ public class InventoryUI : MonoBehaviour
         foreach (var uiSlot in uiSlots)
         {
             uiSlot.ImageBackground.sprite = uiSlotSelectionSprites[0];
-
         }
 
     }

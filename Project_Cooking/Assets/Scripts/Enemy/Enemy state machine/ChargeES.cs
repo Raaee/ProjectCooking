@@ -36,7 +36,7 @@ public class ChargeES : EnemyState
     {
         enemyMovement.StopChasing();
         yield return enemyMovement.ChargeAtPlayer();
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         enemyStateHandler.ChangeState(chaseState);
 
     }

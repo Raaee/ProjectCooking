@@ -82,9 +82,9 @@ public class EnemyMovement : MonoBehaviour
     {
 
         isCharging = true;
+        slimeEnemyAnim.AttackAnimation();
         yield return new WaitForSeconds(chargeDelay);
         UpdateDirectionToPlayer();
-        slimeEnemyAnim.AttackAnimation();
         rb2d.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isCharging = false;
