@@ -26,7 +26,7 @@ public class Cookbook : MonoBehaviour, IInteractable
         ranNum = Random.Range(0, allRecipes.Count);
 
         levelRecipe = allRecipes[ranNum];
-      //  allRecipes.Remove(levelRecipe);
+        allRecipes.Remove(levelRecipe);
     }
 
     public void Interact()  {
