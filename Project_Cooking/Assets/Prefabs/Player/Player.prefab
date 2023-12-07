@@ -269,7 +269,6 @@ GameObject:
   - component: {fileID: 2465164869444739385}
   - component: {fileID: 1641923975772206309}
   - component: {fileID: 5472659391050540092}
-  - component: {fileID: 6308212342086689124}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -700,6 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacking: 0
+  knifePrefab: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
   attackSpeed: 5
 --- !u!1 &5573760815043832673
 GameObject:
@@ -734,7 +734,6 @@ Transform:
   m_Father: {fileID: 5704899173799534248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1401555346208146629
---- !u!114 &6308212342086689124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -754,15 +753,6 @@ MonoBehaviour:
       Data4: -1011056429
     Path: event:/Player/PlayerHurt
   playerHealth: {fileID: 1041550740908115910}
-  m_GameObject: {fileID: 3772686613067466981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91324f6db08e3f84982d836e4051bcc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  pooledObject: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
-  pooledAmt: 5
 --- !u!1 &5581091271079475160
 GameObject:
   m_ObjectHideFlags: 0

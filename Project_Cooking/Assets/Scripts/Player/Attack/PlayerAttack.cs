@@ -6,12 +6,11 @@ public class PlayerAttack : MonoBehaviour
 
     private Actions actions;
     private Movement movement;
-    private ObjectPooler knifeObjPooler;
     public bool attacking = false;
+    [SerializeField] private GameObject knifePrefab;
     [SerializeField] private float attackSpeed = 2f;
     private float timer;
     private float normalAttackSpeed;
-    [SerializeField] private GameObject knifePrefab;
     private float attackSpeedMultiplier;
     private Vector2 moveDir;
     private bool speedMode = false;
@@ -19,8 +18,8 @@ public class PlayerAttack : MonoBehaviour
     {
         actions = GetComponent<Actions>();
         movement = GetComponent<Movement>();
-        knifeObjPooler = GetComponent<ObjectPooler>();
-        //actions.OnAttack_Started_Context.AddListener(StartAttack);
+        actions.OnAttack_Started_Context.AddListener(StartAttack);
+
         actions.OnAttack_Cancelled.AddListener(StopAttack);
         attackSpeed = 1f / attackSpeed;
         normalAttackSpeed = attackSpeed;
@@ -32,31 +31,10 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
         timer += Time.deltaTime;
-        if (timer >= attackSpeed) {
-            var go = knifeObjPooler.GetPooledObject();
-            go.transform.position = this.transform.position;
-            go.transform.rotation = Quaternion.identity;
-            go.GetComponent<Knife>().SetAttackDirection(GetAttackDirectionFromMoveDirection());
-            go.SetActive(true);
+        if (timer >= attackSpeed)
+        {
+            // SpawnKnife();
             timer = 0f;
-        }
-    }
-    public AttackDirection GetAttackDirectionFromMoveDirection() {
-        moveDir = movement.GetMovementDirection();
-
-       /* if (moveDir == Vector2.zero) {
-        ************* FIX THIS **************
-        * WE need this to make the attackDirection be the last move direction when the player stops moving
-        * so that the knife continues attacking in that specific direction.
-        *************************************
-        return AttackDirection.LEFT;
-        } */
-
-        if (moveDir.y >= 0f) {
-            return (moveDir.x > 0f) ? AttackDirection.RIGHT : ((moveDir.x < 0f) ? AttackDirection.LEFT : AttackDirection.UP);
-        }
-        else {
-            return (moveDir.x > 0f) ? AttackDirection.RIGHT : ((moveDir.x < 0f) ? AttackDirection.LEFT : AttackDirection.DOWN);
         }
     }
     public void SpawnKnife(Vector2 dir)

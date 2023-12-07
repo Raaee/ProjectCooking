@@ -22,9 +22,9 @@ public class Knife : MonoBehaviour
     {
         MoveKnife();
         timer += Time.deltaTime;
-        if (timer >= maxLifeTime) {
-            this.gameObject.SetActive(false);
-            timer = 0;
+        if (timer >= maxLifeTime)
+        {
+            Destroy(this.gameObject);
         }
     }
     public void MoveKnife()
