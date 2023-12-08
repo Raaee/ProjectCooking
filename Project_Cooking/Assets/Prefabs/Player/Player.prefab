@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 2465164869444739385}
   - component: {fileID: 1641923975772206309}
   - component: {fileID: 5472659391050540092}
+  - component: {fileID: 7112148568771124430}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -520,9 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invicibilityTime: 2.5
+  invicibilityTime: 1
   godMode: 0
-  invicible: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -700,6 +700,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacking: 0
   knifePrefab: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
+--- !u!114 &7112148568771124430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9bf5b02a0081446af23084d79817c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObj: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
+  pooledObjects: []
+  intialPooledAmt: 5
 --- !u!1 &5573760815043832673
 GameObject:
   m_ObjectHideFlags: 0

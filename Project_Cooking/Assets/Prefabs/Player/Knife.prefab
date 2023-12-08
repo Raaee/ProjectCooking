@@ -253,8 +253,8 @@ MonoBehaviour:
       Data4: 80531743
     Path: event:/Player/Knife Projectile
   Event: 
-  PlayEvent: 1
-  StopEvent: 2
+  PlayEvent: 11
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0

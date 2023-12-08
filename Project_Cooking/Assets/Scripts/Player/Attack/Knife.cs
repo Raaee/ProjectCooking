@@ -10,16 +10,14 @@ public class Knife : MonoBehaviour
     private float timer = 0f;
     [SerializeField] private AttackDirection attackDirection = AttackDirection.RIGHT;
     private Vector2 moveDirection;
-    private void Start()    {
-        ChangeRotationOnDirection();
-        SetMoveDirection();
-    }
+   
     private void FixedUpdate()  {
         MoveKnife();
         timer += Time.deltaTime;
         if (timer >= maxLifeTime)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            timer = 0;
         }
     }
     public void MoveKnife()
@@ -30,6 +28,7 @@ public class Knife : MonoBehaviour
     {
         switch (attackDirection)
         {
+          
             case AttackDirection.UP:
                 moveDirection = new Vector2(0f, 120f);
                 break;
@@ -55,8 +54,9 @@ public class Knife : MonoBehaviour
                 moveDirection = (Vector2.up + Vector2.left).normalized * 120f;
                 break;
         }
+       
     }
-    private void ChangeRotationOnDirection()
+    public void ChangeRotationOnDirection()
     {
         switch (attackDirection)
         {

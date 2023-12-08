@@ -5,24 +5,33 @@ public class PlayerAttack : MonoBehaviour   {
 
     private Actions actions;
     public bool attacking = false;
-    [SerializeField] private GameObject knifePrefab;
     private float attackSpeedMultiplier;
     private bool speedMode = false;
+    private ObjectPooler knifeObjPooler;
 
     private void Awake()
     {
+        knifeObjPooler = GetComponent<ObjectPooler>();
         actions = GetComponent<Actions>();
         actions.OnAttack_Started_Context.AddListener(StartAttack);
         actions.OnAttack_Cancelled.AddListener(StopAttack);
     }
     public void SpawnKnife(Vector2 dir) {
-        var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
+        //var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
+        GameObject go = knifeObjPooler.GetPooledObject();
+        go.transform.position = this.transform.position;
+        go.transform.rotation = Quaternion.identity;
+        var knife = go.GetComponent<Knife>();
         if (speedMode) {
-            go.GetComponent<Knife>().IncreaseProjSpeed(attackSpeedMultiplier);
+            knife.IncreaseProjSpeed(attackSpeedMultiplier);
         }
-        go.GetComponent<Knife>().SetAttackDirection(GetEightDirection(dir));
-        //get direction from mouse and this object
+        knife.SetAttackDirection(GetEightDirection(dir));
 
+        knife.ChangeRotationOnDirection();
+        knife.SetMoveDirection();
+
+        //get direction from mouse and this object
+        go.SetActive(true);
     }
     public void StartAttack(InputAction.CallbackContext context)
     {
@@ -31,12 +40,8 @@ public class PlayerAttack : MonoBehaviour   {
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector2 objectPosition = Camera.main.WorldToScreenPoint(transform.position);
-
-
             // Calculate normalized direction
             Vector2 direction = (mousePosition - objectPosition).normalized;
-
-
             SpawnKnife(direction);
         }
     }
@@ -51,6 +56,8 @@ public class PlayerAttack : MonoBehaviour   {
 
 
         angle = (angle + 360) % 360; // Ensure positive angle
+
+     
         // Map angle to 8-direction enum
         if (angle >= 22.5f && angle < 67.5f)
             return AttackDirection.UP_RIGHT;
