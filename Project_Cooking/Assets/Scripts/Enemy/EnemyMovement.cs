@@ -50,6 +50,8 @@ public class EnemyMovement : MonoBehaviour
         if (!isChasing)
             return;
 
+
+        Debug.Log("Do I ever do something?");
         UpdateDirectionToPlayer();
 
         rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;

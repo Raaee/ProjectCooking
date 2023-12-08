@@ -47,4 +47,6 @@ public class IdleES : EnemyState
             Debug.LogWarning("chase state not set up bruh, must be Raeus fault");
         enemyMovement = GetComponent<EnemyMovement>();
     }
+
+    //
 }

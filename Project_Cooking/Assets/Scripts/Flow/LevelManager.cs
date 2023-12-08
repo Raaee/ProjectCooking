@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
             currentArea = Current_Area.KITCHEN;
         } else {
             currentArea = Current_Area.DUNGEON;
+          
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);

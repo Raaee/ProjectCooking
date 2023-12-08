@@ -456,6 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 465342810}
   - component: {fileID: 465342811}
+  - component: {fileID: 465342812}
   m_Layer: 0
   m_Name: Enemy Manager
   m_TagString: Untagged
@@ -499,6 +500,21 @@ MonoBehaviour:
   OnDungeonArea:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &465342812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465342809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9bf5b02a0081446af23084d79817c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObj: {fileID: 2076171101915919661, guid: 41f4b2a1259d68446a4390d4510cea23, type: 3}
+  pooledObjects: []
+  intialPooledAmt: 5
 --- !u!1 &485314457
 GameObject:
   m_ObjectHideFlags: 0
