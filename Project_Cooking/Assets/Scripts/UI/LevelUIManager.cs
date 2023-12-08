@@ -17,8 +17,10 @@ public class LevelUIManager : MonoBehaviour {
 
     private void Start() {
         levelManager = GetComponent<LevelManager>();
+        UpdateFloor(Current_Area.DUNGEON);
         levelManager.OnAreaChange.AddListener(UpdateAreaUI);
         levelManager.OnAreaChange.AddListener(UpdateFloor);
+        
     }
    
     public void UpdateAreaUI(Current_Area newCurrentAreA)  {
