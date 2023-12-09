@@ -34,7 +34,8 @@ public class EnemyDeathHandler : MonoBehaviour
             var bloodDrop = Instantiate(bloodDropPrefab, point, Quaternion.identity);
         }
         //disapear into void (refactor would be send back to the object pooling )
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     public Vector2 GenerateRandomPointOnEdge(Vector2 originalPoint, float radius)

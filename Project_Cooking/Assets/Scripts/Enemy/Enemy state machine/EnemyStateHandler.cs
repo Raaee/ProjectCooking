@@ -8,11 +8,14 @@ public class EnemyStateHandler : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
         currentState = initialState;
         currentState.OnStateEnter();
     }
-
-
     private void Update()
     {
         currentState.OnStateUpdate();

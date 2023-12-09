@@ -1,51 +1,38 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour
-{
+public class PlayerAttack : MonoBehaviour   {
 
     private Actions actions;
-    private Movement movement;
     public bool attacking = false;
-    [SerializeField] private GameObject knifePrefab;
-    [SerializeField] private float attackSpeed = 2f;
-    private float normalAttackSpeed;
-    private Vector2 moveDir;
-    private float timer = 0f;
+    private float attackSpeedMultiplier;
+    private bool speedMode = false;
+    private ObjectPooler knifeObjPooler;
+
     private void Awake()
     {
+        knifeObjPooler = GetComponent<ObjectPooler>();
         actions = GetComponent<Actions>();
-        movement = GetComponent<Movement>();
         actions.OnAttack_Started_Context.AddListener(StartAttack);
         actions.OnAttack_Cancelled.AddListener(StopAttack);
-        attackSpeed = 1f / attackSpeed;
-        normalAttackSpeed = attackSpeed;
     }
-    private void Update()
-    {
-        if (!attacking)
-        {
-            return;
+    public void SpawnKnife(Vector2 dir) {
+        //var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
+        GameObject go = knifeObjPooler.GetPooledObject();
+        go.transform.position = this.transform.position;
+        go.transform.rotation = Quaternion.identity;
+        var knife = go.GetComponent<Knife>();
+        if (speedMode) {
+            knife.IncreaseProjSpeed(attackSpeedMultiplier);
         }
-        timer += Time.deltaTime;
-        if (timer >= attackSpeed)
-        {
-            // SpawnKnife();
-            timer = 0f;
-        }
+        knife.SetAttackDirection(GetEightDirection(dir));
 
-    }
-    public void SpawnKnife(Vector2 dir)
-    {
+        knife.ChangeRotationOnDirection();
+        knife.SetMoveDirection();
 
-
-        var go = Instantiate(knifePrefab, this.transform.position, Quaternion.identity);
-        go.GetComponent<Knife>().SetAttackDirection(GetEightDirection(dir));
         //get direction from mouse and this object
-
+        go.SetActive(true);
     }
-
-
     public void StartAttack(InputAction.CallbackContext context)
     {
         attacking = true;
@@ -53,12 +40,8 @@ public class PlayerAttack : MonoBehaviour
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector2 objectPosition = Camera.main.WorldToScreenPoint(transform.position);
-
-
             // Calculate normalized direction
             Vector2 direction = (mousePosition - objectPosition).normalized;
-
-
             SpawnKnife(direction);
         }
     }
@@ -73,6 +56,8 @@ public class PlayerAttack : MonoBehaviour
 
 
         angle = (angle + 360) % 360; // Ensure positive angle
+
+     
         // Map angle to 8-direction enum
         if (angle >= 22.5f && angle < 67.5f)
             return AttackDirection.UP_RIGHT;
@@ -92,10 +77,11 @@ public class PlayerAttack : MonoBehaviour
             return AttackDirection.RIGHT;
     }
     public void IncreaseAttackSpeed(float multiplier) {
-        attackSpeed /= multiplier;
+        speedMode = true;
+        attackSpeedMultiplier = multiplier;
     }
     public void NormalAttackSpeed() {
-        attackSpeed = normalAttackSpeed;
+        speedMode = false;
     }
 }
 public enum AttackDirection

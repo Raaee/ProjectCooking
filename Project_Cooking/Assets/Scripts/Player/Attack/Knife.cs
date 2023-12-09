@@ -7,24 +7,17 @@ public class Knife : MonoBehaviour
     [SerializeField] private GameObject knifeObject;
     [SerializeField] private float maxLifeTime = 1.5f;
     [SerializeField] private float projectileSpeed = 1f;
-    private float normalProjSpeed;
     private float timer = 0f;
     [SerializeField] private AttackDirection attackDirection = AttackDirection.RIGHT;
     private Vector2 moveDirection;
-
-    private void Start()
-    {
-        ChangeRotationOnDirection();
-        SetMoveDirection();
-        normalProjSpeed = projectileSpeed;
-    }
-    private void FixedUpdate()
-    {
+   
+    private void FixedUpdate()  {
         MoveKnife();
         timer += Time.deltaTime;
         if (timer >= maxLifeTime)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            timer = 0;
         }
     }
     public void MoveKnife()
@@ -35,6 +28,7 @@ public class Knife : MonoBehaviour
     {
         switch (attackDirection)
         {
+          
             case AttackDirection.UP:
                 moveDirection = new Vector2(0f, 120f);
                 break;
@@ -60,8 +54,9 @@ public class Knife : MonoBehaviour
                 moveDirection = (Vector2.up + Vector2.left).normalized * 120f;
                 break;
         }
+       
     }
-    private void ChangeRotationOnDirection()
+    public void ChangeRotationOnDirection()
     {
         switch (attackDirection)
         {
@@ -95,6 +90,9 @@ public class Knife : MonoBehaviour
     {
         attackDirection = newAttackDirection;
     }
- 
+    
+    public void IncreaseProjSpeed(float multiplier) {
+        projectileSpeed *= multiplier;
+    }   
 
 }

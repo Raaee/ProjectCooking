@@ -54,7 +54,7 @@ public abstract class Ability : MonoBehaviour
             return;
         }
 
-        if (bloodProgressBar.GetCurrentBarAmt() < bloodCost)
+        if (bloodProgressBar.GetcurrentBloodBarAmt() < bloodCost)
         {
             OnNotEnoughBlood();
             gameplayAudioUI?.PlayNotEnoughBloodAudio();

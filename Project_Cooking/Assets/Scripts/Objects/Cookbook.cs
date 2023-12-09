@@ -53,9 +53,9 @@ public class Cookbook : MonoBehaviour, IInteractable
     public void NormalSprite()
     {
         sr.sprite = cookbookSprite;
+        recipeDisplay.CloseCookbook();
     }
     public void IncrementNodesUnlocked() {
-        Debug.Log("Incremented");
         nodesUnlocked += 1;
     }
 }

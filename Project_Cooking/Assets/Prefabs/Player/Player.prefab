@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1642346008, guid: e1d802783cef7e0439e9adc6cd2ba2a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 2465164869444739385}
   - component: {fileID: 1641923975772206309}
   - component: {fileID: 5472659391050540092}
+  - component: {fileID: 7112148568771124430}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -520,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invicibilityTime: 1
   godMode: 0
   OnDeath:
     m_PersistentCalls:
@@ -600,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83773f7718965b24081021ceeec28d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDuration: 2
+  abilityDuration: 3.5
   bloodCost: 10
   abilitySprite: {fileID: 0}
   bloodProgressBar: {fileID: 0}
@@ -611,7 +613,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  speedMultiplier: 1.404
+  speedMultiplier: 1.5
   trailEffectGO: {fileID: 7135583798575977466}
 --- !u!114 &1243901471745361668
 MonoBehaviour:
@@ -697,8 +699,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacking: 0
-  knifePrefab: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
-  attackSpeed: 5
+--- !u!114 &7112148568771124430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9bf5b02a0081446af23084d79817c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObj: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
+  pooledObjects: []
+  intialPooledAmt: 5
 --- !u!1 &5573760815043832673
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,10 +8,13 @@ public class Health : MonoBehaviour
 
     public const int MAX_HEALTH = 3;
     private int currentHealth = 3;
+    [SerializeField] private float invicibilityTime = 1f;
     [SerializeField] private bool godMode = false;
-    public UnityEvent OnDeath;
-    public UnityEvent OnHurt;
-    public UnityEvent OnHeal;
+   [HideInInspector] public UnityEvent OnDeath;
+    [HideInInspector] public UnityEvent OnHurt;
+    [HideInInspector] public UnityEvent OnHeal;
+
+
     public void Heal(int amt)
     {
 
@@ -21,14 +25,14 @@ public class Health : MonoBehaviour
             currentHealth = MAX_HEALTH;
         }
     }
-
+    public void Init()
+    {
+        currentHealth = MAX_HEALTH;
+        godMode = false;
+    }
     public void TakeDamage(int amt)
     {
-        if (godMode)
-        {
-
-            return;
-        }
+        if (godMode) return;
 
         currentHealth -= amt;
 
@@ -37,8 +41,14 @@ public class Health : MonoBehaviour
         {
             currentHealth = 0;
             Die();
+            return;
         }
-
+        StartCoroutine(InvincibleAfterEffect());
+    }
+    private IEnumerator InvincibleAfterEffect() {
+        godMode = true;
+        yield return new WaitForSeconds(invicibilityTime);
+        godMode = false;
     }
 
     public void ToggleGodMode()

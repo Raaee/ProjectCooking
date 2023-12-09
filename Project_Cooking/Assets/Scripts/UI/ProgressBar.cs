@@ -3,15 +3,15 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
-    [SerializeField] private int max;
-    private int current = 0;
-    [SerializeField] private int bloodDropValue = 1;
+    [SerializeField] private float maxBlood;
+    [SerializeField] private float currentBlood = 0;
+    [SerializeField] private float bloodDropValue = 1;
     [SerializeField] private Image mask;
     [Header("Node sprite stuff")]
     public List<Image> nodes;
     [SerializeField] private Sprite unlitSprite;
     [SerializeField] private Sprite litSprite;
-    private int maxLitNodeCount = 0; //helper var for audio
+    private int maxBloodLitNodeCount = 0; //helper var for audio
     [SerializeField] private FMODUnity.EventReference passingNodeAudio;
     [SerializeField] private Cookbook cookbook;
 
@@ -21,11 +21,11 @@ public class ProgressBar : MonoBehaviour
     }
     private void Update()
     {
-        GetCurrentFill();
+        GetcurrentBloodFill();
     }
-    private void GetCurrentFill()
+    private void GetcurrentBloodFill()
     {
-        float fillAmt = (float)current / (float)max;
+        float fillAmt = currentBlood / maxBlood;
         mask.fillAmount = fillAmt;
 
     }
@@ -36,13 +36,12 @@ public class ProgressBar : MonoBehaviour
     {
         int litNodeCount = CalculateLitNodeCount(percentage);
 
-        if (litNodeCount > maxLitNodeCount)
+        if (litNodeCount > maxBloodLitNodeCount)
         {
             PlayPassingNodeAudio();
-            maxLitNodeCount = litNodeCount;
+            maxBloodLitNodeCount = litNodeCount;
             cookbook.IncrementNodesUnlocked();
         }
-
 
         // Update the sprites based on the calculated lit node count
         for (int i = 0; i < nodes.Count; i++)
@@ -52,6 +51,7 @@ public class ProgressBar : MonoBehaviour
     }
     private int CalculateLitNodeCount(float percentage)
     {
+        if (percentage >= 1.0f) return 5;
         if (percentage > 0.8f) return 4;
         if (percentage > 0.6f) return 3;
         if (percentage > 0.4f) return 2;
@@ -62,21 +62,21 @@ public class ProgressBar : MonoBehaviour
 
     public void Increase()
     {
-        current += bloodDropValue;
+        currentBlood += bloodDropValue;
 
-        if (current > max)
-            current = max;
-        float fillAmt = (float)current / (float)max;
+        if (currentBlood > maxBlood)
+            currentBlood = maxBlood;
+        float fillAmt = currentBlood / maxBlood;
         UpdateNodesVisuals(fillAmt);
     }
 
-    public int GetCurrentBarAmt()
+    public float GetcurrentBloodBarAmt()
     {
-        return current;
+        return currentBlood;
     }
-    public void Decrease(int amt)
+    public void Decrease(float amt)
     {
-        current -= amt;
+        currentBlood -= amt;
     }
 
     private void PlayPassingNodeAudio()

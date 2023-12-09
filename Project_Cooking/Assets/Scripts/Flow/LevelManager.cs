@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AreaTimer areaTimer;
     [SerializeField] private Current_Area currentArea;
     [SerializeField] private EnemyManager enemyManager;
+   
 
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
@@ -17,9 +18,13 @@ public class LevelManager : MonoBehaviour
 
     void Start()    {
         currentArea = Current_Area.LIMBO;
-        ChangeArea();
+        StartRound();
+        areaTimer.OnRoundOver.AddListener(StartRound);
         SpawnAllBaseIngredients();
-        areaTimer.OnRoundOver.AddListener(ChangeArea);
+    }
+    public void StartRound() {
+        ChangeArea();
+       
     }
 
     [ProButton]
@@ -28,6 +33,7 @@ public class LevelManager : MonoBehaviour
             currentArea = Current_Area.KITCHEN;
         } else {
             currentArea = Current_Area.DUNGEON;
+          
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);

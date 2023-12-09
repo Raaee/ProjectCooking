@@ -15,11 +15,15 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private GameObject upperSpawn;
     [SerializeField] private GameObject lowerSpawn;
-    public UnityEvent OnDungeonArea;
+    [HideInInspector]public UnityEvent OnDungeonArea;
+    private ObjectPooler enemyObjectPooler;
 
-    private void Start() {
-       
+    private void Awake()
+    {
+        enemyObjectPooler = GetComponent<ObjectPooler>();
+
     }
+   
 
     public GameObject SpawnEnemyAtPoint(Vector2 placement)  {
         GameObject createdEnemy = Instantiate(enemyPrefab, placement, Quaternion.identity);
@@ -31,8 +35,7 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
     private IEnumerator SpawnEnemies() {
-        Debug.Log("Spawning Enemies!");
-
+        
         yield return new WaitForSeconds(beforeSpawnDelay);
         for (int i = 0; i < amtEnemiesPerRound; i++) {
 
@@ -41,7 +44,12 @@ public class EnemyManager : MonoBehaviour
             float z = 0;
             Vector3 randomPos = new Vector3(x, y, z);
 
-            GameObject enemy = Instantiate(enemyPrefab, randomPos, Quaternion.identity);
+            GameObject enemy = enemyObjectPooler.GetPooledObject(); //Instantiate(enemyPrefab, randomPos, Quaternion.identity);
+            enemy.transform.position = randomPos;
+            enemy.GetComponent<EnemyStateHandler>().Init();
+            enemy.GetComponent<Health>().Init();
+            enemy.SetActive(true);
+
             enemiesInDungeon.Add(enemy);
         }
     }
