@@ -1782,8 +1782,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaTimer: {fileID: 391854511}
-  currentArea: 0
   enemyManager: {fileID: 465342811}
+  cookbook: {fileID: 359183489}
+  bell: {fileID: 1921863385}
   baseIngredients:
   - {fileID: 2465260756126829935, guid: 46995c6f0f491f24aa88d510d2b3e1a8, type: 3}
   - {fileID: 2465260756126829935, guid: f3f6a31006b23a649be226b4b77f0158, type: 3}
@@ -1796,6 +1797,8 @@ MonoBehaviour:
   OnAreaChange:
     m_PersistentCalls:
       m_Calls: []
+  currentArea: 0
+  amtOfRound: 6
 --- !u!4 &1293786946
 Transform:
   m_ObjectHideFlags: 0
@@ -2438,7 +2441,7 @@ GameObject:
   - component: {fileID: 1921863385}
   - component: {fileID: 1921863384}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Bell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2502,6 +2505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookbook: {fileID: 359183489}
+  OnAllRoundsDone:
+    m_PersistentCalls:
+      m_Calls: []
   normalSprite: {fileID: 21300000, guid: 12bc130db3510ad44bab9ee34e2cad23, type: 3}
   highlightedSprite: {fileID: 21300000, guid: bffdd1027cd6f0949994a08046760031, type: 3}
 --- !u!212 &1921863386

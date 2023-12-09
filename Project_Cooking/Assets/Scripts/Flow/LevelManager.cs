@@ -6,17 +6,22 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private AreaTimer areaTimer;
-    [SerializeField] private Current_Area currentArea;
     [SerializeField] private EnemyManager enemyManager;
-   
-
+    [SerializeField] private Cookbook cookbook;
+    [SerializeField] private Bell bell;
+    
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
     [SerializeField] private GameObject upperCornerFLoor;
     [SerializeField] private GameObject lowerCornerFLoor;
     [HideInInspector] public UnityEvent<Current_Area> OnAreaChange;
 
+    [Header("DEBUG")]
+    [SerializeField] private Current_Area currentArea;
+    [SerializeField] private int amtOfRound = 6;
+
     void Start()    {
+        amtOfRound = cookbook.levelRecipe.recipeSteps.Count;
         currentArea = Current_Area.LIMBO;
         StartRound();
         areaTimer.OnRoundOver.AddListener(StartRound);
@@ -24,7 +29,16 @@ public class LevelManager : MonoBehaviour
     }
     public void StartRound() {
         ChangeArea();
-       
+    }
+    public void StartRounds() {
+        if (amtOfRound >= 0) {
+            ChangeArea();
+            amtOfRound--;
+            return;
+        }
+        
+        bell.OnAllRoundsDone.Invoke();
+        
     }
 
     [ProButton]
