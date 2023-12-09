@@ -9,7 +9,6 @@ public class Bell : MonoBehaviour, IInteractable  {
     private SpriteRenderer sr;
     private Inventory playerInventory;
 
-    [HideInInspector] public UnityEvent OnAllRoundsDone;
     private bool gameWon = false;
 
     [Header("VISUAL")]
@@ -19,13 +18,14 @@ public class Bell : MonoBehaviour, IInteractable  {
     private void Start() {
         sr = GetComponent<SpriteRenderer>();
         playerInventory = FindObjectOfType<Inventory>();
-        OnAllRoundsDone.AddListener(ShowBell);
-       // HideBell();
+        
+        HideBell();
     }
     
     public void Interact() {
         Debug.Log("Ding");
         gameWon = CheckIfWon();
+        Debug.Log(gameWon);
     }
     public bool CheckIfWon() {
         Items winningItem = cookbook.levelRecipe.outputIngredient.item;

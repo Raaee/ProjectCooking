@@ -1,3 +1,4 @@
+using com.cyborgAssets.inspectorButtonPro;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -14,11 +15,11 @@ public class Health : MonoBehaviour
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;
 
-
-    public void Heal(int amt)
+    [ProButton]
+    public void Heal(int healAmount)
     {
 
-        currentHealth += amt;
+        currentHealth += healAmount;
         OnHeal.Invoke();
         if (currentHealth > MAX_HEALTH)
         {

@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Cookbook cookbook;
     [SerializeField] private Bell bell;
-    
+
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
     [SerializeField] private GameObject upperCornerFLoor;
@@ -23,28 +23,30 @@ public class LevelManager : MonoBehaviour
     void Start()    {
         amtOfRound = cookbook.levelRecipe.recipeSteps.Count;
         currentArea = Current_Area.LIMBO;
-        StartRound();
-        areaTimer.OnRoundOver.AddListener(StartRound);
+        StartLevel();
+        areaTimer.OnRoundOver.AddListener(StartLevel);
         SpawnAllBaseIngredients();
     }
-    public void StartRound() {
-        ChangeArea();
-    }
-    public void StartRounds() {
-        if (amtOfRound >= 0) {
+    public void StartLevel() {
+
+        if (amtOfRound >= 1) {
             ChangeArea();
-            amtOfRound--;
-            return;
         }
-        
-        bell.OnAllRoundsDone.Invoke();
-        
+
+        if (amtOfRound == 0) {
+            EndLevel();
+        }
+    }
+    public void EndLevel() {
+        bell.ShowBell();
+        areaTimer.PauseTimer();
     }
 
     [ProButton]
     public void ChangeArea() {
         if (currentArea == Current_Area.DUNGEON) {
             currentArea = Current_Area.KITCHEN;
+            amtOfRound--;
         } else {
             currentArea = Current_Area.DUNGEON;
           

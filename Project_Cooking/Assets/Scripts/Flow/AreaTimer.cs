@@ -56,5 +56,11 @@ public class AreaTimer : MonoBehaviour
     {
         return timer;
     }
+    public void PauseTimer() {
+        isTimerPaused = true;
+    }
+    public void ResumeTimer() {
+        isTimerPaused = false;
+    }
 
 }
