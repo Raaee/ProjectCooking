@@ -35,3 +35,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 42c26227a14aedc429191905fb861565, type: 2}
     - {fileID: 11400000, guid: c56589b7ff6889e4db06799ecf2cd215, type: 2}
     - {fileID: 11400000, guid: 923c33e84135d014d8814ad3d2b03b60, type: 2}
+  outputIngredient: {fileID: 11400000, guid: 804b3febe6674fb49a608149df506ec0, type: 2}
