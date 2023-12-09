@@ -3,16 +3,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] private Input input;
-    [SerializeField] private Rigidbody2D rb;
-
-    [SerializeField] private float moveSpeed = 30f;
+    [Header("Variables")]
+    [SerializeField][Range(5f, 15f)] private float moveSpeed = 10f;
     private float currentSpeed = 0f;
     private Vector2 moveDirection = Vector2.zero;
-    [SerializeField] private PlayerAnimation playerAnim;
-    private bool isFrozen = false; //like raeus's heart!
+    private bool isFrozen = false;
+    [Header("REFERENCES")]
+    [SerializeField] private Input input;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Health health;
-
+    [SerializeField] private PlayerAnimation playerAnim;
     private void Start()
     {
         SaveNormalSpeed();
@@ -27,7 +27,11 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
+        if(isFrozen)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
 
         if (moveDirection != Vector2.zero)
         {
@@ -43,7 +47,6 @@ public class Movement : MonoBehaviour
 
     public void FreezePlayer()
     {
-        rb.velocity = Vector2.zero;
         isFrozen = true;
     }
 
