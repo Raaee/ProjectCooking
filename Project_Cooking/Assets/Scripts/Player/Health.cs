@@ -9,24 +9,25 @@ public class Health : MonoBehaviour
 
     public const int MAX_HEALTH = 3;
     private int currentHealth = 3;
+    [Header("VARIABLE")]
     [SerializeField] private float invicibilityTime = 1f;
+    [Header("DEBUG")]
     [SerializeField] private bool godMode = false;
-   [HideInInspector] public UnityEvent OnDeath;
+    [HideInInspector] public UnityEvent OnDeath;
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;
 
-    [ProButton]
-    public void Heal(int healAmount)
+    private bool isDead = false;
+    public void Heal(int amt)
     {
-
-        currentHealth += healAmount;
+        currentHealth += amt;
         OnHeal.Invoke();
         if (currentHealth > MAX_HEALTH)
         {
             currentHealth = MAX_HEALTH;
         }
     }
-    public void Init()
+    public void InitHealth()
     {
         currentHealth = MAX_HEALTH;
         godMode = false;
@@ -64,9 +65,11 @@ public class Health : MonoBehaviour
     }
     private void Die()
     {
-
-        // OnDeath event stuff
+       
+        
         OnDeath.Invoke();
+        isDead = true;
+
     }
 
     public void Flash()

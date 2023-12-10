@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform currentTarget;
     private Rigidbody2D rb2d;
-    private bool isChasing = false; //might need to change to switch/state machine to add features like dash and dodging 
+    private bool isChasing = false; 
     private bool isCharging = false;
     private Vector3 moveDirection;
     private float originalSpeed;
@@ -37,19 +37,19 @@ public class EnemyMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isCharging)
+            return;
+
+        if (!isChasing)
+            return;
         MoveTowardsTarget();
     }
 
     private void MoveTowardsTarget()
     {
-
         if (!currentTarget)
             return;
-        if (isCharging)
-            return;
-        if (!isChasing)
-            return;
-
+          
         UpdateDirectionToPlayer();
 
         rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;

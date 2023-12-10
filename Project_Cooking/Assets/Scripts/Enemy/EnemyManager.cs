@@ -2,13 +2,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
-/// <summary>
-/// refactor into object pooling (pair program with raeus)
-/// </summary>
+
 public class EnemyManager : MonoBehaviour
 {
-    private EnemyDeathHandler enemyDeathHandler;
+   
     public List<GameObject> enemiesInDungeon = new List<GameObject>();
+    [Header("VARIABLES")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private int amtEnemiesPerRound = 3;
     [SerializeField] private float beforeSpawnDelay = 2f;
@@ -44,10 +43,10 @@ public class EnemyManager : MonoBehaviour
             float z = 1;
             Vector3 randomPos = new Vector3(x, y, z);
 
-            GameObject enemy = enemyObjectPooler.GetPooledObject(); //Instantiate(enemyPrefab, randomPos, Quaternion.identity);
+            GameObject enemy = enemyObjectPooler.GetPooledObject(); 
             enemy.transform.position = randomPos;
             enemy.GetComponent<EnemyStateHandler>().Init();
-            enemy.GetComponent<Health>().Init();
+            enemy.GetComponent<Health>().InitHealth();
             enemy.SetActive(true);
 
             enemiesInDungeon.Add(enemy);
