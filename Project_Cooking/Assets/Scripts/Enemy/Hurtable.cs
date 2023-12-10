@@ -33,7 +33,7 @@ public class Hurtable : MonoBehaviour
         if (!health)
             return;
 
-        Debug.Log("doing dmg");
+       
         health.TakeDamage(damageAmt);
 
         //  ApplyKnockback(collision);
