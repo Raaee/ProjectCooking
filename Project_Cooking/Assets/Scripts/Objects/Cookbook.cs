@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cookbook : MonoBehaviour, IInteractable
 {
@@ -12,7 +13,7 @@ public class Cookbook : MonoBehaviour, IInteractable
     [SerializeField] private Sprite cookbookSprite;
     [SerializeField] private Sprite highlightedCookbookSprite;
     private SpriteRenderer sr;
-
+    [HideInInspector] public UnityEvent<float> OnNodeIncreased;
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -28,6 +29,8 @@ public class Cookbook : MonoBehaviour, IInteractable
         levelRecipe = allRecipes[ranNum];
         allRecipes.Remove(levelRecipe);
     }
+
+    
 
     public void Interact()  {
 
@@ -57,5 +60,13 @@ public class Cookbook : MonoBehaviour, IInteractable
     }
     public void IncrementNodesUnlocked() {
         nodesUnlocked += 1;
+        GetPercentageOfRecipeUnlocked();
+    }
+
+    private void GetPercentageOfRecipeUnlocked()
+    {
+        var numOfSteps = levelRecipe.recipeSteps.Count;
+        float percentage = nodesUnlocked / numOfSteps;
+        OnNodeIncreased?.Invoke(percentage);
     }
 }

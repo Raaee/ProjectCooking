@@ -64,8 +64,7 @@ public class Health : MonoBehaviour
     }
     private void Die()
     {
-        if (isDead)
-            return;
+       
         
         OnDeath.Invoke();
         isDead = true;
