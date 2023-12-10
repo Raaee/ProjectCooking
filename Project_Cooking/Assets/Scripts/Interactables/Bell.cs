@@ -9,7 +9,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     private SpriteRenderer sr;
     private Inventory playerInventory;
 
-    private bool gameWon = false;
+    private bool hasGameWon = false;
 
     [Header("VISUAL")]
     [SerializeField] private Sprite normalSprite;
@@ -24,8 +24,8 @@ public class Bell : MonoBehaviour, IInteractable  {
     
     public void Interact() {
         Debug.Log("Ding");
-        gameWon = CheckIfWon();
-        Debug.Log(gameWon);
+        hasGameWon = CheckIfWon();
+        Debug.Log(hasGameWon);
     }
     public bool CheckIfWon() {
         Items winningItem = cookbook.levelRecipe.outputIngredient.item;
@@ -48,6 +48,9 @@ public class Bell : MonoBehaviour, IInteractable  {
     }
     public void HighlightSprite() {
         sr.sprite = highlightedSprite;
+    }
+    public bool GetHasGameWon() {
+        return hasGameWon;
     }
 
 }

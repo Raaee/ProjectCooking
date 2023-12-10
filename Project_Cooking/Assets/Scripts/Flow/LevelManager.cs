@@ -5,10 +5,12 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("REFERENCES")]
     [SerializeField] private AreaTimer areaTimer;
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Cookbook cookbook;
     [SerializeField] private Bell bell;
+    private bool hasGameWon;
 
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
@@ -38,10 +40,17 @@ public class LevelManager : MonoBehaviour
         }
     }
     public void EndLevel() {
-        bell.ShowBell();
+        bell.ShowBell();        
         areaTimer.PauseTimer();
     }
+    public void LostGame() {
+        Debug.Log("You lost.");
 
+    }
+    public void WonGame() {
+        Debug.Log("You WONNN.");
+
+    }
     [ProButton]
     public void ChangeArea() {
         if (currentArea == Current_Area.DUNGEON) {

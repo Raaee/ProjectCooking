@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invicibilityTime: 1
-  godMode: 0
+  godMode: 1
   OnDeath:
     m_PersistentCalls:
       m_Calls: []

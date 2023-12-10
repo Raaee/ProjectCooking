@@ -18,6 +18,8 @@ public class AreaTimer : MonoBehaviour
 
     void Start()
     {
+        dungeonTimeLength += 0.8f;
+        kitchenTimeLength += 0.8f;
         timer = dungeonTimeLength;
     }
 
@@ -28,11 +30,11 @@ public class AreaTimer : MonoBehaviour
         else
             timer -= Time.deltaTime;
 
-        if (timer <= 0f)
+        if (timer <= 0.3f)
         {
             OnRoundOver.Invoke();
             Debug.Log("timer done!");
-          //  isTimerPaused = true;
+            
         }
 
     }
