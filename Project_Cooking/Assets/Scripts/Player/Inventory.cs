@@ -81,8 +81,10 @@ public class Inventory : MonoBehaviour
 
         if (!go)
             return;
-        else
-            Instantiate(go, input.transform.position, Quaternion.identity);
+        else {
+            GameObject food = Instantiate(go, input.transform.position, Quaternion.identity);
+            food.transform.parent = FindObjectOfType<Cookbook>().transform;
+        }
 
     }
 

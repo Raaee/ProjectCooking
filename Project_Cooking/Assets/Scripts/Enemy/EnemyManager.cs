@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour
 
             float x = Random.Range(upperSpawn.transform.position.x, lowerSpawn.transform.position.x);
             float y = Random.Range(lowerSpawn.transform.position.y, upperSpawn.transform.position.y);
-            float z = 0;
+            float z = 1;
             Vector3 randomPos = new Vector3(x, y, z);
 
             GameObject enemy = enemyObjectPooler.GetPooledObject(); 

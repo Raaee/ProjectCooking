@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientSO: {fileID: 11400000, guid: 42c26227a14aedc429191905fb861565, type: 2}
-  item: 2
 --- !u!61 &2899329492982731998
 BoxCollider2D:
   m_ObjectHideFlags: 0

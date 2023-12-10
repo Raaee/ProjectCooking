@@ -4,4 +4,5 @@ using UnityEngine;
 public class RecipeSO : ScriptableObject
 {
     public List<RecipeStep> recipeSteps;
+    public IngredientSO outputIngredient;
 }

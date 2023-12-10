@@ -23,3 +23,4 @@ MonoBehaviour:
     amountOfChopAction: 0
     recipeIngredients:
     - {fileID: 11400000, guid: 7cb6685e16ef38544930274f01d427c8, type: 2}
+  outputIngredient: {fileID: 11400000, guid: b66a9dd1b465cc04bbaf391c6bdcfeee, type: 2}

@@ -1,3 +1,4 @@
+using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
@@ -7,10 +8,11 @@ public class LevelUIManager : MonoBehaviour {
     private LevelManager levelManager;
 
     [Header("UI")]
-    [SerializeField] private List<GameObject> dungeonUI = new List<GameObject>();
-    [SerializeField] private List<GameObject> kitchenUI = new List<GameObject>();
+    [SerializeField] private GameObject dungeonUI;
+    [SerializeField] private GameObject kitchenUI;
 
     [Header("VISUALS")]
+    [SerializeField] private GameObject kitchenInteractables;
     [SerializeField] private GameObject floor;
     [SerializeField] private Color32 dungeonFloorColor;
     [SerializeField] private Color32 kitchenFloorColor;
@@ -18,63 +20,51 @@ public class LevelUIManager : MonoBehaviour {
     private void Start() {
         levelManager = GetComponent<LevelManager>();
         UpdateFloor(Current_Area.DUNGEON);
+        SetUpDungeon();
         levelManager.OnAreaChange.AddListener(UpdateAreaUI);
         levelManager.OnAreaChange.AddListener(UpdateFloor);
         
     }
    
-    public void UpdateAreaUI(Current_Area newCurrentAreA)  {
-        switch(newCurrentAreA) {
+    public void UpdateAreaUI(Current_Area newCurrentArea)  {
+        switch(newCurrentArea) {
             case Current_Area.LIMBO:
                 DisableAllUI();
                 break;
             case Current_Area.DUNGEON:            
-                SetUpDungeonUI();
+                Debug.Log("Dungeon");
+                SetUpDungeon();
                 break;
             case Current_Area.KITCHEN:
-                SetUpKitchenUI();
+                Debug.Log("Kitchen");
+                SetUpKitchen();
                 break;
         }
     }
 
     private void DisableAllUI()
     {
-        foreach (GameObject go in dungeonUI)
-        {
-            go.SetActive(false);
-        }
-        foreach (GameObject go in kitchenUI)
-        {
-            go.SetActive(false);
-        }
+        dungeonUI.SetActive(false);
+        kitchenUI.SetActive(false);
+        kitchenInteractables.SetActive(false);
     }
-
-    private void SetUpDungeonUI()
+    [ProButton]
+    private void SetUpDungeon()
     {
-        foreach (GameObject go in dungeonUI)
-        {
-            go.SetActive(true);
-        }
-        foreach (GameObject go in kitchenUI)
-        {
-            go.SetActive(false);
-        }
+        dungeonUI.SetActive(true);
+        kitchenUI.SetActive(false);
+        kitchenInteractables.SetActive(false);
     }
-
-    private void SetUpKitchenUI()
+    [ProButton]
+    private void SetUpKitchen()
     {
-        foreach (GameObject go in dungeonUI)
-        {
-            go.SetActive(false);
-        }
-        foreach (GameObject go in kitchenUI)
-        {
-            go.SetActive(true);
-        }
+        dungeonUI.SetActive(false);
+        kitchenUI.SetActive(true);
+        kitchenInteractables.SetActive(true);
     }
 
-    public void UpdateFloor(Current_Area newCurrentAreA) {
-        if (newCurrentAreA == Current_Area.DUNGEON) {
+    public void UpdateFloor(Current_Area newCurrentArea) {
+        if (newCurrentArea == Current_Area.DUNGEON) {
             floor.GetComponent<SpriteRenderer>().color = dungeonFloorColor;
         } else {
             floor.GetComponent<SpriteRenderer>().color = kitchenFloorColor;

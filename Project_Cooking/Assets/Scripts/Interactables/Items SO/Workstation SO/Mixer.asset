@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mixer
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  normalSprite: {fileID: 1755530070, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
-  highlightedSprite: {fileID: 408249611, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
+  normalSprite: {fileID: 771979491, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
+  highlightedSprite: {fileID: -867416913, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
   displayName: Mixer

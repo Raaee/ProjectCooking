@@ -5,10 +5,17 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("REFERENCES")]
     [SerializeField] private AreaTimer areaTimer;
-    [SerializeField] private Current_Area currentArea;
     [SerializeField] private EnemyManager enemyManager;
-   
+    [SerializeField] private Cookbook cookbook;
+    [SerializeField] private Bell bell;
+    [SerializeField] private GameObject playerObj;
+    private bool hasGameWon;
+
+    [Header("AREA SWITCHING")]
+    [SerializeField] private GameObject kitchenTeleportLoc;
+    [SerializeField] private GameObject dungeonTeleportLoc;
 
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
@@ -16,24 +23,41 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject lowerCornerFLoor;
     [HideInInspector] public UnityEvent<Current_Area> OnAreaChange;
 
+    [Header("DEBUG")]
+    [SerializeField] private Current_Area currentArea;
+    [SerializeField] private int amtOfRound = 6;
+
     void Start()    {
+        amtOfRound = cookbook.levelRecipe.recipeSteps.Count;
         currentArea = Current_Area.LIMBO;
-        StartRound();
-        areaTimer.OnRoundOver.AddListener(StartRound);
+        StartLevel();
+        areaTimer.OnRoundOver.AddListener(StartLevel);
         SpawnAllBaseIngredients();
     }
-    public void StartRound() {
-        ChangeArea();
-       
-    }
+    public void StartLevel() {
 
+        if (amtOfRound >= 1) {
+            ChangeArea();
+        }
+
+        if (amtOfRound == 0) {
+            EndLevel();
+        }
+    }
+    public void EndLevel() {
+        bell.ShowBell();        
+        areaTimer.PauseTimer();
+    }
+    
     [ProButton]
     public void ChangeArea() {
         if (currentArea == Current_Area.DUNGEON) {
             currentArea = Current_Area.KITCHEN;
+            playerObj.transform.position = kitchenTeleportLoc.transform.position;
+            amtOfRound--;
         } else {
             currentArea = Current_Area.DUNGEON;
-          
+            playerObj.transform.position = dungeonTeleportLoc.transform.position;
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);
@@ -45,9 +69,10 @@ public class LevelManager : MonoBehaviour
         {
             float x = Random.Range(upperCornerFLoor.transform.position.x, lowerCornerFLoor.transform.position.x);
             float y = Random.Range(lowerCornerFLoor.transform.position.y, upperCornerFLoor.transform.position.y);
-            float z = 0;
+            float z = 0.5f;
             Vector3 randomPos = new Vector3(x, y, z);
-            Instantiate(go, randomPos, Quaternion.identity);
+            GameObject baseIngredient = Instantiate(go, randomPos, Quaternion.identity);
+            baseIngredient.transform.parent = FindObjectOfType<Cookbook>().transform;
         }
 
     }
