@@ -10,7 +10,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Cookbook cookbook;
     [SerializeField] private Bell bell;
+    [SerializeField] private GameObject playerObj;
     private bool hasGameWon;
+
+    [Header("AREA SWITCHING")]
+    [SerializeField] private GameObject kitchenTeleportLoc;
+    [SerializeField] private GameObject dungeonTeleportLoc;
 
     [Header("INGREDIENTS SPAWN")]
     public List<GameObject> baseIngredients = new List<GameObject>();
@@ -43,22 +48,16 @@ public class LevelManager : MonoBehaviour
         bell.ShowBell();        
         areaTimer.PauseTimer();
     }
-    public void LostGame() {
-        Debug.Log("You lost.");
-
-    }
-    public void WonGame() {
-        Debug.Log("You WONNN.");
-
-    }
+    
     [ProButton]
     public void ChangeArea() {
         if (currentArea == Current_Area.DUNGEON) {
             currentArea = Current_Area.KITCHEN;
+            playerObj.transform.position = kitchenTeleportLoc.transform.position;
             amtOfRound--;
         } else {
             currentArea = Current_Area.DUNGEON;
-          
+            playerObj.transform.position = dungeonTeleportLoc.transform.position;
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);
@@ -72,7 +71,8 @@ public class LevelManager : MonoBehaviour
             float y = Random.Range(lowerCornerFLoor.transform.position.y, upperCornerFLoor.transform.position.y);
             float z = 0;
             Vector3 randomPos = new Vector3(x, y, z);
-            Instantiate(go, randomPos, Quaternion.identity);
+            GameObject baseIngredient = Instantiate(go, randomPos, Quaternion.identity);
+            baseIngredient.transform.parent = FindObjectOfType<Cookbook>().transform;
         }
 
     }
