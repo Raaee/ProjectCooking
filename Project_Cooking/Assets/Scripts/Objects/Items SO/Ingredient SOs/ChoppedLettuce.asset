@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35672d186adaf7947ba5f0931780aeab, type: 3}
   m_Name: ChoppedLettuce
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6085534217791716471, guid: 2f5a74b86156d7a4cb3c449d9654f370, type: 3}
   normalSprite: {fileID: -971733724, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   highlightedSprite: {fileID: 1180996568, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
   displayName: Chopped Lettuce
