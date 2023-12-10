@@ -69,7 +69,7 @@ public class LevelManager : MonoBehaviour
         {
             float x = Random.Range(upperCornerFLoor.transform.position.x, lowerCornerFLoor.transform.position.x);
             float y = Random.Range(lowerCornerFLoor.transform.position.y, upperCornerFLoor.transform.position.y);
-            float z = 0;
+            float z = 0.5f;
             Vector3 randomPos = new Vector3(x, y, z);
             GameObject baseIngredient = Instantiate(go, randomPos, Quaternion.identity);
             baseIngredient.transform.parent = FindObjectOfType<Cookbook>().transform;

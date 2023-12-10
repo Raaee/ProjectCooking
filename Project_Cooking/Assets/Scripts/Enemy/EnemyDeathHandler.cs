@@ -29,7 +29,8 @@ public class EnemyDeathHandler : MonoBehaviour
         {
             float radius = 0.33f;
 
-            Vector2 point = GenerateRandomPointOnEdge(transform.position, radius);
+            Vector3 point = GenerateRandomPointOnEdge(transform.position, radius);
+            point.z = 1;
 
             var bloodDrop = Instantiate(bloodDropPrefab, point, Quaternion.identity);
         }

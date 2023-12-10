@@ -20,20 +20,23 @@ public class LevelUIManager : MonoBehaviour {
     private void Start() {
         levelManager = GetComponent<LevelManager>();
         UpdateFloor(Current_Area.DUNGEON);
+        SetUpDungeon();
         levelManager.OnAreaChange.AddListener(UpdateAreaUI);
         levelManager.OnAreaChange.AddListener(UpdateFloor);
         
     }
    
-    public void UpdateAreaUI(Current_Area newCurrentAreA)  {
-        switch(newCurrentAreA) {
+    public void UpdateAreaUI(Current_Area newCurrentArea)  {
+        switch(newCurrentArea) {
             case Current_Area.LIMBO:
                 DisableAllUI();
                 break;
             case Current_Area.DUNGEON:            
+                Debug.Log("Dungeon");
                 SetUpDungeon();
                 break;
             case Current_Area.KITCHEN:
+                Debug.Log("Kitchen");
                 SetUpKitchen();
                 break;
         }
@@ -60,8 +63,8 @@ public class LevelUIManager : MonoBehaviour {
         kitchenInteractables.SetActive(true);
     }
 
-    public void UpdateFloor(Current_Area newCurrentAreA) {
-        if (newCurrentAreA == Current_Area.DUNGEON) {
+    public void UpdateFloor(Current_Area newCurrentArea) {
+        if (newCurrentArea == Current_Area.DUNGEON) {
             floor.GetComponent<SpriteRenderer>().color = dungeonFloorColor;
         } else {
             floor.GetComponent<SpriteRenderer>().color = kitchenFloorColor;
