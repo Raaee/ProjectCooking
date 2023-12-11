@@ -43,6 +43,7 @@ Transform:
   m_Children:
   - {fileID: 7609083058644248739}
   - {fileID: 8715773263953387093}
+  - {fileID: 8317416503526177877}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6747381288458995447
@@ -59,10 +60,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.669
   aggroSpeedMultipler: 1.555
-  chargeDelay: 1.8
+  chargeDelay: 1
   dashDuration: 0.75
   dashSpeed: 8.5
   slimeEnemyAnim: {fileID: 7195350933115724439}
+  OnEnemyCharge:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &184274246093717925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invicibilityTime: 0
+  isPlayer: 0
   godMode: 0
   OnDeath:
     m_PersistentCalls:
@@ -352,6 +357,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &9160475633793167756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8317416503526177877}
+  - component: {fileID: 5919658170812710813}
+  m_Layer: 0
+  m_Name: EnemyAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8317416503526177877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160475633793167756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6401555559691803010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5919658170812710813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160475633793167756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0562105d7f29212419a7e2f965ffa0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDefaultSoundRef:
+    Guid:
+      Data1: 298548649
+      Data2: 1293683062
+      Data3: 596814527
+      Data4: -89378577
+    Path: event:/Gameplay/Enemy/EnemyBounce
+  enemyDeathSoundRef:
+    Guid:
+      Data1: -744590057
+      Data2: 1137801001
+      Data3: -1895683940
+      Data4: -2020243891
+    Path: event:/Gameplay/Enemy/EnemyDeath
+  enemyDashSoundRef:
+    Guid:
+      Data1: 1233472487
+      Data2: 1163515392
+      Data3: 1486576563
+      Data4: 1587634951
+    Path: event:/Gameplay/Enemy/EnemyDash
+  enemyParentObj: {fileID: 2076171101915919661}
 --- !u!1001 &8978049188321141022
 PrefabInstance:
   m_ObjectHideFlags: 0

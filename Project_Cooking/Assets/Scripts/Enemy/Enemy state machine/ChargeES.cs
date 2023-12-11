@@ -10,6 +10,7 @@ public class ChargeES : EnemyState
     [SerializeField] private EnemyMovement enemyMovement;
 
     [SerializeField] private EnemyState chaseState;
+  
 
 
     public override void Awake()

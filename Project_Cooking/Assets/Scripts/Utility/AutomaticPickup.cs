@@ -3,7 +3,7 @@ using UnityEngine;
 public class AutomaticPickup : MonoBehaviour
 {
     private Transform playerTransform;
-    private float speed = 4.5f;
+    private float speed = 10f;
     private ProgressBar progressBar;
 
     [SerializeField] private Rigidbody2D rb2d;

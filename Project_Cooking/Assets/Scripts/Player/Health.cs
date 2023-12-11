@@ -11,8 +11,10 @@ public class Health : MonoBehaviour
     private int currentHealth = 3;
     [Header("VARIABLE")]
     [SerializeField] private float invicibilityTime = 1f;
+    [SerializeField] private bool isPlayer = true;
     [Header("DEBUG")]
     [SerializeField] private bool godMode = false;
+    
     [HideInInspector] public UnityEvent OnDeath;
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;

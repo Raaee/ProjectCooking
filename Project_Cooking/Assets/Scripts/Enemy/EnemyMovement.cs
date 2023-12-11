@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 /// <summary>
 /// The enemy component that works with the movement for the enemy 
 /// </summary>
@@ -24,6 +25,8 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("REFERENCES")]
     [SerializeField] private SlimeEnemyAnimation slimeEnemyAnim;
+
+    [HideInInspector] public UnityEvent OnEnemyCharge;
 
     private void Awake()
     {
@@ -78,14 +81,20 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("aggro chase!");
     }
 
+    private float RandomizeChargeDelay() //helper method to very slightly give random charge delays, so enemys not attacking at exact same time
+    {
+        float rand = UnityEngine.Random.Range(chargeDelay - 0.1f, chargeDelay + 0.1f);
+        return rand;
+    }
     public IEnumerator ChargeAtPlayer()
     {
 
         isCharging = true;
         slimeEnemyAnim.AttackAnimation();
-        yield return new WaitForSeconds(chargeDelay);
+        yield return new WaitForSeconds(RandomizeChargeDelay());
         UpdateDirectionToPlayer();
         rb2d.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
+        OnEnemyCharge?.Invoke();
         yield return new WaitForSeconds(dashDuration);
         isCharging = false;
 
