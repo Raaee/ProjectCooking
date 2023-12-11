@@ -30,7 +30,7 @@ public class AutomaticPickup : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot(bloodPickupAudio, transform.position);
             progressBar.Increase();
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
 
         }
     }

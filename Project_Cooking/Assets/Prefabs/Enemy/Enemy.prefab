@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3307204206136906551}
   - component: {fileID: 7195350933115724439}
   - component: {fileID: 3351918630373279088}
+  - component: {fileID: 7345475740912654357}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -273,6 +274,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 6747381288458995447}
   chaseState: {fileID: 1357052003572865992}
+--- !u!114 &7345475740912654357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076171101915919661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9bf5b02a0081446af23084d79817c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObj: {fileID: 1487424979715607307, guid: 29d7b7ab9132a514cb00620148376967, type: 3}
+  pooledObjects: []
+  intialPooledAmt: 3
 --- !u!1 &4672900325156435934
 GameObject:
   m_ObjectHideFlags: 0

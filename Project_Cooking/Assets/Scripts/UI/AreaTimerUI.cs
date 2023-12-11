@@ -27,5 +27,8 @@ public class AreaTimerUI : MonoBehaviour
         float seconds = Mathf.FloorToInt(areaTimer.GetCurrentTime() % 60);
         areaTimerText.text = string.Format("{0:00}:{1:00}", 0, seconds);
     }
+    public int GetTimeToChangeColor() {
+        return timeToChangeColor;
+    }
 
 }

@@ -20,7 +20,6 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         enemyObjectPooler = GetComponent<ObjectPooler>();
-
     }
    
 
