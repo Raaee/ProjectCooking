@@ -10,6 +10,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     private Inventory playerInventory;
 
     private bool hasGameWon = false;
+    private bool isFunctional = false;
 
     [Header("VISUAL")]
     [SerializeField] private Sprite normalSprite;
@@ -19,12 +20,16 @@ public class Bell : MonoBehaviour, IInteractable  {
         sr = GetComponent<SpriteRenderer>();
         playerInventory = FindObjectOfType<Inventory>();
         
-        HideBell();
+       // HideBell();
     }
     
     public void Interact() {
         Debug.Log("Ding");
-        hasGameWon = CheckIfWon();
+        if (isFunctional)
+            hasGameWon = CheckIfWon();
+        else
+            Debug.Log("bell is off clock. try again tomorrow");
+
         Debug.Log(hasGameWon);
     }
     public bool CheckIfWon() {
@@ -38,6 +43,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     }
     public void ShowBell() {
         this.gameObject.SetActive(true);
+        isFunctional = true;
     }
     public void HideBell() {
         this.gameObject.SetActive(false);
