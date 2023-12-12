@@ -1295,8 +1295,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1213054388}
   - component: {fileID: 1213054389}
+  - component: {fileID: 1213054390}
   m_Layer: 0
-  m_Name: Kitchen Music
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,6 +1339,27 @@ MonoBehaviour:
     Path: event:/Music/KitchenMusicRoughDraft
   levelManager: {fileID: 1293786945}
   cookbook: {fileID: 359183489}
+--- !u!114 &1213054390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213054387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e00a50f57eb95047b07607929f079ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonMusic:
+    Guid:
+      Data1: -393591007
+      Data2: 1305900296
+      Data3: 2058092958
+      Data4: 2093683762
+    Path: event:/Music/DeongeonMusicRoughDraft
+  playerHealth: {fileID: 80679968}
+  levelManager: {fileID: 1293786945}
 --- !u!21 &1213907250
 Material:
   serializedVersion: 8
@@ -1917,7 +1939,7 @@ Transform:
   m_GameObject: {fileID: 1368347954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22071931, y: -1.6129526, z: 1.1242952}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2302,6 +2324,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1213054388}
+  - {fileID: 2069086731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1723833649
@@ -2694,6 +2717,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookbook: {fileID: 359183489}
+  bellSound:
+    Guid:
+      Data1: 509353323
+      Data2: 1341644676
+      Data3: 1686892174
+      Data4: -988804381
+    Path: event:/Gameplay UI/BellRing
   normalSprite: {fileID: 704003322, guid: d715c706c78fe6144baeb5908b850bfc, type: 3}
   highlightedSprite: {fileID: -1155698079, guid: d715c706c78fe6144baeb5908b850bfc, type: 3}
 --- !u!212 &1921863386
@@ -3033,6 +3063,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2069086730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069086731}
+  - component: {fileID: 2069086732}
+  m_Layer: 0
+  m_Name: Ambience
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069086731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069086730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1723833648}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069086732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069086730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39063ed8f38c4cb4b87286093316372e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlManager: {fileID: 1293786945}
+  dungeonAmbi:
+    Guid:
+      Data1: 1952659497
+      Data2: 1203977558
+      Data3: 1439652528
+      Data4: -1872879216
+    Path: event:/Gameplay/Ambience/DungeonAmbienceBase
+  kitchenAmbi:
+    Guid:
+      Data1: -1079548025
+      Data2: 1112469189
+      Data3: 1992288400
+      Data4: 1425097178
+    Path: event:/Gameplay/Ambience/KitchenRoomToneAmbi
+  dungeonSpecial:
+    Guid:
+      Data1: 1266983213
+      Data2: 1306909122
+      Data3: -667356778
+      Data4: -120318521
+    Path: event:/Gameplay/Ambience/DungeonAmbiRandColor
 --- !u!114 &768167068553467301 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6249508852913239474, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
@@ -3153,6 +3249,66 @@ PrefabInstance:
       propertyPath: bloodProgressBar
       value: 
       objectReference: {fileID: 768167068553467301}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: dropSfx.Path
+      value: event:/Player/PlayerDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: pickupSfx.Path
+      value: event:/Player/PlayerPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Path
+      value: event:/Gameplay UI/PlayerScroll
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: dropSfx.Guid.Data1
+      value: -1160684934
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: dropSfx.Guid.Data2
+      value: 1184209625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: dropSfx.Guid.Data3
+      value: -805772670
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: dropSfx.Guid.Data4
+      value: 1901651916
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: pickupSfx.Guid.Data1
+      value: -1342890669
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: pickupSfx.Guid.Data2
+      value: 1336128466
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: pickupSfx.Guid.Data3
+      value: -1554638935
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: pickupSfx.Guid.Data4
+      value: -1500225499
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Guid.Data1
+      value: -321004467
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Guid.Data2
+      value: 1110563734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Guid.Data3
+      value: -1608774476
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Guid.Data4
+      value: 2143875157
+      objectReference: {fileID: 0}
     - target: {fileID: 3124256479969830151, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
       propertyPath: bloodProgressBar
       value: 

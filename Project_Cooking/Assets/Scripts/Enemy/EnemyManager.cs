@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using com.cyborgAssets.inspectorButtonPro;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class EnemyManager : MonoBehaviour
                 break;
         }
     }   
+
+    [ProButton]
     public void SpawnAllEnemies() {
         for (int i = 0; i < amtEnemiesPerRound; i++) {
             SpawnRandomEnemy();
