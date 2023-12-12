@@ -8,7 +8,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     [SerializeField] private Cookbook cookbook;
     private SpriteRenderer sr;
     private Inventory playerInventory;
-
+    [SerializeField] private FMODUnity.EventReference bellSound;
     private bool hasGameWon = false;
 
     [Header("VISUAL")]
@@ -24,6 +24,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     
     public void Interact() {
         Debug.Log("Ding");
+        PlayBellSound();
         hasGameWon = CheckIfWon();
         Debug.Log(hasGameWon);
     }
@@ -52,5 +53,8 @@ public class Bell : MonoBehaviour, IInteractable  {
     public bool GetHasGameWon() {
         return hasGameWon;
     }
-
+    private void PlayBellSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(bellSound, this.transform.position);
+    }
 }
