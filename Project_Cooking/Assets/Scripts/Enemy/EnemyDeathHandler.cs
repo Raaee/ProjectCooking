@@ -21,7 +21,10 @@ public class EnemyDeathHandler : MonoBehaviour
 
     public void OnEnemyDeath()
     {
-
+        //very bad code 
+        var dungeonMusic = FindObjectOfType<DungeonMusic>();
+        if (dungeonMusic)
+            dungeonMusic.IncreaseEnemyKilled();
         //enemmy death sound 
         //visual feedbacl
         //spawn x amount of droplets around me

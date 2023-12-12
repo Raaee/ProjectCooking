@@ -18,7 +18,9 @@ public class Inventory : MonoBehaviour
     [Header("REFERENCES")]
     [SerializeField] private Actions actions;
     [SerializeField] private Input input;
-
+    [SerializeField] private FMODUnity.EventReference scrollSfx;
+    [SerializeField] private FMODUnity.EventReference pickupSfx;
+    [SerializeField] private FMODUnity.EventReference dropSfx;
     [Header("EVENTS")]
     public UnityEvent OnCurrentItemChanged;
     public UnityEvent OnInventoryChange;
@@ -51,6 +53,7 @@ public class Inventory : MonoBehaviour
         inventoryList[invSlotAvailable] = item;
 
         OnInventoryChange.Invoke();
+        PlayPickup();
         return true;
     }
     public bool HasSpace()
@@ -71,6 +74,7 @@ public class Inventory : MonoBehaviour
         inventoryList[invIndex] = Items.NONE;
 
         OnInventoryChange.Invoke();
+        PlayDrop();
     }
     public void InstantiateItem(Items item)
     {
@@ -134,6 +138,7 @@ public class Inventory : MonoBehaviour
 
         currentItem = inventoryList[invIndex];
         OnCurrentItemChanged.Invoke();
+        PlayScrollSound();
     }
     public Items GetCurrentItem()
     {
@@ -163,5 +168,19 @@ public class Inventory : MonoBehaviour
         {
             inventoryList.Add(Items.NONE);
         }
+    }
+    private void PlayScrollSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(scrollSfx, this.transform.position);
+    }
+
+    private void PlayPickup()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(pickupSfx, this.transform.position);
+    }
+
+    private void PlayDrop()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(dropSfx, this.transform.position);
     }
 }
