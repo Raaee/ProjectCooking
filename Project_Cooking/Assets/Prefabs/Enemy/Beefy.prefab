@@ -493,6 +493,10 @@ PrefabInstance:
       value: SlimeModel
       objectReference: {fileID: 0}
     - target: {fileID: 5265302840408834564, guid: 2f2e1e4e118136f4692bc52c7504db8d, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265302840408834564, guid: 2f2e1e4e118136f4692bc52c7504db8d, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
