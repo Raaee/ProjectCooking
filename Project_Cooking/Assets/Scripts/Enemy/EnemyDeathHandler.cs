@@ -37,7 +37,7 @@ public class EnemyDeathHandler : MonoBehaviour
 
             var bloodDrop = bloodObjectPooler.GetPooledObject();
             bloodDrop.transform.position = point;
-            bloodDrop.transform.parent = FindObjectOfType<EnemyManager>().transform;
+            bloodDrop.transform.parent = GameObject.FindGameObjectWithTag("Bloodbag").transform;
             bloodDrop.SetActive(true);
 
         }

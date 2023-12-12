@@ -7,9 +7,11 @@ public class EnemyManager : MonoBehaviour
 {
    
     public List<GameObject> enemiesInDungeon = new List<GameObject>();
+    [SerializeField] private ObjectPooler objPooler1;
+    [SerializeField] private ObjectPooler objPooler2;
+    [SerializeField] private ObjectPooler objPooler3;
 
     [Header("VARIABLES")]
-    public List<GameObject> enemyPrefabs;
     [SerializeField] private int amtEnemiesPerRound = 3;
     [SerializeField] private float beforeSpawnDelay = 2f;
 
@@ -22,34 +24,46 @@ public class EnemyManager : MonoBehaviour
     {
         enemyObjectPooler = GetComponent<ObjectPooler>();
     }
-   
+    public void SpawnRandomEnemy() {
+        int randomNum = Random.Range(0, 3);
+        switch (randomNum) {
+            case 0: 
+                StartCoroutine(SpawnEnemies(objPooler1));
+                break;
+            case 1:
+                StartCoroutine(SpawnEnemies(objPooler2));
+                break;
+            case 2:
+                StartCoroutine(SpawnEnemies(objPooler3));
+                break;
+        }
+    }   
+    public void SpawnAllEnemies() {
+        for (int i = 0; i < amtEnemiesPerRound; i++) {
+            SpawnRandomEnemy();
+        }
+    }
+    private IEnumerator SpawnEnemies(ObjectPooler pooler) {
+        
+        yield return new WaitForSeconds(beforeSpawnDelay);
+        
+        float x = Random.Range(upperSpawn.transform.position.x, lowerSpawn.transform.position.x);
+        float y = Random.Range(lowerSpawn.transform.position.y, upperSpawn.transform.position.y);
+        float z = 1;
+        Vector3 randomPos = new Vector3(x, y, z);
 
-    public GameObject SpawnEnemyAtPoint(Vector2 placement)  {
-        GameObject createdEnemy = Instantiate(enemyPrefabs[0], placement, Quaternion.identity);
+        GameObject enemy = pooler.GetPooledObject();
+        enemy.transform.position = randomPos;
+        enemy.GetComponent<EnemyStateHandler>().Init();
+        enemy.GetComponent<Health>().InitHealth();
+        enemy.SetActive(true);
+
+        enemiesInDungeon.Add(enemy);        
+    }
+    public GameObject SpawnEnemyAtPoint(Vector2 placement) {
+        GameObject createdEnemy = Instantiate(enemyObjectPooler.GetPrefab(), placement, Quaternion.identity);
         enemiesInDungeon.Add(createdEnemy);
 
         return createdEnemy;
-    }
-    public void SpawnAllEnemies() {
-        StartCoroutine(SpawnEnemies());
-    }
-    private IEnumerator SpawnEnemies() {
-        
-        yield return new WaitForSeconds(beforeSpawnDelay);
-        for (int i = 0; i < amtEnemiesPerRound; i++) {
-
-            float x = Random.Range(upperSpawn.transform.position.x, lowerSpawn.transform.position.x);
-            float y = Random.Range(lowerSpawn.transform.position.y, upperSpawn.transform.position.y);
-            float z = 1;
-            Vector3 randomPos = new Vector3(x, y, z);
-
-            GameObject enemy = enemyObjectPooler.GetPooledObject();
-            enemy.transform.position = randomPos;
-            enemy.GetComponent<EnemyStateHandler>().Init();
-            enemy.GetComponent<Health>().InitHealth();
-            enemy.SetActive(true);
-
-            enemiesInDungeon.Add(enemy);
-        }
     }
 }

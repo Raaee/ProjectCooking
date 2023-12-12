@@ -532,11 +532,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409fb00bdf7d0904a864f09bcc8c16ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 9.67
   input: {fileID: 8339333650797754487}
   rb: {fileID: 2162978251192788212}
-  moveSpeed: 9
-  playerAnim: {fileID: 1641923975772206309}
   health: {fileID: 1041550740908115910}
+  playerAnim: {fileID: 1641923975772206309}
 --- !u!114 &3225166101096814257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
   invicibilityTime: 1
+  isPlayer: 1
   godMode: 1
   OnDeath:
     m_PersistentCalls:

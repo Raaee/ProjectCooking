@@ -3,7 +3,7 @@ using UnityEngine;
 public class AutomaticPickup : MonoBehaviour
 {
     private Transform playerTransform;
-    private float speed = 4f;
+    [SerializeField] private float pickUpSpeed = 2f;
     private ProgressBar progressBar;
 
     [SerializeField] private Rigidbody2D rb2d;
@@ -24,7 +24,7 @@ public class AutomaticPickup : MonoBehaviour
             return;
 
         Vector3 direction = (playerTransform.position - transform.position).normalized;
-        rb2d.velocity = new Vector2(direction.x, direction.y) * speed;
+        rb2d.velocity = new Vector2(direction.x, direction.y) * pickUpSpeed;
 
         if (Vector2.Distance(playerTransform.position, transform.position) < 0.1f)
         {

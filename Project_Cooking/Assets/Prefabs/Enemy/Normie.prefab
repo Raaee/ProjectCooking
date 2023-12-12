@@ -62,8 +62,8 @@ MonoBehaviour:
   movementSpeed: 0.669
   aggroSpeedMultipler: 1.555
   chargeDelay: 1
-  dashDuration: 0.75
-  dashSpeed: 8.5
+  dashDuration: 0.7
+  dashSpeed: 8
   slimeEnemyAnim: {fileID: 7195350933115724439}
   OnEnemyCharge:
     m_PersistentCalls:
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
   invicibilityTime: 0
   isPlayer: 0
   godMode: 0

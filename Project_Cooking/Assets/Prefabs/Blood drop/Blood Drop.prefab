@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d73a6c2c01c27a45918d9da45a96c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSpeed: 3.5
   rb2d: {fileID: 6700596118906824325}
   bloodPickupAudio:
     Guid:
