@@ -10,19 +10,19 @@ public class Actions : MonoBehaviour
 
     [SerializeField] private LevelManager levelManager;
     private Input input;
-    public UnityEvent OnItemSelect;
-    public UnityEvent OnItemDrop;
-    public UnityEvent OnInteract;
-    public UnityEvent OnInteractHeld_Started;
-    public UnityEvent OnInteractHeld_Cancelled;
+    [HideInInspector] public UnityEvent OnItemSelect;
+    [HideInInspector] public UnityEvent OnItemDrop;
+    [HideInInspector] public UnityEvent OnInteract;
+    [HideInInspector] public UnityEvent OnInteractHeld_Started;
+    [HideInInspector] public UnityEvent OnInteractHeld_Cancelled;
 
     [Header("Ability Events")]
-    public UnityEvent OnAttack_Started;
-    public UnityEvent<InputAction.CallbackContext> OnAttack_Started_Context;
-    public UnityEvent OnAttack_Cancelled;
-    public UnityEvent OnSpeed;
-    public UnityEvent OnHeal;
-    public UnityEvent OnScreech;
+    [HideInInspector] public UnityEvent OnAttack_Started;
+    [HideInInspector] public UnityEvent<InputAction.CallbackContext> OnAttack_Started_Context;
+    [HideInInspector] public UnityEvent OnAttack_Cancelled;
+    [HideInInspector] public UnityEvent OnSpeed;
+    [HideInInspector] public UnityEvent OnHeal;
+   [HideInInspector] public UnityEvent OnScreech;
 
     private void Awake()
     {

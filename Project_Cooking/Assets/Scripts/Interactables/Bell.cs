@@ -8,7 +8,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     [SerializeField] private Cookbook cookbook;
     private SpriteRenderer sr;
     private Inventory playerInventory;
-
+    [SerializeField] private FMODUnity.EventReference bellSound;
     private bool hasGameWon = false;
     private bool isFunctional = false;
 
@@ -30,6 +30,8 @@ public class Bell : MonoBehaviour, IInteractable  {
         else
             Debug.Log("bell is off clock. try again tomorrow");
 
+        PlayBellSound();
+        hasGameWon = CheckIfWon();
         Debug.Log(hasGameWon);
     }
     public bool CheckIfWon() {
@@ -58,5 +60,8 @@ public class Bell : MonoBehaviour, IInteractable  {
     public bool GetHasGameWon() {
         return hasGameWon;
     }
-
+    private void PlayBellSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(bellSound, this.transform.position);
+    }
 }
