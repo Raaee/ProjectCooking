@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 3351918630373279088}
   - component: {fileID: 7345475740912654357}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Normie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

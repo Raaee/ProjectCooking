@@ -7,8 +7,9 @@ public class EnemyManager : MonoBehaviour
 {
    
     public List<GameObject> enemiesInDungeon = new List<GameObject>();
+
     [Header("VARIABLES")]
-    [SerializeField] private GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs;
     [SerializeField] private int amtEnemiesPerRound = 3;
     [SerializeField] private float beforeSpawnDelay = 2f;
 
@@ -24,7 +25,7 @@ public class EnemyManager : MonoBehaviour
    
 
     public GameObject SpawnEnemyAtPoint(Vector2 placement)  {
-        GameObject createdEnemy = Instantiate(enemyPrefab, placement, Quaternion.identity);
+        GameObject createdEnemy = Instantiate(enemyPrefabs[0], placement, Quaternion.identity);
         enemiesInDungeon.Add(createdEnemy);
 
         return createdEnemy;
@@ -42,7 +43,7 @@ public class EnemyManager : MonoBehaviour
             float z = 1;
             Vector3 randomPos = new Vector3(x, y, z);
 
-            GameObject enemy = enemyObjectPooler.GetPooledObject(); 
+            GameObject enemy = enemyObjectPooler.GetPooledObject();
             enemy.transform.position = randomPos;
             enemy.GetComponent<EnemyStateHandler>().Init();
             enemy.GetComponent<Health>().InitHealth();

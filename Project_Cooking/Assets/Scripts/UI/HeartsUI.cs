@@ -21,7 +21,7 @@ public class HeartsUI : MonoBehaviour
     }
     private void Start()
     {
-        heartPointer = Health.MAX_HEALTH - 1;
+        heartPointer = health.maxHealth - 1;
     }
 
     public void RemoveHeart()
@@ -36,7 +36,7 @@ public class HeartsUI : MonoBehaviour
     public void FillUpHeart()
     {
 
-        if (heartPointer >= Health.MAX_HEALTH - 1)
+        if (heartPointer >= health.maxHealth - 1)
             return;
         heartPointer++;
 

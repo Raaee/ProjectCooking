@@ -359,7 +359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesInDungeon: []
-  enemyPrefab: {fileID: 2076171101915919661, guid: 41f4b2a1259d68446a4390d4510cea23, type: 3}
+  enemyPrefabs:
+  - {fileID: 2076171101915919661, guid: 4ca903e58f5df474c83f993b415c3f47, type: 3}
+  - {fileID: 2076171101915919661, guid: 41f4b2a1259d68446a4390d4510cea23, type: 3}
+  - {fileID: 2076171101915919661, guid: bde698b4270833a4088e1f2d1636d4b9, type: 3}
   amtEnemiesPerRound: 3
   beforeSpawnDelay: 2
   upperSpawn: {fileID: 1294703754}

@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("MOVEMENT STATS")]
-    [SerializeField] [Range(0.5f, 2f)] private float movementSpeed = .75f;
+    [SerializeField] [Range(0.2f, 2f)] private float movementSpeed = .75f;
     [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
 
     private Transform currentTarget;
