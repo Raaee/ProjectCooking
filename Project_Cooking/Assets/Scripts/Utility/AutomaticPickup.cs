@@ -3,7 +3,7 @@ using UnityEngine;
 public class AutomaticPickup : MonoBehaviour
 {
     private Transform playerTransform;
-    private float speed = 4f;
+   private float pickUpSpeed = 5f; //sucka no serialize means rae cant change it
     private ProgressBar progressBar;
 
     [SerializeField] private Rigidbody2D rb2d;
@@ -24,13 +24,13 @@ public class AutomaticPickup : MonoBehaviour
             return;
 
         Vector3 direction = (playerTransform.position - transform.position).normalized;
-        rb2d.velocity = new Vector2(direction.x, direction.y) * speed;
+        rb2d.velocity = new Vector2(direction.x, direction.y) * pickUpSpeed;
 
         if (Vector2.Distance(playerTransform.position, transform.position) < 0.1f)
         {
             FMODUnity.RuntimeManager.PlayOneShot(bloodPickupAudio, transform.position);
             progressBar.Increase();
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
 
         }
     }

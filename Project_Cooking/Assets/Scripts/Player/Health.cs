@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
 
-    public const int MAX_HEALTH = 3;
+    public int maxHealth = 3;
     private int currentHealth = 3;
     [Header("VARIABLE")]
     [SerializeField] private float invicibilityTime = 1f;
@@ -24,14 +24,14 @@ public class Health : MonoBehaviour
     {
         currentHealth += amt;
         OnHeal.Invoke();
-        if (currentHealth > MAX_HEALTH)
+        if (currentHealth > maxHealth)
         {
-            currentHealth = MAX_HEALTH;
+            currentHealth = maxHealth;
         }
     }
     public void InitHealth()
     {
-        currentHealth = MAX_HEALTH;
+        currentHealth = maxHealth;
         godMode = false;
     }
     public void TakeDamage(int amt)
@@ -87,6 +87,5 @@ public class Health : MonoBehaviour
         }
 
     }
-
 
 }

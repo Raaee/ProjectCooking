@@ -1,14 +1,17 @@
 ﻿using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class AreaTimer : MonoBehaviour
 {
-
+    [SerializeField] private GameObject vignette;
     [SerializeField] private float kitchenTimeLength = 15f; //should probs be the same?
     [SerializeField] private float dungeonTimeLength = 15f;
+    [SerializeField] private float vignetteEffectSpeed = 1f;
     //no limbo time, that is made by the player
     private float roundOverTime;
+    private AreaTimerUI areaTimerUI;
 
     [Header("DEBUG")]
     [SerializeField] private float timer = 0f;
@@ -18,6 +21,7 @@ public class AreaTimer : MonoBehaviour
 
     void Start()
     {
+        areaTimerUI = GetComponent<AreaTimerUI>();
         dungeonTimeLength += 0.8f;
         kitchenTimeLength += 0.8f;
         timer = dungeonTimeLength;
@@ -34,12 +38,10 @@ public class AreaTimer : MonoBehaviour
         {
             OnRoundOver.Invoke();
             Debug.Log("timer done!");
-            
         }
 
     }
 
-   
     public void ResetAreaTime(Current_Area currentArea)
     {
         switch (currentArea)
@@ -63,6 +65,9 @@ public class AreaTimer : MonoBehaviour
     }
     public void ResumeTimer() {
         isTimerPaused = false;
+    }
+    public void ActivateVignette(bool isActive) {
+        vignette.SetActive(isActive);
     }
 
 }

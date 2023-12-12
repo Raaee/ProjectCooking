@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("MOVEMENT STATS")]
-    [SerializeField] [Range(0.5f, 2f)] private float movementSpeed = .75f;
+    [SerializeField] [Range(0.2f, 2f)] private float movementSpeed = .75f;
     [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
 
     private Transform currentTarget;
@@ -25,12 +25,13 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("REFERENCES")]
     [SerializeField] private SlimeEnemyAnimation slimeEnemyAnim;
-
+    private SpriteRenderer sr;
     [HideInInspector] public UnityEvent OnEnemyCharge;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        sr = GetComponentInChildren<SpriteRenderer>();
 
         var playerObj = FindObjectOfType<Movement>();
         if (!playerObj)
@@ -56,6 +57,12 @@ public class EnemyMovement : MonoBehaviour
         UpdateDirectionToPlayer();
 
         rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;
+        if (moveDirection.x > 0f) {
+            sr.flipX = true;
+        }
+        else {
+            sr.flipX = false;
+        }
         slimeEnemyAnim.SetWalkingState(true);
     }
 

@@ -45,6 +45,7 @@ public class ObjectPooler : MonoBehaviour
         pooledObjects.Add(go);
         return go;
     }
-
- 
+    public GameObject GetPrefab() {
+        return pooledObj;
+    }
 }

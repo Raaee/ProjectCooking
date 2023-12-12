@@ -6,10 +6,13 @@ public class EnemyDeathHandler : MonoBehaviour
     private Health enemyHealth;
     [SerializeField] private GameObject bloodDropPrefab;
     [SerializeField] private int amtOfBloodDrops = 3;
+    private ObjectPooler bloodObjectPooler;
+
 
     private void Awake()
     {
         enemyHealth = GetComponent<Health>();
+        bloodObjectPooler = GetComponent<ObjectPooler>();
         enemyHealth.OnDeath.AddListener(OnEnemyDeath);
         enemyHealth.OnHurt.AddListener(OnEnemyHurt);
     }
@@ -35,7 +38,11 @@ public class EnemyDeathHandler : MonoBehaviour
             Vector3 point = GenerateRandomPointOnEdge(transform.position, radius);
             point.z = 1;
 
-            var bloodDrop = Instantiate(bloodDropPrefab, point, Quaternion.identity);
+            var bloodDrop = bloodObjectPooler.GetPooledObject();
+            bloodDrop.transform.position = point;
+            bloodDrop.transform.parent = GameObject.FindGameObjectWithTag("Bloodbag").transform;
+            bloodDrop.SetActive(true);
+
         }
         //disapear into void (refactor would be send back to the object pooling )
         //Destroy(this.gameObject);
