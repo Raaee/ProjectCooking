@@ -13,24 +13,30 @@ public class CameraShake : MonoBehaviour
 
     [SerializeField] [Range(0.01f, 0.5f)] private float duration = 0.25f;
     [SerializeField] [Range(0.01f, 0.5f)] private float magnitude = 0.25f;
-    [SerializeField] private ShakePattern pattern = ShakePattern.Random;
-    [SerializeField] private Health playerHealth;
+    [SerializeField] private ShakePattern DeathShakePattern = ShakePattern.Random;
+    [SerializeField] private ShakePattern ScreechShakePattern = ShakePattern.SineWave;
+    [SerializeField] private GameObject player;
 
     private Vector3 originalPosition;
 
     void Start()
     {
         originalPosition = transform.position;
-        playerHealth.OnDeath.AddListener(Shake);
+        player.GetComponent<Health>().OnDeath.AddListener(ScreechShake);
+        player.GetComponent<ScreechAbility>().OnScreenAbility.AddListener(DeathShake);
     }
-
-    [ProButton]
-    public void Shake()
+    public void ScreechShake() {
+        Shake(ScreechShakePattern);
+    }
+    public void DeathShake() {
+        Shake(DeathShakePattern);
+    }
+    public void Shake(ShakePattern pattern)
     {
-        StartCoroutine(ShakeCoroutine());
+        StartCoroutine(ShakeCoroutine(pattern));
     }
 
-    IEnumerator ShakeCoroutine()
+    IEnumerator ShakeCoroutine(ShakePattern pattern)
     {
         float elapsedTime = 0f;
         while (elapsedTime < duration)

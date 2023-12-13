@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine.Events;
 /// <summary>
 /// The enemy component that works with the movement for the enemy 
@@ -17,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isCharging = false;
     private Vector3 moveDirection;
     private float originalSpeed;
+    public bool isFrozen = false;
 
     [Header("CHARGE STATS")]
     [SerializeField] private float chargeDelay = 1f;
@@ -41,6 +43,11 @@ public class EnemyMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isFrozen) {
+            rb2d.velocity = Vector2.zero;
+            return;
+        }
+
         if (isCharging)
             return;
 
@@ -106,5 +113,12 @@ public class EnemyMovement : MonoBehaviour
         isCharging = false;
 
     }
-
+    [ProButton]
+    public void FreezeEnemy() {
+        isFrozen = true;
+    }
+    [ProButton]
+    public void UnFreezeEnemy() {
+        isFrozen = false;
+    }
 }

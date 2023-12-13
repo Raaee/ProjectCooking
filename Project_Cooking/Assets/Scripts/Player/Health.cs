@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
 {
 
     public int maxHealth = 3;
-    private int currentHealth = 3;
+    [SerializeField] private int currentHealth = 3;
     [Header("VARIABLE")]
     [SerializeField] private float invicibilityTime = 1f;
     
@@ -19,7 +19,10 @@ public class Health : MonoBehaviour
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;
 
-    
+    private void Start() {
+        StartCoroutine(Invincibility(2f));
+    }
+
     public void Heal(int amt)
     {
         currentHealth += amt;
@@ -47,11 +50,11 @@ public class Health : MonoBehaviour
             Die();
             return;
         }
-        StartCoroutine(InvincibleAfterEffect());
+        StartCoroutine(Invincibility(invicibilityTime));
     }
-    private IEnumerator InvincibleAfterEffect() {
+    private IEnumerator Invincibility(float time) {
         godMode = true;
-        yield return new WaitForSeconds(invicibilityTime);
+        yield return new WaitForSeconds(time);
         godMode = false;
     }
 

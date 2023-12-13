@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  currentHealth: 3
   invicibilityTime: 1
   godMode: 0
   OnDeath:
@@ -758,6 +759,8 @@ MonoBehaviour:
       Data3: 442094767
       Data4: -571181595
     Path: event:/Player/Bat Ability/Bat Transform
+  enemyStunDuration: 5
+  enemyManager: {fileID: 0}
   playerAnim: {fileID: 1641923975772206309}
   screechAudio:
     Guid:
@@ -766,6 +769,9 @@ MonoBehaviour:
       Data3: -339371342
       Data4: 1880969127
     Path: event:/Player/Bat Ability/Bat Shriek
+  OnScreenAbility:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1641923975772206309
 MonoBehaviour:
   m_ObjectHideFlags: 0
