@@ -3,7 +3,7 @@ using UnityEngine;
 public class AutomaticPickup : MonoBehaviour
 {
     private Transform playerTransform;
-   private float pickUpSpeed = 5f; //sucka no serialize means rae cant change it
+   private float pickUpSpeed = 3.5f;
     private ProgressBar progressBar;
 
     [SerializeField] private Rigidbody2D rb2d;
