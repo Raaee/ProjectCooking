@@ -191,6 +191,27 @@ MonoBehaviour:
   - {fileID: 2465260756126829935, guid: 48f4da2af46068247b4d7eb6d5f58e1a, type: 3}
   actions: {fileID: 3225166101096814257}
   input: {fileID: 8339333650797754487}
+  scrollSfx:
+    Guid:
+      Data1: -321004467
+      Data2: 1110563734
+      Data3: -1608774476
+      Data4: 2143875157
+    Path: event:/Gameplay UI/PlayerScroll
+  pickupSfx:
+    Guid:
+      Data1: -1342890669
+      Data2: 1336128466
+      Data3: -1554638935
+      Data4: -1500225499
+    Path: event:/Player/PlayerPickup
+  dropSfx:
+    Guid:
+      Data1: -1160684934
+      Data2: 1184209625
+      Data3: -805772670
+      Data4: 1901651916
+    Path: event:/Player/PlayerDrop
   OnCurrentItemChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -596,9 +617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  currentHealth: 3
   invicibilityTime: 1
-  isPlayer: 1
-  godMode: 1
+  godMode: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -640,7 +661,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0052245855, y: 0.18286103}
+  m_Offset: {x: -0.0005736202, y: 0.16939491}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -651,7 +672,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3939464, y: 0.39082348}
+  m_Size: {x: 0.13623667, y: 0.25156915}
   m_EdgeRadius: 0
 --- !u!114 &5542488216278401094
 MonoBehaviour:
@@ -684,11 +705,11 @@ MonoBehaviour:
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1194833577
+      Data2: 1165594302
+      Data3: 155166872
+      Data4: -359338787
+    Path: event:/Gameplay/Speed Ability
   speedMultiplier: 1.5
   trailEffectGO: {fileID: 7135583798575977466}
 --- !u!114 &1243901471745361668
@@ -709,11 +730,11 @@ MonoBehaviour:
   bloodProgressBar: {fileID: 0}
   abilityAudioRef:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1788156306
+      Data2: 1256309093
+      Data3: -684079735
+      Data4: 510535034
+    Path: event:/Gameplay/Heal Ability
   healAmount: 1
 --- !u!114 &2465164869444739385
 MonoBehaviour:
@@ -738,6 +759,8 @@ MonoBehaviour:
       Data3: 442094767
       Data4: -571181595
     Path: event:/Player/Bat Ability/Bat Transform
+  enemyStunDuration: 5
+  enemyManager: {fileID: 0}
   playerAnim: {fileID: 1641923975772206309}
   screechAudio:
     Guid:
@@ -746,6 +769,9 @@ MonoBehaviour:
       Data3: -339371342
       Data4: 1880969127
     Path: event:/Player/Bat Ability/Bat Shriek
+  OnScreenAbility:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1641923975772206309
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -59,14 +59,28 @@ public class EnemyManager : MonoBehaviour
         enemy.transform.position = randomPos;
         enemy.GetComponent<EnemyStateHandler>().Init();
         enemy.GetComponent<Health>().InitHealth();
+        enemy.GetComponent<EnemyMovement>().UnFreezeEnemy();
         enemy.SetActive(true);
 
-        enemiesInDungeon.Add(enemy);        
+        enemiesInDungeon.Add(enemy);  
     }
     public GameObject SpawnEnemyAtPoint(Vector2 placement) {
         GameObject createdEnemy = Instantiate(enemyObjectPooler.GetPrefab(), placement, Quaternion.identity);
         enemiesInDungeon.Add(createdEnemy);
 
         return createdEnemy;
+    }
+    public void FreezeAllEnemies() {
+        foreach (GameObject enemy in enemiesInDungeon) {
+            if (enemy.activeInHierarchy) {
+                enemy.GetComponent<EnemyMovement>().FreezeEnemy();
+            }
+        }
+    }
+    public void UnFreezeAllEnemies() {
+        foreach (GameObject enemy in enemiesInDungeon) {
+            enemy.GetComponent<EnemyMovement>().UnFreezeEnemy();
+            
+        }
     }
 }
