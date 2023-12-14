@@ -51,16 +51,30 @@ public class LevelManager : MonoBehaviour
     
     [ProButton]
     public void ChangeArea() {
-        if (currentArea == Current_Area.DUNGEON) {
+        
+        //BAD CODE ALERT
+        //we want to call the below event only inbetween fading, fade manager will do it
+       // OnAreaChange?.Invoke(currentArea);
+        int NegativeNumberToRepresentNullSceneHiRaeus = -1;
+        FadeManager.instance?.FadeOutAndLoadScene(NegativeNumberToRepresentNullSceneHiRaeus);//-1 means it wont fade to a new scene 
+    }
+    //Fade manager will look for this and call it 
+    public void InvokeOnAreaChange()
+    {
+        if (currentArea == Current_Area.DUNGEON)
+        {
             currentArea = Current_Area.KITCHEN;
             playerObj.transform.position = kitchenTeleportLoc.transform.position;
             amtOfRound--;
-        } else {
+        }
+        else
+        {
             currentArea = Current_Area.DUNGEON;
             playerObj.transform.position = dungeonTeleportLoc.transform.position;
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);
+
         OnAreaChange?.Invoke(currentArea);
     }
     public void SpawnAllBaseIngredients()

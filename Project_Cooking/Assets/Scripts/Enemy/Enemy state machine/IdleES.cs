@@ -6,7 +6,7 @@ public class IdleES : EnemyState
 {
 
     private Transform playerTransform;
-    private const float PLAYER_DETECT_RADIUS = 25f;
+    private const float PLAYER_DETECT_RADIUS = 33f;
     private EnemyMovement enemyMovement;
 
     [SerializeField] private EnemyState chaseState;
