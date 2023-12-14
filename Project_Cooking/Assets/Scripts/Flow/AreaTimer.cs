@@ -8,7 +8,7 @@ public class AreaTimer : MonoBehaviour
     [SerializeField] private GameObject vignette;
     [SerializeField] private float kitchenTimeLength = 15f; //should probs be the same?
     [SerializeField] private float dungeonTimeLength = 15f;
-    [SerializeField] private float vignetteEffectSpeed = 1f;
+    //[SerializeField] private float vignetteEffectSpeed = 1f;
     //no limbo time, that is made by the player
     private float roundOverTime;
     private AreaTimerUI areaTimerUI;
