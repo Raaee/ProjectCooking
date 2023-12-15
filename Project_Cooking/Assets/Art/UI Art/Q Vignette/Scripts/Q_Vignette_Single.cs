@@ -26,6 +26,8 @@ public class Q_Vignette_Single : Q_Vignette_Base
     public float mainScale = 0.4f; // size of vignette from 0 to 2       0.5 and above will see the images overlap and efficiency of this method dropping, although it's a nice effect so if you're not on mobile, it'll be great!
     [System.NonSerialized]public float o_mainScale = 0; // to register change
 
+    public float maxMainScale = 7f;
+
     public Color mainColor = new Color( 0.1698113f , 0.09192452f , 0.05526878f , 1 ); // shade and transparency of the effect
     [System.NonSerialized]public Color o_mainColor=new Color(0,0,0,0); // to register change
 
@@ -34,6 +36,7 @@ public class Q_Vignette_Single : Q_Vignette_Base
 
     public bool stretchMainToScreenRatio = true; // to have the vignette stretch to screen aspect ratio or remain circular
     [System.NonSerialized]public bool o_stretchMainToScreenRatio = false; // to register change
+
 
     
 
@@ -122,7 +125,7 @@ public class Q_Vignette_Single : Q_Vignette_Base
     void CheckVignetteScale()
     {
         if ( mainScale != o_mainScale ){
-            mainScale = Mathf.Clamp( mainScale , 0f , 10f );
+            mainScale = Mathf.Clamp( mainScale , 0f , maxMainScale);
             o_mainScale = mainScale;
             SetVignetteSkyScale( mainScale );
             SetVignetteMainScale( mainScale );
