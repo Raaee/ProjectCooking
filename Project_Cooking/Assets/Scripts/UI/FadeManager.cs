@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class FadeManager : MonoBehaviour
 {
     [SerializeField] private CanvasGroup fadeCanvasGroup;
-    [SerializeField] [Range(0.5f,1f) ]private float fadeDuration = 0.75f;
+    [SerializeField] [Range(0.5f,1f)] private float fadeDuration = 0.75f;
+    [SerializeField] [Range(0.5f, 3f)] private float endOfFrameDuration = 0.75f;
     private bool isFading = false;
     [Header("DEBUG")]
     [SerializeField] private bool fadeInOnAwake = true;
@@ -38,7 +39,9 @@ public class FadeManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         fadeCanvasGroup.alpha = 1f;
-        if(sceneIndex == -1)
+        yield return new WaitForSeconds(endOfFrameDuration);
+
+        if (sceneIndex == -1)
         {
             LevelManager lvlManager = FindObjectOfType<LevelManager>();
             if (lvlManager)
@@ -52,7 +55,6 @@ public class FadeManager : MonoBehaviour
             SceneManager.LoadScene(sceneIndex);
         }
 
-        yield return new WaitForEndOfFrame();
         isFading = false;
         StartCoroutine(FadeIn());
     }

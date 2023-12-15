@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.669
   aggroSpeedMultipler: 1.555
+  isFrozen: 0
   chargeDelay: 1
   dashDuration: 0.7
   dashSpeed: 8
@@ -169,7 +170,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0075330734, y: -0.04164722}
+  m_Offset: {x: -0.0033960342, y: 0.08452684}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -180,7 +181,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3536167, y: 0.24291731}
+  m_Size: {x: 0.26812172, y: 0.23602253}
   m_EdgeRadius: 0
 --- !u!114 &330244465279798701
 MonoBehaviour:
@@ -195,8 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  currentHealth: 3
   invicibilityTime: 0
-  isPlayer: 0
   godMode: 0
   OnDeath:
     m_PersistentCalls:
