@@ -18,7 +18,7 @@ public class IdleES : EnemyState
 
     public override void OnStateEnter()
     {
-        enemyMovement.StopChasing();
+       
     }
 
     public override void OnStateExit()
