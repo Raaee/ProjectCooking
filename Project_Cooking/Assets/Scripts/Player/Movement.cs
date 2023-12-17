@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private float currentSpeed = 0f;
     private Vector2 moveDirection = Vector2.zero;
     private bool isFrozen = false;
+    private bool isMoving = false;
     [Header("REFERENCES")]
     [SerializeField] private Input input;
     [SerializeField] private Rigidbody2D rb;
@@ -30,6 +31,7 @@ public class Movement : MonoBehaviour
         if(isFrozen)
         {
             rb.velocity = Vector2.zero;
+            isMoving = false;
             return;
         }
 
@@ -37,9 +39,11 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = moveDirection * moveSpeed * moveSpeed * Time.fixedDeltaTime;
             HandleAnimationFromDirection(rb.velocity);
+            isMoving = true;
         }
         else
         {
+            isMoving = false;
             rb.velocity = Vector2.zero;
             playerAnim.PlayAnimation(PlayerAnimation.IDLE);
         }
@@ -53,6 +57,10 @@ public class Movement : MonoBehaviour
     public void UnFreezePlayer()
     {
         isFrozen = false;
+    }
+    public bool IsPlayerMoving()
+    {
+        return isMoving;
     }
     private void HandleAnimationFromDirection(Vector2 playerDirection)
     {

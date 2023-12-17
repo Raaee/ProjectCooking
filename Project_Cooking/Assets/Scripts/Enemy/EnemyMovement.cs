@@ -10,14 +10,12 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("MOVEMENT STATS")]
     [SerializeField] [Range(0.2f, 2f)] private float movementSpeed = .75f;
-    [SerializeField] [Range(1.01f, 3f)] private float aggroSpeedMultipler = 1.5f;
+   
 
     private Transform currentTarget;
     private Rigidbody2D rb2d;
-    private bool isChasing = false; 
-    private bool isCharging = false;
     private Vector3 moveDirection;
-    private float originalSpeed;
+   
     public bool isFrozen = false;
 
     [Header("CHARGE STATS")]
@@ -30,70 +28,63 @@ public class EnemyMovement : MonoBehaviour
     private SpriteRenderer sr;
     [HideInInspector] public UnityEvent OnEnemyCharge;
 
+    [Header("DEBUG")]
+    [SerializeField] private EnemyMoveState currentState;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
-
-        var playerObj = FindObjectOfType<Movement>();
-        if (!playerObj)
-            Debug.LogWarning("Is there a player object in this scene to chase??");
-        currentTarget = playerObj.gameObject.transform;
-        originalSpeed = movementSpeed;
+        currentTarget = FindObjectOfType<Movement>().gameObject.transform;
+        currentState = EnemyMoveState.IDLE;
+       
     }
     private void FixedUpdate()
     {
-        if (isFrozen) {
-            rb2d.velocity = Vector2.zero;
-            return;
+
+        switch(currentState)
+        {
+            case EnemyMoveState.IDLE:
+                break;
+            case EnemyMoveState.CHASE:
+                UpdateMovement();
+                break;
+            case EnemyMoveState.CHARGE:
+                break;
+            case EnemyMoveState.FROZEN:
+                rb2d.velocity = Vector2.zero;
+                break;
+
         }
-
-        if (isCharging)
-            return;
-
-        if (!isChasing)
-            return;
-        MoveTowardsTarget();
     }
 
-    private void MoveTowardsTarget()
-    {
-        if (!currentTarget)
-            return;
-          
-        UpdateDirectionToPlayer();
+  
 
+    private void UpdateMovement()
+    {
+        moveDirection = (currentTarget.position - transform.position).normalized;
         rb2d.velocity = new Vector2(moveDirection.x, moveDirection.y) * movementSpeed;
-        if (moveDirection.x > 0f) {
+        if (moveDirection.x > 0f)
+        {
             sr.flipX = true;
         }
-        else {
+        else
+        {
             sr.flipX = false;
         }
         slimeEnemyAnim.SetWalkingState(true);
     }
 
-    private void UpdateDirectionToPlayer()
+    private void SetState(EnemyMoveState newState)
     {
-        moveDirection = (currentTarget.position - transform.position).normalized;
+        currentState = newState;
     }
 
     public void ChaseTarget()
     {
-        movementSpeed = originalSpeed;
-        isChasing = true;
+        SetState(EnemyMoveState.CHASE);
     }
 
-    public void StopChasing()
-    {
-        isChasing = false;
-    }
-
-    public void AggroChase()
-    {
-        movementSpeed = movementSpeed + aggroSpeedMultipler;
-        Debug.Log("aggro chase!");
-    }
 
     private float RandomizeChargeDelay() //helper method to very slightly give random charge delays, so enemys not attacking at exact same time
     {
@@ -103,22 +94,29 @@ public class EnemyMovement : MonoBehaviour
     public IEnumerator ChargeAtPlayer()
     {
 
-        isCharging = true;
+        SetState(EnemyMoveState.CHARGE);
         slimeEnemyAnim.AttackAnimation();
         yield return new WaitForSeconds(RandomizeChargeDelay());
-        UpdateDirectionToPlayer();
+        moveDirection = (currentTarget.position - transform.position).normalized;
         rb2d.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         OnEnemyCharge?.Invoke();
         yield return new WaitForSeconds(dashDuration);
-        isCharging = false;
 
     }
     [ProButton]
     public void FreezeEnemy() {
-        isFrozen = true;
+        SetState(EnemyMoveState.FROZEN);
     }
     [ProButton]
     public void UnFreezeEnemy() {
-        isFrozen = false;
+        SetState(EnemyMoveState.CHASE);
     }
+}
+public enum EnemyMoveState
+{
+    IDLE,
+    CHASE,
+    CHARGE,
+    FROZEN
+
 }

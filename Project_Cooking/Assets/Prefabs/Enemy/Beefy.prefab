@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 184274246093717925}
   - component: {fileID: 1357052003572865992}
   - component: {fileID: 84315332059349936}
-  - component: {fileID: 3735389359239968381}
   - component: {fileID: 1320014873897396913}
   - component: {fileID: 4438131534821836428}
   - component: {fileID: 330244465279798701}
@@ -60,7 +59,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.5
-  aggroSpeedMultipler: 1.555
   isFrozen: 0
   chargeDelay: 1
   dashDuration: 0.75
@@ -108,22 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08f253d01fc498489a00ffa4e1f1981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroChaseState: {fileID: 3735389359239968381}
+  aggroChaseState: {fileID: 0}
   chargeState: {fileID: 3351918630373279088}
---- !u!114 &3735389359239968381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076171101915919661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d370e4753c57974d837f6daa1dd892d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTime: 5
-  chaseState: {fileID: 84315332059349936}
 --- !u!114 &1320014873897396913
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public UnityEvent OnDeath;
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;
-
+    private bool isDead = false;
     private void Start() {
         StartCoroutine(Invincibility(2f));
     }
@@ -43,13 +43,14 @@ public class Health : MonoBehaviour
 
         currentHealth -= amt;
 
-        OnHurt.Invoke();
+       
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             Die();
             return;
         }
+        OnHurt.Invoke();
         StartCoroutine(Invincibility(invicibilityTime));
     }
     private IEnumerator Invincibility(float time) {
@@ -70,11 +71,12 @@ public class Health : MonoBehaviour
     }
     private void Die()
     {
-       
-        
         OnDeath.Invoke();
-        
-
+        isDead = true;
+    }
+    public bool IsDead()
+    {
+        return isDead;
     }
 
     public void Flash()

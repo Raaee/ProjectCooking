@@ -446,11 +446,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409fb00bdf7d0904a864f09bcc8c16ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
   input: {fileID: 80679961}
   rb: {fileID: 80679960}
-  moveSpeed: 10
-  playerAnim: {fileID: 0}
   health: {fileID: 0}
+  playerAnim: {fileID: 0}
 --- !u!114 &80679966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431f33dca37db24ea02202f17c796df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   OnItemSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -476,6 +477,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnInteractHeld_Cancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack_Started:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack_Started_Context:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack_Cancelled:
     m_PersistentCalls:
       m_Calls: []
   OnSpeed:
@@ -504,6 +514,27 @@ MonoBehaviour:
   allIngredients: []
   actions: {fileID: 0}
   input: {fileID: 0}
+  scrollSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  pickupSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  dropSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   OnCurrentItemChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -522,7 +553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
   currentHealth: 3
+  invicibilityTime: 1
   godMode: 0
   OnDeath:
     m_PersistentCalls:
@@ -1069,7 +1102,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a44ea118fded4da385b3ddd5ba30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2076171101915919661, guid: 41f4b2a1259d68446a4390d4510cea23, type: 3}
+  enemiesInDungeon: []
+  objPooler1: {fileID: 0}
+  objPooler2: {fileID: 0}
+  objPooler3: {fileID: 0}
+  amtEnemiesPerRound: 3
+  beforeSpawnDelay: 2
+  upperSpawn: {fileID: 0}
+  lowerSpawn: {fileID: 0}
+  OnDungeonArea:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1097387192
 Transform:
   m_ObjectHideFlags: 0
@@ -1097,6 +1140,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 411362052}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Path
+      value: event:/Gameplay UI/PlayerScrollOrHover
+      objectReference: {fileID: 0}
     - target: {fileID: 3772686613067466981, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
       propertyPath: m_Name
       value: Player (1)

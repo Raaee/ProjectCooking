@@ -18,6 +18,10 @@ public abstract class Workstation : MonoBehaviour
     [SerializeField] protected InteractProgressState progressState;
     [SerializeField] protected bool isCharging;
     private const float PROGRESS_RATE = 1.0f;
+
+    [Header("AUDIO")]
+    [SerializeField] private FMODUnity.EventReference workstationOnCompleteSound;
+    [SerializeField] private FMODUnity.EventReference workstationFailed;
     public abstract void OnInteractionComplete();
 
     private void Awake()
@@ -55,8 +59,11 @@ public abstract class Workstation : MonoBehaviour
             if (recipe.workstationInput.All(IngredientSO => Inventory.instance.inventoryList.Contains(IngredientSO.item)))
             {
                 outputIngredient = recipe.workstationOutput.item;
+                return;
             }
         }
+        //if we reach here we failed and its time to sizzle 
+        PlayOnFailSound();
     }
     private void ProgressBarStateMachine()
     {
@@ -102,6 +109,7 @@ public abstract class Workstation : MonoBehaviour
 
             case InteractProgressState.FULL:
                 OnInteractionComplete();
+                PlayOnCompleteSound();
                 progressState = InteractProgressState.IDLE;
                 isCharging = false;
                 break;
@@ -132,6 +140,15 @@ public abstract class Workstation : MonoBehaviour
     {
         sr.sprite = workstationSO.normalSprite;
         progBarCanvas.SetActive(false);
+    }
+    private void PlayOnCompleteSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(workstationOnCompleteSound, transform.position);
+    }
+
+    private void PlayOnFailSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(workstationFailed, transform.position);
     }
 }
 
