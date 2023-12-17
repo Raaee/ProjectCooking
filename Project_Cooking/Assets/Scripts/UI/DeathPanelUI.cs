@@ -10,6 +10,11 @@ public class DeathPanelUI : MonoBehaviour
     [SerializeField] [Range(0.01f, 1f)] private float delayBeforeDisplay = 0.5f;
     [SerializeField] private EasingFunction curveFunction = EasingFunction.Linear;
     [SerializeField] private Health playerHealth;
+
+    [Header("AUDIO")]
+    [SerializeField] private FMODUnity.EventReference deathPanelSfx;
+    [SerializeField] private FMODUnity.EventReference restartGameSfx;
+    [SerializeField] private FMODUnity.EventReference backToMainMenuSfx;
     private void Awake()
     {
         if (!playerHealth)
@@ -27,7 +32,8 @@ public class DeathPanelUI : MonoBehaviour
     public void ShowDeathPanel()
     {
         var animCurveFunction = AnimationCurveHelper.GetAnimationCurve(curveFunction);
-        StartCoroutine(ShowDeathPanel(fadeInTime, animCurveFunction));
+        if(!playerHealth.IsDead())
+            StartCoroutine(ShowDeathPanel(fadeInTime, animCurveFunction));
     }
 
     private IEnumerator ShowDeathPanel(float duration, AnimationCurve curve)
@@ -37,8 +43,8 @@ public class DeathPanelUI : MonoBehaviour
         float timeElasped = 0f;
 
         yield return new WaitForSeconds(delayBeforeDisplay);
-
-        while(timeElasped < duration)
+        PlayDeathPanelSfx();
+        while (timeElasped < duration)
         {
             float normalizeTimed = timeElasped / duration;
             float alphaRatio = curve.Evaluate(normalizeTimed);
@@ -66,5 +72,18 @@ public class DeathPanelUI : MonoBehaviour
     {
         Debug.Log("Moving To Main Menu");
 
+    }
+
+    private void PlayDeathPanelSfx()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(deathPanelSfx, transform.position);
+    }
+    public void PlayRestartGameSfx()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(restartGameSfx, transform.position);
+    }
+    public void PlayBackToMainMenuSfx()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(backToMainMenuSfx, transform.position);
     }
 }

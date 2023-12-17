@@ -282,7 +282,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a44ea118fded4da385b3ddd5ba30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2076171101915919661, guid: 41f4b2a1259d68446a4390d4510cea23, type: 3}
+  enemiesInDungeon: []
+  objPooler1: {fileID: 0}
+  objPooler2: {fileID: 0}
+  objPooler3: {fileID: 0}
+  amtEnemiesPerRound: 3
+  beforeSpawnDelay: 2
+  upperSpawn: {fileID: 0}
+  lowerSpawn: {fileID: 0}
+  OnDungeonArea:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +646,27 @@ MonoBehaviour:
   - {fileID: 2465260756126829935, guid: 48f4da2af46068247b4d7eb6d5f58e1a, type: 3}
   actions: {fileID: 80679966}
   input: {fileID: 80679961}
+  scrollSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  pickupSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  dropSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   OnCurrentItemChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1883,6 +1914,10 @@ PrefabInstance:
       propertyPath: bloodProgressBar
       value: 
       objectReference: {fileID: 1682937823}
+    - target: {fileID: 3101003722106992734, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
+      propertyPath: scrollSfx.Path
+      value: event:/Gameplay UI/PlayerScrollOrHover
+      objectReference: {fileID: 0}
     - target: {fileID: 3124256479969830151, guid: 40a43aad333ba5c48ac858682033f25c, type: 3}
       propertyPath: bloodCost
       value: 5

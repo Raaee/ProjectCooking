@@ -39,7 +39,7 @@ public class Cookbook : MonoBehaviour, IInteractable
         if (!recipeDisplay.IsCookbookOpen())
             recipeDisplay.OpenCookbook(nodesUnlocked);
         else
-            recipeDisplay.CloseCookbook();
+            recipeDisplay.CloseCookbook(true);
         /*
          * - cookbook determines the level's recipe
          * which is passed into the display
@@ -56,7 +56,8 @@ public class Cookbook : MonoBehaviour, IInteractable
     public void NormalSprite()
     {
         sr.sprite = cookbookSprite;
-        recipeDisplay.CloseCookbook();
+        if (recipeDisplay.IsCookbookOpen())
+            recipeDisplay.CloseCookbook(true);
     }
     public void IncrementNodesUnlocked() {
         nodesUnlocked += 1;

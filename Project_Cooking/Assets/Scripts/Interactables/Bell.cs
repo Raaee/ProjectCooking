@@ -24,7 +24,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     }
     
     public void Interact() {
-        Debug.Log("Ding");
+      
         if (isFunctional)
             hasGameWon = CheckIfWon();
         else
@@ -32,7 +32,7 @@ public class Bell : MonoBehaviour, IInteractable  {
 
         PlayBellSound();
         hasGameWon = CheckIfWon();
-        Debug.Log(hasGameWon);
+       
     }
     public bool CheckIfWon() {
         Items winningItem = cookbook.levelRecipe.outputIngredient.item;

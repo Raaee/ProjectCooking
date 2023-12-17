@@ -10,7 +10,9 @@ public class CookbookRecipeDisplay : MonoBehaviour
     public Sprite stovenSprite;
     private bool cookbookIsOpened = false;
 
-
+    [Header("AUDIO")]
+    [SerializeField] private FMODUnity.EventReference openCookbookSfx;
+    [SerializeField] private FMODUnity.EventReference closeCookbookSfx;
     private void Start()
     {
         CloseCookbook();
@@ -20,12 +22,15 @@ public class CookbookRecipeDisplay : MonoBehaviour
     {
         DisplayCurrentRecipeSteps(playerUnlocked);
         cookbookIsOpened = true;
+        PlaySound(openCookbookSfx);
     }
 
-    public void CloseCookbook()
+    public void CloseCookbook(bool playSound = false)
     {
         CloseAllPanels();
         cookbookIsOpened = false;
+        if(playSound)
+            PlaySound(closeCookbookSfx);
     }
     private void DisplayCurrentRecipeSteps(int playerUnlocked)//0 is an option
     {
@@ -97,5 +102,9 @@ public class CookbookRecipeDisplay : MonoBehaviour
     public bool IsCookbookOpen()
     {
         return cookbookIsOpened;
+    }
+    private void PlaySound(FMODUnity.EventReference sfxRef)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(sfxRef, transform.position);
     }
 }
