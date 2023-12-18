@@ -11,7 +11,6 @@ public class AreaTimer : MonoBehaviour
    // [SerializeField] [Range(0.5f, 3f)] private float vignetteEffectSpeed = 1f;
 
     //no limbo time, that is made by the player
-    private float roundOverTime;
     private AreaTimerUI areaTimerUI;
     private bool timeAlmostDone = false;
     private Q_Vignette_Single vignetteScript;
@@ -19,6 +18,7 @@ public class AreaTimer : MonoBehaviour
     [Header("DEBUG")]
     [SerializeField] private float timer = 0f;
     [SerializeField] private bool isTimerPaused = false;
+    [SerializeField] private bool startTimerPaused = false;
 
     public UnityEvent OnRoundOver;
 
@@ -34,6 +34,8 @@ public class AreaTimer : MonoBehaviour
 
     void Update()
     {
+        if (startTimerPaused) return;
+
         if 
             (isTimerPaused) return;
         else

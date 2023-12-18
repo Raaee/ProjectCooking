@@ -22,6 +22,8 @@ public class ScreechAbility : Ability
         Debug.Log("SCREEEEECH");
         OnScreenAbility.Invoke();
         playerAnim.ToggleBatMode();
+        playerAnim.EnableScreech();
+        playerAnim.PlayScreechAnimation();
         StartCoroutine(FreezeAllEnemies());
         FMODUnity.RuntimeManager.PlayOneShot(screechAudio, transform.position);
     }
@@ -42,5 +44,6 @@ public class ScreechAbility : Ability
         enemyManager.FreezeAllEnemies();
         yield return new WaitForSeconds(enemyStunDuration);
         enemyManager.UnFreezeAllEnemies();
+        playerAnim.DisableScreech();
     }
 }
