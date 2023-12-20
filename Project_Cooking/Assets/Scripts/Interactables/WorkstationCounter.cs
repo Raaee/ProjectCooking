@@ -1,4 +1,4 @@
-﻿public class StoveOven : Workstation
+﻿public class WorkstationCounter : Workstation
 {
     public override void OnInteractionComplete()
     {
