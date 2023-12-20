@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7169953070724726291
 Transform:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
       Data2: 1110563734
       Data3: -1608774476
       Data4: 2143875157
-    Path: event:/Gameplay UI/PlayerScroll
+    Path: event:/Gameplay UI/PlayerScrollOrHover
   pickupSfx:
     Guid:
       Data1: -1342890669
@@ -236,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1205553275629133691
 Transform:
   m_ObjectHideFlags: 0
@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 1641923975772206309}
   - component: {fileID: 5472659391050540092}
   - component: {fileID: 7112148568771124430}
+  - component: {fileID: 4348938085506028867}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -493,7 +494,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3772686613067466981}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -511,7 +512,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5093896349970656860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,6 +820,41 @@ MonoBehaviour:
   pooledObj: {fileID: 5871306300212750185, guid: ba4c5047897b4b34597c11302a43c71d, type: 3}
   pooledObjects: []
   intialPooledAmt: 5
+--- !u!58 &4348938085506028867
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772686613067466981}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.19}
+  serializedVersion: 2
+  m_Radius: 0.17058364
 --- !u!1 &5573760815043832673
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +906,22 @@ MonoBehaviour:
       Data3: -1832879949
       Data4: -1011056429
     Path: event:/Player/PlayerHurt
+  playerWalkAudio:
+    Guid:
+      Data1: -606180079
+      Data2: 1233099807
+      Data3: -1863524960
+      Data4: 1694589065
+    Path: event:/Player/Walk
+  playerDeathAudio:
+    Guid:
+      Data1: 461061267
+      Data2: 1194344988
+      Data3: 1147121071
+      Data4: 639716426
+    Path: event:/Gameplay UI/Death/PlayerDead
   playerHealth: {fileID: 1041550740908115910}
+  playerMovement: {fileID: 7141330953242237049}
 --- !u!1 &5581091271079475160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2133799604106402445
 Transform:
   m_ObjectHideFlags: 0
