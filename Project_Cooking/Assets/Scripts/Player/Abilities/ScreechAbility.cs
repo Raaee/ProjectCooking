@@ -6,7 +6,7 @@ public class ScreechAbility : Ability
     // Default keybind: F [Keyboard]
     [SerializeField] private float enemyStunDuration = 5f;
 
-    [Header("Screech ABility References")]
+    [Header("SCREECH REFERENCES")]
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private PlayerAnimation playerAnim;
     [SerializeField] private FMODUnity.EventReference screechAudio;
@@ -31,6 +31,7 @@ public class ScreechAbility : Ability
     {
         PlayAbilityOneShot();
         playerAnim.ToggleBatMode();
+        playerAnim.DisableScreech();
     }
     public override void OnNotEnoughBlood()
     {
@@ -44,6 +45,5 @@ public class ScreechAbility : Ability
         enemyManager.FreezeAllEnemies();
         yield return new WaitForSeconds(enemyStunDuration);
         enemyManager.UnFreezeAllEnemies();
-        playerAnim.DisableScreech();
     }
 }

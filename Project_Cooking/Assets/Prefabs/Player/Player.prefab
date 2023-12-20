@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1562153208718111144}
   - component: {fileID: 8635243105000068885}
   - component: {fileID: 4675877112990584163}
+  - component: {fileID: 5368873428486965425}
   m_Layer: 0
   m_Name: Player Model
   m_TagString: Untagged
@@ -124,6 +125,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5368873428486965425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999405336867351062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a922edaaf723244a0f593e7c6356e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 4675877112990584163}
+  batAnimator: {fileID: 8329753685734433399}
+  screechAnimator: {fileID: 1008166489179996924}
+  playerSpriteRenderer: {fileID: 1562153208718111144}
+  batSpriteRenderer: {fileID: 7622504542739130275}
+  screechObj: {fileID: 7858153098631286562}
 --- !u!1 &2029122663774745137
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +381,6 @@ GameObject:
   - component: {fileID: 3124256479969830151}
   - component: {fileID: 1243901471745361668}
   - component: {fileID: 2465164869444739385}
-  - component: {fileID: 1641923975772206309}
   - component: {fileID: 5472659391050540092}
   - component: {fileID: 7112148568771124430}
   - component: {fileID: 4348938085506028867}
@@ -559,7 +577,7 @@ MonoBehaviour:
   input: {fileID: 8339333650797754487}
   rb: {fileID: 2162978251192788212}
   health: {fileID: 1041550740908115910}
-  playerAnim: {fileID: 1641923975772206309}
+  playerAnim: {fileID: 5368873428486965425}
 --- !u!114 &3225166101096814257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +781,7 @@ MonoBehaviour:
     Path: event:/Player/Bat Ability/Bat Transform
   enemyStunDuration: 5
   enemyManager: {fileID: 0}
-  playerAnim: {fileID: 1641923975772206309}
+  playerAnim: {fileID: 5368873428486965425}
   screechAudio:
     Guid:
       Data1: 1358767747
@@ -774,24 +792,6 @@ MonoBehaviour:
   OnScreenAbility:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1641923975772206309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3772686613067466981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25a922edaaf723244a0f593e7c6356e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 4675877112990584163}
-  batAnimator: {fileID: 8329753685734433399}
-  screechAnimator: {fileID: 4831138773875152066}
-  playerSpriteRenderer: {fileID: 1562153208718111144}
-  batSpriteRenderer: {fileID: 7622504542739130275}
-  screechObj: {fileID: 7858153098631286562}
 --- !u!114 &5472659391050540092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,8 +1184,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2133799604106402445}
-  - component: {fileID: 4831138773875152066}
   - component: {fileID: 3940022662320112662}
+  - component: {fileID: 1008166489179996924}
   m_Layer: 0
   m_Name: Screech
   m_TagString: Untagged
@@ -1208,27 +1208,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1205553275629133691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4831138773875152066
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858153098631286562}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 50cbce5b8aa540b4a8bc3ba9a412d2dd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &3940022662320112662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1269,7 +1248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 104925138, guid: 5dcbe2f2480c83a41b81d22793e51e5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1281,3 +1260,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1008166489179996924
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858153098631286562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50cbce5b8aa540b4a8bc3ba9a412d2dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

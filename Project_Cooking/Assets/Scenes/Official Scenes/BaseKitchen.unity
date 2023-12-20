@@ -695,10 +695,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48da7e0a2b07d84ea0537a2e0d0bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.269
-  magnitude: 0.136
+  duration: 0.2
+  magnitude: 0.09
   DeathShakePattern: 0
-  ScreechShakePattern: 0
+  ScreechShakePattern: 1
   player: {fileID: 1906773948}
 --- !u!114 &519420035
 MonoBehaviour:
@@ -3833,6 +3833,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2357057119794726591, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2759293394122962490, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4001,6 +4005,10 @@ PrefabInstance:
       propertyPath: cookbook
       value: 
       objectReference: {fileID: 359183489}
+    - target: {fileID: 6249508852913239474, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: currentBlood
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6476595783950709589, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
