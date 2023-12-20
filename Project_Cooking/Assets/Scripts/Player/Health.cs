@@ -42,10 +42,10 @@ public class Health : MonoBehaviour
         if (godMode) return;
 
         currentHealth -= amt;
-
        
         if (currentHealth <= 0)
         {
+            OnHurt.Invoke();
             currentHealth = 0;
             Die();
             return;
@@ -73,6 +73,7 @@ public class Health : MonoBehaviour
     {
         OnDeath.Invoke();
         isDead = true;
+        godMode = true;
     }
     public bool IsDead()
     {

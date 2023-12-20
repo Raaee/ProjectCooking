@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2904774261420093496}
   - component: {fileID: 1513992459623041539}
   - component: {fileID: 742193394968582196}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 747331751160107891}
   - component: {fileID: 8026738018022774428}
   - component: {fileID: 6098642637643299226}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Chopper Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 4157157459078856782}
   - component: {fileID: 6586407493304691120}
   - component: {fileID: 4098799382135094192}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas -Progress BAr Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 8559057036036692810}
   - component: {fileID: 5998062226407555768}
   - component: {fileID: 1202469183231332878}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: chopper icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 6598175593481954083}
   - component: {fileID: 2784889267312089438}
   - component: {fileID: 5495284214415160496}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076389405281803372}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3246310591170352482}
   - component: {fileID: 7210053173812053739}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2672513729752386987}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 8950115639980634738}
   - component: {fileID: 3059448732542718633}
   - component: {fileID: 5389921060531984044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chopper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,6 +680,20 @@ MonoBehaviour:
   workstationSO: {fileID: 11400000, guid: 85537dcc2d0ae5c4d933206feccd7581, type: 2}
   progressState: 0
   isCharging: 0
+  workstationOnCompleteSound:
+    Guid:
+      Data1: 395159828
+      Data2: 1337495991
+      Data3: 1312941753
+      Data4: 1842812967
+    Path: event:/Gameplay/Workstation/CutOnComplete
+  workstationFailed:
+    Guid:
+      Data1: 1809888030
+      Data2: 1222722412
+      Data3: -139758932
+      Data4: -1324475531
+    Path: event:/Gameplay/Workstation/WorkstationFail
 --- !u!1 &6845253342119891947
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8276437068696737342}
   - component: {fileID: 8835620720792287560}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Choppper Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +789,7 @@ GameObject:
   - component: {fileID: 8727559132932346937}
   - component: {fileID: 6929115312074398412}
   - component: {fileID: 207155890201701521}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5417722236029165307}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8623240155306196667}
   - component: {fileID: 7908310346150181963}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ProgressBar Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

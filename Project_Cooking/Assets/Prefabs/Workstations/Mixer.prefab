@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3977513220766048819}
   - component: {fileID: 8910094404789551242}
   - component: {fileID: 6408364763510675796}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Mixer text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3974664720215415404}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4801755157067387933}
   - component: {fileID: 1379788159689991480}
   - component: {fileID: 824616329945439073}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 3316522000589138134}
   - component: {fileID: 7536758438420352596}
   - component: {fileID: 6691538415680104809}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 1564298067116943310}
   - component: {fileID: 7810614622347355889}
   - component: {fileID: 7202987103769577148}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 5645988529326962232}
   - component: {fileID: 1436347345026880909}
   - component: {fileID: 4648380888330597524}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas -Progress BAr Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 107672492771264983}
   - component: {fileID: 7802756883995928741}
   - component: {fileID: 7383660095793074773}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: mixer icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8775027002519420777}
   - component: {fileID: 6710584471262453260}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4120269471679758590}
   - component: {fileID: 3010922663339086277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mixer Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1755530070, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
+  m_Sprite: {fileID: 771979491, guid: a4af0580194c27c4fbb5e997011e02c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 7484406751478988330}
   - component: {fileID: 5854956675854540618}
   - component: {fileID: 8028599049042993765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mixer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,15 +802,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workstationRecipesSO:
   - {fileID: 11400000, guid: 03d73dc0c35cf6e4abbd0cf2d66afc34, type: 2}
+  - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
   - {fileID: 11400000, guid: 05446c80075a6a644ad1ebc7682220d0, type: 2}
   - {fileID: 11400000, guid: 209f3c3d0558ed846ae012fc358b5144, type: 2}
   - {fileID: 11400000, guid: 0dedc02b7f2ac824599bc7a9c4ee85c0, type: 2}
-  - {fileID: 11400000, guid: 959a943e4973be948a223521565cc01e, type: 2}
   progressBar: {fileID: 7409549010394928752}
   progBarCanvas: {fileID: 5282972929879530553}
   workstationSO: {fileID: 11400000, guid: 585f8da34bad3f04ea6058aa31f09de6, type: 2}
   progressState: 0
   isCharging: 0
+  workstationOnCompleteSound:
+    Guid:
+      Data1: 2054697078
+      Data2: 1142957551
+      Data3: -1266632553
+      Data4: -700505926
+    Path: event:/Gameplay/Workstation/MixOnComplete
+  workstationFailed:
+    Guid:
+      Data1: 1809888030
+      Data2: 1222722412
+      Data3: -139758932
+      Data4: -1324475531
+    Path: event:/Gameplay/Workstation/WorkstationFail
 --- !u!1 &7100843447342894962
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5944229365164004704}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6516851393735666929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,7 +903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4605789424770391387}
   - component: {fileID: 7409549010394928752}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ProgressBar Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
