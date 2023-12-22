@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     [Header("VARIABLES")]
     [SerializeField] private int amtEnemiesPerRound = 3;
+    [SerializeField] private int bloodDropAmtPerEnemy = 3;
     [SerializeField] private float beforeSpawnDelay = 2f;
 
     [SerializeField] private GameObject upperSpawn;
@@ -57,6 +58,7 @@ public class EnemyManager : MonoBehaviour
 
         GameObject enemy = pooler.GetPooledObject();
         enemy.transform.position = randomPos;
+        enemy.GetComponent<EnemyDeathHandler>().SetBloodDropAmt(bloodDropAmtPerEnemy);
         enemy.GetComponent<EnemyStateHandler>().Init();
         enemy.GetComponent<Health>().InitHealth();
         enemy.GetComponent<EnemyMovement>().UnFreezeEnemy();
@@ -82,5 +84,14 @@ public class EnemyManager : MonoBehaviour
             enemy.GetComponent<EnemyMovement>().UnFreezeEnemy();
             
         }
+    }
+    public void SetAmtEnemiesPerRound(int amt) {
+        amtEnemiesPerRound = amt;
+    }
+    public void IncrementAmtEnemies(int by) {
+        amtEnemiesPerRound += by;
+    }
+    public void DecrementBloodDropAmt(int by) {
+        amtEnemiesPerRound -= by;
     }
 }

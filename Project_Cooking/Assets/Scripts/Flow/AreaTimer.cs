@@ -36,8 +36,7 @@ public class AreaTimer : MonoBehaviour
     {
         if (startTimerPaused) return;
 
-        if 
-            (isTimerPaused) return;
+        if (isTimerPaused) return;
         else
             timer -= Time.deltaTime;
 

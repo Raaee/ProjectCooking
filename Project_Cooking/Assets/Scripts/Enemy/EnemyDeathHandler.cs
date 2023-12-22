@@ -63,5 +63,7 @@ public class EnemyDeathHandler : MonoBehaviour
 
         return randomPoint;
     }
-
+    public void SetBloodDropAmt(int amt) {
+        amtOfBloodDrops = amt;
+    }
 }

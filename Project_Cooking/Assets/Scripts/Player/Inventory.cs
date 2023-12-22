@@ -88,8 +88,8 @@ public class Inventory : MonoBehaviour
         else {
             GameObject food = Instantiate(go, input.transform.position, Quaternion.identity);
             food.transform.parent = FindObjectOfType<Cookbook>().transform;
+            LevelManager.instance.AddIngredientToKitchen(food);
         }
-
     }
 
     public bool IsEmpty()

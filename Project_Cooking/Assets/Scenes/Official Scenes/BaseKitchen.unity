@@ -373,6 +373,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.782
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904644706766053754, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.782
+      objectReference: {fileID: 0}
     - target: {fileID: 9166239399103059157, guid: dec8c5687fa19a54aa9a19fa36e9e695, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -444,6 +456,7 @@ MonoBehaviour:
   objPooler2: {fileID: 792231946}
   objPooler3: {fileID: 1931159630}
   amtEnemiesPerRound: 3
+  bloodDropAmtPerEnemy: 3
   beforeSpawnDelay: 1
   upperSpawn: {fileID: 1294703754}
   lowerSpawn: {fileID: 1478277969}
@@ -2122,6 +2135,9 @@ MonoBehaviour:
   cookbook: {fileID: 359183489}
   bell: {fileID: 1921863385}
   playerObj: {fileID: 1906773948}
+  bloodBar: {fileID: 768167068553467301}
+  inv: {fileID: 675634325}
+  playerHealth: {fileID: 80679968}
   kitchenTeleportLoc: {fileID: 1011522203}
   dungeonTeleportLoc: {fileID: 1362510037}
   baseIngredients:
@@ -2131,6 +2147,7 @@ MonoBehaviour:
   - {fileID: 6085534217791716471, guid: 192617d5cc969f540b407ffaa90cdbcc, type: 3}
   - {fileID: 2465260756126829935, guid: a267465ac1bba1d4e9335b17c142b63c, type: 3}
   - {fileID: 2465260756126829935, guid: 4d425f744afb1a548bad21525526b1c2, type: 3}
+  ingredientsInKitchen: []
   upperCornerFLoor: {fileID: 682343657}
   lowerCornerFLoor: {fileID: 526348208}
   OnAreaChange:
@@ -3043,7 +3060,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0017639324, y: -0.030121833}
@@ -3833,10 +3850,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2357057119794726591, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2759293394122962490, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4005,10 +4018,6 @@ PrefabInstance:
       propertyPath: cookbook
       value: 
       objectReference: {fileID: 359183489}
-    - target: {fileID: 6249508852913239474, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
-      propertyPath: currentBlood
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6476595783950709589, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

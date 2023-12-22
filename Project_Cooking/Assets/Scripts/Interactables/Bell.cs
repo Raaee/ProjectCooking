@@ -22,7 +22,7 @@ public class Bell : MonoBehaviour, IInteractable  {
         sr = GetComponent<SpriteRenderer>();
         playerInventory = FindObjectOfType<Inventory>();
         
-       // HideBell();
+        HideBell();
     }
     
     public void Interact() {
@@ -56,7 +56,7 @@ public class Bell : MonoBehaviour, IInteractable  {
         isFunctional = true;
     }
     public void HideBell() {
-        this.gameObject.SetActive(false);
+       // this.gameObject.SetActive(false);
         isFunctional = false;
     }
 
