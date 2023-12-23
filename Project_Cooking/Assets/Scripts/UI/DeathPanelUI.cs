@@ -19,6 +19,10 @@ public class DeathPanelUI : PanelUI {
         playerHealth.OnDeath.AddListener(ShowDeathPanel);
         
     }
+    public override void Start()
+    {
+        base.Start();
+    }
 
     [ProButton]
     public void ShowDeathPanel()

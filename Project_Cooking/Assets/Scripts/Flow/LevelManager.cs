@@ -69,9 +69,11 @@ public class LevelManager : MonoBehaviour
         }
 
         if (amtOfRound == -1) {
+            Debug.Log("checking for amt of round");
             EndLevel();
         }
     }
+    [ProButton]
     public void EndLevel() {
         bell.ShowBell();        
         areaTimer.PauseTimer();
@@ -96,11 +98,12 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            int enemyIncrementAmtToImproveGameDesign = 1;
             MoveToDungeon();
             if (amtOfRound % 2 == 0) {
-                enemyManager.DecrementBloodDropAmt(1);
+                enemyManager.DecrementBloodDropAmt(enemyIncrementAmtToImproveGameDesign);
             }
-            enemyManager.IncrementAmtEnemies(1);
+            enemyManager.IncrementAmtEnemies(enemyIncrementAmtToImproveGameDesign);
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);

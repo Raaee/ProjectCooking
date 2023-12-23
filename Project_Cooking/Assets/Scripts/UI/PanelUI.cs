@@ -13,11 +13,9 @@ public abstract class PanelUI : MonoBehaviour {
     [Header("AUDIO")]
     [SerializeField] protected FMODUnity.EventReference restartGameSfx;
     [SerializeField] protected FMODUnity.EventReference backToMainMenuSfx;
-    private void Awake() {
-        canvasGroup = GetComponent<CanvasGroup>();
-    }
+  
 
-    private void Start() {
+    public virtual void Start() {
         HidePanel();
     }
 
@@ -39,6 +37,7 @@ public abstract class PanelUI : MonoBehaviour {
         canvasGroup.alpha = 1f;
     }
     protected void HidePanel() {
+        Debug.Log("hiding");
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
     }

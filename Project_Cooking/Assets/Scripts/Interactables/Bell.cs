@@ -43,11 +43,14 @@ public class Bell : MonoBehaviour, IInteractable  {
     }
     public bool CheckIfWon() {
         Items winningItem = cookbook.levelRecipe.outputIngredient.item;
-
+      
         if (playerInventory.inventoryList.Contains(winningItem))
+        {
             return true;
-        
-        
+
+        }
+
+
         return false;
     }
     public void ShowBell() {
