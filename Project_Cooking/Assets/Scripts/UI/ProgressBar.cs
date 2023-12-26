@@ -15,10 +15,6 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private FMODUnity.EventReference passingNodeAudio;
     [SerializeField] private Cookbook cookbook;
 
-    private void Start()
-    {
-
-    }
     private void Update()
     {
         GetcurrentBloodFill();
@@ -82,5 +78,8 @@ public class ProgressBar : MonoBehaviour
     private void PlayPassingNodeAudio()
     {
         FMODUnity.RuntimeManager.PlayOneShot(passingNodeAudio, transform.position);
+    }
+    public void ResetBar() {
+        currentBlood = 0;
     }
 }

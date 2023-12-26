@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    [Header("Animators")]
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator batAnimator;
+    [SerializeField] private Animator screechAnimator;
 
+    [Header("Renders")]
     [SerializeField] private Renderer playerSpriteRenderer; //should be the spriterenderer?
     [SerializeField] private Renderer batSpriteRenderer; //should be the spriterenderer?
-
+    [SerializeField] private GameObject screechObj;
 
     //PLAYER ANIMATION TAGS 
     public const string LEFT_WALK = "Player_LeftWalk";
@@ -19,14 +22,17 @@ public class PlayerAnimation : MonoBehaviour
     //BAT ANIMATION TAGS 
     public const string BAT_LEFT = "Bat_Left_Idle";
     public const string BAT_RIGHT = "BatRight_Idle";
+    public const string BAT_SCREECH = "Screech";
+    public const string DEATH = "Death";
 
     private bool isInBatMode = false;
     private string currentAnim;
     private Health playerHealth;
     private void Awake()
     {
-        playerHealth = GetComponent<Health>();
+        playerHealth = this.transform.parent.GetComponent<Health>();
         playerHealth.OnHurt.AddListener(Flash);
+        playerHealth.OnDeath.AddListener(PlayDeath);
         currentAnim = IDLE;
     }
 
@@ -44,7 +50,14 @@ public class PlayerAnimation : MonoBehaviour
 
         currentAnim = animTag;
     }
-
+    public void PlayDeath() {
+        isInBatMode = true;
+        ToggleBatMode();
+        PlayAnimation(DEATH);
+    }
+    public void DisablePlayer() {
+        this.transform.parent.gameObject.SetActive(false);
+    }
     public void EnableBatMode()
     {
         if (isInBatMode)
@@ -78,6 +91,16 @@ public class PlayerAnimation : MonoBehaviour
     public bool GetIsInBatMode()
     {
         return isInBatMode;
+    }
+    public void PlayScreechAnimation() {
+        EnableScreech();
+        screechAnimator.Play(BAT_SCREECH);
+    }
+    public void EnableScreech() {
+        screechObj.SetActive(true);
+    }
+    public void DisableScreech() {
+        screechObj.SetActive(false);
     }
 
 

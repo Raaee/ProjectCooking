@@ -17,6 +17,7 @@ public class Ingredient : MonoBehaviour, IInteractable
         if (itemAdded)
         {
             Destroy(this.gameObject);
+            LevelManager.instance.RemoveIngredientFromKitchen(this.gameObject);
         }
     }
     public void HighlightSprite()
@@ -30,7 +31,6 @@ public class Ingredient : MonoBehaviour, IInteractable
 
     public Items GetItemType()
     {
-
         return ingredientSO.item;
     }
 }

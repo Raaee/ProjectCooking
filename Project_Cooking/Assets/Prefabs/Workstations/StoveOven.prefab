@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9166239399103059157}
   - component: {fileID: 495090093554582169}
   - component: {fileID: 8210515291521835583}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5478656933174429770}
   - component: {fileID: 284904352209523484}
   - component: {fileID: 4045990982205961610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoveOven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,20 @@ MonoBehaviour:
   workstationSO: {fileID: 11400000, guid: 681d844938c98184aa49b3641863744a, type: 2}
   progressState: 0
   isCharging: 0
+  workstationOnCompleteSound:
+    Guid:
+      Data1: 772876505
+      Data2: 1144180578
+      Data3: -632384895
+      Data4: -462810851
+    Path: event:/Gameplay/Workstation/BakeOnComplete
+  workstationFailed:
+    Guid:
+      Data1: 1809888030
+      Data2: 1222722412
+      Data3: -139758932
+      Data4: -1324475531
+    Path: event:/Gameplay/Workstation/WorkstationFail
 --- !u!1 &3247427735312113883
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +201,7 @@ GameObject:
   - component: {fileID: 3933102064360203776}
   - component: {fileID: 1678828389443899084}
   - component: {fileID: 6941217464738986286}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: stoven icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +276,7 @@ GameObject:
   - component: {fileID: 3507180646101426565}
   - component: {fileID: 7083719797155817627}
   - component: {fileID: 410660640403878039}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: StoveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1767734621083873973}
   - component: {fileID: 1179415187067402883}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ProgressBar Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5740661346714926286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +535,7 @@ GameObject:
   - component: {fileID: 6904644706766053754}
   - component: {fileID: 3229481974644873807}
   - component: {fileID: 2156694182971029144}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2790245374929485976}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +647,7 @@ GameObject:
   - component: {fileID: 8051093585338266382}
   - component: {fileID: 2524803927990255746}
   - component: {fileID: 1262180037823770675}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas -Progress BAr Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3495181764404610741}
   - component: {fileID: 1019187648625873115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stove Oven Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1164081281687985501}
   - component: {fileID: 2311063134369247102}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +882,7 @@ GameObject:
   - component: {fileID: 5927046833179160344}
   - component: {fileID: 5728282607196646410}
   - component: {fileID: 3267150193447486167}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3609745233686227916}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

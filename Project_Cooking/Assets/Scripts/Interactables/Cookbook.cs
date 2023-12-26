@@ -14,6 +14,8 @@ public class Cookbook : MonoBehaviour, IInteractable
     [SerializeField] private Sprite highlightedCookbookSprite;
     private SpriteRenderer sr;
     [HideInInspector] public UnityEvent<float> OnNodeIncreased;
+    [Header("DEBUG RECIPE: add a recipe to override the random recipe, else leave null")]
+    public RecipeSO debugLevelRecipe;
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -21,13 +23,24 @@ public class Cookbook : MonoBehaviour, IInteractable
         recipeDisplay.SetRecipeSO(levelRecipe);
     }
 
-    public void PickRandomRecipe()
+    public void PickRandomRecipe() // refactor: get the list of all the recipes and randomly switch their positions, each level we go through each one
     {
-        int ranNum;
-        ranNum = Random.Range(0, allRecipes.Count);
+ 
 
-        levelRecipe = allRecipes[ranNum];
-        allRecipes.Remove(levelRecipe);
+        if (debugLevelRecipe == null)
+        {
+            int ranNum;
+            ranNum = Random.Range(0, allRecipes.Count);
+
+            levelRecipe = allRecipes[ranNum];
+            allRecipes.Remove(levelRecipe);
+        }
+        else
+        {
+            levelRecipe = debugLevelRecipe;
+            allRecipes.Remove(levelRecipe);
+        }
+       
     }
 
     

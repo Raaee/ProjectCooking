@@ -43,6 +43,12 @@ public class KitchenMusic : MonoBehaviour
         instance.setParameterByName(TRANSITION_PROGRESS_PARAM_NAME, 0);
     }
 
+    public void StopMusic()
+    {
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+
     [ProButton]
     public void TransitionToDungeon()
     {

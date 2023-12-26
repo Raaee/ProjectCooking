@@ -3,87 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathPanelUI : MonoBehaviour
-{
-    private CanvasGroup canvasGroup;
-    [SerializeField] [Range(0.01f, 2f)] private float fadeInTime = 1.5f;
-    [SerializeField] [Range(0.01f, 1f)] private float delayBeforeDisplay = 0.5f;
-    [SerializeField] private EasingFunction curveFunction = EasingFunction.Linear;
+public class DeathPanelUI : PanelUI {
+
     [SerializeField] private Health playerHealth;
 
-    [Header("AUDIO")]
+    [Header("DEATH PANEL AUDIO")]
     [SerializeField] private FMODUnity.EventReference deathPanelSfx;
-    [SerializeField] private FMODUnity.EventReference restartGameSfx;
-    [SerializeField] private FMODUnity.EventReference backToMainMenuSfx;
+    
     private void Awake()
     {
+        bell.OnGameLost.AddListener(ShowDeathPanel);
+
         if (!playerHealth)
             Debug.LogError("Please assign Player Health in my inspector", this.gameObject);
         playerHealth.OnDeath.AddListener(ShowDeathPanel);
-        canvasGroup = GetComponent<CanvasGroup>();
         
     }
-
-    private void Start()
+    public override void Start()
     {
-        HideDeathPanel();
+        base.Start();
     }
+
     [ProButton]
     public void ShowDeathPanel()
     {
         var animCurveFunction = AnimationCurveHelper.GetAnimationCurve(curveFunction);
         if(!playerHealth.IsDead())
-            StartCoroutine(ShowDeathPanel(fadeInTime, animCurveFunction));
+            StartCoroutine(ShowPanel(fadeInTime, animCurveFunction));
     }
-
-    private IEnumerator ShowDeathPanel(float duration, AnimationCurve curve)
+    public override void PlayAgainButton()
     {
-        float startAlpha = 0f;
-        float endAlpha = 1f;
-        float timeElasped = 0f;
 
-        yield return new WaitForSeconds(delayBeforeDisplay);
-        PlayDeathPanelSfx();
-        while (timeElasped < duration)
-        {
-            float normalizeTimed = timeElasped / duration;
-            float alphaRatio = curve.Evaluate(normalizeTimed);
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, alphaRatio);
-            timeElasped += Time.deltaTime;
-            yield return null;
-        }
-        canvasGroup.interactable = true;
-        canvasGroup.alpha = 1f;
+        FadeManager.instance?.FadeOutAndLoadScene(1);
     }
-
-    [ProButton]
-    private void HideDeathPanel()
-    {
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-    }
-
-    public void PlayAgainButton()
-    {
-        Debug.Log("Let Vampire Chef Cook.");
-    }
-
-    public void GoToMainMenu()
-    {
-        Debug.Log("Moving To Main Menu");
-
-    }
-
-    private void PlayDeathPanelSfx()
-    {
+    
+    public override void PlaySFX() {
         FMODUnity.RuntimeManager.PlayOneShot(deathPanelSfx, transform.position);
+
     }
     public void PlayRestartGameSfx()
     {
         FMODUnity.RuntimeManager.PlayOneShot(restartGameSfx, transform.position);
     }
-    public void PlayBackToMainMenuSfx()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot(backToMainMenuSfx, transform.position);
-    }
+    
 }
