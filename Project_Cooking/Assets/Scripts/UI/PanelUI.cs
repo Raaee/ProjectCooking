@@ -47,6 +47,7 @@ public abstract class PanelUI : MonoBehaviour {
 
     public void GoToMainMenu() {
         Debug.Log("Moving To Main Menu");
+        FadeManager.instance?.FadeOutAndLoadScene(0);
 
     }
     public void PlayBackToMainMenuSfx() {

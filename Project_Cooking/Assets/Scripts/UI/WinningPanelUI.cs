@@ -16,6 +16,9 @@ public class WinningPanelUI : PanelUI {
         // Instead of play again, this will be next level
 
         Debug.Log("Going to next level");
+        FadeManager.instance?.FadeOutAndLoadScene(1);
+        FindObjectOfType<KitchenMusic>()?.StopMusic();
+
     }
     public void ShowWinPanel() {
         Debug.Log("showing win panel");

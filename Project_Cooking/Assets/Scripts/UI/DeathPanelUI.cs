@@ -33,8 +33,10 @@ public class DeathPanelUI : PanelUI {
     }
     public override void PlayAgainButton()
     {
-        Debug.Log("Let Vampire Chef Cook.");
+
+        FadeManager.instance?.FadeOutAndLoadScene(1);
     }
+    
     public override void PlaySFX() {
         FMODUnity.RuntimeManager.PlayOneShot(deathPanelSfx, transform.position);
 

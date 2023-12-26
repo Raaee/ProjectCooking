@@ -23,7 +23,7 @@ public class Cookbook : MonoBehaviour, IInteractable
         recipeDisplay.SetRecipeSO(levelRecipe);
     }
 
-    public void PickRandomRecipe()
+    public void PickRandomRecipe() // refactor: get the list of all the recipes and randomly switch their positions, each level we go through each one
     {
  
 

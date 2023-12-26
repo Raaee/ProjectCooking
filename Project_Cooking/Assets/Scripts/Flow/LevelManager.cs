@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
         }
         else {
             instance = this;
+           
         }
         StartLevel();
     }

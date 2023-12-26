@@ -3570,7 +3570,7 @@ PrefabInstance:
     - target: {fileID: 6211281338474103904, guid: 8fc329fc2295b6b4ca4fe3ff64b88999, type: 3}
       propertyPath: debugLevelRecipe
       value: 
-      objectReference: {fileID: 11400000, guid: 9223d4927cc768448a41a3b3fbfecbc0, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7596170964559973884, guid: 8fc329fc2295b6b4ca4fe3ff64b88999, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8604162
@@ -3947,10 +3947,22 @@ PrefabInstance:
     - target: {fileID: 1434423789033366179, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1525818226}
     - target: {fileID: 1434423789033366179, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 1525818226}
+    - target: {fileID: 1434423789033366179, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434423789033366179, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayBackToMainMenuSfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434423789033366179, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PanelUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1503392748752912403, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: inventory
@@ -4115,10 +4127,18 @@ PrefabInstance:
     - target: {fileID: 6003573373967975757, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1525818226}
     - target: {fileID: 6003573373967975757, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 1525818226}
+    - target: {fileID: 6003573373967975757, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAgainButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003573373967975757, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayRestartGameSfx
       objectReference: {fileID: 0}
     - target: {fileID: 6052043570974928439, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
