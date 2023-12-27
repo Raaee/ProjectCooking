@@ -13,6 +13,7 @@ public class LevelUIManager : MonoBehaviour {
 
     [Header("VISUALS")]
     [SerializeField] private GameObject kitchenInteractables;
+    [SerializeField] private GameObject dungeonDecor;
     [SerializeField] private GameObject floor;
     [SerializeField] private Color32 dungeonFloorColor;
     [SerializeField] private Color32 kitchenFloorColor;
@@ -46,6 +47,7 @@ public class LevelUIManager : MonoBehaviour {
     {
         dungeonUI.SetActive(false);
         kitchenUI.SetActive(false);
+        dungeonDecor.SetActive(false);
         kitchenInteractables.SetActive(false);
     }
     [ProButton]
@@ -54,10 +56,12 @@ public class LevelUIManager : MonoBehaviour {
         dungeonUI.SetActive(true);
         kitchenUI.SetActive(false);
         kitchenInteractables.SetActive(false);
+        dungeonDecor.SetActive(true);
     }
     [ProButton]
     private void SetUpKitchen()
     {
+        dungeonDecor.SetActive(false);
         dungeonUI.SetActive(false);
         kitchenUI.SetActive(true);
         kitchenInteractables.SetActive(true);
