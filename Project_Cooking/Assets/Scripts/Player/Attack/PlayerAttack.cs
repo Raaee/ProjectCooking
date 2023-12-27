@@ -24,6 +24,8 @@ public class PlayerAttack : MonoBehaviour   {
         var knife = go.GetComponent<Knife>();
         if (speedMode) {
             knife.IncreaseProjSpeed(attackSpeedMultiplier);
+        } else {
+            knife.NormalProjSpeed();
         }
         knife.SetAttackDirection(GetEightDirection(dir));
 

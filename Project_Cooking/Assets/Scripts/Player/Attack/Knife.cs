@@ -10,7 +10,7 @@ public class Knife : MonoBehaviour
     private float timer = 0f;
     [SerializeField] private AttackDirection attackDirection = AttackDirection.RIGHT;
     private Vector2 moveDirection;
-   
+
     private void FixedUpdate()  {
         MoveKnife();
         timer += Time.deltaTime;
@@ -94,5 +94,8 @@ public class Knife : MonoBehaviour
     public void IncreaseProjSpeed(float multiplier) {
         projectileSpeed *= multiplier;
     }   
+    public void NormalProjSpeed() {
+        projectileSpeed = 1f;
+    }
 
 }
