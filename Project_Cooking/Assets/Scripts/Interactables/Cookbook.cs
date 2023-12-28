@@ -5,8 +5,6 @@ using UnityEngine.Events;
 public class Cookbook : MonoBehaviour, IInteractable
 {
     [SerializeField] private CookbookRecipeDisplay recipeDisplay;
-    public List<RecipeSO> allRecipes = new List<RecipeSO>();
-    public RecipeSO levelRecipe;
     public int nodesUnlocked = 0;
 
     [Header("VISUAL")]
@@ -19,31 +17,10 @@ public class Cookbook : MonoBehaviour, IInteractable
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        PickRandomRecipe();
-        recipeDisplay.SetRecipeSO(levelRecipe);
+        AllRecipeData.instance.GetRecipe();
+        recipeDisplay.SetRecipeSO(AllRecipeData.instance.levelRecipe);
+        DontDestroyOnLoad(this.gameObject);
     }
-
-    public void PickRandomRecipe() {
-        // refactor: get the list of all the recipes and randomly switch their positions, each level we go through each one
-
-        if (debugLevelRecipe == null)
-        {
-            int ranNum;
-            ranNum = Random.Range(0, allRecipes.Count);
-
-            levelRecipe = allRecipes[ranNum];
-            allRecipes.Remove(levelRecipe);
-        }
-        else
-        {
-            levelRecipe = debugLevelRecipe;
-            allRecipes.Remove(levelRecipe);
-        }
-       
-    }
-
-    
-
     public void Interact()  {
 
 
@@ -78,7 +55,7 @@ public class Cookbook : MonoBehaviour, IInteractable
 
     private void GetPercentageOfRecipeUnlocked()
     {
-        var numOfSteps = levelRecipe.recipeSteps.Count;
+        var numOfSteps = AllRecipeData.instance.levelRecipe.recipeSteps.Count;
         float percentage = nodesUnlocked / numOfSteps;
         OnNodeIncreased?.Invoke(percentage);
     }

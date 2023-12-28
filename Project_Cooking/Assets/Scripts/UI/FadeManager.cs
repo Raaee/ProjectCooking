@@ -22,7 +22,7 @@ public class FadeManager : MonoBehaviour
     }
     public void FadeOutAndLoadScene(int sceneIndex)
     {
-        if (isFading)
+        if (isFading || sceneIndex == -2)
             return;
         isFading = true;
         StartCoroutine(FadeOutAndFadeIn(sceneIndex));

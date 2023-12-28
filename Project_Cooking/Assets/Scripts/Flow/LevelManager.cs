@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
     }
     public void StartLevel() {
         ResetLevel();
-        amtOfRound = cookbook.levelRecipe.recipeSteps.Count;
+        amtOfRound = AllRecipeData.instance.levelRecipe.recipeSteps.Count;
         currentArea = Current_Area.LIMBO;
         ChangeArea();
         SpawnAllBaseIngredients();
@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
 
         if (amtOfRound > 0) {
             ChangeArea();
-            Debug.LogError("changing area");
+            //Debug.LogError("changing area");
         }
 
         if (amtOfRound == 0) {
@@ -85,6 +85,7 @@ public class LevelManager : MonoBehaviour
          */
         bell.ShowBell();        
         areaTimer.PauseTimer();
+        areaTimer.ActivateVignette(false);
     }
     
     [ProButton]

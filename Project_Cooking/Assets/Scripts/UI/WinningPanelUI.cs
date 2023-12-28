@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 
 
@@ -18,8 +19,10 @@ public class WinningPanelUI : PanelUI {
         Debug.Log("Going to next level");
         FadeManager.instance?.FadeOutAndLoadScene(1);
         FindObjectOfType<KitchenMusic>()?.StopMusic();
+        AllRecipeData.instance.NextLevel();
 
     }
+    [ProButton]
     public void ShowWinPanel() {
         Debug.Log("showing win panel");
         var animCurveFunction = AnimationCurveHelper.GetAnimationCurve(curveFunction);
