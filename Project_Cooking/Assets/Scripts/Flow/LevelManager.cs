@@ -65,17 +65,24 @@ public class LevelManager : MonoBehaviour
     }
     public void ChangingLevel() {
 
-        if (amtOfRound >= 0) {
+        if (amtOfRound > 0) {
             ChangeArea();
+            Debug.LogError("changing area");
         }
 
-        if (amtOfRound == -1) {
-            Debug.Log("checking for amt of round");
+        if (amtOfRound == 0) {
+            Debug.Log("ending round: " +  amtOfRound);
             EndLevel();
         }
     }
     [ProButton]
     public void EndLevel() {
+        /*
+         * timer should continue at last round.
+         * bell should be active at last round (bell.ShowBell())
+         * if timer goes out and no input or false input, you die
+         * if true input, win panel and timer stops
+         */
         bell.ShowBell();        
         areaTimer.PauseTimer();
     }
@@ -96,6 +103,7 @@ public class LevelManager : MonoBehaviour
         {
             MoveToKitchen();
             amtOfRound--;
+            Debug.LogWarning("amt rounds left: " + amtOfRound);
         }
         else
         {
@@ -108,8 +116,7 @@ public class LevelManager : MonoBehaviour
             enemyManager.SpawnAllEnemies();
         }
         areaTimer.ResetAreaTime(currentArea);
-
-        OnAreaChange?.Invoke(currentArea);
+        OnAreaChange?.Invoke(currentArea); // DO NOT MOVE IT WILL EXPLODE;; LIVE BOMB
     }
     public void SpawnAllBaseIngredients()
     {

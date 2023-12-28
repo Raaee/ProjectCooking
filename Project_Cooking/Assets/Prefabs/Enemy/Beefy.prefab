@@ -67,6 +67,7 @@ MonoBehaviour:
   OnEnemyCharge:
     m_PersistentCalls:
       m_Calls: []
+  currentState: 0
 --- !u!114 &184274246093717925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb577e7bfebd7bc439ab35d645b87534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 8
+  maxHealth: 11
   currentHealth: 3
   invicibilityTime: 0
   godMode: 0

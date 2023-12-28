@@ -33,11 +33,11 @@ public class LevelUIManager : MonoBehaviour {
                 DisableAllUI();
                 break;
             case Current_Area.DUNGEON:            
-                Debug.Log("Dungeon");
+              //  Debug.Log("Dungeon");
                 SetUpDungeon();
                 break;
             case Current_Area.KITCHEN:
-                Debug.Log("Kitchen");
+               // Debug.Log("Kitchen");
                 SetUpKitchen();
                 break;
         }
