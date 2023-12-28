@@ -35,6 +35,8 @@ public class DungeonMusic : MonoBehaviour
     [ProButton]
     public void StartMusic()
     {
+        if (playerHealth.IsDead())
+            return;
         instance.start();
     }
     [ProButton]
