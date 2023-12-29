@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3056636538508634473}
   - component: {fileID: 6700596118906824325}
   - component: {fileID: 1060983285603369094}
+  - component: {fileID: 4301254792881022630}
   m_Layer: 0
   m_Name: Blood Drop
   m_TagString: BloodDrop
@@ -47,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d73a6c2c01c27a45918d9da45a96c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpSpeed: 3.5
   rb2d: {fileID: 6700596118906824325}
   bloodPickupAudio:
     Guid:
@@ -118,6 +118,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
+--- !u!114 &4301254792881022630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487424979715607307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e1d70ae1d303d409e676fe55cef5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceHeight: 5
+  bounceDuration: 1
 --- !u!1 &3488178149074864951
 GameObject:
   m_ObjectHideFlags: 0
