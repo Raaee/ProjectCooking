@@ -37,7 +37,7 @@ public abstract class PanelUI : MonoBehaviour {
         canvasGroup.alpha = 1f;
     }
     protected void HidePanel() {
-        Debug.Log("hiding");
+     
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
     }
@@ -46,7 +46,7 @@ public abstract class PanelUI : MonoBehaviour {
     public abstract void PlaySFX();
 
     public void GoToMainMenu() {
-        Debug.Log("Moving To Main Menu");
+       
         FadeManager.instance?.FadeOutAndLoadScene(0);
 
     }

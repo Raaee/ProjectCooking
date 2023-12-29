@@ -9,9 +9,11 @@ public class WinningPanelUI : PanelUI {
     [SerializeField] private FMODUnity.EventReference winPanelSfx;
     [Header("REferences")]
     [SerializeField] private GameObject deathPanelGO;
+    public bool playerWon = false;
     public override void Start() {
         base.Start();
         bell.OnGameWon.AddListener(ShowWinPanel);
+        playerWon = false;
     }
     public override void PlayAgainButton() {
         // Instead of play again, this will be next level
@@ -28,6 +30,7 @@ public class WinningPanelUI : PanelUI {
         var animCurveFunction = AnimationCurveHelper.GetAnimationCurve(curveFunction);
         StartCoroutine(ShowPanel(fadeInTime, animCurveFunction));
         deathPanelGO.SetActive(false); //setting false to make the winning panel interactive
+        playerWon = true;
     }
 
     public override void PlaySFX() {

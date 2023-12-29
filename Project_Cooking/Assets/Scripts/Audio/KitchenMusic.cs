@@ -11,7 +11,7 @@ public class KitchenMusic : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private Cookbook cookbook;
     private FMOD.Studio.EventInstance instance;
-
+    [SerializeField] private Health playerHealth;
     private void Awake()
     {
         levelManager.OnAreaChange.AddListener(MusicLogic);
@@ -39,6 +39,8 @@ public class KitchenMusic : MonoBehaviour
     [ProButton]
     public void StartMusic()
     {
+        if (playerHealth.IsDead())
+            return;
         instance.start();
         instance.setParameterByName(TRANSITION_PROGRESS_PARAM_NAME, 0);
     }

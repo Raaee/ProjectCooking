@@ -17,9 +17,13 @@ public class Cookbook : MonoBehaviour, IInteractable
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+       
+     
+    }
+    private void Start()
+    {
         AllRecipeData.instance.GetRecipe();
         recipeDisplay.SetRecipeSO(AllRecipeData.instance.levelRecipe);
-        DontDestroyOnLoad(this.gameObject);
     }
     public void Interact()  {
 
