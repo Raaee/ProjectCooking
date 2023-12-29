@@ -22,6 +22,7 @@ public class FadeManager : MonoBehaviour
     }
     public void FadeOutAndLoadScene(int sceneIndex)
     {
+        Debug.Log("going along twice? index " + sceneIndex);
         if (isFading || sceneIndex == -2)
             return;
         isFading = true;
@@ -46,6 +47,7 @@ public class FadeManager : MonoBehaviour
             LevelManager lvlManager = FindObjectOfType<LevelManager>();
             if (lvlManager)
             {
+               
                 lvlManager.InvokeOnAreaChange();
             }
                 

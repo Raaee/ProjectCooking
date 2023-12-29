@@ -52,7 +52,8 @@ public class LevelManager : MonoBehaviour
         ResetLevel();
         amtOfRound = AllRecipeData.instance.levelRecipe.recipeSteps.Count;
         currentArea = Current_Area.LIMBO;
-        ChangeArea();
+        // ChangeArea();
+        InvokeOnAreaChange();
         SpawnAllBaseIngredients();
     }
     public void ResetLevel() {
@@ -66,23 +67,27 @@ public class LevelManager : MonoBehaviour
     public void ChangingLevel() {
 
         if (amtOfRound > 0) {
+           
             ChangeArea();
             //Debug.LogError("changing area");
         }
 
-        if (amtOfRound == 0) {
-            Debug.Log("ending round: " +  amtOfRound);
+        if (amtOfRound == 1 && currentArea == Current_Area.DUNGEON) {
             EndLevel();
+        }
+
+        if (amtOfRound == 0)
+        {
+            var winPanel = FindObjectOfType<WinningPanelUI>();
+
+            //insta lose if the winning panel is never shown
+            if(!winPanel.playerWon)
+                FindObjectOfType<DeathPanelUI>().ShowDeathPanel();
         }
     }
     [ProButton]
     public void EndLevel() {
-        /*
-         * timer should continue at last round.
-         * bell should be active at last round (bell.ShowBell())
-         * if timer goes out and no input or false input, you die
-         * if true input, win panel and timer stops
-         */
+
         bell.ShowBell();        
         areaTimer.PauseTimer();
         areaTimer.ActivateVignette(false);
@@ -90,10 +95,11 @@ public class LevelManager : MonoBehaviour
     
     [ProButton]
     public void ChangeArea() {
-        
+
         //BAD CODE ALERT
         //we want to call the below event only inbetween fading, fade manager will do it
-       // OnAreaChange?.Invoke(currentArea);
+        // OnAreaChange?.Invoke(currentArea);
+        
         int NegativeNumberToRepresentNullSceneHiRaeus = -1;
         FadeManager.instance?.FadeOutAndLoadScene(NegativeNumberToRepresentNullSceneHiRaeus);//-1 means it wont fade to a new scene 
     }
@@ -102,12 +108,14 @@ public class LevelManager : MonoBehaviour
     {
         if (currentArea == Current_Area.DUNGEON)
         {
+
             MoveToKitchen();
             amtOfRound--;
-            Debug.LogWarning("amt rounds left: " + amtOfRound);
+          
         }
         else
         {
+
             int enemyIncrementAmtToImproveGameDesign = 1;
             MoveToDungeon();
             if (amtOfRound % 2 == 0) {

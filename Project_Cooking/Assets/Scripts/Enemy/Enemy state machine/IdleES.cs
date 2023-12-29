@@ -28,6 +28,9 @@ public class IdleES : EnemyState
 
     public override void OnStateUpdate()
     {
+        if (!playerTransform)
+            return;
+
         float distance = Vector2.Distance(playerTransform.position, transform.position);
         if (distance < PLAYER_DETECT_RADIUS)
         {

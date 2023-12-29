@@ -19,15 +19,20 @@ public class AreaTimer : MonoBehaviour
     [SerializeField] private float timer = 0f;
     [SerializeField] private bool isTimerPaused = false;
     [SerializeField] private bool startTimerPaused = false;
+    [SerializeField] private bool isRoundOverInvoked = false;
 
     public UnityEvent OnRoundOver;
 
-    void Start()
+    private void Awake()
     {
         areaTimerUI = GetComponentInChildren<AreaTimerUI>();
         vignetteScript = vignette.GetComponent<Q_Vignette_Single>();
-        dungeonTimeLength += 0.8f;
-        kitchenTimeLength += 0.8f;
+    }
+    void Start()
+    {
+        float delayStartTime = 2.5f;
+        dungeonTimeLength += delayStartTime;
+        kitchenTimeLength += delayStartTime;
         timer = dungeonTimeLength;
         timeAlmostDone = true;
     }
@@ -47,9 +52,14 @@ public class AreaTimer : MonoBehaviour
             }
         }
 
-        if (timer <= 0.3f)
+        float roundOverBuffer = 0.3f;
+        if (timer <= roundOverBuffer)
         {
-            OnRoundOver.Invoke();
+            if(isRoundOverInvoked == false)
+            {
+                OnRoundOver.Invoke();
+                isRoundOverInvoked = true;
+            }
         }
 
     }
@@ -78,8 +88,10 @@ public class AreaTimer : MonoBehaviour
                 timer = dungeonTimeLength;
                 break;
         }
+        
         vignetteScript.mainScale = 0f;
         isTimerPaused = false;
+        isRoundOverInvoked = false;
     }
 
     public float GetCurrentTime()
