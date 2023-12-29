@@ -8,8 +8,11 @@ public class DungeonMusic : MonoBehaviour
 {
 
     [SerializeField] private FMODUnity.EventReference dungeonMusic;
-    private string Dungeon_Hurt_PARAM_NAME = "DungeonMusicHurt";
+    private string Dungeon_Hurt_PARAM_NAME = "PlayerHurtInstance";
     private string ENEMIES_KILLED_PARAM_NAME = "EnemiesKilled";
+    private string PLAYER_HEALTH_PARAM = "PlayerHealth";
+    private string MUSIC_VARIATION_PARAM = "DungeonMusicVariation";
+    private string END_MUSIC_PARAM = "EndMusic";
     private FMOD.Studio.EventInstance instance;
     private int enemiesKilled = 0;
     [SerializeField] private Health playerHealth;
@@ -20,8 +23,15 @@ public class DungeonMusic : MonoBehaviour
         instance = FMODUnity.RuntimeManager.CreateInstance(dungeonMusic);
         playerHealth.OnHurt.AddListener(OnPlayerHurtMusic);
         playerHealth.OnDeath.AddListener(EndMusic);
+        playerHealth.OnHeal.AddListener(UpdateHealth) ;
         levelManager.OnAreaChange.AddListener(PlayMusicLogic);
         
+    }
+
+    private void UpdateHealth()
+    {
+        instance.setParameterByName(PLAYER_HEALTH_PARAM, playerHealth.GetCurrentHealth()); ;
+
     }
 
     private void PlayMusicLogic(Current_Area currentArea)
@@ -37,12 +47,16 @@ public class DungeonMusic : MonoBehaviour
     {
         if (playerHealth.IsDead())
             return;
+        var randomAmt = UnityEngine.Random.Range(0, 4);
+        instance.setParameterByName(MUSIC_VARIATION_PARAM, randomAmt);
+        instance.setParameterByName(END_MUSIC_PARAM, 0);
         instance.start();
     }
     [ProButton]
     public void EndMusic()
     {
-        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        instance.setParameterByName(END_MUSIC_PARAM, 1);
+      
     }
 
     [ProButton]
@@ -56,7 +70,7 @@ public class DungeonMusic : MonoBehaviour
         instance.setParameterByName(Dungeon_Hurt_PARAM_NAME, 3);
         yield return new WaitForSeconds(0.5f);
         instance.setParameterByName(Dungeon_Hurt_PARAM_NAME, 3);
-
+        UpdateHealth();
     }
 
     [ProButton]

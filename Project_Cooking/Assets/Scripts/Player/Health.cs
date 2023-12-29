@@ -96,5 +96,9 @@ public class Health : MonoBehaviour
     public void ResetHealth() {
         currentHealth = maxHealth;
     }
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
 
 }

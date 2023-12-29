@@ -2918,11 +2918,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonMusic:
     Guid:
-      Data1: -393591007
-      Data2: 1305900296
-      Data3: 2058092958
-      Data4: 2093683762
-    Path: event:/Music/DeongeonMusicRoughDraft
+      Data1: -1043027838
+      Data2: 1161647321
+      Data3: -1695276892
+      Data4: 1821140232
+    Path: event:/Music/DungeonMusic
   playerHealth: {fileID: 80679968}
   levelManager: {fileID: 1293786945}
 --- !u!21 &1213907250
@@ -5691,6 +5691,14 @@ PrefabInstance:
     - target: {fileID: 391399521111418643, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404767341918995831, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: dungeonTimeLength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 404767341918995831, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: kitchenTimeLength
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1118681158353516160, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_Pivot.x

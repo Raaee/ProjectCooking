@@ -30,7 +30,7 @@ public class AreaTimer : MonoBehaviour
     }
     void Start()
     {
-        float delayStartTime = 0.8f;
+        float delayStartTime = 2.5f;
         dungeonTimeLength += delayStartTime;
         kitchenTimeLength += delayStartTime;
         timer = dungeonTimeLength;
