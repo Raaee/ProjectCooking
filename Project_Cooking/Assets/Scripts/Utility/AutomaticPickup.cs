@@ -37,6 +37,7 @@ public class AutomaticPickup : MonoBehaviour
 
     public void SetTargetPosition(Transform newTransform)
     {
+        GetComponent<RaeusBounce>().SetBounce(false);
         playerTransform = newTransform;
         hasTarget = true;
         GetComponentInChildren<BloodDropSpriteData>().highlightSprites();
