@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
+
 
 public class HS_DemoShooting2D : MonoBehaviour
 {
@@ -35,6 +38,7 @@ public class HS_DemoShooting2D : MonoBehaviour
 
     void Update()
     {
+        /*
         //Single shoot
         if (Input.GetButtonDown("Fire1"))
         {
@@ -72,7 +76,7 @@ public class HS_DemoShooting2D : MonoBehaviour
         else
         {
             Debug.Log("No camera");
-        }
+        }*/
     }
 
     //GUI Text

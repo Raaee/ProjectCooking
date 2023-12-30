@@ -38,6 +38,7 @@ public class HS_DemoShooting : MonoBehaviour
 
     void Update()
     {
+        /*
         //Single shoot
         if (Input.GetButtonDown("Fire1"))
         {
@@ -81,7 +82,7 @@ public class HS_DemoShooting : MonoBehaviour
         else
         {
             Debug.Log("No camera");
-        }
+        }*/
     }
 
     //GUI Text
