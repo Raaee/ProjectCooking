@@ -47,12 +47,24 @@ public class ProgressBar : MonoBehaviour
     }
     private int CalculateLitNodeCount(float percentage)
     {
+        /*
         if (percentage >= 1.0f) return 5;
         if (percentage > 0.8f) return 4;
         if (percentage > 0.6f) return 3;
         if (percentage > 0.4f) return 2;
         if (percentage > 0.2f) return 1;
-
+        */
+        //comment out above and use this bottom code for 6 nodes 
+       
+        if (percentage >= 1.0f) return 6;
+        if (percentage >= 0.834f) return 5;
+        if (percentage > 0.66f) return 4;
+        if (percentage > 0.5f) return 3;
+        if (percentage > 0.333f) return 2;
+        if (percentage > 0.167f) return 1;
+         
+         
+       
         return 0;
     }
 
