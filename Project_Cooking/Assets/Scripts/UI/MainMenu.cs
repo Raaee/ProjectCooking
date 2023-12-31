@@ -14,9 +14,14 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+    private void Init() {
         currentPanel = mainMenuPanel;
         FadeInCanvasGroup(currentPanel);
-
+        settingsPanel.gameObject.SetActive(false);
+        creditsPanel.gameObject.SetActive(false);
+        tutorialPanel.gameObject.SetActive(false);
     }
 
     public void GotoSettings()
