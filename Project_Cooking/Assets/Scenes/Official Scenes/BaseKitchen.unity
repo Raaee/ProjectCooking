@@ -5852,6 +5852,10 @@ PrefabInstance:
       propertyPath: bell
       value: 
       objectReference: {fileID: 1921863385}
+    - target: {fileID: 2357057119794726591, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2759293394122962490, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6086,6 +6090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8246281106807932984, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8573896462596626967, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
