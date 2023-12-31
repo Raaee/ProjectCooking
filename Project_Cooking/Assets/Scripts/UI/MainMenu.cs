@@ -8,14 +8,20 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup mainMenuPanel;
     [SerializeField] private CanvasGroup settingsPanel;
     [SerializeField] private CanvasGroup creditsPanel;
+    [SerializeField] private CanvasGroup tutorialPanel;
     private CanvasGroup currentPanel;
-    [SerializeField] [Range(1.0f, 3f)] private float fadeTime = 1.5f;
+    [SerializeField] [Range(0.2f, 3f)] private float fadeTime = 1f;
 
     private void Start()
     {
+        Init();
+    }
+    private void Init() {
         currentPanel = mainMenuPanel;
         FadeInCanvasGroup(currentPanel);
-
+        settingsPanel.gameObject.SetActive(false);
+        creditsPanel.gameObject.SetActive(false);
+        tutorialPanel.gameObject.SetActive(false);
     }
 
     public void GotoSettings()
@@ -38,7 +44,11 @@ public class MainMenu : MonoBehaviour
         FadeInCanvasGroup(mainMenuPanel);
         currentPanel = mainMenuPanel;
     }
-
+    public void GoToTutorial() {
+        FadeOutCanvasGroup(currentPanel);
+        FadeInCanvasGroup(tutorialPanel);
+        currentPanel = tutorialPanel;
+    }
 
     private void FadeInCanvasGroup(CanvasGroup cg)
     {
