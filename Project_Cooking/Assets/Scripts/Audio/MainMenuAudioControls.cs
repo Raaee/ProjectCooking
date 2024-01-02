@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MainMenuAudioControls : MonoBehaviour
 {
-    private int playerAudioAmt = 0;
-    private const int MAX_AUDIO_AMOUNT = 100;
+   // private int playerAudioAmt = 0;
+    //private const int MAX_AUDIO_AMOUNT = 100;
     [Header("AUDIO REF")]
     [SerializeField] private FMODUnity.EventReference passingNodeAudio;//1
     [SerializeField] private FMODUnity.EventReference uiAccept;//2

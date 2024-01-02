@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BloodDropFallAnim : MonoBehaviour
 {
-    private float duration = 7f; // Adjust duration
-    private float fallDistance = 15f; // Adjust fall distance
+    private float duration = 4f; // Adjust duration
+    private float fallDistance = 18f; // Adjust fall distance
 
     private RectTransform rectTransform;
 
@@ -17,10 +17,13 @@ public class BloodDropFallAnim : MonoBehaviour
     }
 
     public void StartFalling()
-    {
+    { // Generate a random scale value between 0.5 and 2.0
+        float randomScale = Random.Range(0.333f, 1.333f);
+        transform.localScale = new Vector3(randomScale, randomScale, randomScale);
         //add some randomness, woooooooooo
-        var _duration = Random.Range(duration -2f, duration + 2f);
-        var _fallDistance = Random.Range(fallDistance - 2f, fallDistance + 2f);
+        float randBuffer = 1f;
+        var _duration = Random.Range(duration - randBuffer, duration + randBuffer);
+        var _fallDistance = Random.Range(fallDistance - randBuffer, fallDistance + randBuffer);
 
         if (!rectTransform)
             rectTransform = GetComponent<RectTransform>();

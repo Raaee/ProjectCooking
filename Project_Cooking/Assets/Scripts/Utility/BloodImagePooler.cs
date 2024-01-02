@@ -6,8 +6,8 @@ public class BloodImagePooler : MonoBehaviour
 {
     [SerializeField] private GameObject imagePrefab;
     [SerializeField] private Transform canvasTransform;
-
-    [SerializeField] private float spawnInterval = 0.5f;
+    private float widthBuffer = 10;
+   [SerializeField][Range(0.1f, 0.6f)] private float spawnInterval = 0.4f;
 
     private List<GameObject> pooledImages = new List<GameObject>();
 
@@ -22,7 +22,6 @@ public class BloodImagePooler : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Raeus Code check for infinite loop");
             GameObject image = GetPooledObject();
             if (image == null)
             {
@@ -31,8 +30,8 @@ public class BloodImagePooler : MonoBehaviour
             }
 
             // Position the image randomly within the canvas bounds
-            float randomX = Random.Range(canvasTransform.position.x - canvasTransform.localScale.x / 2,
-                                         canvasTransform.position.x + canvasTransform.localScale.x / 2);
+            float randomX = Random.Range(canvasTransform.position.x - (canvasTransform.localScale.x / 2 + widthBuffer),
+                                         canvasTransform.position.x + (canvasTransform.localScale.x / 2 + widthBuffer));
             float randomY = canvasTransform.position.y + canvasTransform.localScale.y; // Start above the canvas
             image.transform.position = new Vector3(randomX, randomY, 0);
 
