@@ -18,6 +18,8 @@ public class Health : MonoBehaviour
     [HideInInspector] public UnityEvent OnDeath;
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;
+    [SerializeField] private ParticleSystem ps;
+    private int emissionsCount = 10;
     private bool isDead = false;
     private void Start() {
         StartCoroutine(Invincibility(2f));
@@ -50,6 +52,8 @@ public class Health : MonoBehaviour
             Die();
             return;
         }
+        if(ps != null)
+            ps.Emit(emissionsCount); 
         OnHurt.Invoke();
         StartCoroutine(Invincibility(invicibilityTime));
     }

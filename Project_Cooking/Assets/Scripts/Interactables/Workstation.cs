@@ -22,6 +22,10 @@ public abstract class Workstation : MonoBehaviour
     [Header("AUDIO")]
     [SerializeField] private FMODUnity.EventReference workstationOnCompleteSound;
     [SerializeField] private FMODUnity.EventReference workstationFailed;
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem successParticle;
+    [SerializeField] private ParticleSystem failParticle;
+    private int emissionCount = 10;
     public abstract void OnInteractionComplete();
 
     private void Awake()
@@ -47,8 +51,12 @@ public abstract class Workstation : MonoBehaviour
             //This is for when the player interacts with a workstation while their inventory is empty:
             //This is to prevent the production of coal farming.
         }
-
+        
         CheckIfInventoryHasAll();
+        if (outputIngredient == Items.CHARCOAL)
+            failParticle.Emit(emissionCount);
+        else
+            successParticle.Emit(emissionCount);
         Inventory.instance.ClearInventory();
         Inventory.instance.AddItem(outputIngredient);
     }
@@ -64,6 +72,7 @@ public abstract class Workstation : MonoBehaviour
         }
         //if we reach here we failed and its time to sizzle 
         PlayOnFailSound();
+        
     }
     private void ProgressBarStateMachine()
     {
@@ -110,6 +119,7 @@ public abstract class Workstation : MonoBehaviour
             case InteractProgressState.FULL:
                 OnInteractionComplete();
                 PlayOnCompleteSound();
+                
                 progressState = InteractProgressState.IDLE;
                 isCharging = false;
                 break;

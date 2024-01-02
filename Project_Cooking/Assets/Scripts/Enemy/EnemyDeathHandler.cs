@@ -7,6 +7,7 @@ public class EnemyDeathHandler : MonoBehaviour
     [SerializeField] private GameObject bloodDropPrefab;
     [SerializeField] private int amtOfBloodDrops = 3;
     private ObjectPooler bloodObjectPooler;
+    [SerializeField] private ParticleSystem ps;
 
 
     private void Awake()
@@ -18,8 +19,8 @@ public class EnemyDeathHandler : MonoBehaviour
     }
     public void OnEnemyHurt()
     {
-
-
+        ps.Emit(5);
+       
     }
 
     public void OnEnemyDeath()
