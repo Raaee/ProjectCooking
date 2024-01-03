@@ -9394,7 +9394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 4401262641399451099, guid: 2378afd66d985a14a9b307c8534ecfcd, type: 3}
   canvasTransform: {fileID: 127012140}
-  spawnInterval: 0.266
+  spawnInterval: 0.33
   sprites:
   - {fileID: -836505803, guid: d63605805224e9d488ef6932fad6907e, type: 3}
   - {fileID: 892054996, guid: 4b6791419b6252e46a6fd7bf92787ee9, type: 3}
