@@ -20,10 +20,10 @@ public class HS_DemoShooting : MonoBehaviour
     private int Prefab;
     private GameObject Instance;
     private float hSliderValue = 0.1f;
-    private float fireCountdown = 0f;
+    //private float fireCountdown = 0f;
 
     //Double-click protection
-    private float buttonSaver = 0f;
+    //private float buttonSaver = 0f;
 
     //For Camera shake 
     public Animation camAnim;
