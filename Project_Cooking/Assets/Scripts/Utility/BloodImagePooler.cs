@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BloodImagePooler : MonoBehaviour
 {
     [SerializeField] private GameObject imagePrefab;
     [SerializeField] private Transform canvasTransform;
-    private float widthBuffer = 10;
-   [SerializeField][Range(0.1f, 0.6f)] private float spawnInterval = 0.4f;
+    private float widthBuffer = 9.5f;
+    [SerializeField][Range(0.15f, 0.6f)] private float spawnInterval = 0.4f;
 
     private List<GameObject> pooledImages = new List<GameObject>();
-
-
+    [SerializeField] private List<Sprite> sprites;
+    [SerializeField] [Range(5, 89)] private int chanceOfDefaultSprite;
     void Start()
     {
        
@@ -28,6 +28,8 @@ public class BloodImagePooler : MonoBehaviour
                 // Pool is empty, instantiate a new object
                 image = Instantiate(imagePrefab, canvasTransform);
             }
+            Image imageComp = image.GetComponent<Image>();
+            SetImage(imageComp);
 
             // Position the image randomly within the canvas bounds
             float randomX = Random.Range(canvasTransform.position.x - (canvasTransform.localScale.x / 2 + widthBuffer),
@@ -42,7 +44,6 @@ public class BloodImagePooler : MonoBehaviour
            if(anim)
             {
                 anim.StartFalling();
-
             }   
            else
             {
@@ -51,6 +52,24 @@ public class BloodImagePooler : MonoBehaviour
 
             yield return new WaitForSeconds(spawnInterval);
         }
+    }
+
+    private void SetImage(Image imageComp)
+    {
+        int RaeZero = 0;
+        int RaeNintyNine = 99;
+        var rand1 = Random.Range(RaeZero, RaeNintyNine);
+        if(rand1 > chanceOfDefaultSprite)
+        {
+            //choose one of the special sprites 
+            imageComp.sprite = sprites[Random.Range(1, sprites.Count)];
+        }
+        else
+        {
+            //do default blood orb sprite 
+            imageComp.sprite = sprites[0];
+        }
+
     }
 
     GameObject GetPooledObject()

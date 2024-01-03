@@ -2373,8 +2373,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Raeus A. ----- Game Design\n                       Programmer\n                      
-    Artist\n\nPeterson N -- Programmer \n                      Audio\n                     
-    Game Design \n\n\n\n"
+    Artist\n                       \nPeterson N -- Programmer \n                     
+    Audio\n                      Game Design \n                      \n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb3a5d22268fb52409a313a3661eea28, type: 2}
   m_sharedMaterial: {fileID: 6089150941041571478, guid: cb3a5d22268fb52409a313a3661eea28, type: 2}
@@ -9394,7 +9394,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePrefab: {fileID: 4401262641399451099, guid: 2378afd66d985a14a9b307c8534ecfcd, type: 3}
   canvasTransform: {fileID: 127012140}
-  spawnInterval: 0.5
+  spawnInterval: 0.266
+  sprites:
+  - {fileID: -836505803, guid: d63605805224e9d488ef6932fad6907e, type: 3}
+  - {fileID: 892054996, guid: 4b6791419b6252e46a6fd7bf92787ee9, type: 3}
+  - {fileID: 21300000, guid: 29c855b1fa8309245ae4a9568519c18d, type: 3}
+  - {fileID: -1157599698, guid: 3c1adf10dc025944781adf03f1d3db0a, type: 3}
+  - {fileID: 1732300750, guid: 4acda67aeaeceb642a1c13b56069bb97, type: 3}
+  chanceOfDefaultSprite: 59
 --- !u!1001 &5933442649019193169
 PrefabInstance:
   m_ObjectHideFlags: 0
