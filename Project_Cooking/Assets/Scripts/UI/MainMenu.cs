@@ -15,11 +15,12 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         Init();
     }
     private void Init() {
         currentPanel = mainMenuPanel;
-        FadeInCanvasGroup(currentPanel);
+        currentPanel.alpha = 1f;
         SlimeImages.SetActive(true);
         settingsPanel.gameObject.SetActive(false);
         creditsPanel.gameObject.SetActive(false);

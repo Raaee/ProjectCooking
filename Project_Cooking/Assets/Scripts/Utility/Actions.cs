@@ -9,12 +9,14 @@ public class Actions : MonoBehaviour
 {
 
     [SerializeField] private LevelManager levelManager;
+    private PauseMenu pauseMenu;
     private Input input;
     [HideInInspector] public UnityEvent OnItemSelect;
     [HideInInspector] public UnityEvent OnItemDrop;
     [HideInInspector] public UnityEvent OnInteract;
     [HideInInspector] public UnityEvent OnInteractHeld_Started;
     [HideInInspector] public UnityEvent OnInteractHeld_Cancelled;
+    [HideInInspector] public UnityEvent OnPause; 
 
     [Header("Ability Events")]
     [HideInInspector] public UnityEvent OnAttack_Started;
@@ -22,11 +24,12 @@ public class Actions : MonoBehaviour
     [HideInInspector] public UnityEvent OnAttack_Cancelled;
     [HideInInspector] public UnityEvent OnSpeed;
     [HideInInspector] public UnityEvent OnHeal;
-   [HideInInspector] public UnityEvent OnScreech;
+    [HideInInspector] public UnityEvent OnScreech;
 
     private void Awake()
     {
         input = GetComponent<Input>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
     private void Update()
     {
@@ -35,6 +38,7 @@ public class Actions : MonoBehaviour
         input.interactHeld.canceled += InteractHeld_Cancelled;
         input.drop.performed += Drop;
         input.slotSelect.performed += SlotSelect;
+        input.pause.performed += Pause;
 
         // abilities:
         input.speedAbilityIA.performed += ActivateSpeedAbility;
@@ -63,6 +67,10 @@ public class Actions : MonoBehaviour
                 input.DisableKitchenInputs();
                 break;
         }
+    }
+    public void Pause(InputAction.CallbackContext context) {
+        pauseMenu.isPaused = !pauseMenu.isPaused;
+        OnPause.Invoke();
     }
 
     public void Interact(InputAction.CallbackContext context)

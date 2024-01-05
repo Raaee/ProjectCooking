@@ -93,5 +93,8 @@ public class EnemyManager : MonoBehaviour
     }
     public void DecrementBloodDropAmt(int by) {
         bloodDropAmtPerEnemy -= by;
+        if (bloodDropAmtPerEnemy < 1) {
+            bloodDropAmtPerEnemy = 1;
+        }
     }
 }

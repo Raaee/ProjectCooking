@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Input : MonoBehaviour
 {
+    public InputAction pause;
 
     [Header("Player Inputs")]
     public PlayerControls playerControls;
@@ -49,6 +50,9 @@ public class Input : MonoBehaviour
 
         screechAbilityIA = playerControls.Player.ScreechAbility;
         EnableScreechAbility();
+
+        pause = playerControls.Player.Pause;
+        pause.Enable();
     }
     private void OnDisable()
     {

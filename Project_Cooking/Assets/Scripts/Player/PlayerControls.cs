@@ -107,6 +107,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""52e04a27-5690-4226-8ad5-36abcb42925c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -393,6 +402,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""ScreechAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8674a504-5e97-497d-be8b-e9c22e12db6a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -989,6 +1009,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_SpeedAbility = m_Player.FindAction("SpeedAbility", throwIfNotFound: true);
         m_Player_HealAbility = m_Player.FindAction("HealAbility", throwIfNotFound: true);
         m_Player_ScreechAbility = m_Player.FindAction("ScreechAbility", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1071,6 +1092,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SpeedAbility;
     private readonly InputAction m_Player_HealAbility;
     private readonly InputAction m_Player_ScreechAbility;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1084,6 +1106,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @SpeedAbility => m_Wrapper.m_Player_SpeedAbility;
         public InputAction @HealAbility => m_Wrapper.m_Player_HealAbility;
         public InputAction @ScreechAbility => m_Wrapper.m_Player_ScreechAbility;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1120,6 +1143,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ScreechAbility.started += instance.OnScreechAbility;
             @ScreechAbility.performed += instance.OnScreechAbility;
             @ScreechAbility.canceled += instance.OnScreechAbility;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1151,6 +1177,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ScreechAbility.started -= instance.OnScreechAbility;
             @ScreechAbility.performed -= instance.OnScreechAbility;
             @ScreechAbility.canceled -= instance.OnScreechAbility;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1342,6 +1371,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSpeedAbility(InputAction.CallbackContext context);
         void OnHealAbility(InputAction.CallbackContext context);
         void OnScreechAbility(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
