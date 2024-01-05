@@ -92,6 +92,6 @@ public class EnemyManager : MonoBehaviour
         amtEnemiesPerRound += by;
     }
     public void DecrementBloodDropAmt(int by) {
-        amtEnemiesPerRound -= by;
+        bloodDropAmtPerEnemy -= by;
     }
 }
