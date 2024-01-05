@@ -87,10 +87,10 @@ public class LevelManager : MonoBehaviour
     }
     [ProButton]
     public void EndLevel() {
-
         bell.ShowBell();        
         areaTimer.PauseTimer();
         areaTimer.ActivateVignette(false);
+        GetComponent<LevelUIManager>().LastRound();
     }
     
     [ProButton]

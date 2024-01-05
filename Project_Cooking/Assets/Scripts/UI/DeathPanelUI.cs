@@ -30,7 +30,7 @@ public class DeathPanelUI : PanelUI {
         var animCurveFunction = AnimationCurveHelper.GetAnimationCurve(curveFunction);
         if (!playerHealth.IsDead()) {
             StartCoroutine(ShowPanel(fadeInTime, animCurveFunction));
-            AllRecipeData.instance.ShuffleRecipes();
+            
         }
     }
     public override void PlayAgainButton()

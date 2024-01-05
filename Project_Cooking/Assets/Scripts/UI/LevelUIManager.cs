@@ -10,6 +10,7 @@ public class LevelUIManager : MonoBehaviour {
     [Header("UI")]
     [SerializeField] private GameObject dungeonUI;
     [SerializeField] private GameObject kitchenUI;
+    [SerializeField] private GameObject roundNumberUI;
 
     [Header("VISUALS")]
     [SerializeField] private GameObject kitchenInteractables;
@@ -24,9 +25,9 @@ public class LevelUIManager : MonoBehaviour {
         SetUpDungeon();
         levelManager.OnAreaChange.AddListener(UpdateAreaUI);
         levelManager.OnAreaChange.AddListener(UpdateFloor);
-        
+        roundNumberUI.SetActive(false);
     }
-   
+
     public void UpdateAreaUI(Current_Area newCurrentArea)  {
         switch(newCurrentArea) {
             case Current_Area.LIMBO:
@@ -65,6 +66,9 @@ public class LevelUIManager : MonoBehaviour {
         dungeonUI.SetActive(false);
         kitchenUI.SetActive(true);
         kitchenInteractables.SetActive(true);
+    }
+    public void LastRound() {
+        roundNumberUI.SetActive(true);
     }
 
     public void UpdateFloor(Current_Area newCurrentArea) {

@@ -17,7 +17,7 @@ public class Bell : MonoBehaviour, IInteractable  {
     [Header("VISUAL")]
     [SerializeField] private Sprite normalSprite;
     [SerializeField] private Sprite highlightedSprite;
-    
+    [SerializeField] private GameObject bellVFX;
     private void Start() {
         sr = GetComponent<SpriteRenderer>();
         playerInventory = FindObjectOfType<Inventory>();
@@ -54,13 +54,15 @@ public class Bell : MonoBehaviour, IInteractable  {
         return false;
     }
     public void ShowBell() {
-        // sfx when bell is functional here
+        // vfx when bell is functional here
         this.gameObject.SetActive(true);
+        bellVFX.SetActive(true);
         isFunctional = true;
     }
     public void HideBell() {
        // this.gameObject.SetActive(false);
         isFunctional = false;
+        bellVFX.SetActive(false);
     }
 
     public void NormalSprite() {

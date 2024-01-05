@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup settingsPanel;
     [SerializeField] private CanvasGroup creditsPanel;
     [SerializeField] private CanvasGroup tutorialPanel;
+    [SerializeField] private GameObject SlimeImages;
     private CanvasGroup currentPanel;
     [SerializeField] [Range(0.2f, 3f)] private float fadeTime = 1f;
 
@@ -19,6 +20,7 @@ public class MainMenu : MonoBehaviour
     private void Init() {
         currentPanel = mainMenuPanel;
         FadeInCanvasGroup(currentPanel);
+        SlimeImages.SetActive(true);
         settingsPanel.gameObject.SetActive(false);
         creditsPanel.gameObject.SetActive(false);
         tutorialPanel.gameObject.SetActive(false);
@@ -28,6 +30,7 @@ public class MainMenu : MonoBehaviour
     {
         FadeOutCanvasGroup(currentPanel);
         FadeInCanvasGroup(settingsPanel);
+        SlimeImages.SetActive(true);
         currentPanel = settingsPanel;
     }
 
@@ -35,6 +38,7 @@ public class MainMenu : MonoBehaviour
     {
         FadeOutCanvasGroup(currentPanel);
         FadeInCanvasGroup(creditsPanel);
+        SlimeImages.SetActive(true);
         currentPanel = creditsPanel;
     }
 
@@ -42,9 +46,11 @@ public class MainMenu : MonoBehaviour
     {
         FadeOutCanvasGroup(currentPanel);
         FadeInCanvasGroup(mainMenuPanel);
+        SlimeImages.SetActive(true);
         currentPanel = mainMenuPanel;
     }
     public void GoToTutorial() {
+        SlimeImages.SetActive(false);
         FadeOutCanvasGroup(currentPanel);
         FadeInCanvasGroup(tutorialPanel);
         currentPanel = tutorialPanel;

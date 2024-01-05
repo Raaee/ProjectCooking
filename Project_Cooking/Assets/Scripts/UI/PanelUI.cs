@@ -48,7 +48,7 @@ public abstract class PanelUI : MonoBehaviour {
     public void GoToMainMenu() {
        
         FadeManager.instance?.FadeOutAndLoadScene(0);
-
+        AllRecipeData.instance.ShuffleRecipes();
     }
     public void PlayBackToMainMenuSfx() {
         FMODUnity.RuntimeManager.PlayOneShot(backToMainMenuSfx, transform.position);
