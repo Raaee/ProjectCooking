@@ -56,7 +56,11 @@ public class MainMenu : MonoBehaviour
         cg.alpha = 0;
         cg.DOFade(1, fadeTime);
     }
+    public void StartGame()
+    {
+        FindObjectOfType<FadeManager>().FadeOutAndLoadScene(1);
 
+    }
     private void FadeOutCanvasGroup(CanvasGroup cg)
     {
         cg.alpha = 1;

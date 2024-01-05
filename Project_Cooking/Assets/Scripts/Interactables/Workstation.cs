@@ -54,9 +54,9 @@ public abstract class Workstation : MonoBehaviour
         
         CheckIfInventoryHasAll();
         if (outputIngredient == Items.CHARCOAL)
-            failParticle.Emit(emissionCount);
+            failParticle?.Emit(emissionCount);
         else
-            successParticle.Emit(emissionCount);
+            successParticle?.Emit(emissionCount);
         Inventory.instance.ClearInventory();
         Inventory.instance.AddItem(outputIngredient);
     }

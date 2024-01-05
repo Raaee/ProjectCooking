@@ -22,7 +22,7 @@ public class FadeManager : MonoBehaviour
     }
     public void FadeOutAndLoadScene(int sceneIndex)
     {
-        Debug.Log("going along twice? index " + sceneIndex);
+      
         if (isFading || sceneIndex == -2)
             return;
         isFading = true;
@@ -77,10 +77,12 @@ public class FadeManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this);
+            Debug.Log("destroying the weaker one");
+            Destroy(this.gameObject);
         }
         else
         {
+            Debug.Log("I am stronk");
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }

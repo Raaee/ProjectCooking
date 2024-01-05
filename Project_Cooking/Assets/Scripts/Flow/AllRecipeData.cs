@@ -15,7 +15,7 @@ public class AllRecipeData : MonoBehaviour {
     }
     private void Init() {
         if (instance != null && instance != this) {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else {
             instance = this;

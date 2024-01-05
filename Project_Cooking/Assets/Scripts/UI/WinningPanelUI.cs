@@ -26,11 +26,12 @@ public class WinningPanelUI : PanelUI {
     }
     [ProButton]
     public void ShowWinPanel() {
-        Debug.Log("showing win panel");
+        
         var animCurveFunction = AnimationCurveHelper.GetAnimationCurve(curveFunction);
         StartCoroutine(ShowPanel(fadeInTime, animCurveFunction));
         deathPanelGO.SetActive(false); //setting false to make the winning panel interactive
         playerWon = true;
+        //if last level, (getting index of allrecipedata list) we update text and show main menu  
     }
 
     public override void PlaySFX() {

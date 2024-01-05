@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int currentHealth = 3;
     [Header("VARIABLE")]
     [SerializeField] private float invicibilityTime = 1f;
+    private float loadAreaInvincibilty = 2.5f;
     
     [Header("DEBUG")]
     [SerializeField] private bool godMode = false;
@@ -22,7 +23,7 @@ public class Health : MonoBehaviour
     private int emissionsCount = 10;
     private bool isDead = false;
     private void Start() {
-        StartCoroutine(Invincibility(2f));
+        StartInvincibility();
     }
 
     public void Heal(int amt)
@@ -56,6 +57,10 @@ public class Health : MonoBehaviour
             ps.Emit(emissionsCount); 
         OnHurt.Invoke();
         StartCoroutine(Invincibility(invicibilityTime));
+    }
+    public void StartInvincibility()
+    {
+        StartCoroutine(Invincibility(loadAreaInvincibilty));
     }
     private IEnumerator Invincibility(float time) {
         godMode = true;

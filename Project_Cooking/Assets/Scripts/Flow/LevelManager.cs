@@ -123,6 +123,7 @@ public class LevelManager : MonoBehaviour
             }
             enemyManager.IncrementAmtEnemies(enemyIncrementAmtToImproveGameDesign);
             enemyManager.SpawnAllEnemies();
+            playerHealth.StartInvincibility();
         }
         areaTimer.ResetAreaTime(currentArea);
         OnAreaChange?.Invoke(currentArea); // DO NOT MOVE IT WILL EXPLODE;; LIVE BOMB
