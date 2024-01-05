@@ -28,6 +28,10 @@ public class PauseMenu : MonoBehaviour
         settingsPanel.gameObject.SetActive(false);
         pausePanel.gameObject.SetActive(false);
     }
+    public void PausedWithButton() {
+        isPaused = !isPaused;
+        DoOpenOrClose();
+    }
     public void DoOpenOrClose() {
         if (isPaused)
             ShowPauseMenu();
