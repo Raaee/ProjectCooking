@@ -20,12 +20,14 @@ public class Health : MonoBehaviour
     [HideInInspector] public UnityEvent OnHurt;
     [HideInInspector] public UnityEvent OnHeal;
     [SerializeField] private ParticleSystem ps;
+    [SerializeField] private ParticleSystem heal_ps;
     private int emissionsCount = 10;
     private bool isDead = false;
     private void Start() {
         StartInvincibility();
     }
 
+    [ProButton]
     public void Heal(int amt)
     {
         currentHealth += amt;
@@ -34,6 +36,7 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        heal_ps?.Emit(emissionsCount);
     }
     public void InitHealth()
     {
