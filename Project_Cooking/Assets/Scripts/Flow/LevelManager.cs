@@ -34,9 +34,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Current_Area currentArea;
     [SerializeField] private int amtOfRound = 6;
 
-    void Start()    {
-        Init();
+    private void Awake() {
         areaTimer.OnRoundOver.AddListener(ChangingLevel);
+        Init();
+    }
+
+    void Start()    {
+        StartLevel();
     }
     private void Init() {
         if (instance != null && instance != this) {
@@ -44,17 +48,27 @@ public class LevelManager : MonoBehaviour
         }
         else {
             instance = this;
-           
         }
-        StartLevel();
+        if (!instance) {
+            Debug.Log("***********NO instance");
+        }
     }
     public void StartLevel() {
+        Debug.Log("Starting level metnhod");
         ResetLevel();
-        amtOfRound = AllRecipeData.instance.levelRecipe.recipeSteps.Count;
+        Debug.Log("**********");
+        if (AllRecipeData.instance.levelRecipe == null) {
+            Debug.Log("level rec is null");
+        }
+        if (AllRecipeData.instance.levelRecipe.recipeSteps == null) {
+            Debug.Log("rec step is null");
+        }
+        amtOfRound = AllRecipeData.instance.levelRecipe.recipeSteps.Count;        
+        Debug.Log("==============");
         currentArea = Current_Area.LIMBO;
-        // ChangeArea();
         InvokeOnAreaChange();
         SpawnAllBaseIngredients();
+        Debug.Log("Exiting start level");
     }
     public void ResetLevel() {
         playerHealth.ResetHealth();

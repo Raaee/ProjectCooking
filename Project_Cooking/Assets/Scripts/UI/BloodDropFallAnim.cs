@@ -32,7 +32,7 @@ public class BloodDropFallAnim : MonoBehaviour
         float targetY = rectTransform.position.y - _fallDistance;
 
         // Move the image downwards smoothly using DOTween, stopping at the target position
-        rectTransform.DOMoveY(targetY, _duration).SetEase(Ease.InSine).OnComplete(() => StopFalling());
+        rectTransform?.DOMoveY(targetY, _duration).SetEase(Ease.InSine).OnComplete(() => StopFalling());
     }
 
     void StopFalling()

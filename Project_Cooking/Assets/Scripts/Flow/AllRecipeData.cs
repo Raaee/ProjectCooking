@@ -11,7 +11,10 @@ public class AllRecipeData : MonoBehaviour {
 
     void Awake() {
         Init();
+    }
+    private void Start() {
         ShuffleRecipes();
+
     }
     private void Init() {
         if (instance != null && instance != this) {
@@ -20,6 +23,7 @@ public class AllRecipeData : MonoBehaviour {
         else {
             instance = this;
         }
+        
         DontDestroyOnLoad(this.gameObject);
     }
     public void ShuffleRecipes() {

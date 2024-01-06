@@ -56,7 +56,9 @@ public class MainMenu : MonoBehaviour
         FadeInCanvasGroup(tutorialPanel);
         currentPanel = tutorialPanel;
     }
-
+    public void QuitGame() {
+        Application.Quit();
+    }
     private void FadeInCanvasGroup(CanvasGroup cg)
     {
         cg.gameObject.SetActive(true);

@@ -17,12 +17,11 @@ public class Cookbook : MonoBehaviour, IInteractable
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-       
-     
+        AllRecipeData.instance.GetRecipe();
+
     }
     private void Start()
     {
-        AllRecipeData.instance.GetRecipe();
         recipeDisplay.SetRecipeSO(AllRecipeData.instance.levelRecipe);
     }
     public void Interact()  {
