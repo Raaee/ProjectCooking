@@ -6079,6 +6079,10 @@ PrefabInstance:
       propertyPath: cookbook
       value: 
       objectReference: {fileID: 359183489}
+    - target: {fileID: 6249508852913239474, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
+      propertyPath: bloodDropValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6476595783950709589, guid: 10f50b8f1372df74e9dffdd6a3706c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

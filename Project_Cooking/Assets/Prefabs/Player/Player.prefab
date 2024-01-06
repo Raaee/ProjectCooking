@@ -1365,6 +1365,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198810099467668116, guid: edf48afbc9264214eb63d4960688330b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198944581148893752, guid: edf48afbc9264214eb63d4960688330b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198952230485329772, guid: edf48afbc9264214eb63d4960688330b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198995565018382056, guid: edf48afbc9264214eb63d4960688330b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 199166541990548358, guid: edf48afbc9264214eb63d4960688330b, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1

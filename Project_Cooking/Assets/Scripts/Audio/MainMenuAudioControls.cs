@@ -13,6 +13,7 @@ public class MainMenuAudioControls : MonoBehaviour
     [SerializeField] private FMODUnity.EventReference bellRing;
     [SerializeField] private FMODUnity.EventReference openBook;
     [SerializeField] private FMODUnity.EventReference closeBook;
+    [SerializeField] private FMODUnity.EventReference musicSamples;
     private FMODUnity.EventReference playedAudio;
     [Header("AUDIO REF Ambi")]
     [SerializeField] private FMODUnity.EventReference dungeonAmbi;
@@ -25,10 +26,12 @@ public class MainMenuAudioControls : MonoBehaviour
     [Header("Slider Text")]
     [SerializeField] private TextMeshProUGUI musicText;
     [SerializeField] private TextMeshProUGUI sfxText;
-
+    private float timer = 0f;
+    private float delay = 4.5f;
 
     private FMOD.Studio.VCA musicVCA;
     private FMOD.Studio.VCA sfxVCA;
+    private bool currentlyMovingSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,7 @@ public class MainMenuAudioControls : MonoBehaviour
         instance2 = FMODUnity.RuntimeManager.CreateInstance(dungeonSpecial);
         PlayDungeon();
         musicSlider.onValueChanged.AddListener(OnMusicVolChange);
+      
         sfxSlider.onValueChanged.AddListener(OnSfxVolChange);
         musicVCA = FMODUnity.RuntimeManager.GetVCA("vca:/MusicVCA");
         sfxVCA = FMODUnity.RuntimeManager.GetVCA("vca:/SFXVCA");
@@ -58,7 +62,25 @@ public class MainMenuAudioControls : MonoBehaviour
         }*/
     }
 
-   
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if(timer > delay)
+        {
+            
+                PlayRandomMusicTest();
+                timer = 0f;
+     
+
+            
+        }
+        
+    }
+    private void PlayRandomMusicTest()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(musicSamples, transform.position);
+    }
 
     //this is specifically for the Unity Button UI stiff
     public void PlayAudio(int audioId)//too lazy to make all the play methods 

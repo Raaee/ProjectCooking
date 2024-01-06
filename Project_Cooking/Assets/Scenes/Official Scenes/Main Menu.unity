@@ -4928,6 +4928,13 @@ MonoBehaviour:
       Data3: -1665295984
       Data4: 1884373899
     Path: event:/Gameplay UI/CloseBook
+  musicSamples:
+    Guid:
+      Data1: 118745647
+      Data2: 1286419248
+      Data3: -529419118
+      Data4: 1546561949
+    Path: event:/Music/MusicSample
   dungeonAmbi:
     Guid:
       Data1: 1952659497
