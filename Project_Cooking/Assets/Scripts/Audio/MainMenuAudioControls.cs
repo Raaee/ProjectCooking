@@ -40,26 +40,17 @@ public class MainMenuAudioControls : MonoBehaviour
         instance2 = FMODUnity.RuntimeManager.CreateInstance(dungeonSpecial);
         PlayDungeon();
         musicSlider.onValueChanged.AddListener(OnMusicVolChange);
-      
         sfxSlider.onValueChanged.AddListener(OnSfxVolChange);
+
         musicVCA = FMODUnity.RuntimeManager.GetVCA("vca:/MusicVCA");
         sfxVCA = FMODUnity.RuntimeManager.GetVCA("vca:/SFXVCA");
-        /*
-        try
-        {
+        float musicLoadedValue = ES3.Load("musicVol", 0.75f);
+        float sfxLoadedValue = ES3.Load("sfxVol", 0.75f);
 
-            ES3.Save("playerAudioAmt", MAX_AUDIO_AMOUNT);
-            playerAudioAmt = ES3.Load<int>("myInt", MAX_AUDIO_AMOUNT);
-
-        }
-        catch (System.IO.IOException)
-        {
-            Debug.Log("The file is open elsewhere or there was not enough storage space");
-        }
-        catch (System.Security.SecurityException)
-        {
-            Debug.Log("You do not have the required permissions");
-        }*/
+        OnMusicVolChange(musicLoadedValue);
+        musicSlider.value = musicLoadedValue;
+        OnSfxVolChange(sfxLoadedValue);
+        sfxSlider.value = sfxLoadedValue;
     }
 
     private void Update()
@@ -130,6 +121,7 @@ public class MainMenuAudioControls : MonoBehaviour
 
         musicText.text = ((int)(newVolume*100)).ToString();
         musicVCA.setVolume(newVolume);
+        ES3.Save("musicVol", newVolume);
     }
 
     public void OnSfxVolChange(float newVolume)
@@ -137,7 +129,7 @@ public class MainMenuAudioControls : MonoBehaviour
        
         sfxText.text = ((int)(newVolume * 100)).ToString();
         sfxVCA.setVolume(newVolume);
-       
+        ES3.Save("sfxVol", newVolume);
     }
 
 }

@@ -14,7 +14,6 @@ public class AllRecipeData : MonoBehaviour {
     }
     private void Start() {
         ShuffleRecipes();
-
     }
     private void Init() {
         if (instance != null && instance != this) {

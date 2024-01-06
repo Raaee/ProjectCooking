@@ -50,25 +50,14 @@ public class LevelManager : MonoBehaviour
             instance = this;
         }
         if (!instance) {
-            Debug.Log("***********NO instance");
         }
     }
     public void StartLevel() {
-        Debug.Log("Starting level metnhod");
         ResetLevel();
-        Debug.Log("**********");
-        if (AllRecipeData.instance.levelRecipe == null) {
-            Debug.Log("level rec is null");
-        }
-        if (AllRecipeData.instance.levelRecipe.recipeSteps == null) {
-            Debug.Log("rec step is null");
-        }
         amtOfRound = AllRecipeData.instance.levelRecipe.recipeSteps.Count;        
-        Debug.Log("==============");
         currentArea = Current_Area.LIMBO;
         InvokeOnAreaChange();
         SpawnAllBaseIngredients();
-        Debug.Log("Exiting start level");
     }
     public void ResetLevel() {
         playerHealth.ResetHealth();

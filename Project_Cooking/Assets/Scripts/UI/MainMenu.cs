@@ -57,6 +57,8 @@ public class MainMenu : MonoBehaviour
         currentPanel = tutorialPanel;
     }
     public void QuitGame() {
+        ES3.Save("musicVol", 0.75f);
+        ES3.Save("sfxVol", 0.75f);
         Application.Quit();
     }
     private void FadeInCanvasGroup(CanvasGroup cg)
