@@ -54,6 +54,11 @@ public class LevelManager : MonoBehaviour
     }
     public void StartLevel() {
         ResetLevel();
+       
+        if (AllRecipeData.instance.levelRecipe == null)
+        {
+            AllRecipeData.instance.SetRecipe();
+        }
         amtOfRound = AllRecipeData.instance.levelRecipe.recipeSteps.Count;        
         currentArea = Current_Area.LIMBO;
         InvokeOnAreaChange();
