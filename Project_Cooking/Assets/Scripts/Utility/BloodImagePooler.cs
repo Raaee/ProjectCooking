@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,7 +70,7 @@ public class BloodImagePooler : MonoBehaviour
             //do default blood orb sprite 
             imageComp.sprite = sprites[0];
         }
-
+        
     }
 
     GameObject GetPooledObject()
@@ -82,6 +83,14 @@ public class BloodImagePooler : MonoBehaviour
             }
         }
         return null;
+    }
+    public void KillAllObjects()
+    {
+        foreach (var img in pooledImages)
+        {
+            var anim = img.GetComponent<BloodDropFallAnim>();
+            anim.KillTween();
+        }
     }
 
     public void ReturnToPool(GameObject imageToReturn)

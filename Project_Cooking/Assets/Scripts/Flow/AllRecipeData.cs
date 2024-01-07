@@ -38,7 +38,8 @@ public class AllRecipeData : MonoBehaviour {
         }
         
     }
-    public void GetRecipe() {
+    public void SetRecipe() {
+        
         levelRecipe = allRecipes[currLvlIndex];
     }
     public void NextLevel() {

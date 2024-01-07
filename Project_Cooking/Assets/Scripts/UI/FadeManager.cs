@@ -77,12 +77,11 @@ public class FadeManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Debug.Log("destroying the weaker one");
             Destroy(this.gameObject);
         }
         else
         {
-            Debug.Log("I am stronk");
+           
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }

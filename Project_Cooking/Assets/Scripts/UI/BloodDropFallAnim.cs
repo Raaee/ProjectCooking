@@ -9,7 +9,7 @@ public class BloodDropFallAnim : MonoBehaviour
     private float fallDistance = 18f; // Adjust fall distance
 
     private RectTransform rectTransform;
-
+    Sequence mySequence;
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -32,7 +32,8 @@ public class BloodDropFallAnim : MonoBehaviour
         float targetY = rectTransform.position.y - _fallDistance;
 
         // Move the image downwards smoothly using DOTween, stopping at the target position
-        rectTransform?.DOMoveY(targetY, _duration).SetEase(Ease.InSine).OnComplete(() => StopFalling());
+         mySequence = DOTween.Sequence();
+        mySequence.Append((rectTransform?.DOMoveY(targetY, _duration).SetEase(Ease.InSine).OnComplete(() => StopFalling())));
     }
 
     void StopFalling()
@@ -43,5 +44,11 @@ public class BloodDropFallAnim : MonoBehaviour
             Debug.Log("blood image bull baby");
         }
         bloodImagePooler.ReturnToPool(gameObject);
+    }
+
+    public void KillTween()
+    {
+        mySequence.Kill();
+
     }
 }
